@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>M2 TAX — Doradcy Podatkowi | Wrocław</title>
-<meta name="description" content="M2 TAX — kancelaria doradztwa podatkowego we Wrocławiu. Interpretacje indywidualne, postępowania podatkowe, czynności sprawdzające, wdrożenia JPK CIT i JPK PKPIR, abonament podatkowy od 369 zł netto miesięcznie. Bezpłatna konsultacja do 20 minut.">
+<meta name="description" content="M2 TAX — kancelaria doradztwa podatkowego we Wrocławiu. Interpretacje indywidualne, postępowania podatkowe, czynności sprawdzające, fundacje rodzinne, restrukturyzacje, nieruchomości, abonament podatkowy od 369 zł netto miesięcznie. Bezpłatna konsultacja do 20 minut.">
 <meta name="robots" content="index, follow">
 <link rel="canonical" href="https://www.m2tax.pl/">
 <meta property="og:type" content="website">
@@ -12,7 +12,7 @@
 <meta property="og:site_name" content="M2 TAX">
 <meta property="og:url" content="https://www.m2tax.pl/">
 <meta property="og:title" content="M2 TAX — Doradcy Podatkowi | Wrocław">
-<meta property="og:description" content="Twoje podatki, nasza pasja. Interpretacje, postępowania podatkowe, czynności sprawdzające, wdrożenia JPK i abonament od 369 zł netto miesięcznie.">
+<meta property="og:description" content="Twoje podatki, nasza pasja. Interpretacje, postępowania podatkowe, czynności sprawdzające, fundacje rodzinne i abonament od 369 zł netto miesięcznie.">
 <meta property="og:image" content="https://www.m2tax.pl/img/og-image.jpg">
 <meta name="twitter:card" content="summary_large_image">
 <link rel="icon" type="image/jpeg" href="img/logo.jpg">
@@ -160,36 +160,23 @@ p{margin:0}
 .nobooks{margin-top:28px;display:flex;gap:14px;align-items:flex-start;font-size:16px;color:var(--muted);max-width:780px}
 .nobooks strong{color:var(--text)}
 
-/* JPK */
 .dark{background:var(--ink);color:var(--on-ink)}
 .dark .lede,.dark .muted{color:var(--on-ink-muted)}
 .dark .ref{color:var(--on-ink-muted)}
-.jpk-grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:20px}
-.jpk-card{border:1px solid var(--ink-line);border-radius:12px;padding:clamp(22px,3vw,34px);display:grid;gap:16px;align-content:start;background:var(--ink-2)}
-.jpk-card h3{font-size:24px;font-weight:800;color:#fff}
-.jpk-card .tag{font-family:var(--f-mono);font-size:12.5px;color:var(--accent);letter-spacing:.04em}
-.jpk-card ul{margin:0;padding-left:20px;display:grid;gap:8px;color:var(--on-ink)}
-.jpk-card li::marker{color:var(--accent)}
-@media (max-width:820px){.jpk-grid{grid-template-columns:1fr}}
-.timeline{margin-top:20px;border:1px solid var(--ink-line);border-radius:12px;overflow:hidden}
-.tl-row{display:grid;grid-template-columns:120px minmax(0,1fr) minmax(0,1fr);border-top:1px solid var(--ink-line)}
-.tl-row:first-child{border-top:0}
-.tl-row>*{padding:16px 20px;min-width:0}
-.tl-row.head>*{font-family:var(--f-display);font-weight:700;font-size:12.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--on-ink-muted);padding-block:12px}
-.tl-year{font-family:var(--f-display);font-weight:900;font-size:26px;color:var(--accent);font-variant-numeric:tabular-nums}
-.tl-row p{font-size:16px}
-.tl-row .ref{display:block;margin-top:4px}
-@media (max-width:720px){.tl-row{grid-template-columns:1fr}.tl-row.head{display:none}.tl-row>*{padding:10px 18px}.tl-row>*:first-child{padding-top:18px}.tl-row>*:last-child{padding-bottom:18px}.tl-row p::before{display:block;font-family:var(--f-display);font-size:11.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--on-ink-muted);margin-bottom:2px}.tl-row p.c::before{content:"Podatnicy CIT"}.tl-row p.p::before{content:"Podatnicy PIT"}}
-.process{margin-top:48px}
-.process h3{font-size:22px;font-weight:800;color:#fff;margin-bottom:22px}
-.proc{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1px;background:var(--ink-line);border:1px solid var(--ink-line);border-radius:12px;overflow:hidden;counter-reset:p}
-.proc li{background:var(--ink);padding:22px 22px 24px;display:grid;gap:6px;align-content:start}
-.proc li::before{counter-increment:p;content:"Etap " counter(p);font-family:var(--f-mono);font-size:12.5px;color:var(--accent)}
-.proc b{font-family:var(--f-display);font-weight:700;font-size:16.5px;color:#fff}
-.proc span{font-size:15.5px;color:var(--on-ink-muted)}
-@media (max-width:860px){.proc{grid-template-columns:1fr 1fr}}
-@media (max-width:540px){.proc{grid-template-columns:1fr}}
-.jpk-cta{margin-top:36px;display:flex;flex-wrap:wrap;gap:14px;align-items:center}
+/* Pozostałe specjalizacje */
+.spec-title{font-size:clamp(22px,2.4vw,28px);font-weight:800;margin:56px 0 20px}
+.spec-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:16px}
+.spec{background:var(--paper);border:1px solid var(--line);border-radius:12px;padding:24px 22px;display:flex;flex-direction:column;gap:10px;min-width:0;position:relative;overflow:hidden}
+.spec::after{content:"";position:absolute;left:0;right:0;top:0;height:3px;background:var(--accent);transform:scaleX(0);transform-origin:left;transition:transform .35s ease}
+.spec:hover::after{transform:scaleX(1)}
+.spec .ref{color:var(--accent-deep);font-size:12px}
+.spec h4{font-size:18.5px;font-weight:800;line-height:1.2}
+.spec p{font-size:15px;color:var(--muted);line-height:1.55}
+.spec ul{list-style:none;margin:6px 0 0;padding:12px 0 0;border-top:1px solid var(--line);display:grid;gap:7px;font-size:14.5px;line-height:1.45}
+.spec li{padding-left:18px;position:relative}
+.spec li::before{content:"";position:absolute;left:0;top:.6em;width:8px;height:2px;background:var(--accent)}
+@media (max-width:1100px){.spec-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:560px){.spec-grid{grid-template-columns:1fr}}
 
 /* Plans */
 .plans{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px;align-items:stretch}
@@ -384,7 +371,6 @@ footer a:hover{color:#fff}
     <nav class="nav" id="nav" aria-label="Główna nawigacja">
       <a href="#pismo">Pismo z urzędu</a>
       <a href="#specjalizacje">Specjalizacje</a>
-      <a href="#jpk">JPK CIT / PKPIR</a>
       <a href="#abonament">Abonament</a>
       <a href="#zespol">Zespół</a>
       <a href="#kontakt">Kontakt</a>
@@ -518,83 +504,18 @@ footer a:hover{color:#fff}
         </ul>
       </article>
     </div>
-    <div class="more" aria-label="Pozostałe obszary">
-      <div><h4>Fundacje rodzinne</h4><p>Założenie, statut, opodatkowanie świadczeń i sukcesja w firmie rodzinnej.</p></div>
-      <div><h4>Restrukturyzacje</h4><p>Przekształcenia, aporty, wybór formy prawnej i opodatkowania spółki.</p></div>
-      <div><h4>Wynagrodzenie wspólnika</h4><p>Art. 176 KSH, powołanie, umowy ze spółką i ich skutki w CIT i PIT.</p></div>
-      <div><h4>Podatki międzynarodowe</h4><p>Umowy o unikaniu podwójnego opodatkowania, rezydencja, prawo celne.</p></div>
+    <h3 class="spec-title">Pozostałe specjalizacje</h3>
+    <div class="spec-grid">
+      <article class="spec"><span class="ref">art. 176 KSH · CIT · PIT</span><h4>Wypłata pieniędzy ze spółki</h4><p>Dobieramy najtańszą legalną drogę: wynagrodzenie zarządu, powołanie, art. 176 KSH, dywidenda, pożyczka albo najem.</p><ul><li>Porównanie obciążeń CIT, PIT i ZUS dla każdej drogi</li><li>Uchwały i umowy zgodne z praktyką urzędów</li><li>Wynagrodzenie wspólnika w formie świadczeń niepieniężnych</li></ul></article>
+      <article class="spec"><span class="ref">JDG · sp. z o.o. · estoński CIT</span><h4>Forma prawna i opodatkowanie</h4><p>Liczymy, czy lepsza jest działalność, spółka czy ryczałt od dochodów spółek, zanim zmienisz formę albo zaczniesz nowy biznes.</p><ul><li>Symulacja podatków i składek na kilka lat</li><li>Skala, liniowy, ryczałt, estoński CIT</li><li>Plan zmiany formy opodatkowania w terminie</li></ul></article>
+      <article class="spec"><span class="ref">przekształcenia · aporty · podziały</span><h4>Restrukturyzacje</h4><p>Przekształcenie JDG w spółkę, aport przedsiębiorstwa, połączenia i podziały spółek z zachowaniem neutralności podatkowej.</p><ul><li>Analiza ryzyk i klauzuli przeciw unikaniu opodatkowania</li><li>Wniosek o interpretację przed transakcją</li><li>Harmonogram i dokumenty krok po kroku</li></ul></article>
+      <article class="spec"><span class="ref">ustawa o fundacji rodzinnej</span><h4>Fundacje rodzinne</h4><p>Pomagamy założyć fundację rodzinną i bezpiecznie przenieść do niej majątek, z myślą o sukcesji w firmie rodzinnej.</p><ul><li>Statut, akt założycielski i wniesienie mienia</li><li>Opodatkowanie świadczeń dla beneficjentów</li><li>Zakazana działalność gospodarcza fundacji</li></ul></article>
+      <article class="spec"><span class="ref">spadki · darowizny · art. 4a</span><h4>Sukcesja i majątek rodzinny</h4><p>Przekazanie firmy i majątku dzieciom albo małżonkowi bez zbędnego podatku i z dotrzymaniem terminów zgłoszeń.</p><ul><li>Zwolnienie dla najbliższej rodziny i zgłoszenie SD-Z2</li><li>Darowizna udziałów i przedsiębiorstwa</li><li>Testament i umowy z myślą o podatkach</li></ul></article>
+      <article class="spec"><span class="ref">VAT · PCC · PIT · podatek od nieruchomości</span><h4>Nieruchomości</h4><p>Sprzedaż działek, najem, inwestycje deweloperskie i spory z gminą o podatek od nieruchomości.</p><ul><li>VAT albo PCC przy sprzedaży gruntu i budynku</li><li>Najem prywatny a działalność gospodarcza</li><li>Odwołania od decyzji w podatku od nieruchomości</li></ul></article>
+      <article class="spec"><span class="ref">UPO · rezydencja · CFC</span><h4>Podatki międzynarodowe</h4><p>Praca i działalność za granicą, kontrahenci zagraniczni i przeniesienie rezydencji podatkowej.</p><ul><li>Rezydencja podatkowa i certyfikaty</li><li>Umowy o unikaniu podwójnego opodatkowania</li><li>Podatek u źródła i transakcje z podmiotami zagranicznymi</li></ul></article>
+      <article class="spec"><span class="ref">opinia · due diligence</span><h4>Opinie przed decyzją</h4><p>Gdy na interpretację nie ma czasu: pisemna opinia przed podpisaniem umowy, zakupem spółki albo dużą transakcją.</p><ul><li>Przegląd umów pod kątem podatków</li><li>Due diligence podatkowe przy zakupie firmy</li><li>Opinia, na której możesz oprzeć decyzję</li></ul></article>
     </div>
     <p class="nobooks"><span><strong>Znamy się na księgowości.</strong> Współpracujemy z Twoim biurem rachunkowym lub działem księgowości, więc nie musisz niczego zmieniać, żeby skorzystać z doradztwa.</span></p>
-  </div>
-</section>
-
-<section class="section dark" id="jpk" aria-labelledby="jpk-h">
-  <canvas class="fx3d" data-fx="grid" aria-hidden="true"></canvas>
-  <div class="wrap">
-    <div class="section-head">
-      <span class="eyebrow">Wdrożenia JPK</span>
-      <h2 id="jpk-h" style="color:#fff">JPK CIT i JPK PKPIR w teorii i w praktyce</h2>
-      <p class="lede">Nowe struktury JPK to nie tylko zmiana w programie księgowym. Urząd zobaczy całe księgi, a znaczniki podatkowe na kontach powiedzą mu, jak policzyłeś podatek. Przygotujemy Twoją firmę i Twoją księgowość do pierwszej wysyłki.</p>
-    </div>
-
-    <div class="jpk-grid">
-      <div class="jpk-card">
-        <span class="tag">TEORIA</span>
-        <h3>Wiedza i szkolenia</h3>
-        <ul>
-          <li>Szkolenia dla zarządów, głównych księgowych i biur rachunkowych</li>
-          <li>Omówienie struktur JPK_KR_PD, JPK_ST_KR, JPK_PKPIR, JPK_EWP i JPK_ST</li>
-          <li>Analiza, kogo i od kiedy obejmuje obowiązek w Twojej grupie podmiotów</li>
-          <li>Ryzyka: co urząd wyczyta z pliku i jakie pytania zada w czynnościach sprawdzających</li>
-        </ul>
-      </div>
-      <div class="jpk-card">
-        <span class="tag">PRAKTYKA</span>
-        <h3>Wdrożenie w Twojej firmie</h3>
-        <ul>
-          <li>Przegląd planu kont i przypisanie znaczników podatkowych do kont</li>
-          <li>Weryfikacja ewidencji środków trwałych pod JPK_ST_KR i JPK_ST</li>
-          <li>Test pliku z Twojego systemu i uzgodnienie go z zeznaniem CIT-8 lub PIT</li>
-          <li>Wsparcie przy pierwszej wysyłce i przy pytaniach urzędu po jej złożeniu</li>
-        </ul>
-      </div>
-    </div>
-
-    <div class="timeline" role="table" aria-label="Harmonogram obowiązku JPK dla ksiąg">
-      <div class="tl-row head" role="row"><span role="columnheader">Rok</span><span role="columnheader">Podatnicy CIT</span><span role="columnheader">Podatnicy PIT</span></div>
-      <div class="tl-row" role="row">
-        <span class="tl-year" role="cell">2025</span>
-        <p class="c" role="cell">Podatkowe grupy kapitałowe i podatnicy z przychodem powyżej 50 mln euro<span class="ref">JPK_KR_PD · JPK_ST_KR</span></p>
-        <p class="p" role="cell">—</p>
-      </div>
-      <div class="tl-row" role="row">
-        <span class="tl-year" role="cell">2026</span>
-        <p class="c" role="cell">Pozostali podatnicy CIT składający JPK_VAT<span class="ref">JPK_KR_PD · JPK_ST_KR</span></p>
-        <p class="p" role="cell">Podatnicy składający JPK_V7M<span class="ref">JPK_PKPIR · JPK_EWP · JPK_KR_PD · JPK_ST</span></p>
-      </div>
-      <div class="tl-row" role="row">
-        <span class="tl-year" role="cell">2027</span>
-        <p class="c" role="cell">Wszyscy pozostali podatnicy CIT<span class="ref">JPK_KR_PD · JPK_ST_KR</span></p>
-        <p class="p" role="cell">Pozostali podatnicy prowadzący ewidencje<span class="ref">JPK_PKPIR · JPK_EWP · JPK_KR_PD · JPK_ST</span></p>
-      </div>
-    </div>
-    <p class="ref" style="margin-top:10px">Rok oznacza rok podatkowy, za który przesyła się plik. Plik składa się raz w roku, po jego zakończeniu.</p>
-
-    <div class="process">
-      <h3>Jak wygląda wdrożenie</h3>
-      <ol class="proc">
-        <li><b>Diagnoza</b><span>Ustalamy, od kiedy masz obowiązek i jakie struktury Cię dotyczą.</span></li>
-        <li><b>Przegląd ksiąg</b><span>Plan kont, ewidencja środków trwałych, sposób ujmowania kosztów NKUP.</span></li>
-        <li><b>Mapowanie znaczników</b><span>Przypisujemy znaczniki podatkowe do kont razem z Twoją księgowością.</span></li>
-        <li><b>Plik testowy</b><span>Generujemy plik z Twojego systemu i sprawdzamy go pod kątem zgodności ze schemą.</span></li>
-        <li><b>Uzgodnienie z zeznaniem</b><span>Porównujemy dane z pliku z CIT-8 lub PIT, zanim zrobi to urząd.</span></li>
-        <li><b>Pierwsza wysyłka</b><span>Jesteśmy przy wysyłce i odpowiadamy na ewentualne pytania organu.</span></li>
-      </ol>
-    </div>
-    <div class="jpk-cta">
-      <a class="btn btn-primary" href="#kontakt">Zapytaj o wdrożenie JPK</a>
-      <span class="muted" style="font-size:15.5px">Wycena po krótkiej rozmowie o Twoich księgach i systemie.</span>
-    </div>
   </div>
 </section>
 
@@ -629,7 +550,7 @@ footer a:hover{color:#fff}
           <li>Odpowiedź w ciągu 1 dnia roboczego</li>
           <li>Odpowiedź na wezwanie w czynnościach sprawdzających w cenie</li>
           <li>Kwartalny przegląd podatkowy z Twoją księgowością</li>
-          <li>15% rabatu na interpretacje, odwołania i wdrożenie JPK</li>
+          <li>15% rabatu na interpretacje, odwołania i opinie podatkowe</li>
         </ul>
         <a class="btn btn-primary" href="#kontakt">Wybieram Biznes</a>
       </article>
@@ -817,7 +738,6 @@ footer a:hover{color:#fff}
       <ul>
         <li><a href="#pismo">Pismo z urzędu</a></li>
         <li><a href="#specjalizacje">Specjalizacje</a></li>
-        <li><a href="#jpk">JPK CIT / PKPIR</a></li>
         <li><a href="#abonament">Abonament</a></li>
         <li><a href="#zespol">Zespół</a></li>
         <li><a href="#faq">FAQ</a></li>
@@ -925,7 +845,7 @@ footer a:hover{color:#fff}
   });
 
   /* ---------- wejście elementów w perspektywie ---------- */
-  var sel='.section-head, .step, .letter, .pillar, .more > div, .jpk-card, .timeline, .proc li, .plan, .free, .person, .faq details, .bk-card, .cinfo, .urgent, .map-col';
+  var sel='.section-head, .step, .letter, .pillar, .more > div, .spec, .plan, .free, .person, .faq details, .bk-card, .cinfo, .urgent, .map-col';
   var items=[].slice.call(document.querySelectorAll(sel));
   if(!reduce && 'IntersectionObserver' in window){
     items.forEach(function(el){ var sib=el.parentElement?[].indexOf.call(el.parentElement.children,el):0; el.style.setProperty('--d',(Math.min(sib,5)*0.08)+'s'); el.classList.add('rv'); });
@@ -936,7 +856,7 @@ footer a:hover{color:#fff}
 
   /* ---------- przechylanie kart 3D (tylko mysz) ---------- */
   if(!reduce && window.matchMedia('(hover:hover) and (pointer:fine)').matches){
-    document.querySelectorAll('.pillar, .plan, .letter, .jpk-card, .person, .free').forEach(function(el){
+    document.querySelectorAll('.pillar, .plan, .letter, .spec, .person, .free').forEach(function(el){
       el.classList.add('tilt');
       el.addEventListener('pointermove',function(e){ var r=el.getBoundingClientRect(), x=(e.clientX-r.left)/r.width-.5, y=(e.clientY-r.top)/r.height-.5;
         el.classList.add('tilting'); el.style.transform='perspective(1100px) rotateY('+(x*5).toFixed(2)+'deg) rotateX('+(-y*5).toFixed(2)+'deg) translateZ(4px)'; });
