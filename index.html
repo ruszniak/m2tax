@@ -1,0 +1,868 @@
+<!doctype html>
+<html lang="pl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>M2 TAX — Doradcy Podatkowi | Wrocław</title>
+<meta name="description" content="M2 TAX — kancelaria doradztwa podatkowego we Wrocławiu. Interpretacje indywidualne, postępowania podatkowe, czynności sprawdzające, wdrożenia JPK CIT i JPK PKPIR, abonament podatkowy od 369 zł netto miesięcznie. Bezpłatna konsultacja do 20 minut.">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://www.m2tax.pl/">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="pl_PL">
+<meta property="og:site_name" content="M2 TAX">
+<meta property="og:url" content="https://www.m2tax.pl/">
+<meta property="og:title" content="M2 TAX — Doradcy Podatkowi | Wrocław">
+<meta property="og:description" content="Twoje podatki, nasza pasja. Interpretacje, postępowania podatkowe, czynności sprawdzające, wdrożenia JPK i abonament od 369 zł netto miesięcznie.">
+<meta property="og:image" content="https://www.m2tax.pl/img/og-image.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" type="image/jpeg" href="img/logo.jpg">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"AccountingService","name":"M2 TAX Doradcy Podatkowi Otręba Ruszniak spółka partnerska","url":"https://www.m2tax.pl/","telephone":["+48 883 643 565","+48 534 909 534"],"email":"kancelaria@m2tax.pl","image":"https://www.m2tax.pl/img/og-image.jpg","priceRange":"od 369 zł","address":{"@type":"PostalAddress","streetAddress":"ul. Zwycięska 3","postalCode":"53-033","addressLocality":"Wrocław","addressCountry":"PL"}}
+</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700;800;900&family=Source+Sans+3:ital,wght@0,400;0,600;0,700;1,400&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+/* Layout: white header with the real logo → dark hero matching the portrait backdrops → alternating paper / ink bands, one orange accent carried from the M2 TAX wordmark. Single light brand look by choice. */
+:root{
+  --ink:#16171a;          /* hero + dark bands, matched to portrait backdrops */
+  --ink-2:#202226;
+  --ink-line:#34363c;
+  --paper:#ffffff;
+  --paper-2:#f4f4f2;      /* neutral, faint warm bias toward the orange */
+  --line:#e3e2de;
+  --text:#1c1d21;         /* logo "M2" black */
+  --muted:#5d6068;
+  --on-ink:#f2f1ee;
+  --on-ink-muted:#a6a8ae;
+  --accent:#e0621f;       /* logo "TAX" orange */
+  --accent-deep:#b94c12;
+  --accent-soft:#fbeadf;
+  --f-display:"Montserrat","Helvetica Neue",Arial,sans-serif;
+  --f-body:"Source Sans 3","Segoe UI",Roboto,Arial,sans-serif;
+  --f-mono:"IBM Plex Mono",ui-monospace,Menlo,Consolas,monospace;
+  --wrap:1180px;
+  --gutter:clamp(16px,4vw,40px);
+  color-scheme:light;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{transition:none!important;animation:none!important}}
+body{margin:0;overflow-x:clip;background:var(--paper);color:var(--text);font-family:var(--f-body);font-size:18px;line-height:1.6;-webkit-font-smoothing:antialiased}
+img{max-width:100%;display:block}
+a{color:inherit}
+:focus-visible{outline:3px solid var(--accent);outline-offset:3px;border-radius:4px}
+h1,h2,h3,h4{font-family:var(--f-display);line-height:1.12;margin:0;text-wrap:balance;letter-spacing:-.01em}
+p{margin:0}
+.wrap{max-width:var(--wrap);margin-inline:auto;padding-inline:var(--gutter)}
+.eyebrow{font-family:var(--f-display);font-weight:700;font-size:13px;letter-spacing:.14em;text-transform:uppercase;color:var(--accent)}
+.lede{font-size:clamp(18px,1.6vw,21px);color:var(--muted);max-width:62ch}
+.ref{font-family:var(--f-mono);font-size:13px;letter-spacing:0;color:var(--muted)}
+.section{padding-block:clamp(64px,9vw,112px)}
+.section-head{display:grid;gap:16px;margin-bottom:clamp(36px,5vw,56px);max-width:760px}
+.section-head h2{font-size:clamp(30px,4vw,46px);font-weight:800}
+
+.btn{display:inline-flex;align-items:center;gap:10px;font-family:var(--f-display);font-weight:700;font-size:15px;letter-spacing:.01em;text-decoration:none;padding:15px 24px;border-radius:6px;border:2px solid transparent;cursor:pointer;transition:background .2s,color .2s,border-color .2s,transform .2s}
+.btn:hover{transform:translateY(-1px)}
+.btn-primary{background:var(--accent);color:#fff}
+.btn-primary:hover{background:var(--accent-deep)}
+.btn-ghost{border-color:currentColor;color:inherit;background:transparent}
+.btn-ghost:hover{border-color:var(--accent);color:var(--accent)}
+
+/* Header */
+.topbar{position:sticky;top:env(safe-area-inset-top,0px);z-index:50;background:rgba(255,255,255,.96);backdrop-filter:saturate(1.4) blur(8px);border-bottom:1px solid var(--line)}
+.topbar .wrap{display:flex;align-items:center;justify-content:space-between;gap:20px;min-height:74px}
+.logo img{height:46px;width:auto}
+.nav{display:flex;gap:26px;align-items:center}
+.nav a{font-family:var(--f-display);font-weight:600;font-size:14.5px;text-decoration:none;color:var(--text)}
+.nav a:hover{color:var(--accent)}
+.nav .btn{padding:11px 18px;font-size:14px}
+.menu-btn{display:none;background:none;border:1px solid var(--line);border-radius:6px;padding:9px 12px;font-family:var(--f-display);font-weight:700;font-size:14px;color:var(--text);cursor:pointer}
+@media (max-width:980px){
+  .menu-btn{display:block}
+  .nav{position:absolute;left:0;right:0;top:100%;flex-direction:column;align-items:stretch;gap:0;background:var(--paper);border-bottom:1px solid var(--line);padding:8px var(--gutter) 20px}
+  .nav a{padding:12px 0;border-bottom:1px solid var(--line)}
+  .nav .btn{margin-top:14px;justify-content:center;border-bottom:0}
+  .nav:not(.open){display:none}
+}
+
+/* Hero */
+.hero{background:var(--ink);color:var(--on-ink);position:relative;overflow:hidden}
+.hero .wrap{display:grid;grid-template-columns:minmax(0,1.08fr) minmax(0,.92fr);gap:40px;align-items:end;padding-top:clamp(48px,7vw,88px)}
+.hero-copy{padding-bottom:clamp(48px,7vw,88px);display:grid;gap:26px;min-width:0}
+.hero h1{font-size:clamp(38px,5.6vw,68px);font-weight:900;letter-spacing:-.025em}
+.hero h1 em{font-style:normal;color:var(--accent)}
+.hero .lede{color:var(--on-ink-muted)}
+.hero-cta{display:flex;flex-wrap:wrap;gap:12px}
+.hero-facts{display:flex;flex-wrap:wrap;gap:10px 26px;padding-top:8px;border-top:1px solid var(--ink-line)}
+.hero-facts div{display:grid;padding-top:14px}
+.hero-facts b{font-family:var(--f-display);font-weight:800;font-size:22px;color:#fff;font-variant-numeric:tabular-nums}
+.hero-facts span{font-size:14px;color:var(--on-ink-muted)}
+.portraits{position:relative;display:grid;grid-template-columns:1fr 1fr;align-items:end;min-width:0}
+.portraits figure{margin:0;position:relative}
+.portraits img{width:100%;height:auto;-webkit-mask-image:linear-gradient(to bottom,#000 78%,transparent);mask-image:linear-gradient(to bottom,#000 78%,transparent)}
+.portraits .p-michal img{aspect-ratio:3/4;object-fit:cover;object-position:52% 0}
+.portraits .p-marcin img{aspect-ratio:3/4;object-fit:cover;object-position:50% 0}
+.portraits figcaption{position:absolute;left:12px;bottom:18px;font-family:var(--f-display);font-size:13px;font-weight:700;color:#fff;line-height:1.3}
+.portraits figcaption span{display:block;font-family:var(--f-mono);font-weight:400;font-size:11.5px;color:var(--on-ink-muted)}
+@media (max-width:880px){.hero .wrap{grid-template-columns:1fr}.hero-copy{padding-bottom:8px}.portraits{max-width:520px}}
+
+/* Alarm band */
+.alarm{background:var(--accent);color:#fff}
+.alarm .wrap{display:grid;grid-template-columns:minmax(0,1.2fr) minmax(0,1fr);gap:32px;align-items:center;padding-block:clamp(40px,5vw,60px)}
+.alarm h2{font-size:clamp(28px,3.6vw,42px);font-weight:900}
+.alarm p{font-size:19px;margin-top:12px;max-width:52ch;color:#fff5ee}
+.callcard{background:var(--ink);border-radius:10px;padding:26px 28px;display:grid;gap:14px}
+.callcard .ref{color:var(--on-ink-muted)}
+.phone{font-family:var(--f-display);font-weight:900;font-size:clamp(28px,3.4vw,38px);letter-spacing:.01em;color:#fff;text-decoration:none;font-variant-numeric:tabular-nums;user-select:all}
+.callrow{display:flex;flex-wrap:wrap;gap:10px}
+.copy{background:transparent;color:var(--on-ink);border:1px solid var(--ink-line);border-radius:6px;padding:9px 14px;font-family:var(--f-display);font-weight:600;font-size:13.5px;cursor:pointer}
+.copy:hover{border-color:var(--accent);color:#fff}
+@media (max-width:880px){.alarm .wrap{grid-template-columns:1fr}}
+
+/* What to do with a letter */
+.steps{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:0;border-top:2px solid var(--text);counter-reset:s}
+.step{padding:26px 24px 8px 0;display:grid;gap:10px;align-content:start;min-width:0}
+.step+.step{padding-left:24px;border-left:1px solid var(--line)}
+.step::before{counter-increment:s;content:counter(s,decimal-leading-zero);font-family:var(--f-mono);font-size:14px;color:var(--accent)}
+.step h3{font-size:19px;font-weight:800}
+.step p{font-size:16.5px;color:var(--muted)}
+@media (max-width:900px){.steps{grid-template-columns:1fr 1fr}.step:nth-child(3){padding-left:0;border-left:0}.step{padding-bottom:22px}}
+@media (max-width:540px){.steps{grid-template-columns:1fr}.step,.step+.step{padding-left:0;border-left:0;border-bottom:1px solid var(--line)}}
+.letters{margin-top:44px;display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:12px}
+.letter{border:1px solid var(--line);border-radius:8px;padding:16px 18px;display:grid;gap:4px;background:var(--paper)}
+.letter b{font-family:var(--f-display);font-size:15.5px;font-weight:700}
+.letter span{font-size:15px;color:var(--muted)}
+.letter .ref{color:var(--accent-deep)}
+
+/* Core practice */
+.bg-paper2{background:var(--paper-2)}
+.core{display:grid;gap:20px}
+.pillar{display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);gap:clamp(24px,4vw,56px);background:var(--paper);border:1px solid var(--line);border-radius:12px;padding:clamp(24px,4vw,44px)}
+.pillar-head{display:grid;gap:14px;align-content:start}
+.pillar-head .ref{color:var(--accent-deep)}
+.pillar h3{font-size:clamp(24px,2.6vw,32px);font-weight:800}
+.pillar-head p{color:var(--muted)}
+.pillar ul{list-style:none;margin:0;padding:0;display:grid;gap:0}
+.pillar li{padding:13px 0 13px 28px;border-bottom:1px solid var(--line);position:relative;font-size:17px}
+.pillar li:last-child{border-bottom:0}
+.pillar li::before{content:"";position:absolute;left:2px;top:23px;width:12px;height:2px;background:var(--accent)}
+.pillar li b{font-weight:700}
+.pillar .facts{display:flex;flex-wrap:wrap;gap:8px;margin-top:6px}
+.chip{font-family:var(--f-mono);font-size:12.5px;background:var(--accent-soft);color:var(--accent-deep);padding:5px 10px;border-radius:999px}
+@media (max-width:860px){.pillar{grid-template-columns:1fr}}
+.more{margin-top:44px;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:28px;border-top:1px solid var(--line);padding-top:32px}
+.more div{display:grid;gap:6px;align-content:start}
+.more h4{font-size:16.5px;font-weight:800}
+.more p{font-size:15.5px;color:var(--muted)}
+@media (max-width:900px){.more{grid-template-columns:1fr 1fr}}
+@media (max-width:520px){.more{grid-template-columns:1fr}}
+.nobooks{margin-top:28px;display:flex;gap:14px;align-items:flex-start;font-size:16px;color:var(--muted);max-width:780px}
+.nobooks strong{color:var(--text)}
+
+/* JPK */
+.dark{background:var(--ink);color:var(--on-ink)}
+.dark .lede,.dark .muted{color:var(--on-ink-muted)}
+.dark .ref{color:var(--on-ink-muted)}
+.jpk-grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:20px}
+.jpk-card{border:1px solid var(--ink-line);border-radius:12px;padding:clamp(22px,3vw,34px);display:grid;gap:16px;align-content:start;background:var(--ink-2)}
+.jpk-card h3{font-size:24px;font-weight:800;color:#fff}
+.jpk-card .tag{font-family:var(--f-mono);font-size:12.5px;color:var(--accent);letter-spacing:.04em}
+.jpk-card ul{margin:0;padding-left:20px;display:grid;gap:8px;color:var(--on-ink)}
+.jpk-card li::marker{color:var(--accent)}
+@media (max-width:820px){.jpk-grid{grid-template-columns:1fr}}
+.timeline{margin-top:20px;border:1px solid var(--ink-line);border-radius:12px;overflow:hidden}
+.tl-row{display:grid;grid-template-columns:120px minmax(0,1fr) minmax(0,1fr);border-top:1px solid var(--ink-line)}
+.tl-row:first-child{border-top:0}
+.tl-row>*{padding:16px 20px;min-width:0}
+.tl-row.head>*{font-family:var(--f-display);font-weight:700;font-size:12.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--on-ink-muted);padding-block:12px}
+.tl-year{font-family:var(--f-display);font-weight:900;font-size:26px;color:var(--accent);font-variant-numeric:tabular-nums}
+.tl-row p{font-size:16px}
+.tl-row .ref{display:block;margin-top:4px}
+@media (max-width:720px){.tl-row{grid-template-columns:1fr}.tl-row.head{display:none}.tl-row>*{padding:10px 18px}.tl-row>*:first-child{padding-top:18px}.tl-row>*:last-child{padding-bottom:18px}.tl-row p::before{display:block;font-family:var(--f-display);font-size:11.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--on-ink-muted);margin-bottom:2px}.tl-row p.c::before{content:"Podatnicy CIT"}.tl-row p.p::before{content:"Podatnicy PIT"}}
+.process{margin-top:48px}
+.process h3{font-size:22px;font-weight:800;color:#fff;margin-bottom:22px}
+.proc{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1px;background:var(--ink-line);border:1px solid var(--ink-line);border-radius:12px;overflow:hidden;counter-reset:p}
+.proc li{background:var(--ink);padding:22px 22px 24px;display:grid;gap:6px;align-content:start}
+.proc li::before{counter-increment:p;content:"Etap " counter(p);font-family:var(--f-mono);font-size:12.5px;color:var(--accent)}
+.proc b{font-family:var(--f-display);font-weight:700;font-size:16.5px;color:#fff}
+.proc span{font-size:15.5px;color:var(--on-ink-muted)}
+@media (max-width:860px){.proc{grid-template-columns:1fr 1fr}}
+@media (max-width:540px){.proc{grid-template-columns:1fr}}
+.jpk-cta{margin-top:36px;display:flex;flex-wrap:wrap;gap:14px;align-items:center}
+
+/* Plans */
+.plans{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px;align-items:stretch}
+.plan{border:1px solid var(--line);border-radius:12px;padding:30px 28px;display:flex;flex-direction:column;gap:18px;background:var(--paper);min-width:0}
+.plan.featured{border:2px solid var(--accent);box-shadow:0 18px 40px -24px rgba(224,98,31,.55);position:relative}
+.plan.featured .badge{position:absolute;top:-13px;left:28px;background:var(--accent);color:#fff;font-family:var(--f-display);font-weight:700;font-size:12px;letter-spacing:.1em;text-transform:uppercase;padding:5px 12px;border-radius:999px}
+.plan h3{font-size:22px;font-weight:800}
+.plan .for{font-size:15.5px;color:var(--muted);min-height:3.2em}
+.price{display:flex;align-items:baseline;gap:8px;flex-wrap:wrap;font-variant-numeric:tabular-nums}
+.price small{font-size:14px;color:var(--muted)}
+.price b{font-family:var(--f-display);font-weight:900;font-size:44px;letter-spacing:-.02em;line-height:1}
+.price .unit{font-size:15px;color:var(--muted)}
+.plan ul{list-style:none;margin:0;padding:0;display:grid;gap:10px;font-size:16px;flex:1}
+.plan li{padding-left:26px;position:relative}
+.plan li::before{content:"";position:absolute;left:0;top:.5em;width:14px;height:8px;border-left:2px solid var(--accent);border-bottom:2px solid var(--accent);transform:rotate(-45deg)}
+.plan .btn{justify-content:center}
+@media (max-width:940px){.plans{grid-template-columns:1fr;max-width:560px}.plan .for{min-height:0}}
+.free{margin-top:28px;display:grid;grid-template-columns:auto minmax(0,1fr) auto;gap:22px;align-items:center;background:var(--ink);color:var(--on-ink);border-radius:12px;padding:24px 28px}
+.free .clock{font-family:var(--f-display);font-weight:900;font-size:40px;color:var(--accent);line-height:1;font-variant-numeric:tabular-nums}
+.free .clock small{display:block;font-size:13px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--on-ink-muted);margin-top:4px}
+.free h3{font-size:21px;font-weight:800;color:#fff}
+.free p{color:var(--on-ink-muted);font-size:16px;margin-top:4px}
+@media (max-width:760px){.free{grid-template-columns:1fr}}
+.fine{margin-top:16px;font-size:14px;color:var(--muted)}
+
+/* Team */
+.team{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+.person{background:var(--ink-2);border:1px solid var(--ink-line);border-radius:12px;overflow:hidden;display:grid;grid-template-columns:minmax(0,.85fr) minmax(0,1.15fr);min-width:0}
+.person img{width:100%;height:100%;object-fit:cover;object-position:50% 12%;min-height:340px}
+.person .info{padding:26px 24px;display:grid;gap:12px;align-content:start;min-width:0}
+.person h3{font-size:24px;font-weight:800;color:#fff}
+.person .role{font-size:15px;color:var(--on-ink-muted)}
+.person .ref{color:var(--accent)}
+.person ul{margin:0;padding-left:18px;display:grid;gap:6px;font-size:15.5px;color:var(--on-ink)}
+.person li::marker{color:var(--accent)}
+@media (max-width:1020px){.team{grid-template-columns:1fr;max-width:720px}}
+@media (max-width:560px){.person{grid-template-columns:1fr}.person img{min-height:0;aspect-ratio:4/3}}
+
+/* FAQ */
+.faq-wrap{display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,2fr);gap:clamp(32px,5vw,72px);align-items:start}
+.faq-wrap .section-head{margin-bottom:0}
+.faq{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:36px 56px;align-items:start}
+.faq details{border-top:2px solid var(--text);padding-top:26px}
+.faq summary{cursor:pointer;list-style:none;display:flex;justify-content:space-between;align-items:flex-start;gap:20px;font-family:var(--f-display);font-weight:800;font-size:clamp(19px,1.7vw,23px);line-height:1.25;letter-spacing:-.01em}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary::after{content:"+";font-weight:500;font-size:26px;line-height:1;color:var(--accent);transition:transform .2s;flex-shrink:0}
+.faq details[open] summary::after{transform:rotate(45deg)}
+.faq details p{padding-top:18px;color:var(--muted);font-size:17px;line-height:1.75}
+@media (max-width:980px){.faq-wrap{grid-template-columns:1fr}}
+@media (max-width:640px){.faq{grid-template-columns:1fr}}
+
+/* Contact */
+.contact{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:clamp(28px,4vw,56px)}
+.contact-list{display:grid;gap:0;border-top:2px solid var(--text)}
+.contact-list>div{display:grid;grid-template-columns:120px minmax(0,1fr);gap:16px;padding:18px 0;border-bottom:1px solid var(--line);align-items:baseline}
+.contact-list dt{font-family:var(--f-display);font-weight:700;font-size:12.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
+.contact-list dd{margin:0;font-size:18px;min-width:0;overflow-wrap:anywhere}
+.contact-list dd a{text-decoration:none;font-weight:700}
+.contact-list dd a:hover{color:var(--accent)}
+.copy-light{background:none;border:1px solid var(--line);border-radius:6px;padding:4px 10px;font-family:var(--f-display);font-weight:600;font-size:12.5px;margin-left:10px;cursor:pointer;color:var(--muted)}
+.copy-light:hover{border-color:var(--accent);color:var(--accent)}
+.meet{display:grid;gap:12px}
+.meet-card{border:1px solid var(--line);border-radius:10px;padding:20px 22px;display:grid;grid-template-columns:minmax(0,1fr) auto;gap:6px 16px;align-items:center}
+.meet-card h4{font-size:17px;font-weight:800}
+.meet-card p{font-size:15px;color:var(--muted);grid-column:1}
+.meet-card .dur{grid-row:1/3;grid-column:2;text-align:right;font-family:var(--f-display);font-weight:800;font-size:15px}
+.meet-card .dur span{display:block;font-family:var(--f-body);font-weight:400;font-size:13px;color:var(--muted)}
+.booking{margin-top:clamp(48px,6vw,72px);background:var(--paper);border:1px solid var(--line);border-radius:14px;overflow:hidden;scroll-margin-top:96px}
+.booking-head{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,1fr);gap:32px;align-items:center;padding:clamp(22px,3vw,36px);border-bottom:1px solid var(--line);background:var(--ink);color:var(--on-ink)}
+.booking-head h3{font-size:clamp(24px,2.8vw,32px);font-weight:800;color:#fff;margin:8px 0 10px}
+.booking-head p{color:var(--on-ink-muted);font-size:16.5px;max-width:52ch}
+.booking-steps{list-style:none;margin:0;padding:0;display:grid;gap:12px;counter-reset:b}
+.booking-steps li{display:grid;grid-template-columns:36px minmax(0,1fr);column-gap:14px;align-items:center}
+.booking-steps li::before{counter-increment:b;content:counter(b);grid-row:1/3;width:36px;height:36px;border-radius:50%;background:var(--accent);color:#fff;display:flex;align-items:center;justify-content:center;font-family:var(--f-display);font-weight:800;font-size:15px}
+.booking-steps b{font-family:var(--f-display);font-size:15.5px;color:#fff}
+.booking-steps span{font-size:14.5px;color:var(--on-ink-muted)}
+.booking-frame{background:#fff}
+.zoho-booking{position:relative;min-height:760px}
+.zoho-booking iframe{display:block;width:100%!important;height:760px;min-height:650px;border:0}
+.zoho-loading{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;color:var(--muted);font-size:15px}
+.booking-alt{padding:14px clamp(22px,3vw,36px);font-size:15px;color:var(--muted);border-top:1px solid var(--line);background:var(--paper-2);margin:0}
+.booking-alt a{color:var(--accent-deep);font-weight:700}
+@media (max-width:820px){.zoho-booking{min-height:900px}.zoho-booking iframe{height:900px}}
+@media (max-width:820px){.booking-head{grid-template-columns:1fr}}
+[hidden]{display:none!important}
+.meet-card .book{grid-column:1/-1;justify-self:start;margin-top:10px;font-family:var(--f-display);font-weight:700;font-size:14px;text-decoration:none;color:#fff;background:var(--text);padding:10px 16px;border-radius:6px}
+.meet-card .book:hover{background:var(--accent)}
+.meet-card.free-card .book{background:var(--accent)}
+.meet-card.free-card .book:hover{background:var(--accent-deep)}
+.meet-card.free-card{border-color:var(--accent);background:var(--accent-soft)}
+.meet-card.free-card .dur{color:var(--accent-deep)}
+@media (max-width:860px){.contact{grid-template-columns:1fr}}
+@media (max-width:460px){.contact-list>div{grid-template-columns:1fr;gap:4px}}
+
+.contact-col{display:grid;gap:26px;align-content:start;min-width:0}
+.cinfo{display:flex;gap:20px;align-items:flex-start}
+.cicon{width:64px;height:64px;flex-shrink:0;border-radius:10px;background:var(--ink);display:flex;align-items:center;justify-content:center}
+.cicon svg{width:28px;height:28px;fill:none;stroke:var(--accent);stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+.cinfo h4{font-size:18px;font-weight:800;margin-bottom:4px}
+.cinfo p{font-size:18px;color:var(--muted)}
+.cinfo a{font-weight:700;color:var(--text);text-decoration:none;font-size:19px}
+.cinfo a:hover{color:var(--accent)}
+.map{border-radius:12px;overflow:hidden;border:1px solid var(--line);aspect-ratio:16/10;max-width:100%;background:var(--paper-2)}
+.map iframe{width:100%;height:100%;border:0;display:block}
+.maplink{font-family:var(--f-display);font-weight:700;font-size:15px;color:var(--accent-deep);text-decoration:none;margin-top:-12px}
+.urgent{background:var(--ink);border-radius:10px;padding:26px;display:grid;gap:10px;margin-top:8px}
+.urgent .ref{color:var(--accent)}
+.urgent h4{font-size:22px;font-weight:800;color:#fff}
+.urgent p{font-size:16px;color:var(--on-ink-muted)}
+.urgent .phone{font-size:30px;margin-top:6px}
+
+/* Rezerwacja (osobna sekcja) */
+.bk-section{background:var(--ink);color:var(--on-ink);position:relative;overflow:hidden;scroll-margin-top:64px}
+.bk-section::before{content:"";position:absolute;right:-180px;top:-220px;width:620px;height:620px;border-radius:50%;background:radial-gradient(circle,rgba(224,98,31,.22),rgba(224,98,31,0) 65%);pointer-events:none}
+.bk-wrap{position:relative;display:grid;grid-template-columns:minmax(0,.78fr) minmax(0,1.5fr);gap:clamp(32px,5vw,72px);align-items:start}
+.bk-intro{display:flex;flex-direction:column;gap:22px;position:sticky;top:110px}
+.bk-intro h2{font-size:clamp(30px,3.6vw,44px);font-weight:800;color:#fff}
+.bk-intro .lede{color:var(--on-ink-muted);font-size:18px}
+.bk-free{display:flex;align-items:center;gap:16px;padding:18px 20px;border:1px solid var(--ink-line);border-radius:12px;background:var(--ink-2)}
+.bk-free b{font-family:var(--f-display);font-weight:900;font-size:42px;line-height:1;color:var(--accent);white-space:nowrap;letter-spacing:-.02em}
+.bk-free span{font-size:15px;line-height:1.35;color:#fff}
+.bk-points{list-style:none;margin:0;padding:0;display:grid;gap:12px;font-size:16px}
+.bk-points li{padding-left:26px;position:relative}
+.bk-points li::before{content:"";position:absolute;left:0;top:.5em;width:13px;height:7px;border-left:2px solid var(--accent);border-bottom:2px solid var(--accent);transform:rotate(-45deg)}
+.bk-call{display:grid;gap:2px;padding-top:20px;border-top:1px solid var(--ink-line)}
+.bk-call span{font-size:14px;color:var(--on-ink-muted)}
+.bk-call a{font-family:var(--f-display);font-weight:800;font-size:22px;color:#fff;text-decoration:none}
+.bk-call a:hover{color:var(--accent)}
+.bk-card{background:#fff;color:var(--text);border-radius:16px;overflow:hidden;box-shadow:0 30px 70px -30px rgba(0,0,0,.65),0 0 0 1px rgba(255,255,255,.06);border-top:4px solid var(--accent)}
+.bk-card-head{display:flex;align-items:center;gap:10px;padding:14px 22px;border-bottom:1px solid var(--line);background:var(--paper)}
+.bk-card-head b{font-family:var(--f-display);font-weight:800;font-size:15px}
+.bk-dot{width:9px;height:9px;border-radius:50%;background:#2e9d5b;box-shadow:0 0 0 4px rgba(46,157,91,.15)}
+.bk-live{margin-left:auto;font-size:13px;color:var(--muted)}
+.zoho-booking{position:relative;min-height:760px;background:#fff}
+.zoho-booking iframe{display:block;width:100%!important;height:760px;min-height:650px;border:0}
+.zoho-loading{position:absolute;inset:0;display:flex;flex-direction:column;gap:14px;align-items:center;justify-content:center;color:var(--muted);font-size:15px}
+.bk-spin{width:30px;height:30px;border-radius:50%;border:3px solid var(--line);border-top-color:var(--accent);animation:bkspin .8s linear infinite}
+@keyframes bkspin{to{transform:rotate(360deg)}}
+.bk-card-foot{margin:0;padding:12px 22px;font-size:14px;color:var(--muted);border-top:1px solid var(--line);background:var(--paper-2)}
+.bk-card-foot a{color:var(--accent-deep);font-weight:700}
+.contact-row{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.15fr);gap:clamp(28px,4vw,56px);align-items:start}
+.map-col{display:grid;gap:12px}
+.map-col .maplink{margin-top:0}
+.contact-row .urgent{margin-top:4px}
+@media (max-width:960px){.bk-wrap{grid-template-columns:1fr}.bk-intro{position:static}.contact-row{grid-template-columns:1fr}.zoho-booking{min-height:900px}.zoho-booking iframe{height:900px}}
+@media (max-width:560px){.bk-card{border-radius:12px;margin-inline:-4px}.bk-live{display:none}}
+/* Footer */
+footer{background:#0f1012;color:var(--on-ink-muted);font-size:16px;border-top:4px solid var(--accent)}
+footer .wrap{display:grid;grid-template-columns:minmax(0,1.4fr) minmax(0,.8fr) minmax(0,1fr) minmax(0,1fr);gap:44px;padding-block:72px 32px}
+footer p{margin-bottom:12px}
+.f-brand{display:grid;gap:20px;align-content:start}
+.f-brand p{max-width:36ch;margin:0}
+.f-brand .btn{justify-self:start;padding:12px 18px;font-size:14px}
+footer h4{font-size:13px!important;color:var(--accent)!important;letter-spacing:.14em!important}
+footer ul{gap:10px!important}
+footer ul a{color:#d9d8d4}
+.legal a{color:var(--accent)}
+@media (max-width:980px){footer .wrap{grid-template-columns:1fr 1fr}}
+@media (max-width:560px){footer .wrap{grid-template-columns:1fr}.cicon{width:52px;height:52px}}
+.wordmark{font-family:var(--f-display);font-weight:900;font-size:32px;letter-spacing:-.02em;color:#fff;line-height:1}
+.wordmark span{color:var(--accent)}
+.wordmark small{display:block;font-weight:500;font-size:14px;letter-spacing:.06em;color:var(--accent);margin-top:6px}
+footer h4{font-size:12.5px;letter-spacing:.12em;text-transform:uppercase;color:#fff;margin-bottom:12px}
+footer ul{list-style:none;margin:0;padding:0;display:grid;gap:6px}
+footer a{text-decoration:none}
+footer a:hover{color:#fff}
+.legal{grid-column:1/-1;border-top:1px solid var(--ink-line);padding-top:20px;display:flex;flex-wrap:wrap;justify-content:space-between;gap:10px;font-size:13.5px}
+@media (max-width:820px){footer .wrap{grid-template-columns:1fr}}
+
+.toast{position:fixed;left:50%;bottom:calc(20px + env(safe-area-inset-bottom,0px));transform:translateX(-50%);background:var(--text);color:#fff;padding:10px 16px;border-radius:6px;font-family:var(--f-display);font-weight:600;font-size:14px;z-index:90}
+</style>
+</head>
+<body>
+
+<header class="topbar">
+  <div class="wrap">
+    <a class="logo" href="#top" aria-label="M2 TAX Doradcy Podatkowi — początek strony"><img src="img/logo.jpg" alt="M2 TAX Doradcy Podatkowi" width="802" height="290"></a>
+    <button class="menu-btn" id="menu-btn" aria-expanded="false" aria-controls="nav">Menu</button>
+    <nav class="nav" id="nav" aria-label="Główna nawigacja">
+      <a href="#pismo">Pismo z urzędu</a>
+      <a href="#specjalizacje">Specjalizacje</a>
+      <a href="#jpk">JPK CIT / PKPIR</a>
+      <a href="#abonament">Abonament</a>
+      <a href="#zespol">Zespół</a>
+      <a href="#kontakt">Kontakt</a>
+      <a class="btn btn-primary" href="#rezerwacja">Bezpłatne 20 minut</a>
+    </nav>
+  </div>
+</header>
+
+<main id="top">
+<section class="hero">
+  <div class="wrap">
+    <div class="hero-copy">
+      <span class="eyebrow">Kancelaria doradztwa podatkowego · Wrocław</span>
+      <h1>Twoje podatki, <em>nasza pasja.</em></h1>
+      <p class="lede">Znajdziemy legalne sposoby, by firma nie płaciła więcej, niż musi. Kompleksowa obsługa podatkowa małych i średnich przedsiębiorstw, firm rodzinnych oraz osób fizycznych. Reprezentujemy klientów przed urzędami skarbowymi, KAS i sądami administracyjnymi.</p>
+      <div class="hero-cta">
+        <a class="btn btn-primary" href="#rezerwacja">Umów bezpłatne 20 minut</a>
+        <a class="btn btn-ghost" href="#abonament">Abonament od 369 zł</a>
+      </div>
+      <div class="hero-facts">
+        <div><b>2</b><span>doradców podatkowych z wpisem na listę</span></div>
+        <div><b>20 min</b><span>pierwszej konsultacji bez opłat</span></div>
+        <div><b>369 zł</b><span>netto miesięcznie za stałe doradztwo</span></div>
+      </div>
+    </div>
+    <div class="portraits" aria-label="Partnerzy kancelarii">
+      <figure class="p-michal">
+        <img src="img/michal-ruszniak.jpg" alt="Michał Ruszniak, doradca podatkowy" width="1000" height="857">
+        <figcaption>Michał Ruszniak<span>DP nr 15009</span></figcaption>
+      </figure>
+      <figure class="p-marcin">
+        <img src="img/marcin-otreba.jpg" alt="Marcin Otręba, doradca podatkowy" width="753" height="1024">
+        <figcaption>Marcin Otręba<span>DP nr 14609</span></figcaption>
+      </figure>
+    </div>
+  </div>
+</section>
+
+<section class="alarm" aria-labelledby="alarm-h">
+  <div class="wrap">
+    <div>
+      <h2 id="alarm-h">Dostałeś pismo bądź telefon z urzędu? Ochłoń i zadzwoń do nas.</h2>
+      <p>Zanim odpowiesz urzędnikowi, złożysz wyjaśnienia albo wyślesz dokumenty, porozmawiaj z doradcą. Pierwsze 20 minut rozmowy nic nie kosztuje.</p>
+    </div>
+    <div class="callcard">
+      <span class="ref">Telefony kancelarii</span>
+      <a class="phone" href="tel:+48883643565">+48 883 643 565</a>
+      <a class="phone" href="tel:+48534909534">+48 534 909 534</a>
+      <div class="callrow">
+        <button class="copy" data-copy="+48 883 643 565" type="button">Kopiuj numer 1</button>
+        <button class="copy" data-copy="+48 534 909 534" type="button">Kopiuj numer 2</button>
+        <button class="copy" data-copy="kancelaria@m2tax.pl" type="button">Kopiuj e-mail: kancelaria@m2tax.pl</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="pismo" aria-labelledby="pismo-h">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="eyebrow">Pismo z urzędu</span>
+      <h2 id="pismo-h">Co robimy, kiedy przyniesiesz nam pismo z urzędu</h2>
+      <p class="lede">Większość sporów z fiskusem da się ustawić na samym początku. Liczy się termin i to, co trafi do akt jako pierwsze.</p>
+    </div>
+    <div class="steps">
+      <div class="step"><h3>Sprawdzamy termin</h3><p>Ustalamy, co to za pismo, od kiedy biegnie termin i ile czasu realnie zostało. Wystarczy zdjęcie lub skan.</p></div>
+      <div class="step"><h3>Wstrzymujemy pochopne ruchy</h3><p>Nie składasz ustnych wyjaśnień przez telefon i nie wysyłasz dokumentów bez selekcji. To, co raz trafi do akt, zostaje w aktach.</p></div>
+      <div class="step"><h3>Przejmujemy kontakt z urzędem</h3><p>Zgłaszamy pełnomocnictwo i od tej chwili korespondencja z organem idzie przez doradcę podatkowego.</p></div>
+      <div class="step"><h3>Prowadzimy sprawę do końca</h3><p>Odpowiedzi na wezwania, zastrzeżenia do protokołu, odwołanie, skarga do WSA i skarga kasacyjna do NSA.</p></div>
+    </div>
+    <div class="letters" aria-label="Najczęstsze pisma">
+      <div class="letter"><span class="ref">art. 274c Ordynacji podatkowej</span><b>Wezwanie do złożenia wyjaśnień</b><span>w ramach czynności sprawdzających</span></div>
+      <div class="letter"><span class="ref">art. 282b Ordynacji podatkowej</span><b>Zawiadomienie o zamiarze wszczęcia kontroli</b><span>kontrola rusza nie wcześniej niż po 7 dniach</span></div>
+      <div class="letter"><span class="ref">art. 165 Ordynacji podatkowej</span><b>Postanowienie o wszczęciu postępowania</b><span>od tej chwili liczy się każde pismo i dowód</span></div>
+      <div class="letter"><span class="ref">art. 223 § 2 Ordynacji podatkowej</span><b>Decyzja organu I instancji</b><span>14 dni na odwołanie od doręczenia</span></div>
+    </div>
+  </div>
+</section>
+
+<section class="section bg-paper2" id="specjalizacje" aria-labelledby="spec-h">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="eyebrow">Specjalizacje</span>
+      <h2 id="spec-h">Trzy obszary, w których spędzamy najwięcej czasu</h2>
+    </div>
+    <div class="core">
+      <article class="pillar">
+        <div class="pillar-head">
+          <span class="ref">art. 14b Ordynacji podatkowej</span>
+          <h3>Wnioski o interpretację indywidualną</h3>
+          <p>Interpretacja daje ochronę: jeśli zastosujesz się do niej, nie poniesiesz negatywnych skutków, nawet gdy organ później zmieni zdanie. Opis stanu faktycznego decyduje o wszystkim, więc piszemy go tak, żeby Dyrektor KIS odpowiedział na właściwe pytanie.</p>
+          <div class="facts"><span class="chip">opłata 40 zł / zdarzenie</span><span class="chip">3 miesiące na wydanie</span></div>
+        </div>
+        <ul>
+          <li><b>Interpretacje indywidualne</b> w CIT, PIT, VAT, PCC i podatku od spadków i darowizn</li>
+          <li><b>Wiążące informacje stawkowe (WIS)</b> dla VAT</li>
+          <li><b>Opinie zabezpieczające</b> dla transakcji objętych klauzulą przeciwko unikaniu opodatkowania</li>
+          <li><b>Uzupełnienia wniosków</b> po wezwaniu KIS oraz skargi na interpretacje do WSA</li>
+          <li><b>Opinie podatkowe</b> przed transakcją, gdy na interpretację nie ma czasu</li>
+        </ul>
+      </article>
+      <article class="pillar">
+        <div class="pillar-head">
+          <span class="ref">Dział IV Ordynacji podatkowej · PPSA</span>
+          <h3>Postępowania podatkowe i kontrole</h3>
+          <p>Jako pełnomocnik zawodowy prowadzimy sprawę od wszczęcia postępowania albo kontroli aż do wyroku sądu administracyjnego. Budujemy materiał dowodowy od pierwszego dnia, bo w sądzie liczy się to, co jest w aktach.</p>
+          <div class="facts"><span class="chip">odwołanie: 14 dni</span><span class="chip">skarga do WSA: 30 dni</span></div>
+        </div>
+        <ul>
+          <li><b>Kontrole podatkowe</b> w urzędzie skarbowym i kontrole celno-skarbowe KAS</li>
+          <li><b>Postępowania podatkowe</b>: pisma, wnioski dowodowe, udział w przesłuchaniach</li>
+          <li><b>Odwołania</b> od decyzji i <b>zażalenia</b> na postanowienia</li>
+          <li><b>Skargi do WSA</b> i <b>skargi kasacyjne do NSA</b></li>
+          <li><b>Egzekucja administracyjna</b>: zarzuty, wstrzymanie, raty i odroczenia</li>
+        </ul>
+      </article>
+      <article class="pillar">
+        <div class="pillar-head">
+          <span class="ref">art. 272–274c Ordynacji podatkowej</span>
+          <h3>Czynności sprawdzające</h3>
+          <p>Najczęstszy pierwszy kontakt z urzędem: wezwanie do korekty, wyjaśnień albo dokumentów. Dobra odpowiedź zamyka sprawę. Zła otwiera kontrolę. Przygotowujemy odpowiedź tak, żeby sprawa zakończyła się na tym etapie.</p>
+          <div class="facts"><span class="chip">JPK_VAT</span><span class="chip">zwrot VAT</span><span class="chip">zeznania roczne</span></div>
+        </div>
+        <ul>
+          <li><b>Wezwania do wyjaśnień</b> niezgodności w JPK_VAT i zeznaniach</li>
+          <li><b>Weryfikacja zwrotu VAT</b> i przedłużenie terminu zwrotu</li>
+          <li><b>Zapytania o kontrahentów</b> i łańcuchy dostaw</li>
+          <li><b>Decyzja o korekcie</b> albo pozostawieniu deklaracji bez zmian</li>
+          <li><b>Rozmowy telefoniczne z urzędem</b> prowadzone przez pełnomocnika zamiast przez Ciebie</li>
+        </ul>
+      </article>
+    </div>
+    <div class="more" aria-label="Pozostałe obszary">
+      <div><h4>Fundacje rodzinne</h4><p>Założenie, statut, opodatkowanie świadczeń i sukcesja w firmie rodzinnej.</p></div>
+      <div><h4>Restrukturyzacje</h4><p>Przekształcenia, aporty, wybór formy prawnej i opodatkowania spółki.</p></div>
+      <div><h4>Wynagrodzenie wspólnika</h4><p>Art. 176 KSH, powołanie, umowy ze spółką i ich skutki w CIT i PIT.</p></div>
+      <div><h4>Podatki międzynarodowe</h4><p>Umowy o unikaniu podwójnego opodatkowania, rezydencja, prawo celne.</p></div>
+    </div>
+    <p class="nobooks"><span><strong>Znamy się na księgowości.</strong> Współpracujemy z Twoim biurem rachunkowym lub działem księgowości, więc nie musisz niczego zmieniać, żeby skorzystać z doradztwa.</span></p>
+  </div>
+</section>
+
+<section class="section dark" id="jpk" aria-labelledby="jpk-h">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="eyebrow">Wdrożenia JPK</span>
+      <h2 id="jpk-h" style="color:#fff">JPK CIT i JPK PKPIR w teorii i w praktyce</h2>
+      <p class="lede">Nowe struktury JPK to nie tylko zmiana w programie księgowym. Urząd zobaczy całe księgi, a znaczniki podatkowe na kontach powiedzą mu, jak policzyłeś podatek. Przygotujemy Twoją firmę i Twoją księgowość do pierwszej wysyłki.</p>
+    </div>
+
+    <div class="jpk-grid">
+      <div class="jpk-card">
+        <span class="tag">TEORIA</span>
+        <h3>Wiedza i szkolenia</h3>
+        <ul>
+          <li>Szkolenia dla zarządów, głównych księgowych i biur rachunkowych</li>
+          <li>Omówienie struktur JPK_KR_PD, JPK_ST_KR, JPK_PKPIR, JPK_EWP i JPK_ST</li>
+          <li>Analiza, kogo i od kiedy obejmuje obowiązek w Twojej grupie podmiotów</li>
+          <li>Ryzyka: co urząd wyczyta z pliku i jakie pytania zada w czynnościach sprawdzających</li>
+        </ul>
+      </div>
+      <div class="jpk-card">
+        <span class="tag">PRAKTYKA</span>
+        <h3>Wdrożenie w Twojej firmie</h3>
+        <ul>
+          <li>Przegląd planu kont i przypisanie znaczników podatkowych do kont</li>
+          <li>Weryfikacja ewidencji środków trwałych pod JPK_ST_KR i JPK_ST</li>
+          <li>Test pliku z Twojego systemu i uzgodnienie go z zeznaniem CIT-8 lub PIT</li>
+          <li>Wsparcie przy pierwszej wysyłce i przy pytaniach urzędu po jej złożeniu</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="timeline" role="table" aria-label="Harmonogram obowiązku JPK dla ksiąg">
+      <div class="tl-row head" role="row"><span role="columnheader">Rok</span><span role="columnheader">Podatnicy CIT</span><span role="columnheader">Podatnicy PIT</span></div>
+      <div class="tl-row" role="row">
+        <span class="tl-year" role="cell">2025</span>
+        <p class="c" role="cell">Podatkowe grupy kapitałowe i podatnicy z przychodem powyżej 50 mln euro<span class="ref">JPK_KR_PD · JPK_ST_KR</span></p>
+        <p class="p" role="cell">—</p>
+      </div>
+      <div class="tl-row" role="row">
+        <span class="tl-year" role="cell">2026</span>
+        <p class="c" role="cell">Pozostali podatnicy CIT składający JPK_VAT<span class="ref">JPK_KR_PD · JPK_ST_KR</span></p>
+        <p class="p" role="cell">Podatnicy składający JPK_V7M<span class="ref">JPK_PKPIR · JPK_EWP · JPK_KR_PD · JPK_ST</span></p>
+      </div>
+      <div class="tl-row" role="row">
+        <span class="tl-year" role="cell">2027</span>
+        <p class="c" role="cell">Wszyscy pozostali podatnicy CIT<span class="ref">JPK_KR_PD · JPK_ST_KR</span></p>
+        <p class="p" role="cell">Pozostali podatnicy prowadzący ewidencje<span class="ref">JPK_PKPIR · JPK_EWP · JPK_KR_PD · JPK_ST</span></p>
+      </div>
+    </div>
+    <p class="ref" style="margin-top:10px">Rok oznacza rok podatkowy, za który przesyła się plik. Plik składa się raz w roku, po jego zakończeniu.</p>
+
+    <div class="process">
+      <h3>Jak wygląda wdrożenie</h3>
+      <ol class="proc">
+        <li><b>Diagnoza</b><span>Ustalamy, od kiedy masz obowiązek i jakie struktury Cię dotyczą.</span></li>
+        <li><b>Przegląd ksiąg</b><span>Plan kont, ewidencja środków trwałych, sposób ujmowania kosztów NKUP.</span></li>
+        <li><b>Mapowanie znaczników</b><span>Przypisujemy znaczniki podatkowe do kont razem z Twoją księgowością.</span></li>
+        <li><b>Plik testowy</b><span>Generujemy plik z Twojego systemu i sprawdzamy go pod kątem zgodności ze schemą.</span></li>
+        <li><b>Uzgodnienie z zeznaniem</b><span>Porównujemy dane z pliku z CIT-8 lub PIT, zanim zrobi to urząd.</span></li>
+        <li><b>Pierwsza wysyłka</b><span>Jesteśmy przy wysyłce i odpowiadamy na ewentualne pytania organu.</span></li>
+      </ol>
+    </div>
+    <div class="jpk-cta">
+      <a class="btn btn-primary" href="#kontakt">Zapytaj o wdrożenie JPK</a>
+      <span class="muted" style="font-size:15.5px">Wycena po krótkiej rozmowie o Twoich księgach i systemie.</span>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="abonament" aria-labelledby="abo-h">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="eyebrow">Abonament podatkowy</span>
+      <h2 id="abo-h">Stały doradca podatkowy dla Twojej firmy od 369 zł netto miesięcznie</h2>
+      <p class="lede">Dzwonisz albo piszesz, kiedy masz pytanie, zanim podpiszesz umowę, wystawisz fakturę czy wypłacisz pieniądze ze spółki. Odpowiada doradca podatkowy, nie infolinia.</p>
+    </div>
+    <div class="plans">
+      <article class="plan">
+        <h3>Start</h3>
+        <p class="for">Jednoosobowa działalność i mała spółka, która chce mieć doradcę pod telefonem.</p>
+        <div class="price"><b>369 zł</b><span class="unit">netto / mies.</span></div>
+        <ul>
+          <li>Do 2 godzin doradztwa miesięcznie</li>
+          <li>Pytania telefonicznie, mailowo i na wideo</li>
+          <li>Odpowiedź w ciągu 2 dni roboczych</li>
+          <li>Przegląd pism z urzędu i plan działania</li>
+          <li>10% rabatu na wnioski o interpretację i pisma</li>
+        </ul>
+        <a class="btn btn-ghost" href="#kontakt">Wybieram Start</a>
+      </article>
+      <article class="plan featured">
+        <span class="badge">Najczęściej wybierany</span>
+        <h3>Biznes</h3>
+        <p class="for">Spółki z o.o. i spółki osobowe, które regularnie podejmują decyzje z konsekwencjami podatkowymi.</p>
+        <div class="price"><b>790 zł</b><span class="unit">netto / mies.</span></div>
+        <ul>
+          <li>Do 5 godzin doradztwa miesięcznie</li>
+          <li>Odpowiedź w ciągu 1 dnia roboczego</li>
+          <li>Odpowiedź na wezwanie w czynnościach sprawdzających w cenie</li>
+          <li>Kwartalny przegląd podatkowy z Twoją księgowością</li>
+          <li>15% rabatu na interpretacje, odwołania i wdrożenie JPK</li>
+        </ul>
+        <a class="btn btn-primary" href="#kontakt">Wybieram Biznes</a>
+      </article>
+      <article class="plan">
+        <h3>Indywidualny</h3>
+        <p class="for">Grupy spółek, fundacje rodzinne i firmy w trakcie kontroli albo restrukturyzacji.</p>
+        <div class="price"><small>wycena</small><b>indywidualna</b></div>
+        <ul>
+          <li>Ustalona pula godzin i dedykowany partner</li>
+          <li>Stała reprezentacja przed organami podatkowymi</li>
+          <li>Udział w spotkaniach zarządu i z kontrahentami</li>
+          <li>Roczny plan podatkowy dla grupy</li>
+          <li>Priorytet w terminach</li>
+        </ul>
+        <a class="btn btn-ghost" href="#kontakt">Porozmawiajmy</a>
+      </article>
+    </div>
+    <div class="free">
+      <div class="clock">20<small>minut</small></div>
+      <div>
+        <h3>Bezpłatna konsultacja do 20 minut</h3>
+        <p>Opowiedz nam o sprawie. Powiemy, czy potrzebujesz interpretacji, pełnomocnika czy abonamentu, i ile to będzie kosztować.</p>
+      </div>
+      <a class="btn btn-primary" href="#rezerwacja">Umów rozmowę</a>
+    </div>
+    <p class="fine">Ceny netto, do których dolicza się 23% VAT. Umowa abonamentowa na czas nieokreślony z miesięcznym okresem wypowiedzenia. Abonament nie obejmuje prowadzenia ksiąg rachunkowych ani kadr.</p>
+  </div>
+</section>
+
+<section class="section dark" id="zespol" aria-labelledby="team-h">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="eyebrow">Zespół</span>
+      <h2 id="team-h" style="color:#fff">Twoją sprawą zajmuje się partner, nie asystent</h2>
+      <p class="lede">Obaj jesteśmy doradcami podatkowymi wpisanymi na listę prowadzoną przez Krajową Izbę Doradców Podatkowych.</p>
+    </div>
+    <div class="team">
+      <article class="person">
+        <img src="img/michal-ruszniak.jpg" alt="Michał Ruszniak" width="1000" height="857" loading="lazy">
+        <div class="info">
+          <span class="ref">Doradca podatkowy nr 15009</span>
+          <h3>Michał Ruszniak</h3>
+          <p class="role">Partner zarządzający</p>
+          <ul>
+            <li>Założył kilkadziesiąt działalności gospodarczych i spółek prawa handlowego, więc zna podatki z przepisów i z codziennego prowadzenia firmy</li>
+            <li>Specjalizuje się w obsłudze małych i średnich przedsiębiorstw oraz firm rodzinnych</li>
+            <li>Pełnomocnik zawodowy w kontrolach, postępowaniach podatkowych i przed sądami administracyjnymi</li>
+            <li>Prelegent ogólnopolskich konferencji naukowych poświęconych postępowaniom podatkowym</li>
+            <li>Juror w finałach krajowych konkursów wiedzy o podatkach</li>
+          </ul>
+        </div>
+      </article>
+      <article class="person">
+        <img src="img/marcin-otreba.jpg" alt="Marcin Otręba" width="753" height="1024" loading="lazy">
+        <div class="info">
+          <span class="ref">Doradca podatkowy nr 14609</span>
+          <h3>Marcin Otręba</h3>
+          <p class="role">Partner zarządzający</p>
+          <ul>
+            <li>Wieloletni pracownik Izby Skarbowej we Wrocławiu, trener Ministerstwa Finansów i Centrum Edukacji Zawodowej Resortu Finansów</li>
+            <li>Doświadczenie na stanowiskach kierowniczych w międzynarodowych firmach z SSE i w renomowanych kancelariach podatkowych</li>
+            <li>Od 2010 r. wykładowca prawa podatkowego na Uniwersytecie WSB Merito we Wrocławiu, kierownik merytoryczny studiów podyplomowych „Doradca podatkowy”, wykładowca MBA</li>
+            <li>Szkoli Administrację Skarbową i oddziały Stowarzyszenia Księgowych w Polsce; autor publikacji m.in. dla Biuletynu VAT (INFOR)</li>
+            <li>Specjalizuje się w VAT, CIT i PIT oraz w kontrolach podatkowych, celno-skarbowych i sporach przed sądami administracyjnymi</li>
+          </ul>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="faq" aria-labelledby="faq-h">
+  <div class="wrap faq-wrap">
+    <div class="section-head">
+      <span class="eyebrow">FAQ</span>
+      <h2 id="faq-h">Najczęściej zadawane pytania</h2>
+      <p class="lede">Odpowiedzi, które pomogą zrozumieć, czym zajmuje się doradca podatkowy.</p>
+    </div>
+    <div class="faq">
+      <details open>
+        <summary>Czym różni się doradca podatkowy od księgowego?</summary>
+        <p>Księgowy prowadzi księgi. Doradca podatkowy, prowadząc księgi, może jednocześnie legalnie doradzać w sprawach podatkowych i reprezentować klienta przed urzędami. To pewność poprawnych rozliczeń i oszczędność czasu.</p>
+      </details>
+      <details open>
+        <summary>Kim jest doradca podatkowy?</summary>
+        <p>To zawód zaufania publicznego powołany ustawą. Wymaga wyższego wykształcenia, specjalistycznej wiedzy, doświadczenia, stałego podnoszenia kwalifikacji i nieskazitelnego charakteru.</p>
+      </details>
+      <details open>
+        <summary>Mam kontrolę z urzędu skarbowego. Co robić?</summary>
+        <p>Zachować spokój i zadzwonić do doradcy. Doradca podatkowy może reprezentować przedsiębiorcę przed US i KAS, w postępowaniu podatkowym, czynnościach sprawdzających, przed ZUS i sądami administracyjnymi.</p>
+      </details>
+      <details open>
+        <summary>Ile kosztują usługi doradcy podatkowego?</summary>
+        <p>Stałe doradztwo w abonamencie kosztuje od 369 zł netto miesięcznie. Pozostałe usługi wyceniamy indywidualnie w umowie, zależnie od skali działalności, zakresu usług i odpowiedzialności doradcy. Pierwsze 20 minut rozmowy jest bezpłatne.</p>
+      </details>
+      <details open>
+        <summary>Czym różnią się czynności sprawdzające od kontroli?</summary>
+        <p>Czynności sprawdzające to uproszczona weryfikacja deklaracji: urząd prosi o wyjaśnienia lub dokumenty. Kontrola podatkowa to sformalizowana procedura, poprzedzona zawiadomieniem i zakończona protokołem.</p>
+      </details>
+      <details open>
+        <summary>Ile trwa uzyskanie interpretacji indywidualnej?</summary>
+        <p>Dyrektor KIS ma 3 miesiące od wpływu kompletnego wniosku. Opłata to 40 zł od każdego stanu faktycznego lub zdarzenia przyszłego. Brak interpretacji w terminie oznacza, że stanowisko wnioskodawcy uznaje się za prawidłowe.</p>
+      </details>
+    </div>
+  </div>
+</section>
+
+<section class="section bk-section" id="rezerwacja" aria-labelledby="bk-h">
+  <div class="wrap bk-wrap">
+    <div class="bk-intro">
+      <span class="eyebrow">Rezerwacja online</span>
+      <h2 id="bk-h">Umów spotkanie z doradcą podatkowym</h2>
+      <p class="lede">Wybierz rodzaj spotkania i wolny termin. Potwierdzenie i przypomnienie dostaniesz e-mailem.</p>
+      <div class="bk-free"><b>20 min</b><span>pierwsza rozmowa<br>bez opłat</span></div>
+      <ul class="bk-points">
+        <li>Online albo w kancelarii przy ul. Zwycięskiej 3</li>
+        <li>Rozmawiasz bezpośrednio z doradcą podatkowym</li>
+      </ul>
+      <div class="bk-call">
+        <span>Wolisz zadzwonić?</span>
+        <a href="tel:+48883643565">+48 883 643 565</a>
+        <a href="tel:+48534909534">+48 534 909 534</a>
+      </div>
+    </div>
+    <div class="bk-card">
+      <div class="bk-card-head">
+        <span class="bk-dot" aria-hidden="true"></span>
+        <b>Kalendarz M2 TAX</b>
+        <span class="bk-live">wolne terminy na bieżąco</span>
+      </div>
+      <div id="inline-container" class="zoho-booking"><div class="zoho-loading"><span class="bk-spin" aria-hidden="true"></span>Ładuję kalendarz…</div></div>
+      <p class="bk-card-foot">Kalendarz się nie wyświetla? <a href="https://m2taxdoradcypodatkowi.zohobookings.eu/#/m2taxdoradcypodatkowi" target="_blank" rel="noopener">Otwórz go w nowym oknie ↗</a></p>
+    </div>
+  </div>
+</section>
+
+<section class="section bg-paper2" id="kontakt" aria-labelledby="kontakt-h">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="eyebrow">Kontakt</span>
+      <h2 id="kontakt-h">Gdzie nas znaleźć</h2>
+    </div>
+    <div class="contact-row" style="margin-top:0">
+      <div class="contact-col">
+        <div class="cinfo">
+          <div class="cicon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s-7-6.2-7-11.5A7 7 0 0 1 19 9.5C19 14.8 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.5"/></svg></div>
+          <div><h4>Adres</h4><p>ul. Zwycięska 3<br>53-033 Wrocław</p></div>
+        </div>
+        <div class="cinfo">
+          <div class="cicon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2z"/></svg></div>
+          <div><h4>Telefony</h4><p><a href="tel:+48883643565">+48 883 643 565</a><button class="copy-light" data-copy="+48 883 643 565" type="button">Kopiuj</button><br><a href="tel:+48534909534">+48 534 909 534</a><button class="copy-light" data-copy="+48 534 909 534" type="button">Kopiuj</button></p></div>
+        </div>
+        <div class="cinfo">
+          <div class="cicon"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg></div>
+          <div><h4>E-mail</h4><p><a href="mailto:kancelaria@m2tax.pl">kancelaria@m2tax.pl</a><button class="copy-light" data-copy="kancelaria@m2tax.pl" type="button">Kopiuj</button></p></div>
+        </div>
+        <div class="urgent">
+          <span class="ref">Pismo z urzędu?</span>
+          <h4>Ochłoń i zadzwoń do nas.</h4>
+          <p>Wyślij zdjęcie pisma i datę jego doręczenia na kancelaria@m2tax.pl. Oddzwonimy i powiemy, ile masz czasu i co robić dalej.</p>
+        </div>
+      </div>
+      <div class="map-col">
+        <div class="map">
+          <iframe title="Mapa dojazdu do kancelarii M2 TAX" src="https://maps.google.com/maps?q=ul.+Zwyci%C4%99ska+3,+53-033+Wroc%C5%82aw&amp;z=15&amp;output=embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+        </div>
+        <a class="maplink" href="https://www.google.com/maps/search/?api=1&amp;query=ul.+Zwyci%C4%99ska+3+Wroc%C5%82aw" target="_blank" rel="noopener">Otwórz w Mapach Google ↗</a>
+      </div>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="f-brand">
+      <div class="wordmark">M2<span>TAX</span><small>Doradcy Podatkowi</small></div>
+      <p>Kancelaria doradztwa podatkowego z Wrocławia. Profesjonalne wsparcie dla Twojego biznesu.</p>
+      <a class="btn btn-primary" href="#rezerwacja">Bezpłatne 20 minut</a>
+    </div>
+    <div>
+      <h4>Szybkie linki</h4>
+      <ul>
+        <li><a href="#pismo">Pismo z urzędu</a></li>
+        <li><a href="#specjalizacje">Specjalizacje</a></li>
+        <li><a href="#jpk">JPK CIT / PKPIR</a></li>
+        <li><a href="#abonament">Abonament</a></li>
+        <li><a href="#zespol">Zespół</a></li>
+        <li><a href="#faq">FAQ</a></li>
+        <li><a href="#kontakt">Kontakt</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4>Kontakt</h4>
+      <ul>
+        <li><a href="tel:+48883643565">+48 883 643 565</a></li>
+        <li><a href="tel:+48534909534">+48 534 909 534</a></li>
+        <li><a href="mailto:kancelaria@m2tax.pl">kancelaria@m2tax.pl</a></li>
+        <li>ul. Zwycięska 3<br>53-033 Wrocław</li>
+      </ul>
+    </div>
+    <div>
+      <h4>Dane rejestrowe</h4>
+      <p>M2 TAX DORADCY PODATKOWI<br>OTRĘBA RUSZNIAK<br>spółka partnerska</p>
+      <p>ul. Zwycięska 3<br>53-033 Wrocław</p>
+      <p>KRS: 0001238577<br>NIP: 8993058189<br>REGON: 54465563600000</p>
+    </div>
+    <div class="legal"><span>© 2026 M2 TAX. Wszelkie prawa zastrzeżone.</span><span><a href="polityka-prywatnosci.html">Polityka prywatności</a> · <a href="aml.html">Informacja AML</a></span><span>Wykonanie: <a href="https://syntelligence.one" target="_blank" rel="noopener">Syntelligence</a></span></div>
+  </div>
+</footer>
+
+<div class="toast" id="toast" hidden role="status"></div>
+
+<script>
+(function(){
+  var btn=document.getElementById('menu-btn'),nav=document.getElementById('nav');
+  btn.addEventListener('click',function(){var o=nav.classList.toggle('open');btn.setAttribute('aria-expanded',o)});
+  nav.addEventListener('click',function(e){if(e.target.closest('a')){nav.classList.remove('open');btn.setAttribute('aria-expanded','false')}});
+  var toast=document.getElementById('toast'),t;
+  function show(msg){toast.textContent=msg;toast.hidden=false;clearTimeout(t);t=setTimeout(function(){toast.hidden=true},1800)}
+  document.querySelectorAll('[data-copy]').forEach(function(b){
+    b.addEventListener('click',function(){
+      var v=b.getAttribute('data-copy');
+      try{navigator.clipboard.writeText(v).then(function(){show('Skopiowano: '+v)},function(){show(v)})}catch(e){show(v)}
+    });
+  });
+})();
+</script>
+
+<!-- Zoho Bookings: kalendarz rezerwacji wbudowany w sekcję Kontakt -->
+<script src="https://bookings.nimbuspop.com/assets/embed.js" defer></script>
+<script>
+window.addEventListener('load', function(){
+  var ZOHO_URL = 'https://m2taxdoradcypodatkowi.zohobookings.eu/portal-embed#/m2taxdoradcypodatkowi';
+  var box = document.getElementById('inline-container'); if(!box) return;
+  var h = window.innerWidth <= 820 ? '900px' : '760px';
+  function done(){ var l = box.querySelector('.zoho-loading'); if(l) l.remove(); }
+  try {
+    if (window.Bookings && typeof Bookings.inlineEmbed === 'function') {
+      Bookings.inlineEmbed({ url: ZOHO_URL, parent: '#inline-container', height: h });
+      setTimeout(done, 400); return;
+    }
+  } catch(e) {}
+  /* Zapas: gdyby skrypt Zoho się nie wczytał, wstawiamy kalendarz bezpośrednio */
+  var f = document.createElement('iframe');
+  f.title = 'Kalendarz rezerwacji M2 TAX'; f.src = ZOHO_URL; f.style.height = h; f.setAttribute('allowfullscreen','');
+  f.addEventListener('load', done); box.appendChild(f);
+});
+</script>
+</body>
+</html>
