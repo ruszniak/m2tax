@@ -287,9 +287,9 @@ SPECS = [
 ]
 
 PEOPLE = [
-    ("michal-ruszniak-toga3.jpg", 900, 1205, "Michał Ruszniak", "15009",
+    ("michal-ruszniak-garnitur.jpg", 900, 1200, "Michał Ruszniak", "15009",
      ["Założył kilkadziesiąt działalności gospodarczych i spółek prawa handlowego, więc zna podatki z przepisów i z codziennego prowadzenia firmy", "Specjalizuje się w obsłudze małych i średnich przedsiębiorstw oraz firm rodzinnych", "Pełnomocnik zawodowy w kontrolach, postępowaniach podatkowych i przed sądami administracyjnymi", "Prelegent ogólnopolskich konferencji naukowych poświęconych postępowaniom podatkowym", "Juror w finałach krajowych konkursów wiedzy o podatkach"]),
-    ("marcin-otreba-toga3.jpg", 900, 1205, "Marcin Otręba", "14609",
+    ("marcin-otreba-garnitur.jpg", 900, 1200, "Marcin Otręba", "14609",
      ["Wieloletni pracownik Izby Skarbowej we Wrocławiu, trener Ministerstwa Finansów i Centrum Edukacji Zawodowej Resortu Finansów", "Doświadczenie na stanowiskach kierowniczych w międzynarodowych firmach z SSE i w renomowanych kancelariach podatkowych", "Od 2010 r. wykładowca prawa podatkowego na Uniwersytecie WSB Merito we Wrocławiu, kierownik merytoryczny studiów podyplomowych „Doradca podatkowy”, wykładowca MBA", "Szkoli Administrację Skarbową i oddziały Stowarzyszenia Księgowych w Polsce; autor publikacji m.in. dla Biuletynu VAT (INFOR)", "Specjalizuje się w VAT, CIT i PIT oraz w kontrolach podatkowych, celno-skarbowych i sporach przed sądami administracyjnymi"]),
 ]
 
