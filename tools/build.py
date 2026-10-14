@@ -304,10 +304,10 @@ def sol_cards(p):
 def duo_section(p, show_link=True, portraits=False):
     link = f'\n        <a class="more-link" href="{p}zespol/" style="color:var(--accent)">Poznaj doradców →</a>' if show_link else ""
     if portraits:
-        visual = f'''      <div class="duo-visual">
-        <img src="{p}img/michal-ruszniak.jpg" alt="Michał Ruszniak, doradca podatkowy" loading="lazy">
-        <img src="{p}img/marcin-otreba.jpg" alt="Marcin Otręba, doradca podatkowy" loading="lazy">
-      </div>'''
+        visual = f'''      <figure class="duo-blend">
+        <img src="{p}img/doradcy-duo.jpg" alt="Doradcy podatkowi Michał Ruszniak i Marcin Otręba" width="1000" height="1200" loading="lazy">
+        <figcaption>Michał Ruszniak · Marcin Otręba<span>doradcy podatkowi nr 15009 i 14609</span></figcaption>
+      </figure>'''
     else:
         visual = f'''      <figure class="duo-photo">
         <img src="{p}img/doradcy-togi.jpg" alt="Doradcy podatkowi Michał Ruszniak i Marcin Otręba w togach" width="1200" height="896" loading="lazy">
