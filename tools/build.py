@@ -2,7 +2,7 @@
 """Generator strony M2 TAX.
 
 Buduje strony z jednego miejsca, żeby menu, stopka i nagłówek były wszędzie takie same:
-  index.html, abonamenty/index.html, specjalizacje/index.html, zespol/index.html, kontakt/index.html
+  index.html, abonamenty/index.html, doradztwo-podatkowe/index.html, zespol/index.html, kontakt/index.html
 Wspólne style: assets/site.css, wspólne skrypty: assets/site.js.
 
 Uruchom z katalogu repozytorium:  python3 tools/build.py
@@ -25,7 +25,7 @@ TOWNS = [
     ("Środa Śląska", "powiat średzki"),
     ("Trzebnica", "powiat trzebnicki"),
 ]
-NAV = [("abonamenty/", "Abonamenty"), ("dla-biur-rachunkowych/", "Dla biur rachunkowych"), ("specjalizacje/", "Specjalizacje"), ("zespol/", "Zespół"), ("kontakt/", "Kontakt")]
+NAV = [("abonamenty/", "Abonamenty"), ("doradztwo-podatkowe/", "Doradztwo podatkowe"), ("dla-biur-rachunkowych/", "Dla biur rachunkowych"), ("zespol/", "Zespół"), ("kontakt/", "Kontakt")]
 
 PIN = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s-7-6.2-7-11.5A7 7 0 0 1 19 9.5C19 14.8 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.5"/></svg>'
 PHONE = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2z"/></svg>'
@@ -424,7 +424,7 @@ def build_home():
 {section_head("Specjalizacje", "W czym pomagamy najczęściej", "Interpretacje, kontrole i czynności sprawdzające to nasza codzienność. Do tego wypłata pieniędzy ze spółki, restrukturyzacje, fundacje rodzinne i nieruchomości.", "spec-h")}    <div class="spec-grid">
 {chr(10).join(spec_card(*s) for s in [(PILLARS[0][0], PILLARS[0][1], "Ochrona przed zmianą zdania urzędu, zanim podejmiesz decyzję.", ["Interpretacje w CIT, PIT, VAT i PCC", "Wiążące informacje stawkowe", "Opinie zabezpieczające"]), (PILLARS[1][0], PILLARS[1][1], "Pełnomocnik od pierwszego pisma aż do wyroku sądu.", ["Kontrole US i KAS", "Odwołania i zażalenia", "Skargi do WSA i NSA"]), (PILLARS[2][0], PILLARS[2][1], "Odpowiedź, która zamyka sprawę, zanim zrobi się z niej kontrola.", ["Wezwania do wyjaśnień", "Weryfikacja zwrotu VAT", "Rozmowy z urzędem za Ciebie"])] + SPECS[:5])}
     </div>
-    <a class="more-link" href="specjalizacje/">Wszystkie specjalizacje i branże →</a>
+    <a class="more-link" href="doradztwo-podatkowe/">Wszystkie specjalizacje i branże →</a>
   </div>
 </section>
 
@@ -588,9 +588,9 @@ def build_abonamenty():
 
 def build_specjalizacje():
     p = "../"
-    h = head(p, "Specjalizacje i branże — M2 TAX Doradcy Podatkowi | Wrocław",
+    h = head(p, "Doradztwo podatkowe Wrocław — specjalizacje i branże | M2 TAX Doradcy Podatkowi",
              "Interpretacje indywidualne, kontrole i postępowania podatkowe, czynności sprawdzające, wypłata pieniędzy ze spółki, restrukturyzacje, fundacje rodzinne, nieruchomości. Branże: budowlana, medyczna, beauty, produkcyjna, osoby prywatne.",
-             "specjalizacje/")
+             "doradztwo-podatkowe/")
     pill = []
     for ref, t, d, chips, li in PILLARS:
         pill.append(f'''      <article class="pillar">
@@ -604,8 +604,8 @@ def build_specjalizacje():
 {chr(10).join(f"          <li>{x}</li>" for x in li)}
         </ul>
       </article>''')
-    body = header(p, "specjalizacje/") + page_hero(
-        p, "Specjalizacje", "Specjalizacje",
+    body = header(p, "doradztwo-podatkowe/") + page_hero(
+        p, "Doradztwo podatkowe", "Doradztwo podatkowe",
         "W czym jesteśmy <em>najlepsi</em>",
         "Trzy obszary, w których spędzamy najwięcej czasu, osiem dodatkowych specjalizacji i pięć branż, które znamy od podszewki.",
         fx="grid") + f'''
@@ -884,7 +884,7 @@ def write(rel, html):
 
 
 def sitemap():
-    urls = ["", "abonamenty/", "dla-biur-rachunkowych/", "specjalizacje/", "zespol/", "kontakt/", "polityka-prywatnosci.html", "aml.html"]
+    urls = ["", "abonamenty/", "dla-biur-rachunkowych/", "doradztwo-podatkowe/", "zespol/", "kontakt/", "polityka-prywatnosci.html", "aml.html"]
     x = '<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n' + \
         "".join(f"  <url><loc>{SITE}/{u}</loc></url>\n" for u in urls) + "</urlset>\n"
     write("sitemap.xml", x)
@@ -894,7 +894,7 @@ def sitemap():
 if __name__ == "__main__":
     write("index.html", build_home())
     write("abonamenty/index.html", build_abonamenty())
-    write("specjalizacje/index.html", build_specjalizacje())
+    write("doradztwo-podatkowe/index.html", build_specjalizacje())
     write("zespol/index.html", build_zespol())
     write("kontakt/index.html", build_kontakt())
     write("dla-biur-rachunkowych/index.html", build_biura())

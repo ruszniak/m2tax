@@ -1,0 +1,6 @@
+{
+  "redirects": [
+    { "source": "/specjalizacje", "destination": "/doradztwo-podatkowe/", "permanent": true },
+    { "source": "/specjalizacje/", "destination": "/doradztwo-podatkowe/", "permanent": true }
+  ]
+}
