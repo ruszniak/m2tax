@@ -15,6 +15,13 @@ SITE = "https://www.m2tax.pl"
 TEL1, TEL1_H = "+48883643565", "+48 883 643 565"
 TEL2, TEL2_H = "+48534909534", "+48 534 909 534"
 MAIL = "kancelaria@m2tax.pl"
+# WhatsApp: numer w formacie międzynarodowym bez "+" i gotowa pierwsza wiadomość
+WA_NUMBER = "48883643565"
+WA_TEXT = "Dzień dobry, mam pytanie podatkowe: "
+# Zoho SalesIQ (czat na stronie): wklej tu kod widżetu (parametr wc=... z kodu osadzenia
+# w Zoho SalesIQ → Ustawienia → Kanały → Witryna → Instalacja). Pusty = czat wyłączony.
+SALESIQ_WC = ""
+SALESIQ_HOST = "https://salesiq.zohopublic.eu"
 ZOHO_EMBED = "https://m2taxdoradcypodatkowi.zohobookings.eu/portal-embed#/m2taxdoradcypodatkowi"
 ZOHO_PUBLIC = "https://m2taxdoradcypodatkowi.zohobookings.eu/#/m2taxdoradcypodatkowi"
 TOWNS = [
@@ -91,6 +98,28 @@ def header(p, active):
 '''
 
 
+def wa_link():
+    from urllib.parse import quote
+    return f"https://wa.me/{WA_NUMBER}?text={quote(WA_TEXT)}"
+
+
+def wa_button():
+    cls = "wa-fab with-chat" if SALESIQ_WC else "wa-fab"
+    return f'''<a class="{cls}" href="{wa_link()}" target="_blank" rel="noopener" aria-label="Napisz do nas na WhatsApp">
+  <svg viewBox="0 0 32 32" width="28" height="28" aria-hidden="true"><path fill="currentColor" d="M16.04 3C9.4 3 4 8.36 4 14.97c0 2.11.56 4.17 1.62 5.99L4 29l8.25-2.15a12.1 12.1 0 0 0 5.79 1.47h.01c6.63 0 12.03-5.36 12.03-11.97C28.07 8.36 22.67 3 16.04 3Zm0 21.98h-.01c-1.8 0-3.56-.48-5.1-1.39l-.37-.22-4.9 1.27 1.31-4.75-.24-.39a9.85 9.85 0 0 1-1.52-5.53c0-5.48 4.49-9.94 10.01-9.94 2.67 0 5.18 1.04 7.07 2.91a9.83 9.83 0 0 1 2.93 7.03c0 5.48-4.49 9.94-10 9.94Zm5.49-7.44c-.3-.15-1.78-.87-2.05-.97-.28-.1-.48-.15-.68.15-.2.3-.78.97-.95 1.17-.18.2-.35.22-.65.07-.3-.15-1.27-.46-2.42-1.48-.89-.79-1.5-1.77-1.67-2.07-.18-.3-.02-.46.13-.61.13-.13.3-.35.45-.52.15-.17.2-.3.3-.5.1-.2.05-.37-.03-.52-.07-.15-.68-1.63-.93-2.23-.24-.58-.49-.5-.68-.51h-.58c-.2 0-.52.07-.8.37-.27.3-1.04 1.02-1.04 2.48s1.07 2.88 1.22 3.08c.15.2 2.1 3.2 5.08 4.48.71.31 1.27.49 1.7.63.71.23 1.36.2 1.88.12.57-.09 1.78-.72 2.03-1.42.25-.7.25-1.3.18-1.42-.08-.13-.28-.2-.58-.35Z"/></svg>
+  <span class="wa-label">Napisz na WhatsApp</span>
+</a>'''
+
+
+def salesiq():
+    if not SALESIQ_WC:
+        return ""
+    return f'''
+<!-- Zoho SalesIQ: czat na żywo -->
+<script>window.$zoho=window.$zoho||{{}};$zoho.salesiq=$zoho.salesiq||{{ready:function(){{}}}};</script>
+<script id="zsiqscript" src="{SALESIQ_HOST}/widget?wc={SALESIQ_WC}" defer></script>'''
+
+
 def footer(p, zoho=False):
     nav = "\n".join(f'        <li><a href="{p}{h}">{l}</a></li>' for h, l in NAV)
     towns = ", ".join(t for t, _ in TOWNS)
@@ -138,6 +167,7 @@ window.addEventListener('load', function(){{
         <li><a href="tel:{TEL1}">{TEL1_H}</a></li>
         <li><a href="tel:{TEL2}">{TEL2_H}</a></li>
         <li><a href="mailto:{MAIL}">{MAIL}</a></li>
+        <li><a href="{wa_link()}" target="_blank" rel="noopener">Napisz na WhatsApp</a></li>
         <li>ul. Zwycięska 3<br>53-033 Wrocław</li>
       </ul>
     </div>
@@ -152,7 +182,8 @@ window.addEventListener('load', function(){{
 </footer>
 
 <div class="toast" id="toast" hidden role="status"></div>
-<script src="{p}assets/site.js"></script>{z}
+{wa_button()}
+<script src="{p}assets/site.js"></script>{z}{salesiq()}
 </body>
 </html>
 '''
