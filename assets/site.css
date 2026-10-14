@@ -186,7 +186,7 @@ p{margin:0}
 /* Team */
 .team{display:grid;grid-template-columns:1fr 1fr;gap:20px}
 .person{background:var(--ink-2);border:1px solid var(--ink-line);border-radius:12px;overflow:hidden;display:grid;grid-template-columns:1fr;grid-template-rows:auto 1fr;min-width:0}
-.person img{width:100%;height:auto;aspect-ratio:5/4;object-fit:cover;object-position:50% 4%;display:block}
+.person img{width:100%;height:auto;aspect-ratio:5/4;object-fit:cover;object-position:50% 6%;display:block}
 .person .info{padding:26px 24px;display:grid;gap:12px;align-content:start;min-width:0}
 .person h3{font-size:24px;font-weight:800;color:#fff}
 .person .role{font-size:15px;color:var(--on-ink-muted)}
