@@ -300,16 +300,23 @@ def sol_cards(p):
     return "\n".join(out)
 
 
-def duo_section(p, show_link=True):
+def duo_section(p, show_link=True, portraits=False):
     link = f'\n        <a class="more-link" href="{p}zespol/" style="color:var(--accent)">Poznaj doradców →</a>' if show_link else ""
+    if portraits:
+        visual = f'''      <div class="duo-visual">
+        <img src="{p}img/michal-ruszniak.jpg" alt="Michał Ruszniak, doradca podatkowy" loading="lazy">
+        <img src="{p}img/marcin-otreba.jpg" alt="Marcin Otręba, doradca podatkowy" loading="lazy">
+      </div>'''
+    else:
+        visual = f'''      <figure class="duo-photo">
+        <img src="{p}img/doradcy-togi.jpg" alt="Doradcy podatkowi Michał Ruszniak i Marcin Otręba w togach" width="1200" height="896" loading="lazy">
+        <figcaption>Michał Ruszniak · Marcin Otręba<span>doradcy podatkowi nr 15009 i 14609</span></figcaption>
+      </figure>'''
     return f'''<section class="section dark" aria-labelledby="duo-h">
   <canvas class="fx3d" data-fx="rings" aria-hidden="true"></canvas>
   <div class="wrap">
     <div class="duo">
-      <figure class="duo-photo">
-        <img src="{p}img/doradcy-togi.jpg" alt="Doradcy podatkowi Michał Ruszniak i Marcin Otręba w togach" width="1200" height="896" loading="lazy">
-        <figcaption>Michał Ruszniak · Marcin Otręba<span>doradcy podatkowi nr 15009 i 14609</span></figcaption>
-      </figure>
+{visual}
       <div>
         <span class="eyebrow">Nasza zasada</span>
         <h2 id="duo-h" style="font-size:clamp(28px,3.6vw,42px);font-weight:800;color:#fff;margin-top:14px">Każdą sprawą zajmuje się dwóch doradców podatkowych</h2>
@@ -385,7 +392,7 @@ def build_home():
   </div>
 </section>
 
-{duo_section(p)}
+{duo_section(p, portraits=True)}
 <section class="section bg-paper2" id="specjalizacje" aria-labelledby="spec-h">
   <div class="wrap">
 {section_head("Specjalizacje", "W czym pomagamy najczęściej", "Interpretacje, kontrole i czynności sprawdzające to nasza codzienność. Do tego wypłata pieniędzy ze spółki, restrukturyzacje, fundacje rodzinne i nieruchomości.", "spec-h")}    <div class="spec-grid">
