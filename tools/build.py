@@ -199,7 +199,7 @@ def cta_band(p, title, text):
 
 # ---------------------------------------------------------------- treści
 SOLUTIONS = [
-    ("01", "Stała obsługa podatkowa", "Abonament z dwoma doradcami podatkowymi pod telefonem. Do wyboru trzy warianty: samo doradztwo, doradztwo z księgowością naszych partnerów albo doradztwo wspólnie z Twoją księgowością.", "od 369 zł", "netto miesięcznie", "abonamenty/#stala-obsluga", True),
+    ("01", "Stała obsługa podatkowa", "Abonament doradztwa podatkowego z dwoma doradcami pod telefonem. Trzy pakiety: od 2 godzin miesięcznie, także we współpracy z Twoją księgową lub biurem rachunkowym.", "od 369 zł", "netto miesięcznie · 2 h doradztwa", "abonamenty/#stala-obsluga", True),
     ("02", "Konsultacja indywidualna", "Jednorazowa rozmowa o konkretnej sprawie: sprzedaż nieruchomości, wypłata pieniędzy ze spółki, zmiana formy opodatkowania. Pierwsze 20 minut bez opłat.", "od 400 zł", "netto za godzinę", "abonamenty/#konsultacja", False),
     ("03", "Postępowania i kontrole", "Prowadzimy sprawę jako pełnomocnik od pierwszego pisma: czynności sprawdzające, kontrole podatkowe i celno-skarbowe, postępowania podatkowe i odwołania.", "wycena indywidualna", "po zapoznaniu się z pismami", "abonamenty/#postepowania", False),
     ("04", "Sprawy przed WSA i NSA", "Skargi do wojewódzkiego sądu administracyjnego, skargi kasacyjne do NSA i udział w rozprawach. Doradca podatkowy może Cię reprezentować przed sądami administracyjnymi.", "wycena indywidualna", "po analizie decyzji", "abonamenty/#sady", False),
@@ -267,7 +267,8 @@ FAQ_HOME = [
 
 FAQ_ABO = [
     ("Na jak długo zawieramy umowę abonamentową?", "Umowę zawieramy na czas nieokreślony z miesięcznym okresem wypowiedzenia. Zakres i cenę ustalamy po krótkiej rozmowie o Twojej firmie."),
-    ("Czym różnią się warianty stałej obsługi?", "W pierwszym wariancie dostajesz samo doradztwo podatkowe. W drugim księgi prowadzi nasze partnerskie biuro rachunkowe, a my weryfikujemy rozliczenia. W trzecim pracujemy z Twoją obecną księgowością, więc nie musisz niczego zmieniać."),
+    ("Czym różnią się pakiety?", "Liczbą godzin doradztwa w miesiącu i czasem odpowiedzi. Pakiet „Wsparcie księgowości” jest dla firm, które mają własną księgową lub biuro rachunkowe: Twoja księgowa może dzwonić i pisać do nas bezpośrednio, a przed rozliczeniem rocznym przeglądamy kluczowe pozycje."),
+    ("Co się dzieje z niewykorzystanymi godzinami?", "Niewykorzystane godziny przechodzą na następny miesiąc. Jeśli w danym miesiącu potrzebujesz więcej, każdą dodatkową godzinę rozliczamy po preferencyjnej stawce dla abonentów."),
     ("Czy mogę zacząć od jednej konsultacji?", "Tak. Wiele firm zaczyna od konsultacji albo od jednej sprawy, np. odpowiedzi na wezwanie z urzędu, i dopiero potem przechodzi na stałą obsługę."),
     ("Co jeśli w trakcie abonamentu dostanę pismo z urzędu?", "Dzwonisz do nas. Ocenimy pismo i termin, a odpowiedź w czynnościach sprawdzających przygotujemy w ramach stałej obsługi albo wycenimy osobno, jeśli sprawa wymaga prowadzenia postępowania lub kontroli."),
 ]
@@ -456,15 +457,15 @@ def build_home():
 def build_abonamenty():
     p = "../"
     h = head(p, "Abonamenty i ceny — M2 TAX Doradcy Podatkowi | Wrocław",
-             "Stała obsługa podatkowa od 369 zł netto miesięcznie w trzech wariantach, konsultacje od 400 zł netto za godzinę, prowadzenie kontroli i postępowań podatkowych, sprawy przed WSA i NSA. Dwóch doradców w każdej sprawie.",
+             "Abonament doradztwa podatkowego od 369 zł netto miesięcznie (2 godziny), pakiety 3 i 5 godzin, konsultacje od 400 zł netto za godzinę, prowadzenie kontroli i postępowań podatkowych, sprawy przed WSA i NSA. Dwóch doradców w każdej sprawie.",
              "abonamenty/")
     variants = [
-        ("Doradztwo podatkowe", "Dla firm, które mają uporządkowaną księgowość i potrzebują doradcy pod telefonem.", "od 369 zł", "netto / mies.", False,
-         ["Pytania telefonicznie, mailowo i na wideo", "Analiza umów i transakcji przed podpisaniem", "Odpowiedzi na wezwania w czynnościach sprawdzających", "Przegląd pism z urzędu i plan działania", "Dwóch doradców znających Twoją firmę"]),
-        ("Doradztwo z księgowością partnera", "Księgi prowadzi nasze sprawdzone biuro partnerskie, a my jako doradcy weryfikujemy rozliczenia.", "od 790 zł", "netto / mies.", True,
-         ["Wszystko z wariantu „Doradztwo podatkowe”", "Księgowość prowadzona przez biuro partnerskie", "Weryfikacja rozliczeń przez doradcę podatkowego", "Jeden punkt kontaktu w sprawach podatkowych", "Przegląd przed zamknięciem roku"]),
-        ("Doradztwo z Twoją księgowością", "Zostajesz przy obecnym biurze lub księgowej, a my stale z nimi współpracujemy.", "wycena", "indywidualna", False,
-         ["Wszystko z wariantu „Doradztwo podatkowe”", "Stały kontakt z Twoją księgową lub biurem", "Konsultowanie trudnych księgowań i rozliczeń", "Regularne przeglądy podatkowe", "Nic nie musisz zmieniać w obecnej obsłudze"]),
+        ("Doradztwo podatkowe", "Dla przedsiębiorców i małych firm, które chcą mieć doradcę podatkowego pod telefonem.", "od 369 zł", "netto / mies.", False,
+         ["<b>2 godziny</b> doradztwa miesięcznie", "Pytania telefonicznie, mailowo i na wideo", "Odpowiedź w ciągu 2 dni roboczych", "Analiza umów i transakcji przed podpisaniem", "Przegląd pism z urzędu i plan działania", "Dwóch doradców znających Twoją firmę"]),
+        ("Wsparcie Twojej księgowości", "Dla firm z własną księgową lub biurem rachunkowym. Twoja księgowa ma bezpośredni kontakt z doradcą podatkowym.", "od 590 zł", "netto / mies.", True,
+         ["<b>3 godziny</b> doradztwa miesięcznie", "Twoja księgowa pisze i dzwoni do nas bezpośrednio", "Konsultowanie trudnych księgowań i rozliczeń VAT", "Przegląd kluczowych pozycji przed zeznaniem rocznym", "Odpowiedzi na wezwania w czynnościach sprawdzających", "Odpowiedź w ciągu 1 dnia roboczego"]),
+        ("Doradztwo Biznes", "Dla spółek i firm rodzinnych, które regularnie podejmują decyzje z konsekwencjami podatkowymi.", "od 890 zł", "netto / mies.", False,
+         ["<b>5 godzin</b> doradztwa miesięcznie", "Wszystko z pakietu „Wsparcie Twojej księgowości”", "Spotkanie podatkowe raz na kwartał", "Planowanie wypłat ze spółki i inwestycji", "Pierwszeństwo terminów w sprawach pilnych", "Odpowiedź w ciągu 1 dnia roboczego"]),
     ]
     vhtml = []
     for t, f, price, unit, feat, li in variants:
@@ -475,7 +476,7 @@ def build_abonamenty():
         <p class="for">{f}</p>
         <div class="price"><b>{price}</b><span class="unit">{unit}</span></div>
         <ul>{"".join(f"<li>{x}</li>" for x in li)}</ul>
-        <a class="btn {btn}" href="{p}kontakt/#rezerwacja">Zapytaj o ten wariant</a>
+        <a class="btn {btn}" href="{p}kontakt/#rezerwacja">Wybieram ten pakiet</a>
       </article>''')
     svc = [
         ("konsultacja", "02", "Konsultacja indywidualna", "Jednorazowa rozmowa o konkretnej sprawie, bez umowy na stałe. Dobra na początek współpracy albo dla osób, które nie prowadzą działalności, np. przy sprzedaży mieszkania czy działki.", "od 400 zł", "netto za godzinę · pierwsze 20 minut bezpłatnie",
@@ -502,7 +503,7 @@ def build_abonamenty():
     body = header(p, "abonamenty/") + page_hero(
         p, "Abonamenty", "Abonamenty i ceny",
         "Stała obsługa podatkowa <em>od 369 zł</em> miesięcznie",
-        "Cztery sposoby współpracy: stały abonament w trzech wariantach, konsultacja indywidualna, prowadzenie postępowań i kontroli oraz sprawy przed sądami administracyjnymi. W każdej sprawie pracuje dwóch doradców podatkowych.",
+        "Cztery sposoby współpracy: abonament doradztwa podatkowego w trzech pakietach, konsultacja indywidualna, prowadzenie postępowań i kontroli oraz sprawy przed sądami administracyjnymi. W każdej sprawie pracuje dwóch doradców podatkowych.",
         fx="wave") + f'''
 <section class="section" id="przeglad" aria-labelledby="ov-h">
   <div class="wrap">
@@ -514,10 +515,16 @@ def build_abonamenty():
 
 <section class="section bg-paper2" id="stala-obsluga" aria-labelledby="so-h">
   <div class="wrap">
-{section_head("01 · Stała obsługa", "Stała obsługa podatkowa w trzech wariantach", "Dzwonisz albo piszesz, kiedy masz pytanie, zanim podpiszesz umowę, wystawisz fakturę czy wypłacisz pieniądze ze spółki. Odpowiada doradca podatkowy, nie infolinia.", "so-h")}    <div class="variants">
+{section_head("01 · Stała obsługa", "Pakiety doradztwa podatkowego", "Dzwonisz albo piszesz, kiedy masz pytanie, zanim podpiszesz umowę, wystawisz fakturę czy wypłacisz pieniądze ze spółki. Odpowiada doradca podatkowy, nie infolinia.", "so-h")}    <div class="variants">
 {chr(10).join(vhtml)}
     </div>
-    <p class="fine">Ceny netto, do których dolicza się 23% VAT. Umowa na czas nieokreślony z miesięcznym okresem wypowiedzenia. Ostateczną cenę ustalamy po rozmowie o skali działalności i zakresie obsługi.</p>
+    <div class="pkg-perks">
+      <div><b>Bez długich zobowiązań</b><span>Miesięczny okres wypowiedzenia, bez umów na 12 miesięcy.</span></div>
+      <div><b>Godziny nie przepadają</b><span>Niewykorzystany czas przechodzi na kolejny miesiąc.</span></div>
+      <div><b>Dwóch doradców</b><span>W każdym pakiecie Twoją firmę znają dwaj doradcy podatkowi.</span></div>
+      <div><b>Rabat dla abonentów</b><span>Postępowania, kontrole i sprawy sądowe taniej dla stałych klientów.</span></div>
+    </div>
+    <p class="fine">Ceny netto, do których dolicza się 23% VAT. Czas pracy liczymy w 15-minutowych odcinkach. Ostateczną cenę potwierdzamy po krótkiej rozmowie o skali działalności.</p>
   </div>
 </section>
 
