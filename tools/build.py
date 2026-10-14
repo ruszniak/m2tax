@@ -309,8 +309,8 @@ def duo_section(p, show_link=True, portraits=False):
         <figcaption>Michał Ruszniak · Marcin Otręba<span>doradcy podatkowi nr 15009 i 14609</span></figcaption>
       </figure>'''
     else:
-        visual = f'''      <figure class="duo-photo">
-        <img src="{p}img/doradcy-togi.jpg" alt="Doradcy podatkowi Michał Ruszniak i Marcin Otręba w togach" width="1200" height="896" loading="lazy">
+        visual = f'''      <figure class="duo-blend">
+        <img src="{p}img/doradcy-togi-2.jpg" alt="Doradcy podatkowi Michał Ruszniak i Marcin Otręba w togach" width="1000" height="1200" loading="lazy">
         <figcaption>Michał Ruszniak · Marcin Otręba<span>doradcy podatkowi nr 15009 i 14609</span></figcaption>
       </figure>'''
     return f'''<section class="section dark" aria-labelledby="duo-h">
