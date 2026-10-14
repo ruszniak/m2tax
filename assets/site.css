@@ -502,3 +502,38 @@ footer a:hover{color:#fff}
 .spec-grid.three{grid-template-columns:repeat(3,minmax(0,1fr))}
 @media (max-width:980px){.variants.two{grid-template-columns:1fr;max-width:620px}.spec-grid.three{grid-template-columns:repeat(2,minmax(0,1fr))}}
 @media (max-width:560px){.spec-grid.three{grid-template-columns:1fr}}
+
+/* ===== Godło 3D w nagłówku strony głównej ===== */
+.emblem{position:relative;align-self:center;min-width:0;height:clamp(380px,42vw,520px);perspective:1100px;margin-bottom:clamp(24px,4vw,56px)}
+.em-stage{position:absolute;inset:0;transform-style:preserve-3d;transition:transform .25s ease-out;transform:rotateX(var(--rx,6deg)) rotateY(var(--ry,-10deg))}
+.em-para{position:absolute;right:-2%;top:-14%;font-family:Georgia,"Times New Roman",serif;font-size:clamp(220px,26vw,360px);line-height:1;color:transparent;
+  -webkit-text-stroke:2px rgba(217,185,142,.8);background:linear-gradient(160deg,rgba(217,185,142,.35),rgba(217,185,142,0) 70%);-webkit-background-clip:text;background-clip:text;
+  transform:translateZ(-120px);text-shadow:0 0 60px rgba(217,185,142,.15);user-select:none}
+.em-seal{position:absolute;left:2%;bottom:2%;width:clamp(150px,17vw,210px);color:#D9B98E;transform:translateZ(-60px);animation:emspin 40s linear infinite;font-family:var(--f-mono)}
+@keyframes emspin{to{transform:translateZ(-60px) rotate(360deg)}}
+.em-card{position:absolute;left:50%;top:50%;width:min(78%,380px);padding:34px 30px 26px;border-radius:20px;transform:translate(-50%,-50%) translateZ(70px);
+  background:linear-gradient(145deg,rgba(255,255,255,.10),rgba(255,255,255,.03));border:1px solid rgba(217,185,142,.35);
+  -webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px);box-shadow:0 40px 80px -30px rgba(0,0,0,.8),inset 0 1px 0 rgba(255,255,255,.15);text-align:center}
+.em-card::before{content:"";position:absolute;inset:0;border-radius:inherit;background:linear-gradient(115deg,transparent 30%,rgba(255,255,255,.07) 45%,transparent 60%);background-size:250% 100%;animation:emshine 6s ease-in-out infinite;pointer-events:none}
+@keyframes emshine{0%,100%{background-position:120% 0}50%{background-position:-20% 0}}
+.em-card img{width:100%;height:auto}
+.em-sub{display:block;margin-top:14px;padding-top:14px;border-top:1px solid rgba(217,185,142,.25);font-family:var(--f-display);font-size:12.5px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:#D9B98E}
+.em-doc{position:absolute;width:150px;padding:16px 16px 18px;border-radius:10px;background:#F4EFE7;box-shadow:0 26px 50px -24px rgba(0,0,0,.8);display:grid;gap:7px}
+.em-doc span{font-family:var(--f-mono);font-size:10.5px;letter-spacing:.12em;color:#7A5A37;font-weight:500}
+.em-doc i{display:block;height:5px;border-radius:3px;background:#D8CBB6}
+.em-doc i:nth-child(3){width:80%}.em-doc i:last-child{width:55%}
+.em-doc-a{left:4%;top:8%;transform:translateZ(10px) rotate(-9deg);animation:emfloat 7s ease-in-out infinite}
+.em-doc-b{right:4%;bottom:2%;transform:translateZ(-20px) rotate(7deg);animation:emfloat 8s ease-in-out -2s infinite;opacity:.9}
+@keyframes emfloat{0%,100%{translate:0 0}50%{translate:0 -12px}}
+.em-chip{position:absolute;padding:8px 14px;border-radius:999px;font-family:var(--f-display);font-weight:700;font-size:12.5px;white-space:nowrap;color:#F2F1EE;
+  background:rgba(32,34,38,.85);border:1px solid rgba(217,185,142,.35);box-shadow:0 14px 30px -16px rgba(0,0,0,.8);animation:emfloat 6s ease-in-out infinite}
+.em-chip::before{content:"";display:inline-block;width:7px;height:7px;border-radius:50%;background:#D9B98E;margin-right:8px;vertical-align:1px}
+.c1{left:-2%;top:44%;transform:translateZ(120px);animation-delay:-1s}
+.c2{right:-2%;top:22%;transform:translateZ(110px);animation-delay:-3s}
+.c3{right:-3%;top:58%;transform:translateZ(140px);animation-delay:-2s}
+.c4{left:20%;top:0;transform:translateZ(90px);animation-delay:-4s}
+.c5{left:14%;bottom:4%;transform:translateZ(130px);animation-delay:-5s;background:#D9B98E;color:#1D1A16}
+.c5::before{background:#1D1A16}
+@media (max-width:880px){.emblem{height:360px;max-width:520px;width:100%}.em-chip{font-size:11.5px}.c1{left:0}.c2{right:0}}
+@media (max-width:480px){.emblem{height:320px}.c4,.c3{display:none}.c1{display:none}.em-doc-b{bottom:-4%;right:0}.em-card{padding:24px 20px 18px}.em-stage{--rx:4deg;--ry:-6deg}}
+@media (prefers-reduced-motion:reduce){.em-seal,.em-card::before,.em-doc,.em-chip{animation:none}}

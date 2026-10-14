@@ -102,3 +102,13 @@
     });
   }
 })();
+
+/* Godło 3D: przechylanie za myszką */
+(function(){
+  var em=document.getElementById('emblem'); if(!em) return;
+  if(window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  var host=em.closest('.hero')||document.body, st=em.querySelector('.em-stage');
+  host.addEventListener('pointermove',function(e){ var r=em.getBoundingClientRect(), x=(e.clientX-(r.left+r.width/2))/r.width, y=(e.clientY-(r.top+r.height/2))/r.height;
+    st.style.setProperty('--ry',(-10+x*16).toFixed(2)+'deg'); st.style.setProperty('--rx',(6-y*12).toFixed(2)+'deg'); });
+  host.addEventListener('pointerleave',function(){ st.style.removeProperty('--ry'); st.style.removeProperty('--rx'); });
+})();
