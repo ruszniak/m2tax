@@ -25,7 +25,7 @@ TOWNS = [
     ("Środa Śląska", "powiat średzki"),
     ("Trzebnica", "powiat trzebnicki"),
 ]
-NAV = [("abonamenty/", "Abonamenty"), ("specjalizacje/", "Specjalizacje"), ("zespol/", "Zespół"), ("kontakt/", "Kontakt")]
+NAV = [("abonamenty/", "Abonamenty"), ("dla-biur-rachunkowych/", "Dla biur rachunkowych"), ("specjalizacje/", "Specjalizacje"), ("zespol/", "Zespół"), ("kontakt/", "Kontakt")]
 
 PIN = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s-7-6.2-7-11.5A7 7 0 0 1 19 9.5C19 14.8 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.5"/></svg>'
 PHONE = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2z"/></svg>'
@@ -394,6 +394,14 @@ def build_home():
 </section>
 
 {duo_section(p, portraits=True)}
+<section class="section" aria-label="Dla biur rachunkowych" style="padding-bottom:0">
+  <div class="wrap">
+    <div class="cta-band">
+      <div><span class="eyebrow">Dla biur rachunkowych</span><h3 style="margin-top:8px">Prowadzisz biuro rachunkowe? Zostań naszym partnerem</h3><p>Stałe wsparcie doradców podatkowych dla Twojego zespołu, wdrożenie JPK CIT i pomoc przy kontrolach Twoich klientów. Od 419 zł netto miesięcznie.</p></div>
+      <div class="hero-cta"><a class="btn btn-primary" href="dla-biur-rachunkowych/">Zobacz ofertę dla biur</a></div>
+    </div>
+  </div>
+</section>
 <section class="section bg-paper2" id="specjalizacje" aria-labelledby="spec-h">
   <div class="wrap">
 {section_head("Specjalizacje", "W czym pomagamy najczęściej", "Interpretacje, kontrole i czynności sprawdzające to nasza codzienność. Do tego wypłata pieniędzy ze spółki, restrukturyzacje, fundacje rodzinne i nieruchomości.", "spec-h")}    <div class="spec-grid">
@@ -752,6 +760,104 @@ def build_kontakt():
     return h + body + footer(p, zoho=True)
 
 
+
+def build_biura():
+    p = "../"
+    h = head(p, "Doradca podatkowy dla biur rachunkowych — wsparcie i JPK CIT | M2 TAX Wrocław",
+             "Stałe wsparcie doradców podatkowych dla biur rachunkowych od 419 zł netto miesięcznie: konsultacje dla księgowych, wdrożenie JPK CIT (JPK_KR_PD, JPK_ST_KR), KSeF, czynności sprawdzające i kontrole klientów biura, interpretacje.",
+             "dla-biur-rachunkowych/")
+    pains = [
+        ("Trudne pytanie od klienta", "Wypłata ze spółki, sprzedaż działki, estoński CIT, ulga B+R. Klient pyta, a odpowiedź musi być pewna i szybka."),
+        ("Wezwanie z urzędu u klienta", "Czynności sprawdzające, kontrola albo postępowanie. Księgowa nie może być pełnomocnikiem w sporze z urzędem, doradca podatkowy tak."),
+        ("Nowe obowiązki co roku", "JPK CIT, KSeF, zmiany w VAT i PIT. Zespół musi wdrożyć je u wszystkich klientów naraz, bez przestojów."),
+        ("Odpowiedzialność biura", "Błąd w kwalifikacji podatkowej to ryzyko dla klienta i dla biura. Opinia doradcy podatkowego daje podkładkę."),
+    ]
+    helps = [
+        ("art. 2 ustawy o doradztwie podatkowym", "Stała obsługa doradcza zespołu", "Twoje księgowe dzwonią i piszą do nas bezpośrednio. Odpowiadamy konkretnie, z podstawą prawną, tak żeby można było od razu zaksięgować albo odpowiedzieć klientowi.", ["Konsultacje telefoniczne, mailowe i na wideo", "Trudne księgowania, VAT, CIT, PIT, ryczałt", "Krótkie notatki z podstawą prawną do akt klienta"]),
+        ("JPK_KR_PD · JPK_ST_KR", "Wdrożenie JPK CIT", "Pomagamy przygotować biuro i klientów do przesyłania ksiąg w strukturach JPK CIT. Przechodzimy z zespołem przez plan kont, znaczniki podatkowe i ewidencję środków trwałych.", ["Analiza, których klientów i od kiedy obejmuje obowiązek", "Mapowanie znaczników podatkowych na kontach", "Test pliku i uzgodnienie z CIT-8 przed wysyłką"]),
+        ("KSeF · VAT · JPK_VAT", "KSeF i bieżące zmiany", "Tłumaczymy nowe przepisy na praktykę biura: co zmienić w procesach, o co zapytać klientów i jak uniknąć błędów w pierwszych miesiącach.", ["Krótkie szkolenia dla zespołu", "Odpowiedzi na pytania wdrożeniowe", "Wzory komunikatów do klientów biura"]),
+        ("art. 272–274c, 282b Ordynacji", "Wezwania i kontrole Twoich klientów", "Gdy klient biura dostaje wezwanie albo kontrolę, przejmujemy kontakt z urzędem jako pełnomocnik, a Ty dalej prowadzisz księgi.", ["Odpowiedzi na wezwania w czynnościach sprawdzających", "Pełnomocnictwo w kontrolach US i KAS", "Odwołania, skargi do WSA i NSA"]),
+        ("art. 14b Ordynacji podatkowej", "Interpretacje i opinie", "Przygotowujemy wnioski o interpretacje indywidualne i opinie podatkowe dla klientów biura, gdy sprawa jest niejednoznaczna.", ["Interpretacje indywidualne i WIS", "Opinie przed transakcją", "Przegląd ryzyk przed zamknięciem roku"]),
+        ("sukcesja · restrukturyzacja", "Większe projekty klientów", "Przekształcenia, fundacje rodzinne, estoński CIT czy sprzedaż firmy. Prowadzimy projekt podatkowy, a biuro dostaje gotowe wytyczne do ksiąg.", ["Przekształcenie JDG w spółkę", "Fundacja rodzinna i sukcesja", "Wybór formy opodatkowania"]),
+    ]
+    pkgs = [
+        ("Biuro Partner", "Dla małych i średnich biur, które chcą mieć doradcę podatkowego pod telefonem dla całego zespołu.", "od 419 zł", "netto / mies.", True,
+         ["<b>2 godziny</b> doradztwa miesięcznie dla całego zespołu", "Bezpośredni kontakt każdej księgowej z doradcą", "Odpowiedź w ciągu 1 dnia roboczego", "Notatki z podstawą prawną do akt klienta", "Niewykorzystane godziny przechodzą na kolejny miesiąc", "Rabat na interpretacje, kontrole i sprawy klientów biura"]),
+        ("Biuro Plus i wdrożenie JPK CIT", "Dla większych biur i na czas wdrożenia JPK CIT albo KSeF u wielu klientów.", "wycena", "indywidualna", False,
+         ["Większa pula godzin dopasowana do biura", "Wdrożenie JPK CIT: plan kont, znaczniki, test plików", "Szkolenie zespołu w biurze albo online", "Wsparcie przy pierwszych wysyłkach plików", "Stały kontakt z dwoma doradcami podatkowymi"]),
+    ]
+    pk = []
+    for t, f, price, unit, feat, li in pkgs:
+        badge = '<span class="badge">Dla biur rachunkowych</span>' if feat else ""
+        pk.append(f'''      <article class="variant{' featured' if feat else ''}">{badge}
+        <h3>{t}</h3>
+        <p class="for">{f}</p>
+        <div class="price"><b>{price}</b><span class="unit">{unit}</span></div>
+        <ul>{"".join(f"<li>{x}</li>" for x in li)}</ul>
+        <a class="btn {'btn-primary' if feat else 'btn-ghost'}" href="{p}kontakt/#rezerwacja">Umów rozmowę dla biura</a>
+      </article>''')
+    body = header(p, "dla-biur-rachunkowych/") + page_hero(
+        p, "Dla biur rachunkowych", "Dla biur rachunkowych",
+        "Doradca podatkowy <em>dla Twojego biura</em> rachunkowego",
+        "Stałe wsparcie dla zespołu księgowych, wdrożenie JPK CIT, KSeF i pomoc przy wezwaniach i kontrolach Twoich klientów. Ty prowadzisz księgi, my bierzemy na siebie trudne tematy podatkowe. Od 419 zł netto miesięcznie.",
+        fx="grid") + f'''
+<section class="section" aria-labelledby="pain-h">
+  <div class="wrap">
+{section_head("Znamy to z praktyki", "Z czym biura przychodzą do nas najczęściej", "", "pain-h")}    <div class="steps">
+{chr(10).join(f'      <div class="step"><h3>{t}</h3><p>{d}</p></div>' for t, d in pains)}
+    </div>
+  </div>
+</section>
+
+<section class="section bg-paper2" aria-labelledby="help-h">
+  <div class="wrap">
+{section_head("Jak pomagamy", "Wszystkie tematy podatkowe Twojego biura w jednym miejscu", "Jesteś pierwszą linią kontaktu z klientem. My jesteśmy zapleczem doradczym, które odpowiada na trudne pytania i staje za biurem w sporze z urzędem.", "help-h")}    <div class="spec-grid three">
+{chr(10).join(spec_card(*x) for x in helps)}
+    </div>
+  </div>
+</section>
+
+<section class="section dark" aria-labelledby="jpk-h">
+  <canvas class="fx3d" data-fx="grid" aria-hidden="true"></canvas>
+  <div class="wrap">
+    <div class="duo">
+      <div>
+        <span class="eyebrow">JPK CIT</span>
+        <h2 id="jpk-h" style="font-size:clamp(28px,3.6vw,42px);font-weight:800;color:#fff;margin-top:14px">Wdrożenie JPK CIT bez nerwów w biurze</h2>
+        <p class="lede" style="margin-top:16px">Struktury JPK_KR_PD i JPK_ST_KR pokażą urzędowi całe księgi i znaczniki podatkowe na kontach. Przygotujemy biuro tak, żeby pierwsze pliki przeszły bez korekt i bez pytań z urzędu.</p>
+      </div>
+      <ol class="flow" style="grid-template-columns:1fr 1fr">
+        <li><b>Diagnoza</b><span>Ustalamy, których klientów i od którego roku obejmuje obowiązek.</span></li>
+        <li><b>Plan kont i znaczniki</b><span>Przypisujemy znaczniki podatkowe do kont razem z Twoim zespołem.</span></li>
+        <li><b>Środki trwałe</b><span>Sprawdzamy ewidencję pod strukturę JPK_ST_KR.</span></li>
+        <li><b>Test i uzgodnienie</b><span>Porównujemy plik testowy z CIT-8, zanim zrobi to urząd.</span></li>
+      </ol>
+    </div>
+  </div>
+</section>
+
+<section class="section bg-paper2" id="pakiet" aria-labelledby="pkg-h">
+  <div class="wrap">
+{section_head("Pakiet dla biur", "Stałe wsparcie od 419 zł netto miesięcznie", "Jeden abonament dla całego zespołu. Bez umów na rok, z miesięcznym okresem wypowiedzenia.", "pkg-h")}    <div class="variants two">
+{chr(10).join(pk)}
+    </div>
+    <div class="pkg-perks">
+      <div><b>Twoi klienci zostają u Ciebie</b><span>Działamy jako zaplecze biura. Nie przejmujemy Twoich klientów.</span></div>
+      <div><b>Dwóch doradców</b><span>Twoje biuro znają dwaj doradcy podatkowi, więc zawsze ktoś odbierze.</span></div>
+      <div><b>Bez umów na rok</b><span>Miesięczny okres wypowiedzenia.</span></div>
+      <div><b>Pełnomocnik dla klienta</b><span>W sporze z urzędem reprezentujemy klienta biura przed US, KAS i sądami.</span></div>
+    </div>
+    <p class="fine">Ceny netto, do których dolicza się 23% VAT. Czas pracy liczymy w 15-minutowych odcinkach. Sprawy klientów biura, takie jak kontrole czy interpretacje, wyceniamy osobno z rabatem dla biur partnerskich.</p>
+  </div>
+</section>
+
+<section class="section" aria-label="Umów spotkanie">
+  <div class="wrap">
+{cta_band(p, "Porozmawiajmy o współpracy z Twoim biurem", "W ciągu bezpłatnych 20 minut opowiesz nam o biurze i klientach, a my zaproponujemy zakres wsparcia i cenę.")}  </div>
+</section>
+'''
+    return h + body + footer(p)
+
 def write(rel, html):
     path = os.path.join(ROOT, rel)
     os.makedirs(os.path.dirname(path), exist_ok=True)
@@ -761,7 +867,7 @@ def write(rel, html):
 
 
 def sitemap():
-    urls = ["", "abonamenty/", "specjalizacje/", "zespol/", "kontakt/", "polityka-prywatnosci.html", "aml.html"]
+    urls = ["", "abonamenty/", "dla-biur-rachunkowych/", "specjalizacje/", "zespol/", "kontakt/", "polityka-prywatnosci.html", "aml.html"]
     x = '<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n' + \
         "".join(f"  <url><loc>{SITE}/{u}</loc></url>\n" for u in urls) + "</urlset>\n"
     write("sitemap.xml", x)
@@ -774,4 +880,5 @@ if __name__ == "__main__":
     write("specjalizacje/index.html", build_specjalizacje())
     write("zespol/index.html", build_zespol())
     write("kontakt/index.html", build_kontakt())
+    write("dla-biur-rachunkowych/index.html", build_biura())
     sitemap()

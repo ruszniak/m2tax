@@ -46,7 +46,7 @@ p{margin:0}
 .btn-ghost:hover{border-color:var(--accent);color:var(--accent)}
 
 /* Ciemne sekcje: złoty akcent jak na rkdp.pl */
-.hero,.dark,.bk-section,footer,.callcard,.urgent,.free{--accent:#D9B98E;--accent-deep:#C9A676;--accent-ink:#1D1A16}
+.hero,.page-hero,.dark,.bk-section,footer,.callcard,.urgent,.free{--accent:#D9B98E;--accent-deep:#C9A676;--accent-ink:#1D1A16}
 .bk-card{--accent:#7A5A37;--accent-deep:#5C4228;--accent-ink:#F8F5F0}
 
 /* Header */
@@ -497,3 +497,8 @@ footer a:hover{color:#fff}
 @media (max-width:980px){.pkg-perks{grid-template-columns:1fr 1fr}}
 @media (max-width:520px){.pkg-perks{grid-template-columns:1fr}}
 .variant li b{color:var(--text)}
+
+.variants.two{grid-template-columns:repeat(2,minmax(0,1fr));max-width:900px}
+.spec-grid.three{grid-template-columns:repeat(3,minmax(0,1fr))}
+@media (max-width:980px){.variants.two{grid-template-columns:1fr;max-width:620px}.spec-grid.three{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:560px){.spec-grid.three{grid-template-columns:1fr}}
