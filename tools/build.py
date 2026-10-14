@@ -462,10 +462,10 @@ def build_abonamenty():
     variants = [
         ("Doradztwo podatkowe", "Dla przedsiębiorców i małych firm, które chcą mieć doradcę podatkowego pod telefonem.", "od 369 zł", "netto / mies.", False,
          ["<b>2 godziny</b> doradztwa miesięcznie", "Pytania telefonicznie, mailowo i na wideo", "Odpowiedź w ciągu 2 dni roboczych", "Analiza umów i transakcji przed podpisaniem", "Przegląd pism z urzędu i plan działania", "Dwóch doradców znających Twoją firmę"]),
-        ("Wsparcie Twojej księgowości", "Dla firm z własną księgową lub biurem rachunkowym. Twoja księgowa ma bezpośredni kontakt z doradcą podatkowym.", "od 590 zł", "netto / mies.", True,
+        ("Doradztwo podatkowe + Wsparcie Twojej księgowości", "Dla firm z własną księgową lub biurem rachunkowym. Twoja księgowa ma bezpośredni kontakt z doradcą podatkowym.", "od 590 zł", "netto / mies.", True,
          ["<b>3 godziny</b> doradztwa miesięcznie", "Twoja księgowa pisze i dzwoni do nas bezpośrednio", "Konsultowanie trudnych księgowań i rozliczeń VAT", "Przegląd kluczowych pozycji przed zeznaniem rocznym", "Odpowiedzi na wezwania w czynnościach sprawdzających", "Odpowiedź w ciągu 1 dnia roboczego"]),
         ("Doradztwo Biznes", "Dla spółek i firm rodzinnych, które regularnie podejmują decyzje z konsekwencjami podatkowymi.", "od 890 zł", "netto / mies.", False,
-         ["<b>5 godzin</b> doradztwa miesięcznie", "Wszystko z pakietu „Wsparcie Twojej księgowości”", "Spotkanie podatkowe raz na kwartał", "Planowanie wypłat ze spółki i inwestycji", "Pierwszeństwo terminów w sprawach pilnych", "Odpowiedź w ciągu 1 dnia roboczego"]),
+         ["<b>5 godzin</b> doradztwa miesięcznie", "Wszystko z pakietu „Doradztwo podatkowe + Wsparcie Twojej księgowości”", "Spotkanie podatkowe raz na kwartał", "Planowanie wypłat ze spółki i inwestycji", "Pierwszeństwo terminów w sprawach pilnych", "Odpowiedź w ciągu 1 dnia roboczego"]),
     ]
     vhtml = []
     for t, f, price, unit, feat, li in variants:
