@@ -552,8 +552,17 @@ footer a:hover{color:#fff}
 .fab:hover{transform:translateY(-2px);box-shadow:0 14px 34px -8px rgba(0,0,0,.5)}
 .fab:focus-visible{outline:3px solid #D9B98E;outline-offset:3px}
 .wa-fab{background:#25D366}.wa-fab:hover{background:#1ebe5b}
-.tel-fab{background:var(--accent,#7A5A37);box-shadow:0 10px 28px -8px rgba(0,0,0,.45),0 0 0 2px rgba(217,185,142,.35)}.tel-fab:hover{background:var(--accent-deep,#5C4228)}
+.tel-fab{background:#16171a;color:#D9B98E;box-shadow:0 10px 28px -8px rgba(0,0,0,.55),0 0 0 2px #D9B98E}.tel-fab:hover{background:#202226}
 .fab .wa-label{max-width:0;overflow:hidden;white-space:nowrap;transition:max-width .3s ease}
 .fab:hover .wa-label,.fab:focus-visible .wa-label{max-width:240px;padding-right:4px}
 @media (max-width:560px){.fab-stack{right:14px;bottom:14px;gap:10px}.fab{height:52px;padding:0 12px}.fab-stack.with-chat{bottom:86px}}
 @media print{.fab-stack{display:none}}
+
+/* Telefon: prosta, płaska wersja emblematu (bez 3D i rozmycia, które iOS renderuje z artefaktami) */
+@media (max-width:880px){
+  .emblem{height:auto;perspective:none;margin:8px auto 8px;padding:30px 0 10px;max-width:440px}
+  .em-stage{position:relative;inset:auto;transform:none!important;transform-style:flat}
+  .em-seal,.em-doc,.em-chip,.em-para,.em-card::before{display:none}
+  .em-para{right:-4%;top:-18%;transform:none;font-size:200px;opacity:.55}
+  .em-card{position:relative;left:auto;top:auto;transform:none;width:100%;-webkit-backdrop-filter:none;backdrop-filter:none;background:linear-gradient(145deg,#24262b,#1b1c20);padding:28px 24px 22px}
+}
