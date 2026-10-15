@@ -25,7 +25,7 @@ SALESIQ_HOST = "https://salesiq.zohopublic.eu"
 ZOHO_EMBED = "https://m2taxdoradcypodatkowi.zohobookings.eu/portal-embed#/m2taxdoradcypodatkowi"
 ZOHO_PUBLIC = "https://m2taxdoradcypodatkowi.zohobookings.eu/#/m2taxdoradcypodatkowi"
 TOWNS = [
-    ("Wrocław", "kancelaria przy ul. Zwycięskiej 3"),
+    ("Wrocław", "kancelarie przy ul. Zwycięskiej 3 i ul. Artemskiej 11"),
     ("Siechnice", "gmina Siechnice"),
     ("Kobierzyce", "gmina Kobierzyce"),
     ("Żórawina", "gmina Żórawina"),
@@ -174,7 +174,8 @@ window.addEventListener('load', function(){{
         <li><a href="tel:{TEL2}">{TEL2_H}</a></li>
         <li><a href="mailto:{MAIL}">{MAIL}</a></li>
         <li><a href="{wa_link()}" target="_blank" rel="noopener">Napisz na WhatsApp</a></li>
-        <li>ul. Zwycięska 3<br>53-033 Wrocław</li>
+        <li>ul. Zwycięska 3, 53-033 Wrocław</li>
+        <li>ul. Beaty Artemskiej 11/44, 52-234 Wrocław</li>
       </ul>
     </div>
     <div>
@@ -298,7 +299,7 @@ FAQ_HOME = [
     ("Dlaczego Waszą sprawą zajmuje się dwóch doradców?", "Każda sprawa przechodzi przez ręce dwóch doradców podatkowych. Obaj znają Twoją sytuację, więc zawsze masz z kim porozmawiać, także w czasie urlopu czy rozprawy jednego z nas. Ważne pisma i opinie sprawdza drugi doradca."),
     ("Mam kontrolę z urzędu skarbowego. Co robić?", "Zachować spokój i zadzwonić do doradcy. Doradca podatkowy może reprezentować Cię przed US i KAS, w postępowaniu podatkowym, czynnościach sprawdzających i przed sądami administracyjnymi."),
     ("Ile kosztują usługi doradcy podatkowego?", "Stała obsługa w abonamencie kosztuje od 369 zł netto miesięcznie, a konsultacja indywidualna od 400 zł netto za godzinę. Postępowania, kontrole i sprawy sądowe wyceniamy po zapoznaniu się z pismami. Pierwsze 20 minut rozmowy jest bezpłatne."),
-    ("Czy obsługujecie klientów spoza Wrocławia?", "Tak. Na co dzień pracujemy z klientami z Wrocławia, Siechnic, Kobierzyc, Żórawiny, Środy Śląskiej i Trzebnicy. Spotkania odbywają się w kancelarii przy ul. Zwycięskiej 3 albo online, a pełnomocnikiem możemy być przed każdym urzędem i sądem w Polsce."),
+    ("Czy obsługujecie klientów spoza Wrocławia?", "Tak. Na co dzień pracujemy z klientami z Wrocławia, Siechnic, Kobierzyc, Żórawiny, Środy Śląskiej i Trzebnicy. Spotkania odbywają się w kancelarii przy ul. Zwycięskiej 3 lub ul. Artemskiej 11, u klienta w firmie albo online, a pełnomocnikiem możemy być przed każdym urzędem i sądem w Polsce."),
     ("Ile trwa uzyskanie interpretacji indywidualnej?", "Dyrektor KIS ma 3 miesiące od wpływu kompletnego wniosku. Opłata to 40 zł od każdego stanu faktycznego lub zdarzenia przyszłego. Brak interpretacji w terminie oznacza, że stanowisko wnioskodawcy uznaje się za prawidłowe."),
 ]
 
@@ -493,7 +494,7 @@ def build_home():
 
 <section class="section" id="obszar" aria-labelledby="area-h">
   <div class="wrap">
-{section_head("Zakres działania", "Doradca podatkowy we Wrocławiu i okolicach", "Spotykamy się w kancelarii przy ul. Zwycięskiej 3 we Wrocławiu albo online.", "area-h")}    <div class="towns">
+{section_head("Zakres działania", "Doradca podatkowy we Wrocławiu i okolicach", "Spotykamy się w kancelarii przy ul. Zwycięskiej 3 lub ul. Artemskiej 11 we Wrocławiu, u Ciebie w firmie albo online.", "area-h")}    <div class="towns">
 {towns_html()}
     </div>
     <p class="area-note">Pełnomocnikiem możemy być przed każdym urzędem skarbowym, KAS i sądem administracyjnym w Polsce, więc z naszych usług korzystają też klienci spoza Dolnego Śląska.</p>
@@ -542,7 +543,7 @@ def build_abonamenty():
       </article>''')
     svc = [
         ("konsultacja", "02", "Konsultacja indywidualna", "Jednorazowa rozmowa o konkretnej sprawie, bez umowy na stałe. Dobra na początek współpracy albo dla osób, które nie prowadzą działalności, np. przy sprzedaży mieszkania czy działki.", "od 400 zł", "netto za godzinę · pierwsze 20 minut bezpłatnie",
-         ["Spotkanie w kancelarii przy ul. Zwycięskiej 3 albo online", "Analiza dokumentów przed spotkaniem", "Konkretne wnioski i dalsze kroki na piśmie", "Wycena dalszej pracy, jeśli będzie potrzebna"]),
+         ["Spotkanie w kancelarii, u Ciebie w firmie albo online", "Analiza dokumentów przed spotkaniem", "Konkretne wnioski i dalsze kroki na piśmie", "Wycena dalszej pracy, jeśli będzie potrzebna"]),
         ("postepowania", "03", "Prowadzenie postępowań i kontroli", "Działamy jako Twój pełnomocnik od pierwszego pisma. Prowadzimy korespondencję z urzędem, uczestniczymy w czynnościach i budujemy materiał dowodowy na wypadek sporu.", "wycena indywidualna", "po zapoznaniu się z pismami z urzędu",
          ["Czynności sprawdzające i odpowiedzi na wezwania", "Kontrole podatkowe w US i kontrole celno-skarbowe KAS", "Postępowania podatkowe, zastrzeżenia do protokołu", "Odwołania od decyzji i zażalenia na postanowienia", "Egzekucja administracyjna: zarzuty, raty, odroczenia"]),
         ("sady", "04", "Postępowania sądowe przed WSA i NSA", "Gdy decyzja urzędu jest ostateczna, sprawa trafia do sądu administracyjnego. Doradca podatkowy może być Twoim pełnomocnikiem zarówno przed WSA, jak i NSA.", "wycena indywidualna", "po analizie decyzji i akt sprawy",
@@ -669,7 +670,7 @@ def build_specjalizacje():
 
 <section class="section bg-paper2" id="obszar" aria-labelledby="area-h">
   <div class="wrap">
-{section_head("Zakres działania", "Wrocław i okolice", "Spotykamy się w kancelarii przy ul. Zwycięskiej 3 we Wrocławiu albo online.", "area-h")}    <div class="towns">
+{section_head("Zakres działania", "Wrocław i okolice", "Spotykamy się w kancelarii przy ul. Zwycięskiej 3 lub ul. Artemskiej 11 we Wrocławiu, u Ciebie w firmie albo online.", "area-h")}    <div class="towns">
 {towns_html()}
     </div>
   </div>
@@ -728,7 +729,7 @@ def build_zespol():
 
 <section class="section" aria-label="Umów spotkanie">
   <div class="wrap">
-{cta_band(p, "Porozmawiaj z nami osobiście", "W kancelarii przy ul. Zwycięskiej 3 we Wrocławiu albo online. Pierwsze 20 minut jest bezpłatne.")}  </div>
+{cta_band(p, "Porozmawiaj z nami osobiście", "W kancelarii przy ul. Zwycięskiej 3 lub ul. Artemskiej 11 we Wrocławiu, u Ciebie w firmie albo online. Pierwsze 20 minut jest bezpłatne.")}  </div>
 </section>
 '''
     return h + body + footer(p)
@@ -749,7 +750,8 @@ def build_kontakt():
       <p class="lede">Wybierz rodzaj spotkania i wolny termin. Potwierdzenie i przypomnienie dostaniesz e-mailem.</p>
       <div class="bk-free"><b>20 min</b><span>pierwsza rozmowa<br>bez opłat</span></div>
       <ul class="bk-points">
-        <li>Online albo w kancelarii przy ul. Zwycięskiej 3</li>
+        <li>Online albo w kancelarii przy ul. Zwycięskiej 3 lub ul. Artemskiej 11</li>
+        <li>Możemy też spotkać się u Ciebie w firmie</li>
         <li>Rozmawiasz bezpośrednio z doradcą podatkowym</li>
       </ul>
       <div class="bk-call">
@@ -776,7 +778,7 @@ def build_kontakt():
       <div class="contact-col">
         <div class="cinfo">
           <div class="cicon">{PIN}</div>
-          <div><h4>Adres</h4><p>ul. Zwycięska 3<br>53-033 Wrocław</p></div>
+          <div><h4>Adresy kancelarii</h4><p>ul. Zwycięska 3<br>53-033 Wrocław</p><p style="margin-top:10px">ul. Beaty Artemskiej 11/44<br>52-234 Wrocław (Jagodno)</p><p style="margin-top:10px">Na życzenie przyjeżdżamy do klienta.</p></div>
         </div>
         <div class="cinfo">
           <div class="cicon">{PHONE}</div>
