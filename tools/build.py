@@ -339,6 +339,29 @@ def sol_cards(p):
     return "\n".join(out)
 
 
+def duo_cinema(p):
+    pts = [("Zawsze ktoś odbierze", "Urlop, rozprawa czy kontrola u innego klienta nie zatrzymują Twojej sprawy."),
+           ("Druga para oczu", "Każde ważne pismo, odwołanie i opinię sprawdza drugi doradca przed wysłaniem."),
+           ("Dwa doświadczenia", "Praktyka biznesowa i lata pracy w administracji skarbowej przy jednym stole.")]
+    items = "\n".join(f'          <div class="cin-pt"><i aria-hidden="true">✓</i><b>{a}</b><span>{b}</span></div>' for a, b in pts)
+    return f'''<section class="cinema" aria-labelledby="duo-h">
+  <div class="cin-bg" role="img" aria-label="Doradcy podatkowi Michał Ruszniak i Marcin Otręba w togach"></div>
+  <div class="wrap">
+    <div class="cin-box">
+      <span class="eyebrow">Nasza zasada</span>
+      <h2 id="duo-h">Każdą sprawą zajmuje się dwóch doradców podatkowych</h2>
+      <p class="lede">Obaj znamy Twoją sprawę i wiemy, co się w niej dzieje. Nie tłumaczysz wszystkiego od nowa nowej osobie.</p>
+      <div class="cin-pts">
+{items}
+      </div>
+      <a class="more-link" href="{p}zespol/">Poznaj doradców →</a>
+    </div>
+  </div>
+  <div class="cin-cap">Michał Ruszniak · Marcin Otręba<span>doradcy podatkowi nr 15009 i 14609</span></div>
+</section>
+'''
+
+
 def duo_section(p, show_link=True, portraits=False):
     link = f'\n        <a class="more-link" href="{p}zespol/" style="color:var(--accent)">Poznaj doradców →</a>' if show_link else ""
     if portraits:
@@ -395,13 +418,10 @@ def build_home():
         <div><b>369 zł</b><span>netto miesięcznie za stałą obsługę</span></div>
       </div>
     </div>
-    <div class="seal" aria-hidden="true">
-      <div class="seal-glow"></div><div class="seal-ring"></div><div class="seal-ring seal-ring2"></div>
-      <svg class="seal-txt" viewBox="0 0 400 400"><defs><path id="sealp" d="M200,200 m-171,0 a171,171 0 1,1 342,0 a171,171 0 1,1 -342,0"/></defs>
-        <text font-size="12.5" fill="currentColor"><textPath href="#sealp" textLength="1068" lengthAdjust="spacing">DORADCY PODATKOWI · NR 15009 · NR 14609 · WROCŁAW · KANCELARIA DORADZTWA PODATKOWEGO · </textPath></text></svg>
-      <span class="seal-tick"></span>
-      <div class="seal-core"><img src="img/logo-light.png" alt="" width="900" height="302"><div class="seal-ln"></div><small>Wrocław</small></div>
-    </div>
+    <figure class="hero-duo">
+      <img src="img/doradcy-duo.jpg" alt="Doradcy podatkowi Michał Ruszniak i Marcin Otręba" width="1000" height="1199" fetchpriority="high">
+      <figcaption>Michał Ruszniak · Marcin Otręba<span>doradcy podatkowi nr 15009 i 14609</span></figcaption>
+    </figure>
   </div>
 </section>
 
@@ -433,7 +453,7 @@ def build_home():
   </div>
 </section>
 
-{duo_section(p, portraits=True)}
+{duo_cinema(p)}
 <section class="section" aria-label="Dla biur rachunkowych" style="padding-bottom:0">
   <div class="wrap">
     <div class="cta-band">
