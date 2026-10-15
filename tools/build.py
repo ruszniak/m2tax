@@ -395,27 +395,12 @@ def build_home():
         <div><b>369 zł</b><span>netto miesięcznie za stałą obsługę</span></div>
       </div>
     </div>
-    <div class="emblem" id="emblem" aria-hidden="true">
-      <div class="em-stage">
-        <span class="em-para">§</span>
-        <svg class="em-seal" viewBox="0 0 200 200">
-          <defs><path id="sealpath" d="M100,100 m-78,0 a78,78 0 1,1 156,0 a78,78 0 1,1 -156,0"/></defs>
-          <circle cx="100" cy="100" r="92" fill="none" stroke="currentColor" stroke-width="1.2" opacity=".55"/>
-          <circle cx="100" cy="100" r="64" fill="none" stroke="currentColor" stroke-width=".8" opacity=".35"/>
-          <text font-size="11.5" letter-spacing="3.2" fill="currentColor"><textPath href="#sealpath">DORADCY PODATKOWI · NR 15009 · NR 14609 · WROCŁAW · </textPath></text>
-        </svg>
-        <div class="em-doc em-doc-b"><span>DECYZJA</span><i></i><i></i><i></i></div>
-        <div class="em-doc em-doc-a"><span>INTERPRETACJA</span><i></i><i></i><i></i><i></i></div>
-        <div class="em-card">
-          <img src="img/logo-light.png" alt="" width="900" height="302">
-          <span class="em-sub">Kancelaria doradztwa podatkowego</span>
-        </div>
-        <span class="em-chip c1">art. 14b · Interpretacje</span>
-        <span class="em-chip c2">Kontrole US i KAS</span>
-        <span class="em-chip c3">WSA · NSA</span>
-        <span class="em-chip c4">VAT · CIT · PIT</span>
-        <span class="em-chip c5">2 doradców w sprawie</span>
-      </div>
+    <div class="seal" aria-hidden="true">
+      <div class="seal-glow"></div><div class="seal-ring"></div><div class="seal-ring seal-ring2"></div>
+      <svg class="seal-txt" viewBox="0 0 400 400"><defs><path id="sealp" d="M200,200 m-171,0 a171,171 0 1,1 342,0 a171,171 0 1,1 -342,0"/></defs>
+        <text font-size="12.5" fill="currentColor"><textPath href="#sealp" textLength="1068" lengthAdjust="spacing">DORADCY PODATKOWI · NR 15009 · NR 14609 · WROCŁAW · KANCELARIA DORADZTWA PODATKOWEGO · </textPath></text></svg>
+      <span class="seal-tick"></span>
+      <div class="seal-core"><img src="img/logo-light.png" alt="" width="900" height="302"><div class="seal-ln"></div><small>Wrocław</small></div>
     </div>
   </div>
 </section>
