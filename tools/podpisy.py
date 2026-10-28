@@ -23,7 +23,7 @@ PEOPLE = [
     dict(slug="marcin-otreba", name="Marcin Otręba", role="Doradca podatkowy", role2="Partner zarządzający",
          wpis="nr wpisu 14609", phone="534 909 534", email="marcin.otreba@m2tax.pl", client="Outlook (Windows)", photo=True),
     dict(slug="michal-ruszniak", name="Michał Ruszniak", role="Doradca podatkowy", role2="Partner zarządzający",
-         wpis="nr wpisu 15009", phone="883 643 565", email="michal.ruszniak@m2tax.pl", client="Gmail"),
+         wpis="nr wpisu 15009", phone="883 643 565", email="michal.ruszniak@m2tax.pl", client="Gmail", photo=True),
     dict(slug="filip-ditrejnowski", name="Filip Ditrejnowski", role="Konsultant podatkowy", role2="",
          wpis="", phone="", email="filip.ditrejnowski@m2tax.pl", client="Gmail", photo=True),
     dict(slug="malgorzata-krysiewicz", name="Małgorzata Krysiewicz", role="Specjalista ds. kadr i płac", role2="",
