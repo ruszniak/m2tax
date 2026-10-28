@@ -60,6 +60,9 @@ def signature(p, photo=False):
                 + logo_img.format(w=150, h=50) + '</td>')
     return f"""<table cellpadding="0" cellspacing="0" border="0" role="presentation" style="border-collapse:collapse;font-family:{FONT};color:{INK};max-width:560px;">
 <tr>
+<td colspan="2" style="padding:0 0 14px 0;font-family:Arial, Helvetica, sans-serif;font-size:13px;line-height:18px;color:#222222;font-weight:normal;">Pozdrawiam serdecznie,</td>
+</tr>
+<tr>
 {left}
 <td valign="top" style="padding:0 0 0 18px;border-left:2px solid {LINE};">
 <div style="font-family:{FONT};font-size:17px;line-height:22px;font-weight:bold;color:{INK};">{e(p['name'])}</div>
