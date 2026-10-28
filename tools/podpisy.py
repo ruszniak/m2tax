@@ -29,7 +29,7 @@ PEOPLE = [
     dict(slug="malgorzata-krysiewicz", name="Małgorzata Krysiewicz", role="Specjalista ds. kadr i płac", role2="",
          wpis="", phone="607 881 353", email="gosia.krysiewicz@m2tax.pl", client=""),
     dict(slug="weronika-gliga", name="Weronika Gliga", role="Księgowa", role2="",
-         wpis="", phone="663 366 546", email="w.rzepkowska@m2tax.pl", client=""),
+         wpis="", phone="663 366 546", email="weronika.rzepkowska@m2tax.pl", client=""),
 ]
 
 
