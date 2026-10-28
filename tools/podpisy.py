@@ -26,6 +26,10 @@ PEOPLE = [
          wpis="nr wpisu 15009", phone="883 643 565", email="michal.ruszniak@m2tax.pl", client="Gmail"),
     dict(slug="filip-ditrejnowski", name="Filip Ditrejnowski", role="Konsultant podatkowy", role2="",
          wpis="", phone="", email="filip.ditrejnowski@m2tax.pl", client="Gmail", photo=True),
+    dict(slug="malgorzata-krysiewicz", name="Małgorzata Krysiewicz", role="Specjalista ds. kadr i płac", role2="",
+         wpis="", phone="607 881 353", email="gosia.krysiewicz@m2tax.pl", client=""),
+    dict(slug="weronika-gliga", name="Weronika Gliga", role="Księgowa", role2="",
+         wpis="", phone="663 366 546", email="w.rzepkowska@m2tax.pl", client=""),
 ]
 
 
@@ -115,7 +119,10 @@ GUIDE_OUTLOOK = """<p><b>Sposób 1 – wklejenie (najprostszy)</b></p>
 def page():
     cards = ""
     for p in PEOPLE:
-        guide = GUIDE_OUTLOOK if p["client"].startswith("Outlook") else GUIDE_GMAIL
+        if not p["client"]:
+            guide = "<p><b>Gmail</b></p>" + GUIDE_GMAIL + "<p><b>Outlook</b></p>" + GUIDE_OUTLOOK.split("<p><b>Sposób 2")[0].replace("marcin.otreba@m2tax.pl", p["email"])
+        else:
+            guide = GUIDE_OUTLOOK if p["client"].startswith("Outlook") else GUIDE_GMAIL
         alt = ""
         if p.get("photo"):
             alt = f"""
@@ -127,14 +134,14 @@ def page():
   </div>"""
         cards += f"""
 <section class="card">
-  <header><h2>{html.escape(p['name'])}</h2><span class="chip">{p['client']}</span></header>
+  <header><h2>{html.escape(p['name'])}</h2>{f'<span class="chip">{p["client"]}</span>' if p['client'] else ''}</header>
   <div class="sig" id="sig-{p['slug']}">{signature(p)}</div>
   <div class="actions">
     <button class="btn" data-target="sig-{p['slug']}">Kopiuj podpis</button>
     <span class="ok" aria-live="polite"></span>
   </div>
 {alt}
-  <details><summary>Jak wstawić w {p['client']}</summary>{guide}</details>
+  <details><summary>Jak wstawić {('w ' + p['client']) if p['client'] else 'w Gmailu lub Outlooku'}</summary>{guide}</details>
 </section>"""
     return f"""<!doctype html>
 <html lang="pl"><head>
