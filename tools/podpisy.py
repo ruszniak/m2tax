@@ -4,7 +4,7 @@
 Uruchom:  python3 tools/podpisy.py
 Tworzy:   podpis/index.html          – strona z podglądem i przyciskiem „Kopiuj podpis”
           podpis/<osoba>.htm          – plik podpisu do folderu Signatures w Outlooku (Windows)
-Obrazy (zdjęcia, logo) leżą w podpis/ i są ładowane z https://www.m2tax.pl/podpis/…
+Logo leżą w podpis/ i są ładowane z https://www.m2tax.pl/podpis/…
 """
 from pathlib import Path
 import html
@@ -51,10 +51,7 @@ def signature(p):
 
     return f"""<table cellpadding="0" cellspacing="0" border="0" role="presentation" style="border-collapse:collapse;font-family:{FONT};color:{INK};max-width:520px;">
 <tr>
-<td valign="top" style="padding:0 18px 0 0;width:96px;">
-<img src="{BASE}{p['slug']}.png" width="96" height="96" alt="{e(p['name'])}" style="display:block;width:96px;height:96px;border:0;">
-</td>
-<td valign="top" style="padding:0 0 0 18px;border-left:2px solid {LINE};">
+<td valign="top" style="padding:0 0 0 14px;border-left:2px solid {LINE};">
 <div style="font-family:{FONT};font-size:17px;line-height:22px;font-weight:bold;color:{INK};">{e(p['name'])}</div>
 <div style="font-family:{FONT};font-size:13px;line-height:19px;font-weight:bold;color:{ACCENT};padding-top:2px;">{title}</div>
 {wpis}
@@ -67,7 +64,7 @@ def signature(p):
 </td>
 </tr>
 <tr>
-<td colspan="2" style="padding:16px 0 0 0;">
+<td style="padding:16px 0 0 0;">
 <table cellpadding="0" cellspacing="0" border="0" role="presentation" style="border-collapse:collapse;">
 <tr>
 <td valign="middle" style="padding:0 16px 0 0;">
@@ -82,7 +79,7 @@ kancelaria@m2tax.pl
 </td>
 </tr>
 <tr>
-<td colspan="2" style="padding:12px 0 0 0;font-family:{FONT};font-size:10px;line-height:14px;color:#9a9ca2;">
+<td style="padding:12px 0 0 0;font-family:{FONT};font-size:10px;line-height:14px;color:#9a9ca2;">
 M2 TAX Doradcy Podatkowi Otręba Ruszniak spółka partnerska, ul. Zwycięska 3, 53-033 Wrocław, KRS 0001238577, NIP 8993058189, REGON 54465563600000.
 </td>
 </tr>
