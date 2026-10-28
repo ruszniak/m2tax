@@ -21,11 +21,11 @@ FONT = "Arial, Helvetica, sans-serif"
 
 PEOPLE = [
     dict(slug="marcin-otreba", name="Marcin Otręba", role="Doradca podatkowy", role2="Partner zarządzający",
-         wpis="nr wpisu 14609", phone="534 909 534", email="marcin.otreba@m2tax.pl", client="Outlook (Windows)"),
+         wpis="nr wpisu 14609", phone="534 909 534", email="marcin.otreba@m2tax.pl", client="Outlook (Windows)", photo=True),
     dict(slug="michal-ruszniak", name="Michał Ruszniak", role="Doradca podatkowy", role2="Partner zarządzający",
          wpis="nr wpisu 15009", phone="883 643 565", email="michal.ruszniak@m2tax.pl", client="Gmail"),
     dict(slug="filip-ditrejnowski", name="Filip Ditrejnowski", role="Konsultant podatkowy", role2="",
-         wpis="", phone="", email="filip.ditrejnowski@m2tax.pl", client="Gmail"),
+         wpis="", phone="", email="filip.ditrejnowski@m2tax.pl", client="Gmail", photo=True),
 ]
 
 
@@ -38,7 +38,7 @@ def row(label, value, href):
     )
 
 
-def signature(p):
+def signature(p, photo=False):
     e = html.escape
     title = e(p["role"]) + (f' <span style="color:{LINE};">|</span> {e(p["role2"])}' if p["role2"] else "")
     wpis = (f'<div style="font-family:{FONT};font-size:11px;line-height:16px;color:{MUTED};'
@@ -49,11 +49,18 @@ def signature(p):
     contacts += row("E", e(p["email"]), "mailto:" + p["email"])
     contacts += row("W", "www.m2tax.pl", SITE)
 
+    logo_img = f'<a href="{SITE}" style="text-decoration:none;"><img src="{BASE}m2tax-logo.png" width="{{w}}" height="{{h}}" alt="M2 TAX Doradcy Podatkowi" style="display:block;margin:0 auto;width:{{w}}px;height:{{h}}px;border:0;"></a>'
+    if photo:
+        left = (f'<td valign="middle" align="center" style="padding:0 18px 0 0;width:150px;text-align:center;vertical-align:middle;">'
+                f'<img src="{BASE}{p["slug"]}.png" width="96" height="96" alt="{e(p["name"])}" style="display:block;margin:0 auto;width:96px;height:96px;border:0;">'
+                f'<div style="height:12px;line-height:12px;font-size:1px;">&nbsp;</div>'
+                + logo_img.format(w=120, h=40) + '</td>')
+    else:
+        left = (f'<td valign="middle" align="center" style="padding:0 18px 0 0;width:150px;text-align:center;vertical-align:middle;">'
+                + logo_img.format(w=150, h=50) + '</td>')
     return f"""<table cellpadding="0" cellspacing="0" border="0" role="presentation" style="border-collapse:collapse;font-family:{FONT};color:{INK};max-width:560px;">
 <tr>
-<td valign="middle" align="center" style="padding:0 18px 0 0;width:150px;text-align:center;vertical-align:middle;">
-<a href="{SITE}" style="text-decoration:none;"><img src="{BASE}m2tax-logo.png" width="150" height="50" alt="M2 TAX Doradcy Podatkowi" style="display:block;margin:0 auto;width:150px;height:50px;border:0;"></a>
-</td>
+{left}
 <td valign="top" style="padding:0 0 0 18px;border-left:2px solid {LINE};">
 <div style="font-family:{FONT};font-size:17px;line-height:22px;font-weight:bold;color:{INK};">{e(p['name'])}</div>
 <div style="font-family:{FONT};font-size:13px;line-height:19px;font-weight:bold;color:{ACCENT};padding-top:2px;">{title}</div>
@@ -95,7 +102,7 @@ GUIDE_OUTLOOK = """<p><b>Sposób 1 – wklejenie (najprostszy)</b></p>
 </ol>
 <p><b>Sposób 2 – plik (gdyby wklejony podpis się rozjeżdżał, tylko klasyczny Outlook)</b></p>
 <ol>
-<li>Pobierz plik <a href="marcin-otreba.htm" download>marcin-otreba.htm</a>.</li>
+<li>Pobierz plik <a href="marcin-otreba.htm" download>marcin-otreba.htm</a> (wersja ze zdjęciem: <a href="marcin-otreba-zdjecie.htm" download>marcin-otreba-zdjecie.htm</a>).</li>
 <li>Naciśnij <b>Win+R</b>, wpisz <code>%APPDATA%\\Microsoft\\Signatures</code> i Enter.</li>
 <li>Skopiuj pobrany plik do tego folderu i uruchom Outlooka ponownie.</li>
 <li>W <b>Plik → Opcje → Poczta → Podpisy</b> pojawi się podpis „marcin-otreba” – ustaw go jako domyślny.</li>
@@ -106,6 +113,15 @@ def page():
     cards = ""
     for p in PEOPLE:
         guide = GUIDE_OUTLOOK if p["client"].startswith("Outlook") else GUIDE_GMAIL
+        alt = ""
+        if p.get("photo"):
+            alt = f"""
+  <h3 class="alt">Wersja ze zdjęciem</h3>
+  <div class="sig" id="sig-{p['slug']}-zdjecie">{signature(p, photo=True)}</div>
+  <div class="actions">
+    <button class="btn" data-target="sig-{p['slug']}-zdjecie">Kopiuj podpis ze zdjęciem</button>
+    <span class="ok" aria-live="polite"></span>
+  </div>"""
         cards += f"""
 <section class="card">
   <header><h2>{html.escape(p['name'])}</h2><span class="chip">{p['client']}</span></header>
@@ -114,6 +130,7 @@ def page():
     <button class="btn" data-target="sig-{p['slug']}">Kopiuj podpis</button>
     <span class="ok" aria-live="polite"></span>
   </div>
+{alt}
   <details><summary>Jak wstawić w {p['client']}</summary>{guide}</details>
 </section>"""
     return f"""<!doctype html>
@@ -147,6 +164,7 @@ summary{{cursor:pointer;font-weight:700;color:var(--accent)}}
 details ol{{padding-left:22px;margin:8px 0}}
 details li{{margin:4px 0}}
 code{{background:var(--paper-2);padding:1px 6px;border-radius:4px;font-size:15px}}
+h3.alt{{font-family:Montserrat,Arial,sans-serif;font-size:15px;color:var(--muted);margin:26px 0 10px;text-transform:uppercase;letter-spacing:.08em}}
 .note{{font-size:15px;color:var(--muted)}}
 </style></head>
 <body>
@@ -172,10 +190,10 @@ document.querySelectorAll('.btn[data-target]').forEach(b=>b.addEventListener('cl
 """
 
 
-def outlook_file(p):
+def outlook_file(p, photo=False):
     return f"""<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"><title>{html.escape(p['name'])}</title></head>
 <body style="margin:0;">
-{signature(p)}
+{signature(p, photo)}
 </body></html>
 """
 
@@ -186,4 +204,6 @@ if __name__ == "__main__":
     (out / "index.html").write_text(page(), encoding="utf-8")
     for p in PEOPLE:
         (out / f"{p['slug']}.htm").write_text(outlook_file(p), encoding="utf-8")
+        if p.get("photo"):
+            (out / f"{p['slug']}-zdjecie.htm").write_text(outlook_file(p, True), encoding="utf-8")
     print("OK:", out)
