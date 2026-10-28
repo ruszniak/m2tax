@@ -49,9 +49,16 @@ def signature(p):
     contacts += row("E", e(p["email"]), "mailto:" + p["email"])
     contacts += row("W", "www.m2tax.pl", SITE)
 
-    return f"""<table cellpadding="0" cellspacing="0" border="0" role="presentation" style="border-collapse:collapse;font-family:{FONT};color:{INK};max-width:520px;">
+    return f"""<table cellpadding="0" cellspacing="0" border="0" role="presentation" style="border-collapse:collapse;font-family:{FONT};color:{INK};max-width:560px;">
 <tr>
-<td valign="top" style="padding:0 0 0 14px;border-left:2px solid {LINE};">
+<td valign="top" style="padding:2px 18px 0 0;width:150px;">
+<a href="{SITE}" style="text-decoration:none;"><img src="{BASE}m2tax-logo.png" width="150" height="50" alt="M2 TAX Doradcy Podatkowi" style="display:block;width:150px;height:50px;border:0;"></a>
+<div style="padding-top:12px;font-family:{FONT};font-size:11px;line-height:16px;color:{MUTED};">
+ul. Zwycięska 3<br>53-033 Wrocław<br>
+<a href="mailto:kancelaria@m2tax.pl" style="color:{MUTED};text-decoration:none;">kancelaria@m2tax.pl</a>
+</div>
+</td>
+<td valign="top" style="padding:0 0 0 18px;border-left:2px solid {LINE};">
 <div style="font-family:{FONT};font-size:17px;line-height:22px;font-weight:bold;color:{INK};">{e(p['name'])}</div>
 <div style="font-family:{FONT};font-size:13px;line-height:19px;font-weight:bold;color:{ACCENT};padding-top:2px;">{title}</div>
 {wpis}
@@ -64,23 +71,11 @@ def signature(p):
 </td>
 </tr>
 <tr>
-<td style="padding:16px 0 0 0;">
-<table cellpadding="0" cellspacing="0" border="0" role="presentation" style="border-collapse:collapse;">
-<tr>
-<td valign="middle" style="padding:0 16px 0 0;">
-<a href="{SITE}" style="text-decoration:none;"><img src="{BASE}m2tax-logo.png" width="132" height="44" alt="M2 TAX Doradcy Podatkowi" style="display:block;width:132px;height:44px;border:0;"></a>
-</td>
-<td valign="middle" style="font-family:{FONT};font-size:11px;line-height:16px;color:{MUTED};">
-ul. Zwycięska 3, 53-033 Wrocław<br>
-kancelaria@m2tax.pl
-</td>
-</tr>
-</table>
-</td>
-</tr>
-<tr>
-<td style="padding:12px 0 0 0;font-family:{FONT};font-size:10px;line-height:14px;color:#9a9ca2;">
+<td colspan="2" style="padding:16px 0 0 0;">
+<div style="border-top:1px solid #e3e2de;padding-top:10px;font-family:{FONT};font-size:10px;line-height:14px;color:#9a9ca2;">
+Wiadomość może zawierać informacje objęte tajemnicą doradcy podatkowego. Jeżeli nie jest Pan/Pani jej adresatem, prosimy o poinformowanie nadawcy i usunięcie wiadomości. Informacje o przetwarzaniu danych osobowych: <a href="{SITE}/polityka-prywatnosci.html" style="color:#9a9ca2;text-decoration:underline;">m2tax.pl/polityka-prywatnosci</a>.<br><br>
 M2 TAX Doradcy Podatkowi Otręba Ruszniak spółka partnerska, ul. Zwycięska 3, 53-033 Wrocław, KRS 0001238577, NIP 8993058189, REGON 54465563600000.
+</div>
 </td>
 </tr>
 </table>"""
