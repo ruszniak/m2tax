@@ -51,12 +51,8 @@ def signature(p):
 
     return f"""<table cellpadding="0" cellspacing="0" border="0" role="presentation" style="border-collapse:collapse;font-family:{FONT};color:{INK};max-width:560px;">
 <tr>
-<td valign="top" style="padding:2px 18px 0 0;width:150px;">
-<a href="{SITE}" style="text-decoration:none;"><img src="{BASE}m2tax-logo.png" width="150" height="50" alt="M2 TAX Doradcy Podatkowi" style="display:block;width:150px;height:50px;border:0;"></a>
-<div style="padding-top:12px;font-family:{FONT};font-size:11px;line-height:16px;color:{MUTED};">
-ul. Zwycięska 3<br>53-033 Wrocław<br>
-<a href="mailto:kancelaria@m2tax.pl" style="color:{MUTED};text-decoration:none;">kancelaria@m2tax.pl</a>
-</div>
+<td valign="middle" align="center" style="padding:0 18px 0 0;width:150px;text-align:center;vertical-align:middle;">
+<a href="{SITE}" style="text-decoration:none;"><img src="{BASE}m2tax-logo.png" width="150" height="50" alt="M2 TAX Doradcy Podatkowi" style="display:block;margin:0 auto;width:150px;height:50px;border:0;"></a>
 </td>
 <td valign="top" style="padding:0 0 0 18px;border-left:2px solid {LINE};">
 <div style="font-family:{FONT};font-size:17px;line-height:22px;font-weight:bold;color:{INK};">{e(p['name'])}</div>
