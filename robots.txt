@@ -1,4 +1,5 @@
 User-agent: *
 Allow: /
-Sitemap: https://www.m2tax.pl/sitemap.xml
 Disallow: /podpis/
+
+Sitemap: https://www.m2tax.pl/sitemap.xml
