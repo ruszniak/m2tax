@@ -5,6 +5,7 @@ lead: Urząd określił deweloperowi prawie 873 tys. zł CIT, przepisując przyc
 category: Kontrole i postępowania
 image: cit-deweloper-dias.jpg
 linkedin_urn: urn:li:share:7516860846338150400
+linkedin_height: 532
 linkedin: https://www.linkedin.com/feed/update/urn:li:share:7516860846338150400/
 ---
 

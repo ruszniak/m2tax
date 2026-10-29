@@ -960,7 +960,7 @@ def load_posts():
         html = markdown.markdown(body.strip(), extensions=["extra", "sane_lists"])
         words = len(re.sub(r"<[^>]+>", " ", html).split())
         posts.append(dict(slug=slug, title=meta["title"], lead=meta.get("lead", ""), category=meta.get("category", "Podatki"),
-                          linkedin=meta.get("linkedin", ""), urn=meta.get("linkedin_urn", ""), image=meta.get("image", ""), date=d, date_h=f"{d.day} {MONTHS[d.month-1]} {d.year}",
+                          linkedin=meta.get("linkedin", ""), urn=meta.get("linkedin_urn", ""), urn_h=meta.get("linkedin_height", "560"), image=meta.get("image", ""), date=d, date_h=f"{d.day} {MONTHS[d.month-1]} {d.year}",
                           html=html, minutes=max(1, round(words / 200))))
     posts.sort(key=lambda x: x["date"], reverse=True)
     return posts
@@ -969,10 +969,10 @@ def load_posts():
 def li_feed():
     f = os.path.join(ROOT, "content", "blog", "linkedin.txt")
     urns = [l.strip() for l in open(f, encoding="utf-8")] if os.path.exists(f) else []
-    urns = [u for u in urns if u and not u.startswith("#")]
+    urns = [u.split() for u in urns if u and not u.startswith("#")]
     if not urns:
         return ""
-    frames = "".join(f'<div class="li-item"><iframe src="https://www.linkedin.com/embed/feed/update/{u}" height="640" width="504" frameborder="0" allowfullscreen title="Wpis M2 TAX na LinkedIn" loading="lazy"></iframe></div>' for u in urns)
+    frames = "".join(f'<div class="li-item"><iframe src="https://www.linkedin.com/embed/feed/update/{u[0]}?collapsed=1" height="{u[1] if len(u) > 1 else 600}" width="504" frameborder="0" allowfullscreen title="Wpis M2 TAX na LinkedIn" loading="lazy"></iframe></div>' for u in urns)
     return f'''<div class="li-feed">
       <div class="li-head"><span class="eyebrow">LinkedIn</span><h2>Najnowsze wpisy z naszego profilu</h2></div>
       <div class="li-grid">{frames}</div>
@@ -1039,7 +1039,7 @@ def build_post(x, posts):
       {f'<figure class="post-img"><img src="{p}img/blog/{x["image"]}" alt="{x["title"]}" loading="eager"></figure>' if x["image"] else ""}
       <p class="prose-lead">{x["lead"]}</p>
 {x["html"]}
-      {f'<figure class="post-embed"><iframe src="https://www.linkedin.com/embed/feed/update/{x["urn"]}?collapsed=1" height="560" width="504" frameborder="0" allowfullscreen title="Wpis M2 TAX na LinkedIn" loading="lazy"></iframe><figcaption>Oryginalny wpis na LinkedIn</figcaption></figure>' if x["urn"] else ""}
+      {f'<figure class="post-embed"><iframe src="https://www.linkedin.com/embed/feed/update/{x["urn"]}?collapsed=1" height="{x["urn_h"]}" width="504" frameborder="0" allowfullscreen title="Wpis M2 TAX na LinkedIn" loading="lazy"></iframe><figcaption>Oryginalny wpis na LinkedIn</figcaption></figure>' if x["urn"] else ""}
       <div class="post-foot">
         <p><b>Masz podobną sprawę?</b> Pierwsze 20 minut rozmowy z doradcą podatkowym jest bezpłatne.</p>
         <a class="btn btn-primary" href="{p}kontakt/#rezerwacja">Umów bezpłatne 20 minut</a>
