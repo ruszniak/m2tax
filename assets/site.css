@@ -648,3 +648,5 @@ footer a:hover{color:#fff}
 .post-img{margin:0 0 32px}.post-img img{width:100%;height:auto;display:block;border-radius:14px;box-shadow:0 24px 50px -30px rgba(0,0,0,.5)}
 .li-grid{grid-template-columns:repeat(auto-fill,minmax(300px,504px));justify-content:center}
 .li-item{max-width:504px;width:100%}
+.li-grid{align-items:stretch}
+.li-item{display:flex;flex-direction:column;justify-content:center}
