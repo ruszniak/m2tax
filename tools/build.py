@@ -8,7 +8,7 @@ Wspólne style: assets/site.css, wspólne skrypty: assets/site.js.
 Uruchom z katalogu repozytorium:  python3 tools/build.py
 Folder tools/ nie jest publikowany (.vercelignore).
 """
-import json, os
+import json, re, os
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SITE = "https://www.m2tax.pl"
@@ -32,7 +32,7 @@ TOWNS = [
     ("Środa Śląska", "powiat średzki"),
     ("Trzebnica", "powiat trzebnicki"),
 ]
-NAV = [("abonamenty/", "Abonamenty"), ("doradztwo-podatkowe/", "Doradztwo podatkowe"), ("dla-biur-rachunkowych/", "Dla biur rachunkowych"), ("zespol/", "Zespół"), ("kontakt/", "Kontakt")]
+NAV = [("abonamenty/", "Abonamenty"), ("doradztwo-podatkowe/", "Doradztwo podatkowe"), ("dla-biur-rachunkowych/", "Dla biur rachunkowych"), ("zespol/", "Zespół"), ("blog/", "Blog"), ("kontakt/", "Kontakt")]
 
 PIN = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s-7-6.2-7-11.5A7 7 0 0 1 19 9.5C19 14.8 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.5"/></svg>'
 PHONE = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2z"/></svg>'
@@ -509,11 +509,11 @@ def build_abonamenty():
              "abonamenty/")
     variants = [
         ("Doradztwo podatkowe", "Dla przedsiębiorców i małych firm, które chcą mieć doradcę podatkowego pod telefonem.", "od 369 zł", "netto / mies.", False,
-         ["<b>2 godziny</b> doradztwa miesięcznie", "Pytania telefonicznie, mailowo i na wideo", "Odpowiedź w ciągu 2 dni roboczych", "Analiza umów i transakcji przed podpisaniem", "Przegląd pism z urzędu i plan działania", "Dwóch doradców znających Twoją firmę"]),
+         ["<b>2 godziny</b> doradztwa miesięcznie", "Pytania telefonicznie, mailowo i na wideo", "Odpowiedź w ciągu 2 dni roboczych", "Analiza umów i transakcji przed podpisaniem", "Przegląd pism z urzędu i plan działania", "Dwóch doradców znających Twoją firmę", "Dostęp do bazy wiedzy i wzorów dokumentów"]),
         ("Doradztwo podatkowe + Wsparcie Twojej księgowości", "Dla firm z własną księgową lub biurem rachunkowym. Twoja księgowa ma bezpośredni kontakt z doradcą podatkowym.", "od 590 zł", "netto / mies.", True,
-         ["<b>3 godziny</b> doradztwa miesięcznie", "Twoja księgowa pisze i dzwoni do nas bezpośrednio", "Konsultowanie trudnych księgowań i rozliczeń VAT", "Przegląd kluczowych pozycji przed zeznaniem rocznym", "Odpowiedzi na wezwania w czynnościach sprawdzających", "Odpowiedź w ciągu 1 dnia roboczego"]),
+         ["<b>3 godziny</b> doradztwa miesięcznie", "Twoja księgowa pisze i dzwoni do nas bezpośrednio", "Konsultowanie trudnych księgowań i rozliczeń VAT", "Przegląd kluczowych pozycji przed zeznaniem rocznym", "Odpowiedzi na wezwania w czynnościach sprawdzających", "Odpowiedź w ciągu 1 dnia roboczego", "Dostęp do bazy wiedzy i wzorów dokumentów"]),
         ("Doradztwo Biznes", "Dla spółek i firm rodzinnych, które regularnie podejmują decyzje z konsekwencjami podatkowymi.", "od 890 zł", "netto / mies.", False,
-         ["<b>5 godzin</b> doradztwa miesięcznie", "Wszystko z pakietu „Doradztwo podatkowe + Wsparcie Twojej księgowości”", "Spotkanie podatkowe raz na kwartał", "Planowanie wypłat ze spółki i inwestycji", "Pierwszeństwo terminów w sprawach pilnych", "Odpowiedź w ciągu 1 dnia roboczego"]),
+         ["<b>5 godzin</b> doradztwa miesięcznie", "Wszystko z pakietu „Doradztwo podatkowe + Wsparcie Twojej księgowości”", "Spotkanie podatkowe raz na kwartał", "Planowanie wypłat ze spółki i inwestycji", "Pierwszeństwo terminów w sprawach pilnych", "Odpowiedź w ciągu 1 dnia roboczego", "Dostęp do bazy wiedzy i wzorów dokumentów"]),
     ]
     vhtml = []
     for t, f, price, unit, feat, li in variants:
@@ -571,6 +571,7 @@ def build_abonamenty():
       <div><b>Godziny nie przepadają</b><span>Niewykorzystany czas przechodzi na kolejny miesiąc.</span></div>
       <div><b>Dwóch doradców</b><span>W każdym pakiecie Twoją firmę znają dwaj doradcy podatkowi.</span></div>
       <div><b>Rabat dla abonentów</b><span>Postępowania, kontrole i sprawy sądowe taniej dla stałych klientów.</span></div>
+      <div><b>Baza wiedzy i wzory</b><span>W każdym pakiecie opracowania podatkowe i gotowe wzory pism, umów i uchwał.</span></div>
     </div>
     <p class="fine">Ceny netto, do których dolicza się 23% VAT. Czas pracy liczymy w 15-minutowych odcinkach. Ostateczną cenę potwierdzamy po krótkiej rozmowie o skali działalności.</p>
   </div>
@@ -932,6 +933,111 @@ def build_biura():
 '''
     return h + body + footer(p)
 
+# ---------------------------------------------------------------- blog
+LINKEDIN = "https://www.linkedin.com/company/112327069/"
+MONTHS = ["stycznia", "lutego", "marca", "kwietnia", "maja", "czerwca", "lipca", "sierpnia", "września", "października", "listopada", "grudnia"]
+
+
+def load_posts():
+    """Wpisy: content/blog/*.md z nagłówkiem (title, date, lead, category, linkedin)."""
+    import glob, markdown, datetime
+    posts = []
+    for f in sorted(glob.glob(os.path.join(ROOT, "content", "blog", "*.md"))):
+        if os.path.basename(f).upper() == "README.MD":
+            continue
+        raw = open(f, encoding="utf-8").read()
+        meta, body = {}, raw
+        if raw.startswith("---"):
+            _, fm, body = raw.split("---", 2)
+            for line in fm.strip().splitlines():
+                if ":" in line:
+                    k, v = line.split(":", 1)
+                    meta[k.strip()] = v.strip().strip('"')
+        if meta.get("draft") == "true":
+            continue
+        slug = os.path.splitext(os.path.basename(f))[0]
+        d = datetime.date.fromisoformat(meta["date"])
+        html = markdown.markdown(body.strip(), extensions=["extra", "sane_lists"])
+        words = len(re.sub(r"<[^>]+>", " ", html).split())
+        posts.append(dict(slug=slug, title=meta["title"], lead=meta.get("lead", ""), category=meta.get("category", "Podatki"),
+                          linkedin=meta.get("linkedin", ""), date=d, date_h=f"{d.day} {MONTHS[d.month-1]} {d.year}",
+                          html=html, minutes=max(1, round(words / 200))))
+    posts.sort(key=lambda x: x["date"], reverse=True)
+    return posts
+
+
+def build_blog_index(posts):
+    p = "../"
+    h = head(p, "Blog podatkowy — M2 TAX Doradcy Podatkowi | Wrocław",
+             "Artykuły doradców podatkowych M2 TAX: interpretacje, kontrole, postępowania, JPK CIT, wypłata pieniędzy ze spółki i bieżące zmiany w przepisach.",
+             "blog/")
+    if posts:
+        cards = "\n".join(f'''      <a class="post-card" href="{x["slug"]}/">
+        <span class="post-meta"><span class="post-cat">{x["category"]}</span>{x["date_h"]} · {x["minutes"]} min czytania</span>
+        <h3>{x["title"]}</h3>
+        <p>{x["lead"]}</p>
+        <span class="post-more">Czytaj artykuł →</span>
+      </a>''' for x in posts)
+        listing = f'<div class="post-grid">\n{cards}\n    </div>'
+    else:
+        listing = f'''<div class="post-empty"><b>Pierwsze artykuły już wkrótce</b><span>Do tego czasu nasze komentarze do zmian w przepisach znajdziesz na <a href="{LINKEDIN}" target="_blank" rel="noopener">LinkedIn</a>.</span></div>'''
+    body = header(p, "blog/") + page_hero(
+        p, "Blog", "Blog podatkowy",
+        "Podatki <em>w praktyce</em>",
+        "Rozbudowane wersje naszych wpisów z LinkedIn. Piszemy o tym, z czym klienci przychodzą do nas na co dzień: wezwania z urzędu, kontrole, interpretacje, JPK CIT i wypłata pieniędzy ze spółki.",
+        fx="grid", cta=False) + f'''
+<section class="section" aria-label="Artykuły">
+  <div class="wrap">
+    {listing}
+    <p class="post-follow">Obserwuj nas na <a href="{LINKEDIN}" target="_blank" rel="noopener">LinkedIn</a>, żeby nie przegapić nowych wpisów.</p>
+  </div>
+</section>
+'''
+    return h + body + footer(p)
+
+
+def build_post(x, posts):
+    p = "../../"
+    ld = {"@context": "https://schema.org", "@type": "BlogPosting", "headline": x["title"], "description": x["lead"],
+          "datePublished": x["date"].isoformat(), "inLanguage": "pl",
+          "author": [{"@type": "Person", "name": "Michał Ruszniak"}, {"@type": "Person", "name": "Marcin Otręba"}],
+          "publisher": {"@type": "Organization", "name": "M2 TAX Doradcy Podatkowi", "logo": SITE + "/img/logo.png"},
+          "mainEntityOfPage": f"{SITE}/blog/{x['slug']}/"}
+    h = head(p, f"{x['title']} | Blog M2 TAX", x["lead"], f"blog/{x['slug']}/", extra_ld=ld)
+    li = f'<a class="post-li" href="{x["linkedin"]}" target="_blank" rel="noopener">Dyskusja pod wpisem na LinkedIn →</a>' if x["linkedin"] else ""
+    more = [y for y in posts if y["slug"] != x["slug"]][:3]
+    more_html = ""
+    if more:
+        more_html = '<aside class="post-more-list"><h2>Przeczytaj też</h2><div class="post-grid">' + "".join(
+            f'<a class="post-card" href="../{y["slug"]}/"><span class="post-meta">{y["date_h"]}</span><h3>{y["title"]}</h3><span class="post-more">Czytaj →</span></a>' for y in more) + "</div></aside>"
+    body = header(p, "blog/") + f'''<section class="page-hero post-hero">
+  <canvas class="fx3d" data-fx="grid" aria-hidden="true"></canvas>
+  <div class="wrap">
+    <p class="crumbs"><a href="{p}">Strona główna</a> / <a href="../">Blog</a></p>
+    <span class="eyebrow" style="display:block;margin-top:22px">{x["category"]}</span>
+    <h1>{x["title"]}</h1>
+    <p class="post-meta">{x["date_h"]} · {x["minutes"]} min czytania · Michał Ruszniak, Marcin Otręba</p>
+  </div>
+</section>
+<section class="section">
+  <div class="wrap">
+    <article class="prose">
+      <p class="prose-lead">{x["lead"]}</p>
+{x["html"]}
+      <div class="post-foot">
+        <p><b>Masz podobną sprawę?</b> Pierwsze 20 minut rozmowy z doradcą podatkowym jest bezpłatne.</p>
+        <a class="btn btn-primary" href="{p}kontakt/#rezerwacja">Umów bezpłatne 20 minut</a>
+        {li}
+      </div>
+      <p class="fine">Artykuł ma charakter informacyjny i nie stanowi porady podatkowej w konkretnej sprawie. Stan prawny na dzień publikacji.</p>
+    </article>
+    {more_html}
+  </div>
+</section>
+'''
+    return h + body + footer(p)
+
+
 def write(rel, html):
     path = os.path.join(ROOT, rel)
     os.makedirs(os.path.dirname(path), exist_ok=True)
@@ -941,7 +1047,7 @@ def write(rel, html):
 
 
 def sitemap():
-    urls = ["", "abonamenty/", "dla-biur-rachunkowych/", "doradztwo-podatkowe/", "zespol/", "kontakt/", "polityka-prywatnosci.html", "aml.html"]
+    urls = ["", "abonamenty/", "dla-biur-rachunkowych/", "doradztwo-podatkowe/", "zespol/", "blog/", "kontakt/"] + [f"blog/{x['slug']}/" for x in load_posts()] + [ "polityka-prywatnosci.html", "aml.html"]
     x = '<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n' + \
         "".join(f"  <url><loc>{SITE}/{u}</loc></url>\n" for u in urls) + "</urlset>\n"
     write("sitemap.xml", x)
@@ -955,4 +1061,8 @@ if __name__ == "__main__":
     write("zespol/index.html", build_zespol())
     write("kontakt/index.html", build_kontakt())
     write("dla-biur-rachunkowych/index.html", build_biura())
+    posts = load_posts()
+    write("blog/index.html", build_blog_index(posts))
+    for x in posts:
+        write(f"blog/{x['slug']}/index.html", build_post(x, posts))
     sitemap()
