@@ -805,7 +805,7 @@ def build_kontakt():
 def build_biura():
     p = "../"
     h = head(p, "Doradca podatkowy dla biur rachunkowych — wsparcie i JPK CIT | M2 TAX Wrocław",
-             "Stałe wsparcie doradców podatkowych dla biur rachunkowych od 419 zł netto miesięcznie: konsultacje dla księgowych, wdrożenie JPK CIT (JPK_KR_PD, JPK_ST_KR), KSeF, czynności sprawdzające i kontrole klientów biura, interpretacje.",
+             "Stałe wsparcie doradców podatkowych dla biur rachunkowych od 419 zł netto miesięcznie: konsultacje dla księgowych, wdrożenie JPK CIT (JPK_KR_PD, JPK_ST_KR), KSeF, czynności sprawdzające i kontrole klientów biura, interpretacje. W pakiecie baza wiedzy, wzory dokumentów, weryfikacja JPK CIT i sprawozdania do KRS z JPK CIT.",
              "dla-biur-rachunkowych/")
     pains = [
         ("Trudne pytanie od klienta", "Wypłata ze spółki, sprzedaż działki, estoński CIT, ulga B+R. Klient pyta, a odpowiedź musi być pewna i szybka."),
@@ -823,9 +823,9 @@ def build_biura():
     ]
     pkgs = [
         ("Biuro Partner", "Dla małych i średnich biur, które chcą mieć doradcę podatkowego pod telefonem dla całego zespołu.", "od 419 zł", "netto / mies.", True,
-         ["<b>2 godziny</b> doradztwa miesięcznie dla całego zespołu", "Bezpośredni kontakt każdej księgowej z doradcą", "Odpowiedź w ciągu 1 dnia roboczego", "Notatki z podstawą prawną do akt klienta", "Niewykorzystane godziny przechodzą na kolejny miesiąc", "Rabat na interpretacje, kontrole i sprawy klientów biura"]),
+         ["<b>2 godziny</b> doradztwa miesięcznie dla całego zespołu", "Bezpośredni kontakt każdej księgowej z doradcą", "Odpowiedź w ciągu 1 dnia roboczego", "Notatki z podstawą prawną do akt klienta", "Niewykorzystane godziny przechodzą na kolejny miesiąc", "Rabat na interpretacje, kontrole i sprawy klientów biura", "<b>W pakiecie:</b> baza wiedzy, wzory dokumentów i aplikacje JPK CIT"]),
         ("Biuro Plus i wdrożenie JPK CIT", "Dla większych biur i na czas wdrożenia JPK CIT albo KSeF u wielu klientów.", "wycena", "indywidualna", False,
-         ["Większa pula godzin dopasowana do biura", "Wdrożenie JPK CIT: plan kont, znaczniki, test plików", "Szkolenie zespołu w biurze albo online", "Wsparcie przy pierwszych wysyłkach plików", "Stały kontakt z dwoma doradcami podatkowymi"]),
+         ["Większa pula godzin dopasowana do biura", "Wdrożenie JPK CIT: plan kont, znaczniki, test plików", "Szkolenie zespołu w biurze albo online", "Wsparcie przy pierwszych wysyłkach plików", "Stały kontakt z dwoma doradcami podatkowymi", "<b>W pakiecie:</b> baza wiedzy, wzory dokumentów i aplikacje JPK CIT"]),
     ]
     pk = []
     for t, f, price, unit, feat, li in pkgs:
@@ -840,7 +840,7 @@ def build_biura():
     body = header(p, "dla-biur-rachunkowych/") + page_hero(
         p, "Dla biur rachunkowych", "Dla biur rachunkowych",
         "Doradca podatkowy <em>dla Twojego biura</em> rachunkowego",
-        "Stałe wsparcie dla zespołu księgowych, wdrożenie JPK CIT, KSeF i pomoc przy wezwaniach i kontrolach Twoich klientów. Ty prowadzisz księgi, my bierzemy na siebie trudne tematy podatkowe. Od 419 zł netto miesięcznie.",
+        "Stałe wsparcie dla zespołu księgowych, wdrożenie JPK CIT, KSeF i pomoc przy wezwaniach i kontrolach Twoich klientów. W pakiecie baza wiedzy, wzory dokumentów i aplikacje do JPK CIT. Ty prowadzisz księgi, my bierzemy na siebie trudne tematy podatkowe. Od 419 zł netto miesięcznie.",
         fx="grid") + f'''
 <section class="section" aria-labelledby="pain-h">
   <div class="wrap">
@@ -873,6 +873,39 @@ def build_biura():
         <li><b>Środki trwałe</b><span>Sprawdzamy ewidencję pod strukturę JPK_ST_KR.</span></li>
         <li><b>Test i uzgodnienie</b><span>Porównujemy plik testowy z CIT-8, zanim zrobi to urząd.</span></li>
       </ol>
+    </div>
+  </div>
+</section>
+
+<section class="section bg-paper2" id="narzedzia" aria-labelledby="tools-h">
+  <div class="wrap">
+{section_head("W każdym pakiecie", "Narzędzia dla Twojego biura w cenie abonamentu", "Oprócz doradców dostajesz zaplecze, które oszczędza czas zespołu na co dzień. Dostęp mają wszystkie księgowe w biurze.", "tools-h")}    <div class="tools-grid">
+      <article class="tool">
+        <span class="tool-ico" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M4 5.5A2.5 2.5 0 0 1 6.5 3H20v15H6.5A2.5 2.5 0 0 0 4 20.5zM4 20.5A2.5 2.5 0 0 0 6.5 23H20v-5"/></svg></span>
+        <h3>Baza wiedzy</h3>
+        <p>Opracowania trudnych tematów podatkowych, odpowiedzi na pytania, które księgowe zadają najczęściej, i omówienia zmian w przepisach. Napisane przez doradców podatkowych, językiem praktyki biura.</p>
+        <ul><li>Wyszukiwanie po temacie i podatku</li><li>Aktualizacje po każdej ważnej zmianie przepisów</li></ul>
+      </article>
+      <article class="tool">
+        <span class="tool-ico" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8zM14 2v6h6M8 13h8M8 17h5"/></svg></span>
+        <h3>Wzory dokumentów</h3>
+        <p>Gotowe wzory pism, które biuro przygotowuje dla klientów: odpowiedzi na wezwania, wnioski, pełnomocnictwa, uchwały i umowy. Uzupełniasz dane klienta i dokument jest gotowy.</p>
+        <ul><li>Pisma do urzędu skarbowego i KAS</li><li>Dokumenty korporacyjne spółek</li></ul>
+      </article>
+      <article class="tool tool-app">
+        <span class="tool-ico" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M9 11l3 3 8-8M20 12v7a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h9"/></svg></span>
+        <span class="tool-tag">Aplikacja</span>
+        <h3>Weryfikacja JPK CIT</h3>
+        <p>Wgrywasz plik JPK_KR_PD przed wysyłką, a aplikacja sprawdza go pod kątem błędów i braków. Zobaczysz konta bez znaczników podatkowych, niespójności i miejsca, o które może zapytać urząd.</p>
+        <ul><li>Raport błędów do poprawy w programie księgowym</li><li>Mniej korekt po wysyłce pliku</li></ul>
+      </article>
+      <article class="tool tool-app">
+        <span class="tool-ico" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M3 3v18h18M7 15l4-4 3 3 6-6"/></svg></span>
+        <span class="tool-tag">Aplikacja</span>
+        <h3>Sprawozdanie do KRS z JPK CIT</h3>
+        <p>Na podstawie danych z pliku JPK CIT aplikacja automatycznie przygotowuje projekt sprawozdania finansowego, w tym bilans i rachunek zysków i strat, w formacie do złożenia w KRS. Zespół tylko sprawdza i uzupełnia, zamiast przepisywać liczby.</p>
+        <ul><li>Dane prosto z ksiąg, bez ręcznego przepisywania</li><li>Gotowe do weryfikacji i podpisu</li></ul>
+      </article>
     </div>
   </div>
 </section>
