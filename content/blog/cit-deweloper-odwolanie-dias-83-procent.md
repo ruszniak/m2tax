@@ -4,6 +4,8 @@ date: 2026-10-29
 lead: Urząd określił deweloperowi prawie 873 tys. zł CIT, przepisując przychody i koszty wprost z JPK_VAT. Po naszym odwołaniu Dyrektor Izby Administracji Skarbowej uchylił decyzję w całości i określił 147 424 zł. Pokazujemy, na czym polegały błędy i dlaczego idziemy dalej do WSA.
 category: Kontrole i postępowania
 image: cit-deweloper-dias.jpg
+linkedin_urn: urn:li:share:7516860846338150400
+linkedin: https://www.linkedin.com/feed/update/urn:li:share:7516860846338150400/
 ---
 
 Z satysfakcją dzielimy się efektem pracy w sprawie klienta z branży deweloperskiej. Organ pierwszej instancji określił spółce zobowiązanie w podatku dochodowym od osób prawnych na prawie **873 tys. zł**. Po odwołaniu przygotowanym przez partnera zarządzającego M2 TAX, doradcę podatkowego Michała Ruszniaka, Dyrektor Izby Administracji Skarbowej **uchylił decyzję w całości** i określił zobowiązanie na **147 424 zł**, czyli o ponad 83% mniej.
