@@ -998,8 +998,7 @@ def build_blog_index(posts):
           <span class="post-more">Czytaj artykuł <i aria-hidden="true">→</i></span>
         </div>
       </a>'''
-        rest = "\n".join(card(x) for x in posts[1:])
-        listing = card(posts[0], True) + (f'\n    <div class="post-grid">\n{rest}\n    </div>' if rest else "")
+        listing = '<div class="post-grid post-grid-2">\n' + "\n".join(card(x) for x in posts) + "\n    </div>"
     else:
         listing = f'''<div class="post-empty"><b>Pierwsze artykuły już wkrótce</b><span>Do tego czasu nasze komentarze do zmian w przepisach znajdziesz na <a href="{LINKEDIN}" target="_blank" rel="noopener">LinkedIn</a>.</span></div>'''
     body = header(p, "blog/") + page_hero(
