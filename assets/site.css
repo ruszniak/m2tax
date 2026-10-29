@@ -683,3 +683,8 @@ footer a:hover{color:#fff}
 .post-grid-2 .post-card p{font-size:16px}
 .post-grid-2 .post-more{margin-top:auto;align-self:flex-start;display:inline-flex;gap:8px;align-items:center;padding:12px 20px;border-radius:8px;background:var(--ink);color:#D9B98E}
 @media (max-width:760px){.post-grid-2{grid-template-columns:1fr}}
+/* Promo: podatek od nieruchomości */
+.pon-promo{display:grid;gap:14px;justify-items:start;padding:clamp(28px,4vw,48px);border-radius:18px;background:radial-gradient(ellipse 60% 120% at 90% 20%,rgba(217,185,142,.18),transparent 60%),linear-gradient(120deg,#16171a,#202226);color:var(--on-ink);text-decoration:none;--accent:#D9B98E;--accent-deep:#C9A676;--accent-ink:#1D1A16;transition:transform .25s ease,box-shadow .25s ease}
+.pon-promo:hover{transform:translateY(-3px);box-shadow:0 30px 60px -36px rgba(0,0,0,.6)}
+.pon-promo h2{color:#fff;font-size:clamp(24px,3vw,36px);font-weight:800;max-width:760px;line-height:1.15}
+.pon-promo p{color:var(--on-ink-muted);max-width:680px;font-size:17px}

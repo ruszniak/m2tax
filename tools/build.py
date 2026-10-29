@@ -165,6 +165,7 @@ window.addEventListener('load', function(){{
       <ul>
         <li><a href="{p or './'}">Strona główna</a></li>
 {nav}
+        <li><a href="{p}podatek-od-nieruchomosci/">Podatek od nieruchomości</a></li>
       </ul>
     </div>
     <div>
@@ -282,7 +283,7 @@ SPECS = [
     ("przekształcenia · aporty · podziały", "Restrukturyzacje", "Przekształcenie JDG w spółkę, aport przedsiębiorstwa, połączenia i podziały spółek z zachowaniem neutralności podatkowej.", ["Analiza ryzyk i klauzuli przeciw unikaniu opodatkowania", "Wniosek o interpretację przed transakcją", "Harmonogram i dokumenty krok po kroku"]),
     ("ustawa o fundacji rodzinnej", "Fundacje rodzinne", "Pomagamy założyć fundację rodzinną i bezpiecznie przenieść do niej majątek, z myślą o sukcesji w firmie rodzinnej.", ["Statut, akt założycielski i wniesienie mienia", "Opodatkowanie świadczeń dla beneficjentów", "Zakazana działalność gospodarcza fundacji"]),
     ("spadki · darowizny · art. 4a", "Sukcesja i majątek rodzinny", "Przekazanie firmy i majątku dzieciom albo małżonkowi bez zbędnego podatku i z dotrzymaniem terminów zgłoszeń.", ["Zwolnienie dla najbliższej rodziny i zgłoszenie SD-Z2", "Darowizna udziałów i przedsiębiorstwa", "Testament i umowy z myślą o podatkach"]),
-    ("VAT · PCC · PIT · podatek od nieruchomości", "Nieruchomości", "Sprzedaż działek, najem, inwestycje deweloperskie i spory z gminą o podatek od nieruchomości.", ["VAT albo PCC przy sprzedaży gruntu i budynku", "Najem prywatny a działalność gospodarcza", "Odwołania od decyzji w podatku od nieruchomości"]),
+    ("VAT · PCC · PIT · podatek od nieruchomości", "Nieruchomości", "Sprzedaż działek, najem, inwestycje deweloperskie i spory z gminą o podatek od nieruchomości.", ["VAT albo PCC przy sprzedaży gruntu i budynku", "Najem prywatny a działalność gospodarcza", "Audyt podatku od nieruchomości i spory z gminą"]),
     ("UPO · rezydencja · CFC", "Podatki międzynarodowe", "Praca i działalność za granicą, kontrahenci zagraniczni i przeniesienie rezydencji podatkowej.", ["Rezydencja podatkowa i certyfikaty", "Umowy o unikaniu podwójnego opodatkowania", "Podatek u źródła i transakcje z podmiotami zagranicznymi"]),
     ("opinia · due diligence", "Opinie przed decyzją", "Gdy na interpretację nie ma czasu: pisemna opinia przed podpisaniem umowy, zakupem spółki albo dużą transakcją.", ["Przegląd umów pod kątem podatków", "Due diligence podatkowe przy zakupie firmy", "Opinia, na której możesz oprzeć decyzję"]),
 ]
@@ -448,6 +449,18 @@ def build_home():
 {chr(10).join(spec_card(*s) for s in [(PILLARS[0][0], PILLARS[0][1], "Ochrona przed zmianą zdania urzędu, zanim podejmiesz decyzję.", ["Interpretacje w CIT, PIT, VAT i PCC", "Wiążące informacje stawkowe", "Opinie zabezpieczające"]), (PILLARS[1][0], PILLARS[1][1], "Pełnomocnik od pierwszego pisma aż do wyroku sądu.", ["Kontrole US i KAS", "Odwołania i zażalenia", "Skargi do WSA i NSA"]), (PILLARS[2][0], PILLARS[2][1], "Odpowiedź, która zamyka sprawę, zanim zrobi się z niej kontrola.", ["Wezwania do wyjaśnień", "Weryfikacja zwrotu VAT", "Rozmowy z urzędem za Ciebie"])] + SPECS[:5])}
     </div>
     <a class="more-link" href="doradztwo-podatkowe/">Wszystkie specjalizacje i branże →</a>
+    <a class="more-link" href="podatek-od-nieruchomosci/" style="margin-left:24px">Podatek od nieruchomości dla firm →</a>
+  </div>
+</section>
+
+<section class="section" aria-labelledby="pon-promo-h">
+  <div class="wrap">
+    <a class="pon-promo" href="{p}podatek-od-nieruchomosci/">
+      <span class="eyebrow">Podatek od nieruchomości</span>
+      <h2 id="pon-promo-h">Masz nieruchomości komercyjne lub infrastrukturę przemysłową?</h2>
+      <p>Audyt deklaracji, kwalifikacja budynków i budowli, instalacje techniczne i spory z gminą. Sprawdź, czy nie przepłacasz.</p>
+      <span class="btn btn-primary">Zobacz, jak pomagamy →</span>
+    </a>
   </div>
 </section>
 
@@ -803,6 +816,71 @@ def build_kontakt():
 
 
 
+def build_pon():
+    p = "../"
+    h = head(p, "Podatek od nieruchomości dla firm — audyt, budowle, spory z gminą | M2 TAX Wrocław",
+             "Audyt podatku od nieruchomości, kwalifikacja budynków i budowli, instalacje i urządzenia techniczne, ryzyka przy inwestycjach, opinie i spory z gminą. Doradcy podatkowi M2 TAX dla właścicieli nieruchomości komercyjnych i przemysłowych.",
+             "podatek-od-nieruchomosci/")
+    scope = [
+        ("audyt · deklaracje · korekty", "Audyt podatku od nieruchomości", "Weryfikujemy dotychczasowe deklaracje i informacje, sprawdzamy podstawę opodatkowania i wskazujemy nieprawidłowości, zanim zrobi to gmina.", ["Przegląd deklaracji DN-1 i załączników", "Wykrywanie nadpłat i niedopłat", "Plan korekt i odzyskania nadpłaty"]),
+        ("budynek · budowla · grunt", "Kwalifikacja budynków i budowli", "Analizujemy, co jest budynkiem, a co budowlą. Szczególnie przy obiektach przemysłowych, magazynowych i infrastrukturze technicznej.", ["Hale, magazyny, wiaty, zbiorniki", "Wartość budowli przyjęta do opodatkowania", "Orzecznictwo NSA i TK w praktyce"]),
+        ("instalacje · urządzenia", "Instalacje i urządzenia techniczne", "Ustalamy, które elementy infrastruktury mogą stanowić odrębny przedmiot opodatkowania jako budowla, a które nie podlegają podatkowi.", ["Instalacje w budynku a odrębne budowle", "Urządzenia techniczne i ich fundamenty", "Elektrownie PV, sieci, rurociągi"]),
+        ("inwestycje · rozbudowa · zmiana", "Ryzyka przy inwestycjach", "Oceniamy przyszłe obciążenia przy nowych inwestycjach, rozbudowie i zmianie sposobu wykorzystania obiektów.", ["Szacunek podatku przed inwestycją", "Moment powstania obowiązku podatkowego", "Zmiana funkcji obiektu a stawka"]),
+        ("opinia · postępowanie · WSA", "Opinie i spory z gminą", "Przygotowujemy opinie podatkowe i reprezentujemy Cię przed organami podatkowymi oraz sądami w sporach o klasyfikację nieruchomości.", ["Odpowiedzi na wezwania wójta, burmistrza, prezydenta", "Odwołania do SKO i skargi do WSA", "Wnioski o interpretację indywidualną"]),
+    ]
+    who = [("Właściciele i zarządcy nieruchomości komercyjnych", "Biurowce, galerie, obiekty usługowe"),
+           ("Przedsiębiorstwa produkcyjne", "Hale, linie technologiczne, infrastruktura zakładu"),
+           ("Operatorzy obiektów magazynowych", "Centra logistyczne, magazyny wysokiego składowania"),
+           ("Podmioty z rozbudowaną infrastrukturą techniczną", "Sieci, zbiorniki, instalacje, farmy PV"),
+           ("Inwestorzy", "Oszacowanie przyszłych obciążeń w ocenie rentowności inwestycji")]
+    body = header(p, "doradztwo-podatkowe/") + page_hero(
+        p, "Podatek od nieruchomości", "Podatek od nieruchomości",
+        "Wspieramy <em>właścicieli nieruchomości</em>",
+        "Posiadasz nieruchomości komercyjne lub infrastrukturę przemysłową? Sprawdzimy, czy prawidłowo rozliczasz podatek od nieruchomości, i pomożemy w sporze z gminą.",
+        fx="grid") + f'''
+<section class="section bg-paper2" aria-labelledby="pon-h">
+  <div class="wrap">
+{section_head("Zakres doradztwa", "Nasze doradztwo obejmuje", "Od audytu dotychczasowych rozliczeń, przez ocenę nowych inwestycji, aż po reprezentację w sporze z organem podatkowym.", "pon-h")}    <div class="spec-grid three">
+{chr(10).join(spec_card(*x) for x in scope)}
+    </div>
+  </div>
+</section>
+
+<section class="section dark" aria-labelledby="who-h">
+  <canvas class="fx3d" data-fx="grid" aria-hidden="true"></canvas>
+  <div class="wrap">
+    <div class="duo">
+      <div>
+        <span class="eyebrow">Dla kogo pracujemy</span>
+        <h2 id="who-h" style="font-size:clamp(28px,3.6vw,42px);font-weight:800;color:#fff;margin-top:14px">Dla firm, w których podatek od nieruchomości to realny koszt</h2>
+        <p class="lede" style="margin-top:16px">Wspieramy również inwestorów, dla których prawidłowe oszacowanie przyszłych obciążeń podatkowych jest istotnym elementem oceny rentowności inwestycji.</p>
+      </div>
+      <div class="duo-points">
+{chr(10).join(f'        <div class="duo-card"><b>{a}</b><span>{b}</span></div>' for a, b in who)}
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" aria-labelledby="how-h">
+  <div class="wrap">
+{section_head("Nasze podejście", "Podatki analizujemy w kontekście rzeczywistej działalności", "Prawidłowa ocena podatkowa nieruchomości wymaga czegoś więcej niż znajomości przepisów. Trzeba zrozumieć funkcję obiektu, jego konstrukcję i sposób wykorzystania w działalności gospodarczej. Dlatego łączymy wiedzę podatkową z dokumentacją techniczną i ustaleniami dotyczącymi rzeczywistego stanu nieruchomości.", "how-h")}    <div class="steps">
+      <div class="step"><h3>1. Dokumenty</h3><p>Deklaracje, ewidencja środków trwałych, pozwolenia, projekty i dokumentacja techniczna obiektów.</p></div>
+      <div class="step"><h3>2. Stan faktyczny</h3><p>Ustalamy, jak obiekty są naprawdę zbudowane i wykorzystywane. W razie potrzeby oglądamy je na miejscu.</p></div>
+      <div class="step"><h3>3. Kwalifikacja</h3><p>Przypisujemy każdy element do właściwej kategorii: grunt, budynek, budowla albo element niepodlegający podatkowi.</p></div>
+      <div class="step"><h3>4. Wnioski i działanie</h3><p>Raport z rekomendacjami, korekty deklaracji, wniosek o nadpłatę albo stanowisko w sporze z gminą.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="section bg-paper2" aria-label="Umów spotkanie">
+  <div class="wrap">
+{cta_band(p, "Sprawdź, czy prawidłowo rozliczasz podatek od nieruchomości", "Posiadasz nieruchomości komercyjne lub infrastrukturę przemysłową? W bezpłatnych 20 minutach powiemy, czy i gdzie warto zrobić audyt.")}  </div>
+</section>
+'''
+    return h + body + footer(p)
+
+
 def build_biura():
     p = "../"
     h = head(p, "Doradca podatkowy dla biur rachunkowych — wsparcie i JPK CIT | M2 TAX Wrocław",
@@ -1070,7 +1148,7 @@ def write(rel, html):
 
 
 def sitemap():
-    urls = ["", "abonamenty/", "dla-biur-rachunkowych/", "doradztwo-podatkowe/", "zespol/", "blog/", "kontakt/"] + [f"blog/{x['slug']}/" for x in load_posts()] + [ "polityka-prywatnosci.html", "aml.html"]
+    urls = ["", "abonamenty/", "dla-biur-rachunkowych/", "doradztwo-podatkowe/", "podatek-od-nieruchomosci/", "zespol/", "blog/", "kontakt/"] + [f"blog/{x['slug']}/" for x in load_posts()] + [ "polityka-prywatnosci.html", "aml.html"]
     x = '<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n' + \
         "".join(f"  <url><loc>{SITE}/{u}</loc></url>\n" for u in urls) + "</urlset>\n"
     write("sitemap.xml", x)
@@ -1084,6 +1162,7 @@ if __name__ == "__main__":
     write("zespol/index.html", build_zespol())
     write("kontakt/index.html", build_kontakt())
     write("dla-biur-rachunkowych/index.html", build_biura())
+    write("podatek-od-nieruchomosci/index.html", build_pon())
     posts = load_posts()
     write("blog/index.html", build_blog_index(posts))
     for x in posts:
