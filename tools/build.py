@@ -282,7 +282,8 @@ SPECS = [
     ("przekształcenia · aporty · podziały", "Restrukturyzacje", "Przekształcenie JDG w spółkę, aport przedsiębiorstwa, połączenia i podziały spółek z zachowaniem neutralności podatkowej.", ["Analiza ryzyk i klauzuli przeciw unikaniu opodatkowania", "Wniosek o interpretację przed transakcją", "Harmonogram i dokumenty krok po kroku"]),
     ("ustawa o fundacji rodzinnej", "Fundacje rodzinne", "Pomagamy założyć fundację rodzinną i bezpiecznie przenieść do niej majątek, z myślą o sukcesji w firmie rodzinnej.", ["Statut, akt założycielski i wniesienie mienia", "Opodatkowanie świadczeń dla beneficjentów", "Zakazana działalność gospodarcza fundacji"]),
     ("spadki · darowizny · art. 4a", "Sukcesja i majątek rodzinny", "Przekazanie firmy i majątku dzieciom albo małżonkowi bez zbędnego podatku i z dotrzymaniem terminów zgłoszeń.", ["Zwolnienie dla najbliższej rodziny i zgłoszenie SD-Z2", "Darowizna udziałów i przedsiębiorstwa", "Testament i umowy z myślą o podatkach"]),
-    ("VAT · PCC · PIT · podatek od nieruchomości", "Nieruchomości", "Sprzedaż działek, najem, inwestycje deweloperskie i spory z gminą o podatek od nieruchomości.", ["VAT albo PCC przy sprzedaży gruntu i budynku", "Najem prywatny a działalność gospodarcza", "Audyt podatku od nieruchomości i spory z gminą"]),
+    ("VAT · PCC · PIT · podatek od nieruchomości", "Nieruchomości", "Sprzedaż działek, najem, inwestycje deweloperskie i spory z gminą o podatek od nieruchomości.", ["VAT albo PCC przy sprzedaży gruntu i budynku", "Najem prywatny a działalność gospodarcza", "Odwołania od decyzji w podatku od nieruchomości"]),
+    ("budynki · budowle · instalacje", "Podatek od nieruchomości", "Audyty i kwalifikacja obiektów dla właścicieli nieruchomości komercyjnych, zakładów produkcyjnych, magazynów i inwestorów.", ["Audyt deklaracji i wykrywanie nieprawidłowości", "Budynek czy budowla: hale, magazyny, instalacje techniczne", "Ryzyka przy inwestycjach, opinie i spory z gminą"]),
     ("UPO · rezydencja · CFC", "Podatki międzynarodowe", "Praca i działalność za granicą, kontrahenci zagraniczni i przeniesienie rezydencji podatkowej.", ["Rezydencja podatkowa i certyfikaty", "Umowy o unikaniu podwójnego opodatkowania", "Podatek u źródła i transakcje z podmiotami zagranicznymi"]),
     ("opinia · due diligence", "Opinie przed decyzją", "Gdy na interpretację nie ma czasu: pisemna opinia przed podpisaniem umowy, zakupem spółki albo dużą transakcją.", ["Przegląd umów pod kątem podatków", "Due diligence podatkowe przy zakupie firmy", "Opinia, na której możesz oprzeć decyzję"]),
 ]
@@ -642,22 +643,6 @@ def build_specjalizacje():
     <div class="spec-grid">
 {chr(10).join(spec_card(*s) for s in SPECS)}
     </div>
-    <article class="pon-wide" id="podatek-od-nieruchomosci">
-      <div class="pon-intro">
-        <span class="ref">podatek od nieruchomości · budowle · instalacje</span>
-        <h3>Podatek od nieruchomości dla firm</h3>
-        <p>Wspieramy właścicieli nieruchomości komercyjnych i infrastruktury przemysłowej. Prawidłowa ocena wymaga czegoś więcej niż znajomości przepisów: rozumienia funkcji obiektu, jego konstrukcji i sposobu wykorzystania. Dlatego łączymy wiedzę podatkową z dokumentacją techniczną i rzeczywistym stanem nieruchomości.</p>
-        <p class="pon-who"><b>Dla kogo:</b> właściciele i zarządcy nieruchomości komercyjnych, zakłady produkcyjne, operatorzy magazynów, firmy z rozbudowaną infrastrukturą techniczną oraz inwestorzy szacujący przyszłe obciążenia.</p>
-        <a class="btn btn-primary" href="{p}kontakt/#rezerwacja">Sprawdź swoje rozliczenia</a>
-      </div>
-      <ul class="pon-list">
-        <li><b>Audyt podatku od nieruchomości</b><span>Weryfikacja dotychczasowych deklaracji i wskazanie nieprawidłowości.</span></li>
-        <li><b>Kwalifikacja budynków i budowli</b><span>Obiekty przemysłowe, magazynowe i infrastruktura techniczna.</span></li>
-        <li><b>Instalacje i urządzenia techniczne</b><span>Które elementy stanowią odrębny przedmiot opodatkowania.</span></li>
-        <li><b>Ryzyka przy inwestycjach</b><span>Nowe inwestycje, rozbudowa i zmiana sposobu wykorzystania obiektów.</span></li>
-        <li><b>Opinie i spory z gminą</b><span>Opinie podatkowe i reprezentacja w sporach o klasyfikację nieruchomości.</span></li>
-      </ul>
-    </article>
   </div>
 </section>
 

@@ -12,12 +12,12 @@
     },
     {
       "source": "/podatek-od-nieruchomosci",
-      "destination": "/doradztwo-podatkowe/#podatek-od-nieruchomosci",
+      "destination": "/doradztwo-podatkowe/",
       "permanent": true
     },
     {
       "source": "/podatek-od-nieruchomosci/",
-      "destination": "/doradztwo-podatkowe/#podatek-od-nieruchomosci",
+      "destination": "/doradztwo-podatkowe/",
       "permanent": true
     }
   ],
