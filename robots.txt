@@ -1,5 +1,4 @@
 User-agent: *
 Allow: /
-Disallow: /podpis/
 
 Sitemap: https://www.m2tax.pl/sitemap.xml
