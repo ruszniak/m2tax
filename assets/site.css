@@ -645,3 +645,4 @@ footer a:hover{color:#fff}
 .li-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:20px;align-items:start}
 .li-item{border:1px solid var(--line);border-radius:14px;overflow:hidden;background:#fff}
 .li-item iframe{display:block;width:100%;border:0}
+.post-img{margin:0 0 32px}.post-img img{width:100%;height:auto;display:block;border-radius:14px;box-shadow:0 24px 50px -30px rgba(0,0,0,.5)}
