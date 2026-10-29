@@ -11,6 +11,7 @@ Na początku pliku nagłówek:
     lead: Jedno-dwa zdania zachęty, widoczne na liście i w Google.
     category: Kontrole i postępowania
     linkedin: https://www.linkedin.com/feed/update/...   (opcjonalnie)
+    linkedin_urn: urn:li:share:7516860846338150400       (opcjonalnie: osadzi oryginalny post)
     draft: false                                         (true = nie publikuj)
     ---
 

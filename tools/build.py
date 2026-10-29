@@ -960,7 +960,7 @@ def load_posts():
         html = markdown.markdown(body.strip(), extensions=["extra", "sane_lists"])
         words = len(re.sub(r"<[^>]+>", " ", html).split())
         posts.append(dict(slug=slug, title=meta["title"], lead=meta.get("lead", ""), category=meta.get("category", "Podatki"),
-                          linkedin=meta.get("linkedin", ""), date=d, date_h=f"{d.day} {MONTHS[d.month-1]} {d.year}",
+                          linkedin=meta.get("linkedin", ""), urn=meta.get("linkedin_urn", ""), date=d, date_h=f"{d.day} {MONTHS[d.month-1]} {d.year}",
                           html=html, minutes=max(1, round(words / 200))))
     posts.sort(key=lambda x: x["date"], reverse=True)
     return posts
@@ -1024,6 +1024,7 @@ def build_post(x, posts):
     <article class="prose">
       <p class="prose-lead">{x["lead"]}</p>
 {x["html"]}
+      {f'<figure class="post-embed"><iframe src="https://www.linkedin.com/embed/feed/update/{x["urn"]}?collapsed=1" height="560" width="504" frameborder="0" allowfullscreen title="Wpis M2 TAX na LinkedIn" loading="lazy"></iframe><figcaption>Oryginalny wpis na LinkedIn</figcaption></figure>' if x["urn"] else ""}
       <div class="post-foot">
         <p><b>Masz podobną sprawę?</b> Pierwsze 20 minut rozmowy z doradcą podatkowym jest bezpłatne.</p>
         <a class="btn btn-primary" href="{p}kontakt/#rezerwacja">Umów bezpłatne 20 minut</a>
