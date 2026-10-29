@@ -985,13 +985,21 @@ def build_blog_index(posts):
              "Artykuły doradców podatkowych M2 TAX: interpretacje, kontrole, postępowania, JPK CIT, wypłata pieniędzy ze spółki i bieżące zmiany w przepisach.",
              "blog/")
     if posts:
-        cards = "\n".join(f'''      <a class="post-card" href="{x["slug"]}/">
-        <span class="post-meta"><span class="post-cat">{x["category"]}</span>{x["date_h"]} · {x["minutes"]} min czytania</span>
-        <h3>{x["title"]}</h3>
-        <p>{x["lead"]}</p>
-        <span class="post-more">Czytaj artykuł →</span>
-      </a>''' for x in posts)
-        listing = f'<div class="post-grid">\n{cards}\n    </div>'
+        def card(x, feat=False):
+            img = f'<div class="pc-img"><img src="../img/blog/{x["image"]}" alt="" loading="lazy"></div>' if x["image"] else '<div class="pc-img pc-noimg"><span>§</span></div>'
+            return f'''      <a class="post-card{' post-feat' if feat else ''}" href="{x["slug"]}/">
+        {img}
+        <div class="pc-body">
+          {'<span class="pc-new">Najnowszy artykuł</span>' if feat else ''}
+          <span class="post-cat">{x["category"]}</span>
+          <span class="post-meta">{x["date_h"]} · {x["minutes"]} min czytania</span>
+          <h3>{x["title"]}</h3>
+          <p>{x["lead"]}</p>
+          <span class="post-more">Czytaj artykuł <i aria-hidden="true">→</i></span>
+        </div>
+      </a>'''
+        rest = "\n".join(card(x) for x in posts[1:])
+        listing = card(posts[0], True) + (f'\n    <div class="post-grid">\n{rest}\n    </div>' if rest else "")
     else:
         listing = f'''<div class="post-empty"><b>Pierwsze artykuły już wkrótce</b><span>Do tego czasu nasze komentarze do zmian w przepisach znajdziesz na <a href="{LINKEDIN}" target="_blank" rel="noopener">LinkedIn</a>.</span></div>'''
     body = header(p, "blog/") + page_hero(
