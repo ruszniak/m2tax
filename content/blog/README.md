@@ -17,3 +17,4 @@ Na początku pliku nagłówek:
 
 Pod spodem treść w Markdown: `## Śródtytuł`, listy `- punkt`, **pogrubienie**,
 > cytat. Potem: `python3 tools/build.py`.
+content/blog/linkedin.txt: jeden identyfikator wpisu (urn:li:share:...) w linii — pokazywane na /blog/

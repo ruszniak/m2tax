@@ -966,6 +966,19 @@ def load_posts():
     return posts
 
 
+def li_feed():
+    f = os.path.join(ROOT, "content", "blog", "linkedin.txt")
+    urns = [l.strip() for l in open(f, encoding="utf-8")] if os.path.exists(f) else []
+    urns = [u for u in urns if u and not u.startswith("#")]
+    if not urns:
+        return ""
+    frames = "".join(f'<div class="li-item"><iframe src="https://www.linkedin.com/embed/feed/update/{u}" height="640" width="504" frameborder="0" allowfullscreen title="Wpis M2 TAX na LinkedIn" loading="lazy"></iframe></div>' for u in urns)
+    return f'''<div class="li-feed">
+      <div class="li-head"><span class="eyebrow">LinkedIn</span><h2>Najnowsze wpisy z naszego profilu</h2></div>
+      <div class="li-grid">{frames}</div>
+    </div>'''
+
+
 def build_blog_index(posts):
     p = "../"
     h = head(p, "Blog podatkowy — M2 TAX Doradcy Podatkowi | Wrocław",
@@ -989,6 +1002,7 @@ def build_blog_index(posts):
 <section class="section" aria-label="Artykuły">
   <div class="wrap">
     {listing}
+    {li_feed()}
     <p class="post-follow">Obserwuj nas na <a href="{LINKEDIN}" target="_blank" rel="noopener">LinkedIn</a>, żeby nie przegapić nowych wpisów.</p>
   </div>
 </section>
