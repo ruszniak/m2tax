@@ -34,6 +34,9 @@ TOWNS = [
     ("Oleśnica", "powiat oleśnicki"),
     ("Oława", "powiat oławski"),
     ("Strzelin", "powiat strzeliński"),
+    ("Jelcz-Laskowice", "powiat oławski"),
+    ("Długołęka", "gmina Długołęka"),
+    ("Kąty Wrocławskie", "gmina Kąty Wrocławskie"),
 ]
 NAV = [("abonamenty/", "Abonamenty"), ("doradztwo-podatkowe/", "Doradztwo podatkowe"), ("dla-biur-rachunkowych/", "Dla biur rachunkowych"), ("zespol/", "Zespół"), ("blog/", "Blog"), ("kontakt/", "Kontakt")]
 
@@ -309,7 +312,7 @@ FAQ_HOME = [
     ("Dlaczego Waszą sprawą zajmuje się dwóch doradców?", "Każda sprawa przechodzi przez ręce dwóch doradców podatkowych. Obaj znają Twoją sytuację, więc zawsze masz z kim porozmawiać, także w czasie urlopu czy rozprawy jednego z nas. Ważne pisma i opinie sprawdza drugi doradca."),
     ("Mam kontrolę z urzędu skarbowego. Co robić?", "Zachować spokój i zadzwonić do doradcy. Doradca podatkowy może reprezentować Cię przed US i KAS, w postępowaniu podatkowym, czynnościach sprawdzających i przed sądami administracyjnymi."),
     ("Ile kosztują usługi doradcy podatkowego?", "Stała obsługa w abonamencie kosztuje od 369 zł netto miesięcznie, a konsultacja indywidualna od 400 zł netto za godzinę. Postępowania, kontrole i sprawy sądowe wyceniamy po zapoznaniu się z pismami. Pierwsze 20 minut rozmowy jest bezpłatne."),
-    ("Czy obsługujecie klientów spoza Wrocławia?", "Tak. Na co dzień pracujemy z klientami z Wrocławia, Siechnic, Kobierzyc, Żórawiny, Środy Śląskiej, Trzebnicy, Oleśnicy, Oławy i Strzelina. Spotkania odbywają się w kancelarii przy ul. Zwycięskiej 3 lub ul. Artemskiej 11, u klienta w firmie albo online, a pełnomocnikiem możemy być przed każdym urzędem i sądem w Polsce."),
+    ("Czy obsługujecie klientów spoza Wrocławia?", "Tak. Na co dzień pracujemy z klientami z Wrocławia, Siechnic, Kobierzyc, Żórawiny, Środy Śląskiej, Trzebnicy, Oleśnicy, Oławy, Strzelina, Jelcza-Laskowic, Długołęki i Kątów Wrocławskich. Spotkania odbywają się w kancelarii przy ul. Zwycięskiej 3 lub ul. Artemskiej 11, u klienta w firmie albo online, a pełnomocnikiem możemy być przed każdym urzędem i sądem w Polsce."),
     ("Ile trwa uzyskanie interpretacji indywidualnej?", "Dyrektor KIS ma 3 miesiące od wpływu kompletnego wniosku. Opłata to 40 zł od każdego stanu faktycznego lub zdarzenia przyszłego. Brak interpretacji w terminie oznacza, że stanowisko wnioskodawcy uznaje się za prawidłowe."),
 ]
 
@@ -498,7 +501,7 @@ def glass_tiles(p):
 
 
 # kierunki od Wrocławia (stopnie, 0 = wschód, zgodnie z ruchem wskazówek) i odległość względna
-TOWN_GEO = {"Siechnice": (32, .5), "Kobierzyce": (140, .66), "Żórawina": (100, .62), "Środa Śląska": (180, .9), "Trzebnica": (-95, .85), "Oleśnica": (-30, .88), "Oława": (12, .9), "Strzelin": (68, .92)}
+TOWN_GEO = {"Siechnice": (48, .5), "Kobierzyce": (132, .64), "Żórawina": (96, .68), "Środa Śląska": (190, .9), "Trzebnica": (-100, .85), "Oleśnica": (-30, .9), "Oława": (24, .92), "Strzelin": (70, .93), "Jelcz-Laskowice": (-2, .9), "Długołęka": (-62, .6), "Kąty Wrocławskie": (163, .72)}
 
 
 def towns_orbit(p, head, note=""):
@@ -879,7 +882,7 @@ def build_zespol():
 def build_kontakt():
     p = "../"
     h = head(p, "Kontakt i rezerwacja — M2 TAX Doradcy Podatkowi | Wrocław",
-             "Umów spotkanie z doradcą podatkowym online. M2 TAX, ul. Zwycięska 3, 53-033 Wrocław, tel. 883 643 565, 534 909 534, kancelaria@m2tax.pl. Obsługujemy Wrocław, Siechnice, Kobierzyce, Żórawinę, Środę Śląską, Trzebnicę, Oleśnicę, Oławę i Strzelin.",
+             "Umów spotkanie z doradcą podatkowym online. M2 TAX, ul. Zwycięska 3, 53-033 Wrocław, tel. 883 643 565, 534 909 534, kancelaria@m2tax.pl. Obsługujemy Wrocław, Siechnice, Kobierzyce, Żórawinę, Środę Śląską, Trzebnicę, Oleśnicę, Oławę, Strzelin, Jelcz-Laskowice, Długołękę i Kąty Wrocławskie.",
              "kontakt/")
     body = header(p, "kontakt/") + f'''<section class="section bk-section" id="rezerwacja" aria-labelledby="bk-h">
   <canvas class="fx3d" data-fx="wave" aria-hidden="true"></canvas>
