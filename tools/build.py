@@ -785,6 +785,10 @@ def build_kontakt():
         </div>
       </div>
       <div class="map-col">
+        <figure class="office">
+          <img src="{p}img/kancelaria-wnetrze.jpg" alt="Wnętrze kancelarii M2 TAX Doradcy Podatkowi we Wrocławiu" width="1400" height="1119" loading="lazy">
+          <figcaption><b>Zapraszamy do kancelarii</b><span>Kawa, spokojna rozmowa i konkretny plan działania.</span></figcaption>
+        </figure>
         <div class="map">
           <iframe title="Mapa dojazdu do kancelarii M2 TAX" src="https://maps.google.com/maps?q=ul.+Zwyci%C4%99ska+3,+53-033+Wroc%C5%82aw&amp;z=15&amp;output=embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
         </div>

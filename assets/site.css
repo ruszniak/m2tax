@@ -683,3 +683,10 @@ footer a:hover{color:#fff}
 .post-grid-2 .post-card p{font-size:16px}
 .post-grid-2 .post-more{margin-top:auto;align-self:flex-start;display:inline-flex;gap:8px;align-items:center;padding:12px 20px;border-radius:8px;background:var(--ink);color:#D9B98E}
 @media (max-width:760px){.post-grid-2{grid-template-columns:1fr}}
+/* Zdjęcie kancelarii (Kontakt) */
+.office{margin:0;position:relative;border-radius:14px;overflow:hidden;box-shadow:0 26px 50px -30px rgba(29,26,22,.45)}
+.office img{width:100%;height:auto;display:block;aspect-ratio:1400/1119;object-fit:cover;transition:transform .8s cubic-bezier(.2,.7,.2,1)}
+.office:hover img{transform:scale(1.03)}
+.office figcaption{position:absolute;left:0;right:0;bottom:0;padding:48px 22px 18px;background:linear-gradient(transparent,rgba(14,15,17,.85));color:#fff;display:grid;gap:2px}
+.office figcaption b{font-family:var(--f-display);font-size:17px}
+.office figcaption span{font-size:14.5px;color:#D9B98E}
