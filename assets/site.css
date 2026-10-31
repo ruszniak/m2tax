@@ -733,9 +733,9 @@ html:not(.fx) .split .w>span{transform:none}
 .wheel-num.flip span{transform:translateY(-30%);opacity:0}
 .wheel-list{list-style:none;margin:0;padding:0;position:absolute;inset:0}
 .wheel-list li{position:absolute;left:0;top:50%;transition:transform .7s cubic-bezier(.2,.7,.2,1),opacity .5s}
-.wheel-list button{all:unset;cursor:pointer;display:block;max-width:220px;font-family:var(--f-display);font-weight:600;font-size:15px;line-height:1.25;color:var(--muted);transition:color .3s,font-size .3s}
+.wheel-list button{all:unset;cursor:pointer;display:block;max-width:260px;font-family:var(--f-display);font-weight:600;font-size:15px;line-height:1.25;color:var(--muted);transition:color .3s}
 .wheel-list button:hover{color:var(--accent)}
-.wheel-list li.on button{color:var(--text);font-size:19px;font-weight:800}
+.wheel-list li.on button{color:var(--text);font-size:18px;font-weight:800}
 .wheel-list button:focus-visible{outline:3px solid var(--accent);outline-offset:4px;border-radius:4px}
 .wheel-card{position:relative;padding:clamp(28px,3.4vw,44px);border-radius:18px;background:var(--paper);border:1px solid var(--line);box-shadow:0 40px 80px -50px rgba(29,26,22,.45);display:grid;gap:14px;min-height:380px;align-content:center;overflow:clip}
 .wheel-card::before{content:"";position:absolute;right:-120px;top:-120px;width:320px;height:320px;border-radius:50%;background:radial-gradient(circle,color-mix(in srgb,var(--accent) 22%,transparent),transparent 70%);pointer-events:none}

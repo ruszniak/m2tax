@@ -200,13 +200,23 @@
     var $=function(s){ return card.querySelector(s); };
     function layout(){
       var mobile=innerWidth<=900; if(mobile){ lis.forEach(function(li){ li.style.transform=''; li.style.opacity=''; }); return; }
-      var W=dial.clientWidth, H=dial.clientHeight, R=470, cx=W*0.42-440, cy=H/2, step=0.13;
-      lis.forEach(function(li,i){ var k=i-cur; if(k>data.length/2) k-=data.length; if(k<-data.length/2) k+=data.length;
-        var a=k*step, x=cx+R*Math.cos(a), y=cy+R*Math.sin(a)-li.offsetHeight/2, vis=Math.abs(a)<0.56;
-        li.style.transform='translate('+x.toFixed(1)+'px,'+(y-cy).toFixed(1)+'px)'; li.style.opacity=vis?(1-Math.abs(a)/0.75).toFixed(2):0; li.style.pointerEvents=vis?'':'none'; });
+      var W=dial.clientWidth, H=dial.clientHeight, R=470, cx=W*0.40-440, cy=H/2, gap=18, n=lis.length, pos=new Array(n);
+      lis.forEach(function(li){ li.firstElementChild.style.maxWidth=Math.max(160,W-(cx+R)-12)+'px'; });
+      function rel(i){ var k=i-cur; if(k>n/2) k-=n; if(k<-n/2) k+=n; return k; }
+      var order=lis.map(function(_,i){ return i; }).sort(function(a,b){ return Math.abs(rel(a))-Math.abs(rel(b)); });
+      var down=lis[cur].offsetHeight/2, up=-lis[cur].offsetHeight/2; pos[cur]=0;
+      for(var k=1;k<=Math.floor(n/2);k++){
+        var iN=(cur+k)%n, iP=(cur-k+n)%n;
+        if(rel(iN)===k){ var h=lis[iN].offsetHeight; pos[iN]=down+gap+h/2; down+=gap+h; }
+        if(rel(iP)===-k && iP!==iN){ var h2=lis[iP].offsetHeight; pos[iP]=up-gap-h2/2; up-=gap+h2; }
+      }
+      lis.forEach(function(li,i){ var y=pos[i]||0, vis=Math.abs(y)<H/2-20, yy=Math.max(-R+1,Math.min(R-1,y));
+        var x=cx+Math.sqrt(R*R-yy*yy);
+        li.style.transform='translate('+x.toFixed(1)+'px,'+(y-li.offsetHeight/2).toFixed(1)+'px)';
+        li.style.opacity=vis?Math.max(0.15,1-Math.abs(y)/(H/2)).toFixed(2):0; li.style.pointerEvents=vis?'':'none'; });
     }
     function go(i,user){ cur=(i+data.length)%data.length; var d=data[cur];
-      lis.forEach(function(li,k){ li.classList.toggle('on',k===cur); });
+      lis.forEach(function(li,k){ li.classList.toggle('on',k===cur); }); requestAnimationFrame(layout);
       if(num){ num.parentElement.classList.add('flip'); setTimeout(function(){ num.textContent=(cur+1<10?'0':'')+(cur+1); num.parentElement.classList.remove('flip'); },220); }
       card.classList.add('swap');
       setTimeout(function(){ $('.wheel-ref').textContent=d.r; $('.wheel-title').textContent=d.t; $('.wheel-desc').textContent=d.d;
