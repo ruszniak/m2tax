@@ -703,10 +703,6 @@ def build_home():
   </div>
 </section>
 
-<section class="section" aria-label="Umów spotkanie">
-  <div class="wrap">
-{cta_band(p, "Porozmawiajmy o Twojej sprawie", "Pierwsze 20 minut jest bezpłatne. Powiemy, jakie rozwiązanie pasuje do Twojej sytuacji i ile będzie kosztować.")}  </div>
-</section>
 '''
     return h + body + footer(p)
 
