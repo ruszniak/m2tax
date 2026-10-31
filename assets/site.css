@@ -1103,17 +1103,23 @@ html.fx .sol-anim.go .sol.tilting{transition:transform .15s ease!important}
 .to-wide .to-note{text-align:center;max-width:720px;margin:28px auto 0}
 @media (max-width:900px){.to-wide .to-orb{aspect-ratio:1;max-width:520px}.to-wide .to-core{height:32%}.to-wide .to-nd b{font-size:10.5px;padding:2px 6px}}
 
-/* ===== przezroczysty nagłówek nad ciemnym startem strony ===== */
-.topbar.ov{margin-bottom:-75px;background:transparent;border-bottom-color:transparent;backdrop-filter:none;-webkit-backdrop-filter:none;transition:background .4s ease,border-color .4s ease,backdrop-filter .4s ease,box-shadow .4s ease}
-.topbar.ov.sc,.topbar.ov.open{background:rgba(13,14,17,.88);backdrop-filter:saturate(1.5) blur(16px);-webkit-backdrop-filter:saturate(1.5) blur(16px);border-bottom-color:rgba(255,255,255,.08);box-shadow:0 10px 30px -18px rgba(0,0,0,.6)}
-.topbar.ov .logo .logo-l{display:none}.topbar.ov .logo .logo-d{display:block}
-.topbar.ov .menu-btn{color:#fff;background:rgba(255,255,255,.06);border-color:rgba(255,255,255,.25)}
-.topbar.ov .theme-tg{background:rgba(255,255,255,.07);border-color:rgba(255,255,255,.18);color:#cfcfcf}
+/* ===== przezroczysty nagłówek: ciemne tło → jasne napisy, jasne tło → ciemne napisy ===== */
+.topbar.ov{background:transparent;border-bottom:1px solid transparent;backdrop-filter:none;-webkit-backdrop-filter:none;transition:background .45s ease,border-color .45s ease,box-shadow .45s ease,backdrop-filter .45s ease}
+.topbar.ov:not(.ov-flow){margin-bottom:-75px}
+.topbar.ov.sc{background:rgba(13,14,17,.42);backdrop-filter:saturate(1.6) blur(18px);-webkit-backdrop-filter:saturate(1.6) blur(18px);border-bottom-color:rgba(255,255,255,.07)}
+.topbar.ov.lt.sc,.topbar.ov.lt{background:rgba(255,255,255,.55);backdrop-filter:saturate(1.6) blur(18px);-webkit-backdrop-filter:saturate(1.6) blur(18px);border-bottom-color:rgba(0,0,0,.06)}
+.topbar.ov.open{background:rgba(13,14,17,.9)}
+.topbar.ov.lt.open{background:rgba(255,255,255,.95)}
+.topbar.ov:not(.lt) .logo .logo-l{display:none}.topbar.ov:not(.lt) .logo .logo-d{display:block}
+.topbar.ov.lt .logo .logo-l{display:block}.topbar.ov.lt .logo .logo-d{display:none}
+.topbar.ov:not(.lt) .menu-btn{color:#fff;background:rgba(255,255,255,.06);border-color:rgba(255,255,255,.25)}
+.topbar.ov:not(.lt) .theme-tg{background:rgba(255,255,255,.07);border-color:rgba(255,255,255,.18);color:#cfcfcf}
+.topbar.ov .logo img,.topbar.ov .nav a{transition:color .35s ease,background .3s,border-color .3s}
 @media (min-width:981px){
-  .topbar.ov .nav a:not(.btn){color:#f2f1ee}
-  .topbar.ov .nav a:not(.btn):hover,.topbar.ov .nav a[aria-current="page"]:not(.btn){color:#D9B98E}
-  .topbar.ov .nav a.btn-primary{background:transparent;color:#fff;border:1px solid rgba(255,255,255,.55);box-shadow:none;transition:background .3s,color .3s,border-color .3s}
-  .topbar.ov .nav a.btn-primary:hover{background:#D9B98E;border-color:#D9B98E;color:#1D1A16}
+  .topbar.ov:not(.lt) .nav a:not(.btn){color:#f2f1ee}
+  .topbar.ov:not(.lt) .nav a:not(.btn):hover,.topbar.ov:not(.lt) .nav a[aria-current="page"]:not(.btn){color:#D9B98E}
+  .topbar.ov:not(.lt) .nav a.btn-primary{background:transparent;color:#fff;border:1px solid rgba(255,255,255,.55);box-shadow:none}
+  .topbar.ov:not(.lt) .nav a.btn-primary:hover{background:#D9B98E;border-color:#D9B98E;color:#1D1A16}
 }
 main>.ov-first{padding-top:75px}
 main>.hero2.ov-first{min-height:min(100vh,960px)}

@@ -340,14 +340,22 @@
   sec.querySelectorAll('.pf-doc').forEach(function(d){ d.addEventListener('pointermove',function(e){ var r=d.getBoundingClientRect(); d.style.setProperty('--mx',(e.clientX-r.left)+'px'); d.style.setProperty('--my',(e.clientY-r.top)+'px'); }); });
 })();
 
-/* ---------- przezroczysty nagłówek ---------- */
+/* ---------- przezroczysty nagłówek (dopasowuje się do tła pod spodem) ---------- */
 (function(){
   var tb=document.querySelector('.topbar'), main=document.querySelector('main'); if(!tb||!main) return;
   var first=main.firstElementChild;
-  if(!first || !/(^|\s)(hero|page-hero|bk-section)(\s|$)/.test(first.className)) return;
-  tb.classList.add('ov'); first.classList.add('ov-first');
-  function upd(){ tb.classList.toggle('sc', scrollY>12); }
-  addEventListener('scroll',upd,{passive:true}); upd();
+  tb.classList.add('ov');
+  if(first && /(^|\s)(hero|page-hero|bk-section)(\s|$)/.test(first.className)) first.classList.add('ov-first'); else tb.classList.add('ov-flow');
+  function lum(c){ var m=c.match(/[\d.]+/g); if(!m) return null; if(m.length>3 && +m[3]<.5) return null; return (.299*m[0]+.587*m[1]+.114*m[2])/255; }
+  function bgAt(y){ var x=innerWidth/2, el=document.elementsFromPoint(x,y).filter(function(e){ return !tb.contains(e) && !e.closest('.fab-stack'); })[0];
+    while(el && el!==document.documentElement){ var L=lum(getComputedStyle(el).backgroundColor); if(L!==null) return L; el=el.parentElement; }
+    return lum(getComputedStyle(document.body).backgroundColor); }
+  var tk=false;
+  function upd(){ tk=false; var h=tb.offsetHeight, L=bgAt(h+2);
+    tb.classList.toggle('sc', scrollY>12);
+    tb.classList.toggle('lt', L!==null && L>.55); }
+  function req(){ if(!tk){ tk=true; requestAnimationFrame(upd); } }
+  addEventListener('scroll',req,{passive:true}); addEventListener('resize',req); upd(); setTimeout(upd,400);
   var mb=document.getElementById('menu-btn');
   if(mb) mb.addEventListener('click',function(){ setTimeout(function(){ tb.classList.toggle('open', mb.getAttribute('aria-expanded')==='true'); },0); });
 })();
