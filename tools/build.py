@@ -326,10 +326,10 @@ FAQ_ABO = [
 
 
 def faq_html(items):
-    return "\n".join(f'''      <details open>
-        <summary>{q}</summary>
-        <p>{a}</p>
-      </details>''' for q, a in items)
+    return "\n".join(f'''      <details class="fq"{' open' if i == 0 else ''}>
+        <summary><span class="fq-n">{i + 1:02d}</span><span class="fq-q">{q}</span><span class="fq-ic" aria-hidden="true"></span></summary>
+        <div class="fq-a"><p>{a}</p></div>
+      </details>''' for i, (q, a) in enumerate(items))
 
 
 def spec_card(ref, t, d, li, tag="article", h="h4"):
@@ -530,6 +530,55 @@ def towns_orbit(p, head, note=""):
 </section>'''
 
 
+def bridge_svg():
+    hang = ""
+    for i in range(1, 12):
+        x = 90 + i * 340 / 12
+        t = (x - 90) / 340
+        y = (1 - t) ** 2 * 60 + 2 * (1 - t) * t * 250 + t * t * 60
+        hang += f'<line class="bb-h" style="--d:{1.5 + i * .06:.2f}s" x1="{x:.1f}" y1="{y:.1f}" x2="{x:.1f}" y2="170"/>'
+    deck = "".join(f'<rect class="bb-seg" style="--d:{.55 + i * .08:.2f}s" x="{90 + i * 34:.0f}" y="168" width="33" height="9" rx="1.5"/>' for i in range(10))
+    win = "".join(f'<rect x="{x}" y="{y}" width="7" height="7" rx="1"/>' for x in (66, 80, 101) for y in (110, 128, 146))
+    return f'''<svg class="bb-svg" viewBox="0 0 520 250" aria-hidden="true">
+  <defs><linearGradient id="bbg" x1="0" x2="1"><stop offset="0" stop-color="#B8925F"/><stop offset=".5" stop-color="#F3E1BC"/><stop offset="1" stop-color="#B8925F"/></linearGradient></defs>
+  <path class="bb-water" d="M0 222 Q 30 214 60 222 T 120 222 T 180 222 T 240 222 T 300 222 T 360 222 T 420 222 T 480 222 T 540 222"/>
+  <path class="bb-water bb-w2" d="M0 236 Q 30 228 60 236 T 120 236 T 180 236 T 240 236 T 300 236 T 360 236 T 420 236 T 480 236 T 540 236"/>
+  <g class="bb-tw bb-tw1"><rect x="56" y="96" width="62" height="114" rx="5"/><g class="bb-win">{win}</g><rect x="84" y="50" width="12" height="160" rx="3" class="bb-mast"/></g>
+  <g class="bb-tw bb-tw2"><rect x="402" y="96" width="62" height="114" rx="5"/><rect x="424" y="50" width="12" height="160" rx="3" class="bb-mast"/><text x="433" y="160" text-anchor="middle">§</text></g>
+  {deck}
+  <path class="bb-cable" d="M90 60 Q260 250 430 60"/>
+  {hang}
+  <circle class="bb-spark" r="3.5"><animateMotion dur="3.4s" begin="2.6s" repeatCount="indefinite" path="M90 60 Q260 250 430 60"/></circle>
+</svg>'''
+
+
+def bridge_section(p):
+    return f'''<section class="section bb-sec" aria-labelledby="bb-h">
+  <div class="wrap">
+    <div class="bb-card">
+      <div class="bb-glow" aria-hidden="true"></div>
+      <div class="bb-copy">
+        <span class="eyebrow">Dla biur rachunkowych</span>
+        <h2 id="bb-h" class="split">Prowadzisz biuro rachunkowe? <em>Zbudujmy most.</em></h2>
+        <p>Stałe wsparcie doradców podatkowych dla Twojego zespołu, wdrożenie JPK CIT i pomoc przy kontrolach Twoich klientów. Wy prowadzicie księgi, my bierzemy na siebie trudne pytania.</p>
+        <ul class="bb-pts">
+          <li><b>Odpowiedź na piśmie</b><span>do przekazania klientowi</span></li>
+          <li><b>Kontrole i pisma z US</b><span>prowadzimy razem z Wami</span></li>
+          <li><b>od <i data-count="419">419</i> zł</b><span>netto miesięcznie</span></li>
+        </ul>
+        <div class="hero-cta"><a class="btn btn-primary magnet" href="{p}dla-biur-rachunkowych/">Zobacz ofertę dla biur →</a></div>
+      </div>
+      <div class="bb-vis">
+        {bridge_svg()}
+        <span class="bb-lb bb-l1">Twoje biuro</span><span class="bb-lb bb-l2">M2 TAX</span>
+        <span class="bb-chip bb-q">pytanie o VAT</span>
+        <span class="bb-chip bb-a">✓ odpowiedź doradcy</span>
+      </div>
+    </div>
+  </div>
+</section>'''
+
+
 def build_home():
     p = ""
     h = head(p, "M2 TAX — Doradcy Podatkowi | Wrocław, Siechnice, Kobierzyce",
@@ -609,14 +658,7 @@ def build_home():
 </section>
 
 {duo_section(p)}
-<section class="section" aria-label="Dla biur rachunkowych" style="padding-bottom:0">
-  <div class="wrap">
-    <div class="cta-band">
-      <div><span class="eyebrow">Dla biur rachunkowych</span><h3 style="margin-top:8px">Prowadzisz biuro rachunkowe? Zostań naszym partnerem</h3><p>Stałe wsparcie doradców podatkowych dla Twojego zespołu, wdrożenie JPK CIT i pomoc przy kontrolach Twoich klientów. Od 419 zł netto miesięcznie.</p></div>
-      <div class="hero-cta"><a class="btn btn-primary" href="dla-biur-rachunkowych/">Zobacz ofertę dla biur</a></div>
-    </div>
-  </div>
-</section>
+{bridge_section(p)}
 <section class="section br-sec" id="branze" aria-labelledby="br-h">
   <canvas class="fx3d" data-fx="rings" aria-hidden="true"></canvas>
   <div class="wrap">

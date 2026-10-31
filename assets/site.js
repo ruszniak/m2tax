@@ -77,7 +77,7 @@
   });
 
   /* ---------- wejście elementów w perspektywie ---------- */
-  var sel='.section-head, .step, .letter, .pillar, .spec, .plan, .free, .person, .faq details, .bk-card, .cinfo, .urgent, .map-col, .sol, .duo-card, .town, .variant, .flow li, .cta-band';
+  var sel='.section-head, .step, .letter, .pillar, .spec, .plan, .free, .person, .bk-card, .cinfo, .urgent, .map-col, .sol, .duo-card, .town, .variant, .flow li, .cta-band';
   var items=[].slice.call(document.querySelectorAll(sel));
   if(!reduce && 'IntersectionObserver' in window){
     items.forEach(function(el){ var sib=el.parentElement?[].indexOf.call(el.parentElement.children,el):0; el.style.setProperty('--d',(Math.min(sib,5)*0.08)+'s'); el.classList.add('rv'); });
@@ -89,7 +89,7 @@
   /* ---------- przechylanie kart 3D (tylko mysz) ---------- */
   if(!reduce && window.matchMedia('(hover:hover) and (pointer:fine)').matches){
     /* podświetlenie za kursorem: przekazujemy pozycję myszy do CSS */
-    document.querySelectorAll('.pillar, .plan, .letter, .spec, .person, .free, .step, .cinfo, .urgent, .faq details, .bk-free, .callcard, .sol, .duo-card, .variant, .town').forEach(function(el){
+    document.querySelectorAll('.pillar, .plan, .letter, .spec, .person, .free, .step, .cinfo, .urgent, .bk-free, .callcard, .sol, .duo-card, .variant, .town').forEach(function(el){
       el.classList.add('glow');
       el.addEventListener('pointermove',function(e){ var r=el.getBoundingClientRect(); el.style.setProperty('--mx',(e.clientX-r.left)+'px'); el.style.setProperty('--my',(e.clientY-r.top)+'px'); });
     });
@@ -292,4 +292,30 @@
       if(el<DUR) requestAnimationFrame(frame); else { c.clearRect(0,0,W,H); ba.classList.add('glint-on'); } }
     (document.fonts&&document.fonts.ready?document.fonts.ready:Promise.resolve()).then(function(){ setTimeout(function(){ init(); requestAnimationFrame(frame); },80); });
   } else if(ba){ ba.classList.add('glint-on'); }
+})();
+
+/* ---------- dla biur: most + FAQ ---------- */
+(function(){
+  var reduce=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var bb=document.querySelector('.bb-card');
+  if(bb){
+    if(reduce || !('IntersectionObserver' in window)) bb.classList.add('go');
+    else { var o=new IntersectionObserver(function(es){ if(es[0].isIntersecting){ bb.classList.add('go'); o.disconnect(); } },{threshold:0.3}); o.observe(bb); }
+    var Qs=['pytanie o VAT','kontrola u klienta','JPK CIT','ulga B+R','sprzedaż działki','podatek u źródła'], qi=0, q=bb.querySelector('.bb-q');
+    if(q) q.addEventListener('animationiteration',function(){ qi=(qi+1)%Qs.length; q.textContent=Qs[qi]; });
+  }
+  var fqs=[].slice.call(document.querySelectorAll('details.fq'));
+  fqs.forEach(function(d){
+    var s=d.querySelector('summary'), a=d.querySelector('.fq-a');
+    s.addEventListener('click',function(e){
+      e.preventDefault();
+      if(d._busy) return;
+      var opening=!d.open;
+      if(opening) fqs.forEach(function(x){ if(x!==d && x.open) x.querySelector('summary').click(); });
+      if(reduce || !a.animate){ d.open=opening; return; }
+      d._busy=true;
+      if(opening){ d.open=true; var h=a.scrollHeight; a.animate([{height:'0px',opacity:0},{height:h+'px',opacity:1}],{duration:380,easing:'cubic-bezier(.2,.8,.2,1)'}).onfinish=function(){ d._busy=false; }; }
+      else { var h2=a.scrollHeight; var an=a.animate([{height:h2+'px',opacity:1},{height:'0px',opacity:0}],{duration:300,easing:'cubic-bezier(.4,0,.2,1)',fill:'forwards'}); an.onfinish=function(){ d.open=false; an.cancel(); d._busy=false; }; }
+    });
+  });
 })();
