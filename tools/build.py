@@ -651,6 +651,63 @@ def home_blog():
 '''
 
 
+SW_GROUPS = [
+    ("Kontrole i postępowania", ["Postępowania podatkowe i kontrole", "Czynności sprawdzające", "Zaległości podatkowe i egzekucja"]),
+    ("Doradztwo podatkowe", ["Wnioski o interpretację indywidualną", "Opinie przed decyzją", "Podatki międzynarodowe", "VAT w e-commerce i usługach cyfrowych", "Ulgi podatkowe dla innowacji"]),
+    ("Firma i majątek", ["Wypłata pieniędzy ze spółki", "Forma prawna i opodatkowanie", "Restrukturyzacje", "Fundacje rodzinne", "Sukcesja i majątek rodzinny"]),
+    ("Nieruchomości", ["Nieruchomości", "Podatek od nieruchomości"]),
+]
+SW_SHORT = {"Postępowania podatkowe i kontrole": "Postępowania i kontrole", "Wnioski o interpretację indywidualną": "Interpretacje indywidualne",
+            "Zaległości podatkowe i egzekucja": "Zaległości i egzekucja", "VAT w e-commerce i usługach cyfrowych": "VAT w e-commerce",
+            "Ulgi podatkowe dla innowacji": "Ulgi B+R i IP Box", "Sukcesja i majątek rodzinny": "Sukcesja", "Forma prawna i opodatkowanie": "Forma prawna"}
+
+
+def spec_wheel(p):
+    allx = {t: (r, t, d) for r, t, d, _c, li in PILLARS}
+    allx.update({t: (r, t, d) for r, t, d, li in SPECS})
+    data, lis, k = [], "", 0
+    for g, ts in SW_GROUPS:
+        lis += f'<li class="sw-g" aria-hidden="true"><span>{g}</span></li>'
+        for t in ts:
+            r, _, d = allx[t]
+            data.append({"t": t, "r": r, "d": d, "g": g})
+            lis += f'<li class="sw-i"><button type="button" data-i="{k}">{SW_SHORT.get(t, t)}</button></li>'
+            k += 1
+    n = len(data)
+    rings = ""
+    import math
+    for band, R in ((0, 560), (1, 520)):
+        for j in range(26):
+            a = j / 26 * 2 * math.pi
+            rings += f'<circle cx="{590 + 7 * math.cos(a):.1f}" cy="{590 + 7 * math.sin(a):.1f}" r="{R - j * 0.55:.1f}"/>'
+    js = json.dumps(data, ensure_ascii=False).replace("'", "&#39;")
+    f = data[0]
+    return f'''<div class="sw" data-items='{js}'>
+      <div class="sw-dial">
+        <svg class="sw-rings" viewBox="0 0 1180 1180" aria-hidden="true"><g>{rings}</g></svg>
+        <div class="sw-num" aria-hidden="true"><i>§</i><span>01</span></div>
+        <ol class="sw-list">{lis}</ol>
+      </div>
+      <div class="sw-side">
+        <h2 id="spec-h" class="split">W czym możemy pomóc?</h2>
+        <div class="sw-card" aria-live="polite">
+          <span class="sw-cat">{f["g"]}</span>
+          <h3 class="sw-title">{f["t"]}</h3>
+          <p class="sw-desc">{f["d"]}</p>
+          <span class="sw-ref">{f["r"]}</span>
+          <a class="btn btn-primary sw-btn" href="{p}kontakt/#rezerwacja">Porozmawiajmy o tym <span aria-hidden="true">→</span></a>
+        </div>
+        <div class="sw-ctl">
+          <span class="sw-count"><b>01</b> / {n:02d}</span>
+          <span class="sw-bar"><i></i></span>
+          <button type="button" class="sw-prev" aria-label="Poprzednia specjalizacja"><svg viewBox="0 0 24 24"><path d="M15 6l-6 6 6 6"/></svg></button>
+          <button type="button" class="sw-next" aria-label="Następna specjalizacja"><svg viewBox="0 0 24 24"><path d="M9 6l6 6-6 6"/></svg></button>
+        </div>
+        <a class="more-link" href="{p}doradztwo-podatkowe/">Wszystkie specjalizacje i branże →</a>
+      </div>
+    </div>'''
+
+
 def build_home():
     p = ""
     h = head(p, "M2 TAX — Doradcy Podatkowi | Wrocław, Siechnice, Kobierzyce",
@@ -680,11 +737,8 @@ def build_home():
   <a class="scroll-cue" href="#specjalizacje" aria-label="Przewiń dalej"><span></span></a>
 </section>
 
-<section class="section wheel-sec" id="specjalizacje" aria-labelledby="spec-h">
-  <div class="wrap">
-{section_head("Specjalizacje", "W czym możemy pomóc?", "Znajdziemy legalne sposoby, by firma nie płaciła więcej, niż musi. Stała obsługa podatkowa firm, konsultacje dla osób prywatnych, kontrole, postępowania i sprawy przed sądami administracyjnymi.", "spec-h")}    {wheel_html()}
-    <a class="more-link" href="doradztwo-podatkowe/">Wszystkie specjalizacje i branże →</a>
-  </div>
+<section class="sw-sec" id="specjalizacje" aria-labelledby="spec-h">
+{spec_wheel(p)}
 </section>
 
 <section class="section br-sec" id="branze" aria-labelledby="br-h">
