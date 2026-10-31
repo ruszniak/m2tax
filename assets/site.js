@@ -112,3 +112,125 @@
     st.style.setProperty('--ry',(-10+x*16).toFixed(2)+'deg'); st.style.setProperty('--rx',(6-y*12).toFixed(2)+'deg'); });
   host.addEventListener('pointerleave',function(){ st.style.removeProperty('--ry'); st.style.removeProperty('--rx'); });
 })();
+
+/* =====================================================================
+   NOWA WERSJA: motyw, płynne przewijanie, animacje słów, liczniki,
+   paralaksa, magnetyczne przyciski, koło usług, złoty pył w hero
+   ===================================================================== */
+(function(){
+  var reduce=window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var fine=window.matchMedia&&window.matchMedia('(hover:hover) and (pointer:fine)').matches;
+  var root=document.documentElement;
+
+  /* ---- jasny / ciemny motyw ---- */
+  var tg=document.getElementById('theme-tg');
+  if(tg){ tg.setAttribute('aria-pressed',root.getAttribute('data-theme')==='dark');
+    tg.addEventListener('click',function(){ var d=root.getAttribute('data-theme')==='dark';
+      if(d) root.removeAttribute('data-theme'); else root.setAttribute('data-theme','dark');
+      tg.setAttribute('aria-pressed',!d); try{localStorage.setItem('m2-theme',d?'light':'dark')}catch(e){} }); }
+
+  /* ---- płynne przewijanie (Lenis) ---- */
+  var lenis=null;
+  if(!reduce && fine && window.Lenis){
+    lenis=new window.Lenis({duration:1.15,smoothWheel:true});
+    (function raf(t){ lenis.raf(t); requestAnimationFrame(raf); })(0);
+    document.querySelectorAll('a[href^="#"]').forEach(function(a){ a.addEventListener('click',function(e){ var id=a.getAttribute('href'); if(id.length>1&&document.querySelector(id)){ e.preventDefault(); lenis.scrollTo(id,{offset:-80}); } }); });
+  }
+
+  /* ---- nagłówki: słowa wjeżdżają po kolei ---- */
+  var heads=[].slice.call(document.querySelectorAll('.split, .section-head h2, .page-hero h1'));
+  heads.forEach(function(h){
+    h.classList.add('split'); var n=0;
+    (function walk(el){ [].slice.call(el.childNodes).forEach(function(c){
+      if(c.nodeType===3){ var parts=c.textContent.split(/(\s+)/), f=document.createDocumentFragment();
+        parts.forEach(function(w){ if(!w) return; if(/^\s+$/.test(w)){ f.appendChild(document.createTextNode(w)); return; }
+          var o=document.createElement('span'); o.className='w'; var i=document.createElement('span'); i.textContent=w; i.style.setProperty('--i',n++); o.appendChild(i); f.appendChild(o); });
+        el.replaceChild(f,c);
+      } else if(c.nodeType===1 && !c.classList.contains('w')) walk(c); }); })(h);
+  });
+  if(reduce || !('IntersectionObserver' in window)){ heads.forEach(function(h){ h.classList.add('in'); }); }
+  else { var hio=new IntersectionObserver(function(es){ es.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add('in'); hio.unobserve(e.target); } }); },{threshold:0.2});
+    heads.forEach(function(h){ hio.observe(h); }); }
+
+  /* ---- liczniki ---- */
+  var cnt=[].slice.call(document.querySelectorAll('[data-count]'));
+  function run(el){ var to=+el.getAttribute('data-count'), suf=el.getAttribute('data-suffix')||'', t0=null, dur=1400;
+    function step(t){ if(!t0) t0=t; var k=Math.min(1,(t-t0)/dur), e=1-Math.pow(1-k,3); el.textContent=Math.round(to*e).toLocaleString('pl-PL')+suf; if(k<1) requestAnimationFrame(step); }
+    requestAnimationFrame(step); }
+  if(!reduce && 'IntersectionObserver' in window){ var cio=new IntersectionObserver(function(es){ es.forEach(function(e){ if(e.isIntersecting){ run(e.target); cio.unobserve(e.target); } }); },{threshold:0.6}); cnt.forEach(function(el){ cio.observe(el); }); }
+
+  /* ---- paralaksa przy przewijaniu + duże litery za myszką ---- */
+  var par=[].slice.call(document.querySelectorAll('[data-parallax]')), giant=(document.querySelector('canvas.dust')&&fine&&innerWidth>900)?[]:[].slice.call(document.querySelectorAll('.giant span')), mx=0, my=0;
+  if(!reduce){
+    var tick=function(){ var y=window.scrollY||0;
+      par.forEach(function(el){ el.style.transform='translate3d(0,'+(y*parseFloat(el.getAttribute('data-parallax'))).toFixed(1)+'px,0)'; });
+      giant.forEach(function(el){ var d=parseFloat(el.getAttribute('data-depth')||1); el.style.transform='translate3d('+(mx*-30*d).toFixed(1)+'px,'+(y*0.18*d+my*-14*d).toFixed(1)+'px,0)'; });
+      requestAnimationFrame(tick); };
+    requestAnimationFrame(tick);
+    if(fine) window.addEventListener('pointermove',function(e){ mx=e.clientX/innerWidth-.5; my=e.clientY/innerHeight-.5; },{passive:true});
+  }
+
+  /* ---- magnetyczne przyciski ---- */
+  if(!reduce && fine) document.querySelectorAll('.magnet').forEach(function(b){
+    b.addEventListener('pointermove',function(e){ var r=b.getBoundingClientRect(); b.style.transform='translate('+((e.clientX-r.left-r.width/2)*0.18).toFixed(1)+'px,'+((e.clientY-r.top-r.height/2)*0.3).toFixed(1)+'px)'; });
+    b.addEventListener('pointerleave',function(){ b.style.transform=''; });
+  });
+
+  /* ---- koło usług ---- */
+  document.querySelectorAll('.wheel').forEach(function(w){
+    var data=JSON.parse(w.getAttribute('data-items')), dial=w.querySelector('.wheel-dial'), lis=[].slice.call(w.querySelectorAll('.wheel-list li')),
+        num=w.querySelector('.wheel-num span'), card=w.querySelector('.wheel-card'), cur=0, timer=null, hover=false;
+    var $=function(s){ return card.querySelector(s); };
+    function layout(){
+      var mobile=innerWidth<=900; if(mobile){ lis.forEach(function(li){ li.style.transform=''; li.style.opacity=''; }); return; }
+      var W=dial.clientWidth, H=dial.clientHeight, R=470, cx=W*0.42-440, cy=H/2, step=0.13;
+      lis.forEach(function(li,i){ var k=i-cur; if(k>data.length/2) k-=data.length; if(k<-data.length/2) k+=data.length;
+        var a=k*step, x=cx+R*Math.cos(a), y=cy+R*Math.sin(a)-li.offsetHeight/2, vis=Math.abs(a)<0.56;
+        li.style.transform='translate('+x.toFixed(1)+'px,'+(y-cy).toFixed(1)+'px)'; li.style.opacity=vis?(1-Math.abs(a)/0.75).toFixed(2):0; li.style.pointerEvents=vis?'':'none'; });
+    }
+    function go(i,user){ cur=(i+data.length)%data.length; var d=data[cur];
+      lis.forEach(function(li,k){ li.classList.toggle('on',k===cur); });
+      if(num){ num.parentElement.classList.add('flip'); setTimeout(function(){ num.textContent=(cur+1<10?'0':'')+(cur+1); num.parentElement.classList.remove('flip'); },220); }
+      card.classList.add('swap');
+      setTimeout(function(){ $('.wheel-ref').textContent=d.r; $('.wheel-title').textContent=d.t; $('.wheel-desc').textContent=d.d;
+        $('.wheel-li').innerHTML=d.li.map(function(x){ return '<li>'+x+'</li>'; }).join(''); card.classList.remove('swap'); },260);
+      layout();
+      if(innerWidth<=900 && user){ var b=lis[cur].firstElementChild; dial.scrollTo({left:b.offsetLeft-20,behavior:reduce?'auto':'smooth'}); }
+    }
+    lis.forEach(function(li,i){ li.firstElementChild.addEventListener('click',function(){ go(i,true); restart(); }); });
+    w.querySelector('.wheel-prev').addEventListener('click',function(){ go(cur-1,true); restart(); });
+    w.querySelector('.wheel-next').addEventListener('click',function(){ go(cur+1,true); restart(); });
+    w.addEventListener('keydown',function(e){ if(e.key==='ArrowDown'||e.key==='ArrowRight'){ e.preventDefault(); go(cur+1,true); } if(e.key==='ArrowUp'||e.key==='ArrowLeft'){ e.preventDefault(); go(cur-1,true); } });
+    w.addEventListener('pointerenter',function(){ hover=true; }); w.addEventListener('pointerleave',function(){ hover=false; });
+    function restart(){ clearInterval(timer); if(reduce) return; timer=setInterval(function(){ if(!hover && document.visibilityState==='visible') go(cur+1); },6500); }
+    window.addEventListener('resize',layout);
+    go(0); restart();
+  });
+
+  /* ---- złoty pył układający się w napis M2 TAX ---- */
+  var cv=document.querySelector('canvas.dust'), host=cv&&cv.parentElement;
+  if(cv && !reduce && fine && innerWidth>900){
+    var c=cv.getContext('2d'), P=[], W, H, dpr=Math.min(devicePixelRatio||1,2), mouse={x:-9e3,y:-9e3}, running=true, born=performance.now();
+    function targets(){ var spans=host.querySelectorAll('.giant span'), off=document.createElement('canvas'); off.width=W; off.height=H; var o=off.getContext('2d'), hr=host.getBoundingClientRect(), pts=[];
+      spans.forEach(function(sp){ var r=sp.getBoundingClientRect(), cs=getComputedStyle(sp); o.font=cs.fontWeight+' '+cs.fontSize+' '+cs.fontFamily; o.textBaseline='alphabetic'; o.fillStyle='#fff';
+        var m=o.measureText(sp.textContent); o.fillText(sp.textContent, r.left-hr.left+(r.width-m.width)/2, r.top-hr.top+r.height*0.86); });
+      var img=o.getImageData(0,0,W,H).data, gap=9; for(var y=0;y<H;y+=gap) for(var x=0;x<W;x+=gap){ if(img[(y*W+x)*4+3]>128) pts.push([x,y]); }
+      return pts; }
+    function init(){ var r=host.getBoundingClientRect(); W=Math.round(r.width); H=Math.round(r.height); cv.width=W*dpr; cv.height=H*dpr; c.setTransform(dpr,0,0,dpr,0,0);
+      var t=targets(); if(t.length>2400) t=t.filter(function(_,i){ return i%Math.ceil(t.length/2400)===0; });
+      P=t.map(function(q){ return {x:Math.random()*W,y:Math.random()*H,tx:q[0],ty:q[1],vx:0,vy:0,s:Math.random()*1.2+0.6,ph:Math.random()*6.28}; }); }
+    function frame(now){ if(!running) return; c.clearRect(0,0,W,H); var t=(now-born)/1000;
+      for(var i=0;i<P.length;i++){ var p=P[i], dx=p.tx+Math.sin(t*0.8+p.ph)*2-p.x, dy=p.ty+Math.cos(t*0.7+p.ph)*2-p.y;
+        p.vx+=dx*0.012; p.vy+=dy*0.012;
+        var mx2=p.x-mouse.x, my2=p.y-mouse.y, d2=mx2*mx2+my2*my2; if(d2<14000){ var f=(14000-d2)/14000*1.6; p.vx+=mx2/Math.sqrt(d2+1)*f; p.vy+=my2/Math.sqrt(d2+1)*f; }
+        p.vx*=0.86; p.vy*=0.86; p.x+=p.vx; p.y+=p.vy;
+        c.fillStyle='rgba(217,185,142,'+(0.22+0.25*Math.sin(t*1.5+p.ph)*0.5+0.12).toFixed(3)+')'; c.fillRect(p.x,p.y,p.s,p.s); }
+      requestAnimationFrame(frame); }
+    var go=function(){ init(); requestAnimationFrame(frame); };
+    (document.fonts&&document.fonts.ready?document.fonts.ready:Promise.resolve()).then(function(){ setTimeout(go,150); });
+    host.addEventListener('pointermove',function(e){ var r=cv.getBoundingClientRect(); mouse.x=e.clientX-r.left; mouse.y=e.clientY-r.top; });
+    host.addEventListener('pointerleave',function(){ mouse.x=mouse.y=-9e3; });
+    var rt; addEventListener('resize',function(){ clearTimeout(rt); rt=setTimeout(init,200); });
+    if('IntersectionObserver' in window) new IntersectionObserver(function(es){ var v=es[0].isIntersecting; if(v&&!running){ running=true; requestAnimationFrame(frame); } running=v; }).observe(host);
+  }
+})();

@@ -73,6 +73,7 @@ def head(p, title, desc, path, extra_ld=None):
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700;800;900&family=Source+Sans+3:ital,wght@0,400;0,600;0,700;1,400&family=IBM+Plex+Mono:wght@400;500&display=swap">
 <link rel="stylesheet" href="{p}assets/site.css">
+<script>try{{if(localStorage.getItem("m2-theme")==="dark")document.documentElement.setAttribute("data-theme","dark")}}catch(e){{}}</script>
 </head>
 <body>
 '''
@@ -85,11 +86,12 @@ def header(p, active):
     return f'''
 <header class="topbar">
   <div class="wrap">
-    <a class="logo" href="{p or './'}" aria-label="M2 TAX Doradcy Podatkowi — strona główna"><img src="{p}img/logo.png" alt="M2 TAX Doradcy Podatkowi" width="900" height="302"></a>
+    <a class="logo" href="{p or './'}" aria-label="M2 TAX Doradcy Podatkowi — strona główna"><img class="logo-l" src="{p}img/logo.png" alt="M2 TAX Doradcy Podatkowi" width="900" height="302"><img class="logo-d" src="{p}img/logo-light.png" alt="" width="900" height="302"></a>
     <button class="menu-btn" id="menu-btn" aria-expanded="false" aria-controls="nav">Menu</button>
     <nav class="nav" id="nav" aria-label="Główna nawigacja">
 {links}
       <a class="btn btn-primary" href="{p}kontakt/#rezerwacja">Bezpłatne 20 minut</a>
+      <button class="theme-tg" id="theme-tg" type="button" aria-label="Przełącz jasny lub ciemny motyw"><span class="tg-sun" aria-hidden="true">☀</span><span class="tg-knob" aria-hidden="true"></span><span class="tg-moon" aria-hidden="true">☾</span></button>
     </nav>
   </div>
 </header>
@@ -190,7 +192,8 @@ window.addEventListener('load', function(){{
 
 <div class="toast" id="toast" hidden role="status"></div>
 {wa_button()}
-<script src="{p}assets/site.js"></script>{z}{salesiq()}
+<script src="https://cdn.jsdelivr.net/npm/lenis@1.1.13/dist/lenis.min.js" defer></script>
+<script src="{p}assets/site.js" defer></script>{z}{salesiq()}
 </body>
 </html>
 '''
@@ -377,36 +380,62 @@ def duo_section(p, show_link=True, portraits=False):
 
 
 # ---------------------------------------------------------------- strony
+def wheel_html():
+    items = [(r, t, d, li) for r, t, d, _c, li in PILLARS] + [(r, t, d, li) for r, t, d, li in SPECS]
+    data = [{"t": t, "r": r, "d": d, "li": [re.sub(r"<[^>]+>", "", x) for x in li[:3]]} for r, t, d, li in items]
+    labels = "".join(f'<li><button type="button" data-i="{n}">{t}</button></li>' for n, (r, t, d, li) in enumerate(items))
+    first = data[0]
+    lis = "".join(f"<li>{x}</li>" for x in first["li"])
+    js = json.dumps(data, ensure_ascii=False).replace("'", "&#39;")
+    return f'''<div class="wheel" data-items='{js}'>
+      <div class="wheel-dial">
+        <div class="wheel-ring" aria-hidden="true"></div>
+        <div class="wheel-num" aria-hidden="true"><span>01</span>.</div>
+        <ol class="wheel-list">{labels}</ol>
+      </div>
+      <div class="wheel-card" aria-live="polite">
+        <span class="ref wheel-ref">{first["r"]}</span>
+        <h3 class="wheel-title">{first["t"]}</h3>
+        <p class="wheel-desc">{first["d"]}</p>
+        <ul class="wheel-li">{lis}</ul>
+        <div class="wheel-nav">
+          <button type="button" class="wheel-prev" aria-label="Poprzednia specjalizacja">←</button>
+          <button type="button" class="wheel-next" aria-label="Następna specjalizacja">→</button>
+          <a class="btn btn-primary" href="kontakt/#rezerwacja">Porozmawiajmy o tym</a>
+        </div>
+      </div>
+    </div>'''
+
+
 def build_home():
     p = ""
     h = head(p, "M2 TAX — Doradcy Podatkowi | Wrocław, Siechnice, Kobierzyce",
              "Kancelaria doradztwa podatkowego M2 TAX we Wrocławiu. Stała obsługa podatkowa od 369 zł netto miesięcznie, konsultacje, kontrole i postępowania podatkowe, sprawy przed WSA i NSA. Dwóch doradców w każdej sprawie. Bezpłatne 20 minut.",
              "")
-    body = header(p, "") + f'''<section class="hero">
-  <canvas class="fx3d" data-fx="network" aria-hidden="true"></canvas>
+    body = header(p, "") + f'''<section class="hero hero2">
+  <canvas class="dust" aria-hidden="true"></canvas>
+  <div class="giant" aria-hidden="true"><span data-depth="0.6">M2</span><span data-depth="1">TAX</span></div>
   <div class="wrap">
     <div class="hero-copy">
       <span class="eyebrow">Kancelaria doradztwa podatkowego · Wrocław</span>
-      <h1>Twoje podatki, <em>nasza pasja.</em></h1>
+      <h1 class="split">Twoje podatki, <em>nasza pasja.</em></h1>
       <p class="lede">Znajdziemy legalne sposoby, by firma nie płaciła więcej, niż musi. Stała obsługa podatkowa firm, konsultacje dla osób prywatnych, kontrole, postępowania i sprawy przed sądami administracyjnymi. Każdą sprawą zajmuje się dwóch doradców podatkowych.</p>
       <div class="hero-cta">
-        <a class="btn btn-primary" href="kontakt/#rezerwacja">Umów bezpłatne 20 minut</a>
+        <a class="btn btn-primary magnet" href="kontakt/#rezerwacja">Umów bezpłatne 20 minut <span aria-hidden="true">→</span></a>
         <a class="btn btn-ghost" href="abonamenty/">Abonamenty od 369 zł</a>
       </div>
       <div class="hero-facts">
-        <div><b>2</b><span>doradców podatkowych w każdej sprawie</span></div>
-        <div><b>20 min</b><span>pierwszej konsultacji bez opłat</span></div>
-        <div><b>369 zł</b><span>netto miesięcznie za stałą obsługę</span></div>
+        <div><b data-count="2">2</b><span>doradców podatkowych w każdej sprawie</span></div>
+        <div><b data-count="20" data-suffix=" min">20 min</b><span>pierwszej konsultacji bez opłat</span></div>
+        <div><b data-count="369" data-suffix=" zł">369 zł</b><span>netto miesięcznie za stałą obsługę</span></div>
       </div>
     </div>
-    <div class="seal" aria-hidden="true">
-      <div class="seal-glow"></div><div class="seal-ring"></div><div class="seal-ring seal-ring2"></div>
-      <svg class="seal-txt" viewBox="0 0 400 400"><defs><path id="sealp" d="M200,200 m-171,0 a171,171 0 1,1 342,0 a171,171 0 1,1 -342,0"/></defs>
-        <text font-size="12.5" fill="currentColor"><textPath href="#sealp" textLength="1068" lengthAdjust="spacing">DORADCY PODATKOWI · NR 15009 · NR 14609 · WROCŁAW · KANCELARIA DORADZTWA PODATKOWEGO · </textPath></text></svg>
-      <span class="seal-tick"></span>
-      <div class="seal-core"><img src="img/logo-light.png" alt="" width="900" height="302"><div class="seal-ln"></div><small>Wrocław</small></div>
-    </div>
+    <figure class="hero-duo" data-parallax="-0.06">
+      <img src="img/doradcy-duo.jpg" alt="Doradcy podatkowi Michał Ruszniak i Marcin Otręba" width="1000" height="1199" fetchpriority="high">
+      <figcaption>Michał Ruszniak · Marcin Otręba<span>doradcy podatkowi nr 15009 i 14609</span></figcaption>
+    </figure>
   </div>
+  <a class="scroll-cue" href="#rozwiazania" aria-label="Przewiń dalej"><span></span></a>
 </section>
 
 <section class="alarm" aria-labelledby="alarm-h">
@@ -437,7 +466,7 @@ def build_home():
   </div>
 </section>
 
-{duo_section(p, portraits=True)}
+{duo_section(p)}
 <section class="section" aria-label="Dla biur rachunkowych" style="padding-bottom:0">
   <div class="wrap">
     <div class="cta-band">
@@ -446,11 +475,9 @@ def build_home():
     </div>
   </div>
 </section>
-<section class="section bg-paper2" id="specjalizacje" aria-labelledby="spec-h">
+<section class="section wheel-sec" id="specjalizacje" aria-labelledby="spec-h">
   <div class="wrap">
-{section_head("Specjalizacje", "W czym pomagamy najczęściej", "Interpretacje, kontrole i czynności sprawdzające to nasza codzienność. Do tego wypłata pieniędzy ze spółki, restrukturyzacje, fundacje rodzinne i nieruchomości.", "spec-h")}    <div class="spec-grid">
-{chr(10).join(spec_card(*s) for s in [(PILLARS[0][0], PILLARS[0][1], "Ochrona przed zmianą zdania urzędu, zanim podejmiesz decyzję.", ["Interpretacje w CIT, PIT, VAT i PCC", "Wiążące informacje stawkowe", "Opinie zabezpieczające"]), (PILLARS[1][0], PILLARS[1][1], "Pełnomocnik od pierwszego pisma aż do wyroku sądu.", ["Kontrole US i KAS", "Odwołania i zażalenia", "Skargi do WSA i NSA"]), (PILLARS[2][0], PILLARS[2][1], "Odpowiedź, która zamyka sprawę, zanim zrobi się z niej kontrola.", ["Wezwania do wyjaśnień", "Weryfikacja zwrotu VAT", "Rozmowy z urzędem za Ciebie"])] + SPECS[:5])}
-    </div>
+{section_head("Specjalizacje", "W czym możemy pomóc?", "Kliknij w koło albo użyj strzałek. Interpretacje, kontrole i czynności sprawdzające to nasza codzienność.", "spec-h")}    {wheel_html()}
     <a class="more-link" href="doradztwo-podatkowe/">Wszystkie specjalizacje i branże →</a>
   </div>
 </section>
@@ -487,6 +514,19 @@ def build_home():
 {towns_html()}
     </div>
     <p class="area-note">Pełnomocnikiem możemy być przed każdym urzędem skarbowym, KAS i sądem administracyjnym w Polsce, więc z naszych usług korzystają też klienci spoza Dolnego Śląska.</p>
+  </div>
+</section>
+
+<section class="spot" aria-labelledby="spot-h">
+  <div class="spot-lamp" aria-hidden="true"></div>
+  <div class="wrap">
+    <h2 id="spot-h" class="split">Bądźmy <em>w kontakcie</em></h2>
+    <div class="pins">
+      <a class="pin" style="--r:-3deg" href="{LINKEDIN}" target="_blank" rel="noopener"><span class="pin-ico">in</span><b>LinkedIn</b><span>Komentarze do zmian w przepisach →</span></a>
+      <a class="pin" style="--r:2deg" href="https://www.facebook.com/profile.php?id=61559661710392" target="_blank" rel="noopener"><span class="pin-ico">f</span><b>Facebook</b><span>Obserwuj nas na Facebooku →</span></a>
+      <a class="pin" style="--r:-1.5deg" href="blog/"><span class="pin-ico">§</span><b>Blog</b><span>Podatki w praktyce →</span></a>
+      <a class="pin" style="--r:3deg" href="{wa_link()}" target="_blank" rel="noopener"><span class="pin-ico">✆</span><b>WhatsApp</b><span>Napisz do nas →</span></a>
+    </div>
   </div>
 </section>
 

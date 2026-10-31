@@ -22,12 +22,13 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700;800;900&family=Source+Sans+3:ital,wght@0,400;0,600;0,700;1,400&family=IBM+Plex+Mono:wght@400;500&display=swap">
 <link rel="stylesheet" href="../../assets/site.css">
+<script>try{if(localStorage.getItem("m2-theme")==="dark")document.documentElement.setAttribute("data-theme","dark")}catch(e){}</script>
 </head>
 <body>
 
 <header class="topbar">
   <div class="wrap">
-    <a class="logo" href="../../" aria-label="M2 TAX Doradcy Podatkowi — strona główna"><img src="../../img/logo.png" alt="M2 TAX Doradcy Podatkowi" width="900" height="302"></a>
+    <a class="logo" href="../../" aria-label="M2 TAX Doradcy Podatkowi — strona główna"><img class="logo-l" src="../../img/logo.png" alt="M2 TAX Doradcy Podatkowi" width="900" height="302"><img class="logo-d" src="../../img/logo-light.png" alt="" width="900" height="302"></a>
     <button class="menu-btn" id="menu-btn" aria-expanded="false" aria-controls="nav">Menu</button>
     <nav class="nav" id="nav" aria-label="Główna nawigacja">
       <a href="../../abonamenty/">Abonamenty</a>
@@ -37,6 +38,7 @@
       <a href="../../blog/" aria-current="page">Blog</a>
       <a href="../../kontakt/">Kontakt</a>
       <a class="btn btn-primary" href="../../kontakt/#rezerwacja">Bezpłatne 20 minut</a>
+      <button class="theme-tg" id="theme-tg" type="button" aria-label="Przełącz jasny lub ciemny motyw"><span class="tg-sun" aria-hidden="true">☀</span><span class="tg-knob" aria-hidden="true"></span><span class="tg-moon" aria-hidden="true">☾</span></button>
     </nav>
   </div>
 </header>
@@ -152,6 +154,7 @@
   <span class="wa-label">Napisz na WhatsApp</span>
 </a>
 </div>
-<script src="../../assets/site.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/lenis@1.1.13/dist/lenis.min.js" defer></script>
+<script src="../../assets/site.js" defer></script>
 </body>
 </html>
