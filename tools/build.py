@@ -474,6 +474,56 @@ def mq_words(p):
     return "".join(f'<span class="mq-w">{w}</span>' for w in words * 2)
 
 
+GL_ICO = {
+    "li": '<path d="M6 9v9M6 6v.01M10 18v-5a3 3 0 0 1 6 0v5M10 9v9"/>',
+    "fb": '<path d="M14 8h3V4h-3a4 4 0 0 0-4 4v3H7v4h3v7h4v-7h3l1-4h-4V8z"/>',
+    "bl": '<path d="M4 4h12l4 4v12H4zM8 10h8M8 14h8M8 18h5"/>',
+    "wa": '<path d="M4 20l1.4-4A8 8 0 1 1 8 18.6zM9 9c0 3 3 6 6 6l1.5-1.5-2-1-1 1c-1-.5-2-1.5-2.5-2.5l1-1-1-2z"/>',
+}
+
+
+def glass_tiles(p):
+    items = [("li", "LinkedIn", LINKEDIN, "Komentarze do przepisów"),
+             ("fb", "Facebook", "https://www.facebook.com/profile.php?id=61559661710392", "Aktualności kancelarii"),
+             ("bl", "Blog", f"{p}blog/", "Podatki w praktyce"),
+             ("wa", "WhatsApp", wa_link(), "Napisz do nas")]
+    out = ""
+    for k, name, href, desc in items:
+        ext = ' target="_blank" rel="noopener"' if href.startswith("http") else ""
+        out += f'<a class="gl-t" href="{href}"{ext}><svg viewBox="0 0 24 24" aria-hidden="true">{GL_ICO[k]}</svg><div><b>{name}</b><span>{desc} <i aria-hidden="true">→</i></span></div></a>'
+    return out
+
+
+# kierunki od Wrocławia (stopnie, 0 = wschód, zgodnie z ruchem wskazówek) i odległość względna
+TOWN_GEO = {"Siechnice": (25, .62), "Kobierzyce": (125, .7), "Żórawina": (90, .78), "Środa Śląska": (180, .9), "Trzebnica": (-80, .82)}
+
+
+def towns_orbit(p, head, note=""):
+    import math
+    nodes, items = "", ""
+    for t, sub in TOWNS[1:]:
+        a, r = TOWN_GEO[t]
+        x = 50 + math.cos(math.radians(a)) * r * 44
+        y = 50 + math.sin(math.radians(a)) * r * 44
+        nodes += f'<div class="to-nd" style="left:{x:.1f}%;top:{y:.1f}%" data-t="{t}"><span class="to-dot"></span><b>{t}</b></div>'
+    for t, sub in TOWNS:
+        items += f'<li data-t="{t}"><b>{t}</b><span>{sub}</span></li>'
+    note_html = f'<p class="to-note">{note}</p>' if note else ""
+    return f'''<section class="to-sec" id="obszar" aria-labelledby="area-h">
+  <div class="wrap to-lay">
+    <div class="to-copy">
+{head}      <ul class="to-list">{items}</ul>
+      {note_html}
+    </div>
+    <div class="to-orb" aria-hidden="true">
+      <canvas class="to-cv"></canvas>
+      <div class="to-core"><img src="{p}img/logo-light.png" alt="" width="900" height="302"><small>Wrocław</small></div>
+      {nodes}
+    </div>
+  </div>
+</section>'''
+
+
 def build_home():
     p = ""
     h = head(p, "M2 TAX — Doradcy Podatkowi | Wrocław, Siechnice, Kobierzyce",
@@ -496,6 +546,7 @@ def build_home():
           <text class="ba-stroke" x="0" y="122" textLength="636" lengthAdjust="spacingAndGlyphs">M2 TAX</text>
           <text class="ba-fill" x="0" y="122" textLength="636" lengthAdjust="spacingAndGlyphs" fill="url(#gold)">M2 TAX</text>
         </svg>
+        <i class="gl" style="left:14%;top:22%"></i><i class="gl" style="left:62%;top:30%"></i><i class="gl" style="left:93%;top:70%"></i>
       </div>
       <h1 class="split">Twoje podatki, <em>nasza pasja.</em></h1>
       <div class="hero-cta">
@@ -584,25 +635,15 @@ def build_home():
   </div>
 </section>
 
-<section class="section" id="obszar" aria-labelledby="area-h">
-  <div class="wrap">
-{section_head("Zakres działania", "Doradca podatkowy we Wrocławiu i okolicach", "Spotykamy się w kancelarii przy ul. Zwycięskiej 3 lub ul. Artemskiej 11 we Wrocławiu, u Ciebie w firmie albo online.", "area-h")}    <div class="towns">
-{towns_html()}
-    </div>
-    <p class="area-note">Pełnomocnikiem możemy być przed każdym urzędem skarbowym, KAS i sądem administracyjnym w Polsce, więc z naszych usług korzystają też klienci spoza Dolnego Śląska.</p>
-  </div>
-</section>
+{towns_orbit(p, section_head("Zakres działania", "Doradca podatkowy we Wrocławiu i okolicach", "Spotykamy się w kancelarii przy ul. Zwycięskiej 3 lub ul. Artemskiej 11 we Wrocławiu, u Ciebie w firmie albo online.", "area-h"), "Pełnomocnikiem możemy być przed każdym urzędem skarbowym, KAS i sądem administracyjnym w Polsce, więc z naszych usług korzystają też klienci spoza Dolnego Śląska.")}
 
-<section class="mq-sec" aria-labelledby="mq-h">
+<section class="gl-sec" aria-labelledby="gl-h">
+  <div class="gl-blob gl-b1" aria-hidden="true"></div><div class="gl-blob gl-b2" aria-hidden="true"></div>
   <div class="wrap">
     <span class="eyebrow">Bądźmy w kontakcie</span>
-    <h2 id="mq-h" class="split">Śledź nas tam, <em>gdzie jesteś.</em></h2>
+    <h2 id="gl-h" class="split">Zostańmy <em>w kontakcie.</em></h2>
+    <div class="gl-grid">{glass_tiles(p)}</div>
   </div>
-  <div class="mq">
-    <div class="mq-row"><div class="mq-track">{mq_items()}{mq_items()}</div></div>
-    <div class="mq-row mq-rev" aria-hidden="true"><div class="mq-track">{mq_words(p)}{mq_words(p)}</div></div>
-  </div>
-  <div class="mq-peek" aria-hidden="true"><span class="mq-peek-ico"></span><b></b><span class="mq-peek-t"></span></div>
 </section>
 
 <section class="section bg-paper2" id="faq" aria-labelledby="faq-h">
@@ -771,13 +812,7 @@ def build_specjalizacje():
   </div>
 </section>
 
-<section class="section bg-paper2" id="obszar" aria-labelledby="area-h">
-  <div class="wrap">
-{section_head("Zakres działania", "Wrocław i okolice", "Spotykamy się w kancelarii przy ul. Zwycięskiej 3 lub ul. Artemskiej 11 we Wrocławiu, u Ciebie w firmie albo online.", "area-h")}    <div class="towns">
-{towns_html()}
-    </div>
-  </div>
-</section>
+{towns_orbit(p, section_head("Zakres działania", "Wrocław i okolice", "Spotykamy się w kancelarii przy ul. Zwycięskiej 3 lub ul. Artemskiej 11 we Wrocławiu, u Ciebie w firmie albo online.", "area-h"), "")}
 
 <section class="section" aria-label="Umów spotkanie">
   <div class="wrap">
@@ -911,14 +946,7 @@ def build_kontakt():
   </div>
 </section>
 
-<section class="section" id="obszar" aria-labelledby="area-h">
-  <div class="wrap">
-{section_head("Zakres działania", "Obsługujemy klientów z Wrocławia i okolic", "", "area-h")}    <div class="towns">
-{towns_html()}
-    </div>
-    <p class="area-note">Spotkania online prowadzimy z klientami z całej Polski.</p>
-  </div>
-</section>
+{towns_orbit(p, section_head("Zakres działania", "Obsługujemy klientów z Wrocławia i okolic", "", "area-h"), "Spotkania online prowadzimy z klientami z całej Polski.")}
 '''
     return h + body + footer(p, zoho=True)
 
