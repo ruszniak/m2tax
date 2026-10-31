@@ -657,6 +657,14 @@ def build_home():
   </div>
 </section>
 
+<section class="section br-sec" id="branze" aria-labelledby="br-h">
+  <canvas class="fx3d" data-fx="rings" aria-hidden="true"></canvas>
+  <div class="wrap">
+{section_head("Branże", "Znamy specyfikę Twojej branży", "Doświadczenie z konkretnych sektorów oznacza mniej tłumaczenia i szybsze, trafniejsze odpowiedzi.", "br-h")}    {branch_accordion(p)}
+  </div>
+</section>
+
+
 <section class="alarm" aria-labelledby="alarm-h">
   <div class="wrap">
     <div>
@@ -676,31 +684,33 @@ def build_home():
   </div>
 </section>
 
-<section class="section sol-sec" id="rozwiazania" aria-labelledby="sol-h">
-  <div class="wrap">
-{section_head("Jak możemy pomóc", "Cztery sposoby współpracy z doradcą podatkowym", "Wybierz to, czego potrzebujesz teraz. Możesz zacząć od jednej konsultacji, a z czasem przejść na stałą obsługę.", "sol-h")}    <div class="sol-grid sol-anim">
-{sol_cards(p)}
-    </div>
-    <a class="more-link" href="abonamenty/">Zobacz szczegóły abonamentów i cen →</a>
-  </div>
-</section>
-
-{duo_section(p)}
-{bridge_section(p)}
-<section class="section br-sec" id="branze" aria-labelledby="br-h">
-  <canvas class="fx3d" data-fx="rings" aria-hidden="true"></canvas>
-  <div class="wrap">
-{section_head("Branże", "Znamy specyfikę Twojej branży", "Doświadczenie z konkretnych sektorów oznacza mniej tłumaczenia i szybsze, trafniejsze odpowiedzi.", "br-h")}    {branch_accordion(p)}
-  </div>
-</section>
-
 <section class="section bg-paper2 pf-sec" id="pismo" aria-labelledby="pismo-h">
   <div class="wrap">
 {section_head("Pismo z urzędu", "Co robimy, kiedy przyniesiesz nam pismo z urzędu", "Większość sporów z fiskusem da się ustawić na samym początku. Liczy się termin i to, co trafi do akt jako pierwsze.", "pismo-h")}{pismo_flow()}
   </div>
 </section>
 
+{duo_section(p)}
+<section class="section sol-sec" id="rozwiazania" aria-labelledby="sol-h">
+  <div class="wrap">
+{section_head("Współpraca", "Cztery sposoby współpracy z doradcą podatkowym", "Wybierz to, czego potrzebujesz teraz. Możesz zacząć od jednej konsultacji, a z czasem przejść na stałą obsługę.", "sol-h")}    <div class="sol-grid sol-anim">
+{sol_cards(p)}
+    </div>
+    <a class="more-link" href="abonamenty/">Zobacz szczegóły abonamentów i cen →</a>
+  </div>
+</section>
+
 {towns_orbit(p, section_head("Zakres działania", "Doradca podatkowy we Wrocławiu i okolicach", "Spotykamy się w kancelarii przy ul. Zwycięskiej 3 lub ul. Artemskiej 11 we Wrocławiu, u Ciebie w firmie albo online.", "area-h"), "Pełnomocnikiem możemy być przed każdym urzędem skarbowym, KAS i sądem administracyjnym w Polsce, więc z naszych usług korzystają też klienci spoza Dolnego Śląska.")}
+
+<section class="section bg-paper2" id="faq" aria-labelledby="faq-h">
+  <div class="wrap faq-wrap">
+{section_head("FAQ", "Najczęściej zadawane pytania", "Odpowiedzi, które pomogą zrozumieć, jak pracujemy.", "faq-h")}    <div class="faq">
+{faq_html(FAQ_HOME)}
+    </div>
+  </div>
+</section>
+
+{bridge_section(p)}
 
 <section class="gl-sec" aria-labelledby="gl-h">
   <div class="gl-blob gl-b1" aria-hidden="true"></div><div class="gl-blob gl-b2" aria-hidden="true"></div>
@@ -708,14 +718,6 @@ def build_home():
     <span class="eyebrow">Bądźmy w kontakcie</span>
     <h2 id="gl-h" class="split">Zostańmy <em>w kontakcie.</em></h2>
     <div class="gl-grid">{glass_tiles(p)}</div>
-  </div>
-</section>
-
-<section class="section bg-paper2" id="faq" aria-labelledby="faq-h">
-  <div class="wrap faq-wrap">
-{section_head("FAQ", "Najczęściej zadawane pytania", "Odpowiedzi, które pomogą zrozumieć, jak pracujemy.", "faq-h")}    <div class="faq">
-{faq_html(FAQ_HOME)}
-    </div>
   </div>
 </section>
 
