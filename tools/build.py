@@ -413,13 +413,24 @@ def build_home():
              "Kancelaria doradztwa podatkowego M2 TAX we Wrocławiu. Stała obsługa podatkowa od 369 zł netto miesięcznie, konsultacje, kontrole i postępowania podatkowe, sprawy przed WSA i NSA. Dwóch doradców w każdej sprawie. Bezpłatne 20 minut.",
              "")
     body = header(p, "") + f'''<section class="hero hero2">
+  <canvas class="fx3d" data-fx="network" aria-hidden="true"></canvas>
   <canvas class="dust" aria-hidden="true"></canvas>
-  <div class="giant" aria-hidden="true"><span data-depth="0.6">M2</span><span data-depth="1">TAX</span></div>
   <div class="wrap">
     <div class="hero-copy">
       <span class="eyebrow">Kancelaria doradztwa podatkowego · Wrocław</span>
+      <div class="brand-anim" role="img" aria-label="M2 TAX">
+        <svg viewBox="0 0 640 150" aria-hidden="true">
+          <defs>
+            <linearGradient id="gold" x1="0" y1="0" x2="1" y2="0">
+              <stop offset="0" stop-color="#B8925F"/><stop offset=".45" stop-color="#E9D2A8"/><stop offset=".55" stop-color="#FFF4DC"/><stop offset=".65" stop-color="#E9D2A8"/><stop offset="1" stop-color="#B8925F"/>
+              <animateTransform attributeName="gradientTransform" type="translate" values="-1 0;1 0;1 0" keyTimes="0;.45;1" dur="4.5s" begin="2.6s" repeatCount="indefinite"/>
+            </linearGradient>
+          </defs>
+          <text class="ba-stroke" x="0" y="122" textLength="636" lengthAdjust="spacingAndGlyphs">M2 TAX</text>
+          <text class="ba-fill" x="0" y="122" textLength="636" lengthAdjust="spacingAndGlyphs" fill="url(#gold)">M2 TAX</text>
+        </svg>
+      </div>
       <h1 class="split">Twoje podatki, <em>nasza pasja.</em></h1>
-      <p class="lede">Znajdziemy legalne sposoby, by firma nie płaciła więcej, niż musi. Stała obsługa podatkowa firm, konsultacje dla osób prywatnych, kontrole, postępowania i sprawy przed sądami administracyjnymi. Każdą sprawą zajmuje się dwóch doradców podatkowych.</p>
       <div class="hero-cta">
         <a class="btn btn-primary magnet" href="kontakt/#rezerwacja">Umów bezpłatne 20 minut <span aria-hidden="true">→</span></a>
         <a class="btn btn-ghost" href="abonamenty/">Abonamenty od 369 zł</a>
@@ -435,7 +446,14 @@ def build_home():
       <figcaption>Michał Ruszniak · Marcin Otręba<span>doradcy podatkowi nr 15009 i 14609</span></figcaption>
     </figure>
   </div>
-  <a class="scroll-cue" href="#rozwiazania" aria-label="Przewiń dalej"><span></span></a>
+  <a class="scroll-cue" href="#specjalizacje" aria-label="Przewiń dalej"><span></span></a>
+</section>
+
+<section class="section wheel-sec" id="specjalizacje" aria-labelledby="spec-h">
+  <div class="wrap">
+{section_head("Specjalizacje", "W czym możemy pomóc?", "Znajdziemy legalne sposoby, by firma nie płaciła więcej, niż musi. Stała obsługa podatkowa firm, konsultacje dla osób prywatnych, kontrole, postępowania i sprawy przed sądami administracyjnymi. Każdą sprawą zajmuje się dwóch doradców podatkowych.", "spec-h")}    {wheel_html()}
+    <a class="more-link" href="doradztwo-podatkowe/">Wszystkie specjalizacje i branże →</a>
+  </div>
 </section>
 
 <section class="alarm" aria-labelledby="alarm-h">
@@ -457,9 +475,9 @@ def build_home():
   </div>
 </section>
 
-<section class="section" id="rozwiazania" aria-labelledby="sol-h">
+<section class="section sol-sec" id="rozwiazania" aria-labelledby="sol-h">
   <div class="wrap">
-{section_head("Jak możemy pomóc", "Cztery sposoby współpracy z doradcą podatkowym", "Wybierz to, czego potrzebujesz teraz. Możesz zacząć od jednej konsultacji, a z czasem przejść na stałą obsługę.", "sol-h")}    <div class="sol-grid">
+{section_head("Jak możemy pomóc", "Cztery sposoby współpracy z doradcą podatkowym", "Wybierz to, czego potrzebujesz teraz. Możesz zacząć od jednej konsultacji, a z czasem przejść na stałą obsługę.", "sol-h")}    <div class="sol-grid sol-anim">
 {sol_cards(p)}
     </div>
     <a class="more-link" href="abonamenty/">Zobacz szczegóły abonamentów i cen →</a>
@@ -475,13 +493,6 @@ def build_home():
     </div>
   </div>
 </section>
-<section class="section wheel-sec" id="specjalizacje" aria-labelledby="spec-h">
-  <div class="wrap">
-{section_head("Specjalizacje", "W czym możemy pomóc?", "Kliknij w koło albo użyj strzałek. Interpretacje, kontrole i czynności sprawdzające to nasza codzienność.", "spec-h")}    {wheel_html()}
-    <a class="more-link" href="doradztwo-podatkowe/">Wszystkie specjalizacje i branże →</a>
-  </div>
-</section>
-
 <section class="section" id="branze" aria-labelledby="br-h">
   <div class="wrap">
 {section_head("Branże", "Znamy specyfikę Twojej branży", "Doświadczenie z konkretnych sektorów oznacza mniej tłumaczenia i szybsze, trafniejsze odpowiedzi.", "br-h")}    <div class="branch-grid">

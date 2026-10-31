@@ -815,3 +815,50 @@ html.lenis,html.lenis body{height:auto}
 .theme-tg{padding:4px}
 .theme-tg .tg-sun,.theme-tg .tg-moon{display:none}
 @media (max-width:1180px) and (min-width:981px){.nav{gap:16px}.nav a{font-size:13.5px}.nav .btn{padding:10px 14px}}
+
+/* ---------- Animowany napis M2 TAX ---------- */
+.brand-anim{width:min(100%,560px);margin:6px 0 -6px}
+.brand-anim svg{display:block;width:100%;height:auto;overflow:visible}
+.brand-anim text{font-family:var(--f-display);font-weight:900;font-size:150px;letter-spacing:-.02em}
+.ba-stroke{fill:none;stroke:#D9B98E;stroke-width:1.6;stroke-dasharray:900;stroke-dashoffset:900;animation:baDraw 2.4s cubic-bezier(.6,.1,.3,1) .2s forwards}
+.ba-fill{opacity:0;animation:baFill 1.2s ease 1.7s forwards;filter:drop-shadow(0 0 22px rgba(217,185,142,.25))}
+@keyframes baDraw{to{stroke-dashoffset:0}}
+@keyframes baFill{to{opacity:1}}
+.brand-anim::after{content:"";display:block;height:2px;margin-top:10px;background:linear-gradient(90deg,#D9B98E,rgba(217,185,142,0));transform-origin:left;transform:scaleX(0);animation:baLine 1.2s cubic-bezier(.2,.7,.2,1) 2.2s forwards}
+@keyframes baLine{to{transform:scaleX(1)}}
+.hero2 h1{font-size:clamp(30px,3.6vw,50px)}
+.hero2 .hero-copy{gap:22px}
+@media (min-width:881px){.hero2 .hero-facts{flex-wrap:nowrap;gap:10px 34px}}
+
+/* Zdjęcie partnerów: wjazd od dołu, złota poświata, lekkie unoszenie */
+.hero-duo::before{content:"";position:absolute;inset:12% 8% 10%;border-radius:50%;background:radial-gradient(closest-side,rgba(217,185,142,.28),transparent 70%);filter:blur(30px);z-index:-1;animation:glowPulse 4s ease-in-out 2.5s infinite}
+@keyframes glowPulse{50%{opacity:.45;transform:scale(1.06)}}
+.hero-duo img{clip-path:inset(100% 0 0 0);animation:duoIn 1.5s cubic-bezier(.2,.75,.2,1) .7s forwards,duoFloat 7s ease-in-out 2.4s infinite}
+.hero-duo figcaption{opacity:0;transform:translateY(10px);animation:capIn .8s ease 1.9s forwards}
+@keyframes duoIn{to{clip-path:inset(0 0 0 0)}}
+@keyframes duoFloat{50%{transform:translateY(-8px)}}
+@keyframes capIn{to{opacity:1;transform:none}}
+@media (prefers-reduced-motion:reduce){.ba-stroke{stroke-dashoffset:0}.ba-fill,.hero-duo figcaption{opacity:1;transform:none}.hero-duo img{clip-path:none}.brand-anim::after{transform:none}}
+
+/* ---------- Cztery sposoby: mocna animacja ---------- */
+.sol-sec{position:relative;overflow:hidden}
+.sol-sec::before{content:"";position:absolute;left:-10%;right:-10%;top:30%;height:60%;background:radial-gradient(ellipse at center,color-mix(in srgb,var(--accent) 12%,transparent),transparent 65%);pointer-events:none}
+.sol-anim{perspective:1200px}
+html.fx .sol-anim .sol{opacity:0!important;transform:rotateX(38deg) rotateY(-14deg) translateY(110px) scale(.86)!important;transition:opacity .9s ease,transform 1.2s cubic-bezier(.16,1.1,.3,1)!important}
+html.fx .sol-anim.go .sol{opacity:1!important;transform:none!important}
+html.fx .sol-anim.go .sol.tilting{transition:transform .15s ease!important}
+.sol-anim .sol:nth-child(2){transition-delay:.12s!important}.sol-anim .sol:nth-child(3){transition-delay:.24s!important}.sol-anim .sol:nth-child(4){transition-delay:.36s!important}
+.sol-anim .sol{position:relative;overflow:hidden}
+.sol-anim .sol::after{content:"";position:absolute;top:-20%;bottom:-20%;width:40%;left:-60%;background:linear-gradient(100deg,transparent,rgba(255,255,255,.55),transparent);transform:skewX(-14deg);pointer-events:none}
+.sol-anim.go .sol::after{animation:sheen 1.4s ease calc(1.1s + var(--k,0)*.15s) 1}
+.sol-anim .sol:nth-child(2){--k:1}.sol-anim .sol:nth-child(3){--k:2}.sol-anim .sol:nth-child(4){--k:3}
+@keyframes sheen{to{left:130%}}
+.sol-anim .sol .num{display:inline-grid;place-items:center;min-width:44px;height:44px;border-radius:50%;border:1.5px solid var(--accent);color:var(--accent);font-weight:500}
+.sol-anim.go .sol .num{animation:numPop .6s cubic-bezier(.2,1.6,.4,1) calc(.7s + var(--k,0)*.12s) both}
+@keyframes numPop{0%{transform:scale(.3);opacity:0}100%{transform:none;opacity:1}}
+.sol-anim .sol.featured{border-color:transparent;background:linear-gradient(var(--paper),var(--paper)) padding-box,conic-gradient(from var(--ang,0deg),var(--accent),transparent 30%,var(--accent) 50%,transparent 80%,var(--accent)) border-box;border:2px solid transparent;animation:spinBorder 5s linear infinite}
+@property --ang{syntax:"<angle>";initial-value:0deg;inherits:false}
+@keyframes spinBorder{to{--ang:360deg}}
+.sol-anim .price-tag{transition:color .3s}
+.sol-anim .sol:hover .price-tag{color:var(--accent)}
+.sol-anim .sol .num{justify-self:start;align-self:flex-start;width:44px;padding:0}
