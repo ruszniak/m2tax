@@ -506,26 +506,23 @@ TOWN_GEO = {"Siechnice": (48, .5), "Kobierzyce": (132, .64), "Żórawina": (96, 
 
 def towns_orbit(p, head, note=""):
     import math
-    nodes, items = "", ""
+    nodes = ""
     for t, sub in TOWNS[1:]:
         a, r = TOWN_GEO[t]
         x = 50 + math.cos(math.radians(a)) * r * 44
         y = 50 + math.sin(math.radians(a)) * r * 44
         nodes += f'<div class="to-nd" style="left:{x:.1f}%;top:{y:.1f}%" data-t="{t}"><span class="to-dot"></span><b>{t}</b></div>'
-    for t, sub in TOWNS:
-        items += f'<li data-t="{t}"><b>{t}</b><span>{sub}</span></li>'
     note_html = f'<p class="to-note">{note}</p>' if note else ""
-    return f'''<section class="to-sec" id="obszar" aria-labelledby="area-h">
-  <div class="wrap to-lay">
+    return f'''<section class="to-sec to-wide" id="obszar" aria-labelledby="area-h">
+  <div class="wrap">
     <div class="to-copy">
-{head}      <ul class="to-list">{items}</ul>
-      {note_html}
-    </div>
-    <div class="to-orb" aria-hidden="true">
-      <canvas class="to-cv"></canvas>
-      <div class="to-core"><img src="{p}img/logo-light.png" alt="" width="900" height="302"><small>Wrocław</small></div>
+{head}    </div>
+    <div class="to-orb" role="img" aria-label="Zakres działania: {", ".join(t for t, _ in TOWNS)}">
+      <canvas class="to-cv" aria-hidden="true"></canvas>
+      <div class="to-core" aria-hidden="true"><img src="{p}img/logo-light.png" alt="" width="900" height="302"><small>Wrocław</small></div>
       {nodes}
     </div>
+    {note_html}
   </div>
 </section>'''
 
@@ -577,6 +574,37 @@ def bridge_section(p):
     </div>
   </div>
 </section>'''
+
+
+PF_STEPS = [
+    ("Sprawdzamy termin", "Ustalamy, co to za pismo, od kiedy biegnie termin i ile czasu realnie zostało. Wystarczy zdjęcie lub skan.", "TERMIN ✓"),
+    ("Wstrzymujemy pochopne ruchy", "Nie składasz ustnych wyjaśnień przez telefon i nie wysyłasz dokumentów bez selekcji. To, co raz trafi do akt, zostaje w aktach.", "STOP"),
+    ("Przejmujemy kontakt z urzędem", "Zgłaszamy pełnomocnictwo i od tej chwili korespondencja z organem idzie przez doradcę podatkowego.", "PEŁNOMOCNIK"),
+    ("Prowadzimy sprawę do końca", "Odpowiedzi na wezwania, zastrzeżenia do protokołu, odwołanie, skarga do WSA i skarga kasacyjna do NSA.", "WSA · NSA"),
+]
+PF_LETTERS = [
+    ("274c", "Wezwanie do złożenia wyjaśnień", "w ramach czynności sprawdzających", "odpowiedz w terminie"),
+    ("282b", "Zawiadomienie o zamiarze wszczęcia kontroli", "kontrola rusza nie wcześniej niż po 7 dniach", "7 dni"),
+    ("165", "Postanowienie o wszczęciu postępowania", "od tej chwili liczy się każde pismo i dowód", "każde pismo"),
+    ("223 § 2", "Decyzja organu I instancji", "odwołanie od doręczenia decyzji", "14 dni"),
+]
+
+
+def pismo_flow():
+    steps = "".join(f'''<li class="pf-step" data-stamp="{st}"><span class="pf-node"><i>{i + 1:02d}</i></span><div><h3>{t}</h3><p>{d}</p></div></li>''' for i, (t, d, st) in enumerate(PF_STEPS))
+    letters = "".join(f'''<article class="pf-doc" style="--i:{i}"><span class="pf-art">art. <b>{n}</b></span><span class="pf-src">Ordynacja podatkowa</span><h4>{t}</h4><p>{d}</p><span class="pf-due">{due}</span></article>''' for i, (n, t, d, due) in enumerate(PF_LETTERS))
+    return f'''    <div class="pf-lay">
+      <div class="pf-stage" aria-hidden="true">
+        <div class="pf-env">
+          <div class="pf-paper"><span class="pf-hd">URZĄD SKARBOWY</span><span class="pf-ln"></span><span class="pf-ln"></span><span class="pf-ln s"></span><span class="pf-ln"></span><span class="pf-ln s"></span><span class="pf-stamp">TERMIN ✓</span></div>
+          <div class="pf-back"></div><div class="pf-flap"></div><div class="pf-front"></div>
+        </div>
+        <div class="pf-ring"><svg viewBox="0 0 120 120"><circle cx="60" cy="60" r="52"/><circle class="pf-arc" cx="60" cy="60" r="52"/></svg><b><span class="pf-cnt">1</span>/4</b><small>krok</small></div>
+      </div>
+      <ol class="pf-line" style="--p:0">{steps}</ol>
+    </div>
+    <div class="pf-docs" aria-label="Najczęstsze pisma">{letters}</div>
+'''
 
 
 def build_home():
@@ -666,20 +694,9 @@ def build_home():
   </div>
 </section>
 
-<section class="section bg-paper2" id="pismo" aria-labelledby="pismo-h">
+<section class="section bg-paper2 pf-sec" id="pismo" aria-labelledby="pismo-h">
   <div class="wrap">
-{section_head("Pismo z urzędu", "Co robimy, kiedy przyniesiesz nam pismo z urzędu", "Większość sporów z fiskusem da się ustawić na samym początku. Liczy się termin i to, co trafi do akt jako pierwsze.", "pismo-h")}    <div class="steps">
-      <div class="step"><h3>Sprawdzamy termin</h3><p>Ustalamy, co to za pismo, od kiedy biegnie termin i ile czasu realnie zostało. Wystarczy zdjęcie lub skan.</p></div>
-      <div class="step"><h3>Wstrzymujemy pochopne ruchy</h3><p>Nie składasz ustnych wyjaśnień przez telefon i nie wysyłasz dokumentów bez selekcji. To, co raz trafi do akt, zostaje w aktach.</p></div>
-      <div class="step"><h3>Przejmujemy kontakt z urzędem</h3><p>Zgłaszamy pełnomocnictwo i od tej chwili korespondencja z organem idzie przez doradcę podatkowego.</p></div>
-      <div class="step"><h3>Prowadzimy sprawę do końca</h3><p>Odpowiedzi na wezwania, zastrzeżenia do protokołu, odwołanie, skarga do WSA i skarga kasacyjna do NSA.</p></div>
-    </div>
-    <div class="letters" aria-label="Najczęstsze pisma">
-      <div class="letter"><span class="ref">art. 274c Ordynacji podatkowej</span><b>Wezwanie do złożenia wyjaśnień</b><span>w ramach czynności sprawdzających</span></div>
-      <div class="letter"><span class="ref">art. 282b Ordynacji podatkowej</span><b>Zawiadomienie o zamiarze wszczęcia kontroli</b><span>kontrola rusza nie wcześniej niż po 7 dniach</span></div>
-      <div class="letter"><span class="ref">art. 165 Ordynacji podatkowej</span><b>Postanowienie o wszczęciu postępowania</b><span>od tej chwili liczy się każde pismo i dowód</span></div>
-      <div class="letter"><span class="ref">art. 223 § 2 Ordynacji podatkowej</span><b>Decyzja organu I instancji</b><span>14 dni na odwołanie od doręczenia</span></div>
-    </div>
+{section_head("Pismo z urzędu", "Co robimy, kiedy przyniesiesz nam pismo z urzędu", "Większość sporów z fiskusem da się ustawić na samym początku. Liczy się termin i to, co trafi do akt jako pierwsze.", "pismo-h")}{pismo_flow()}
   </div>
 </section>
 
