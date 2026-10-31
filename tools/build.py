@@ -738,7 +738,9 @@ def build_home():
 </section>
 
 <section class="sw-sec" id="specjalizacje" aria-labelledby="spec-h">
+<div class="sw-pinwrap"><div class="sw-sticky">
 {spec_wheel(p)}
+</div></div>
 </section>
 
 <section class="section br-sec" id="branze" aria-labelledby="br-h">

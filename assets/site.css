@@ -1348,3 +1348,16 @@ footer .wrap{position:relative;z-index:1}
 @keyframes swPulse{0%{box-shadow:0 0 0 0 color-mix(in srgb,var(--accent) 45%,transparent),0 0 18px color-mix(in srgb,var(--accent) 60%,transparent)}100%{box-shadow:0 0 0 16px transparent,0 0 18px color-mix(in srgb,var(--accent) 60%,transparent)}}
 .sw-i.on button{font-size:20px}
 @media (max-width:900px){.sw-pin{display:none}}
+/* przypięcie: sekcja stoi, a przewijanie przesuwa listę */
+@media (min-width:901px){
+  .sw-sec{overflow:visible;overflow-x:clip;padding-block:0}
+  .sw-pinwrap{height:calc(100vh + 15 * 22vh)}
+  .sw-sticky{position:sticky;top:0;height:100vh;display:flex;align-items:center;padding-top:70px;box-sizing:border-box;overflow:hidden}
+  .sw-sticky .sw{width:100%}
+  .sw-dial{height:min(620px,calc(100vh - 110px))}
+}
+@media (min-width:901px) and (max-height:860px){
+  .sw-side h2{font-size:clamp(30px,3.4vw,44px);margin-bottom:16px}
+  .sw-card{min-height:360px;padding:28px 34px;gap:10px}
+  .sw-ctl{margin-top:14px}.sw-side .more-link{margin-top:12px}
+}
