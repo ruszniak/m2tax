@@ -401,7 +401,7 @@
     var $=function(s){ return card.querySelector(s); };
     function layout(){
       if(innerWidth<=900){ all.forEach(function(li){ li.style.transform=''; li.style.opacity=''; }); return; }
-      var H=dial.clientHeight, W=dial.clientWidth, R=640, x0=num?num.offsetLeft+num.offsetWidth+40:230, cx=x0-R, cy=H/2, gap=26, m=all.length, ai=all.indexOf(items[cur]), pos=[];
+      var H=dial.clientHeight, W=dial.clientWidth, R=640, cx=-410, cy=H/2, gap=26, m=all.length, ai=all.indexOf(items[cur]), pos=[];
       function rel(i){ var k=i-ai; if(k>m/2) k-=m; if(k<-m/2) k+=m; return k; }
       var down=all[ai].offsetHeight/2, up=-down; pos[ai]=0;
       for(var k=1;k<=Math.floor(m/2);k++){ var iN=(ai+k)%m, iP=(ai-k+m)%m;

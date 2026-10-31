@@ -1340,3 +1340,11 @@ footer .wrap{position:relative;z-index:1}
   .sw-ctl button{width:46px;height:46px}
 }
 @media (prefers-reduced-motion:reduce){.sw-rings g{animation:none}}
+/* łuk bez numeracji: lista koncentrycznie z pierścieniami, złoty znacznik przy aktywnej pozycji */
+.sw-dial{height:620px}
+.sw-rings circle{opacity:.55}
+.sw-pin{position:absolute;left:150px;top:50%;width:70px;height:2px;margin-top:-1px;z-index:1;background:linear-gradient(90deg,var(--accent),transparent);pointer-events:none}
+.sw-pin i{position:absolute;left:-7px;top:-6px;width:14px;height:14px;border-radius:50%;background:var(--accent);box-shadow:0 0 0 6px color-mix(in srgb,var(--accent) 18%,transparent),0 0 18px color-mix(in srgb,var(--accent) 60%,transparent);animation:swPulse 2.6s ease-out infinite}
+@keyframes swPulse{0%{box-shadow:0 0 0 0 color-mix(in srgb,var(--accent) 45%,transparent),0 0 18px color-mix(in srgb,var(--accent) 60%,transparent)}100%{box-shadow:0 0 0 16px transparent,0 0 18px color-mix(in srgb,var(--accent) 60%,transparent)}}
+.sw-i.on button{font-size:20px}
+@media (max-width:900px){.sw-pin{display:none}}

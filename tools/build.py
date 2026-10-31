@@ -685,7 +685,7 @@ def spec_wheel(p):
     return f'''<div class="sw" data-items='{js}'>
       <div class="sw-dial">
         <svg class="sw-rings" viewBox="0 0 1180 1180" aria-hidden="true"><g>{rings}</g></svg>
-        <div class="sw-num" aria-hidden="true"><i>§</i><span>01</span></div>
+        <span class="sw-pin" aria-hidden="true"><i></i></span>
         <ol class="sw-list">{lis}</ol>
       </div>
       <div class="sw-side">
