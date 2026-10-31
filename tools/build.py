@@ -668,15 +668,9 @@ def build_home():
         <i class="gl" style="left:19%;top:14%"></i><i class="gl" style="left:47%;top:4%"></i><i class="gl" style="left:80%;top:44%"></i>
       </div>
       <h1 class="split">Twoje podatki, <em>nasza pasja.</em></h1>
-      <p class="hero-lead">Doradztwo podatkowe dla firm i osób prywatnych we Wrocławiu: interpretacje, kontrole, postępowania podatkowe i sprawy przed sądami administracyjnymi.</p>
       <div class="hero-cta">
         <a class="btn btn-primary magnet" href="kontakt/#rezerwacja">Umów bezpłatne 20 minut <span aria-hidden="true">→</span></a>
         <a class="btn btn-ghost" href="abonamenty/">Abonamenty od 369 zł</a>
-      </div>
-      <div class="hero-facts">
-        <div><b data-count="2">2</b><span>doradców podatkowych w każdej sprawie</span></div>
-        <div><b data-count="20" data-suffix=" min">20 min</b><span>pierwszej konsultacji bez opłat</span></div>
-        <div><b data-count="369" data-suffix=" zł">369 zł</b><span>netto miesięcznie za stałą obsługę</span></div>
       </div>
     </div>
     <figure class="hero-duo" data-parallax="-0.06">
