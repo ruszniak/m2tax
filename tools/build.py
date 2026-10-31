@@ -448,6 +448,32 @@ def branch_accordion(p):
     return '<div class="acc-wrap">\n' + "\n".join(panels) + "\n    </div>"
 
 
+MQ_ICONS = {
+    "li": '<svg viewBox="0 0 24 24" aria-hidden="true"><rect x="2" y="2" width="20" height="20" rx="4.5" fill="#0A66C2"/><path fill="#fff" d="M7.1 9.6h2.3V17H7.1zM8.25 6.1a1.33 1.33 0 1 1 0 2.66 1.33 1.33 0 0 1 0-2.66zM10.9 9.6h2.2v1h.03c.31-.58 1.06-1.2 2.18-1.2 2.33 0 2.76 1.53 2.76 3.53V17h-2.3v-3.6c0-.86-.02-1.97-1.2-1.97-1.2 0-1.38.94-1.38 1.9V17h-2.3z"/></svg>',
+    "fb": '<svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="10" fill="#1877F2"/><path fill="#fff" d="M13.4 22v-7h2.35l.35-2.75h-2.7V10.5c0-.8.22-1.33 1.36-1.33h1.45V6.73a19 19 0 0 0-2.12-.11c-2.1 0-3.53 1.28-3.53 3.63v2h-2.37V15h2.37v7z"/></svg>',
+    "wa": '<svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="10" fill="#25D366"/><path fill="#fff" d="M12.04 6.2a5.77 5.77 0 0 0-4.94 8.74L6.3 17.8l2.94-.77a5.77 5.77 0 1 0 2.8-10.83zm3.37 8.18c-.14.4-.83.77-1.15.8-.3.04-.68.06-1.1-.07a10 10 0 0 1-1-.37 7.8 7.8 0 0 1-2.98-2.64c-.37-.5-.89-1.33-.89-2.15 0-.82.43-1.22.58-1.39.15-.17.33-.2.44-.2h.32c.1 0 .24-.04.37.28l.5 1.22c.04.08.07.18.01.29-.05.11-.08.17-.16.27l-.25.28c-.08.08-.17.17-.07.34.1.17.44.72.94 1.17.65.57 1.2.75 1.37.84.17.08.27.07.37-.04l.55-.64c.11-.17.23-.14.38-.08l1.2.57c.17.08.28.12.32.19.04.07.04.4-.1.8z"/></svg>',
+    "bl": '<svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="10" fill="#D9B98E"/><text x="12" y="16.6" text-anchor="middle" font-family="Georgia,serif" font-size="13" font-weight="700" fill="#1D1A16">§</text></svg>',
+}
+
+
+def mq_items():
+    items = [("li", "LinkedIn", LINKEDIN, "Komentarze do zmian w przepisach"),
+             ("fb", "Facebook", "https://www.facebook.com/profile.php?id=61559661710392", "Aktualności kancelarii"),
+             ("wa", "WhatsApp", wa_link(), "Napisz do nas teraz"),
+             ("bl", "Blog", "blog/", "Podatki w praktyce")]
+    out = ""
+    for _ in range(2):
+        for k, name, href, desc in items:
+            ext = ' target="_blank" rel="noopener"' if href.startswith("http") else ""
+            out += f'<a class="mq-it" href="{href}"{ext} data-k="{k}" data-d="{desc}">{MQ_ICONS[k]}<span>{name}</span></a>'
+    return out
+
+
+def mq_words(p):
+    words = ["interpretacje", "kontrole", "postępowania", "WSA · NSA", "abonament od 369 zł", "bezpłatne 20 minut"]
+    return "".join(f'<span class="mq-w">{w}</span>' for w in words * 2)
+
+
 def build_home():
     p = ""
     h = head(p, "M2 TAX — Doradcy Podatkowi | Wrocław, Siechnice, Kobierzyce",
@@ -567,17 +593,16 @@ def build_home():
   </div>
 </section>
 
-<section class="spot" aria-labelledby="spot-h">
-  <div class="spot-lamp" aria-hidden="true"></div>
+<section class="mq-sec" aria-labelledby="mq-h">
   <div class="wrap">
-    <h2 id="spot-h" class="split">Bądźmy <em>w kontakcie</em></h2>
-    <div class="pins">
-      <a class="pin" style="--r:-3deg" href="{LINKEDIN}" target="_blank" rel="noopener"><span class="pin-ico">in</span><b>LinkedIn</b><span>Komentarze do zmian w przepisach →</span></a>
-      <a class="pin" style="--r:2deg" href="https://www.facebook.com/profile.php?id=61559661710392" target="_blank" rel="noopener"><span class="pin-ico">f</span><b>Facebook</b><span>Obserwuj nas na Facebooku →</span></a>
-      <a class="pin" style="--r:-1.5deg" href="blog/"><span class="pin-ico">§</span><b>Blog</b><span>Podatki w praktyce →</span></a>
-      <a class="pin" style="--r:3deg" href="{wa_link()}" target="_blank" rel="noopener"><span class="pin-ico">✆</span><b>WhatsApp</b><span>Napisz do nas →</span></a>
-    </div>
+    <span class="eyebrow">Bądźmy w kontakcie</span>
+    <h2 id="mq-h" class="split">Śledź nas tam, <em>gdzie jesteś.</em></h2>
   </div>
+  <div class="mq">
+    <div class="mq-row"><div class="mq-track">{mq_items()}{mq_items()}</div></div>
+    <div class="mq-row mq-rev" aria-hidden="true"><div class="mq-track">{mq_words(p)}{mq_words(p)}</div></div>
+  </div>
+  <div class="mq-peek" aria-hidden="true"><span class="mq-peek-ico"></span><b></b><span class="mq-peek-t"></span></div>
 </section>
 
 <section class="section bg-paper2" id="faq" aria-labelledby="faq-h">

@@ -169,6 +169,16 @@
     });
   });
 
+  /* ---- kontakt: podgląd przy kursorze ---- */
+  var pk=document.querySelector('.mq-peek');
+  if(pk && fine){
+    document.querySelectorAll('.mq-it').forEach(function(a){
+      a.addEventListener('pointerenter',function(){ pk.querySelector('.mq-peek-ico').innerHTML=a.querySelector('svg').outerHTML; pk.querySelector('b').textContent=a.textContent; pk.querySelector('.mq-peek-t').textContent=a.getAttribute('data-d'); pk.classList.add('on'); });
+      a.addEventListener('pointerleave',function(){ pk.classList.remove('on'); });
+    });
+    addEventListener('pointermove',function(e){ pk.style.left=e.clientX+'px'; pk.style.top=e.clientY+'px'; },{passive:true});
+  }
+
   /* ---- liczniki ---- */
   var cnt=[].slice.call(document.querySelectorAll('[data-count]'));
   function run(el){ var to=+el.getAttribute('data-count'), suf=el.getAttribute('data-suffix')||'', t0=null, dur=1400;
