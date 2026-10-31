@@ -373,6 +373,10 @@ def duo_section(p, show_link=True, portraits=False):
     return f'''<section class="section dv-sec" aria-labelledby="duo-h">
   <div class="dv-grid-bg" aria-hidden="true"></div>
   <div class="wrap dv-lay">
+    <div class="dv-copy">
+      <h2 id="duo-h" class="split">Każdą sprawą zajmuje się <em>dwóch doradców podatkowych</em></h2>
+      <p class="lede">Obaj znamy Twoją sprawę i wiemy, co się w niej dzieje. Nie tłumaczysz wszystkiego od nowa nowej osobie.</p>
+    </div>
     <div class="dv-vis" aria-hidden="true">
       <svg viewBox="0 0 520 420">
         <defs>
@@ -390,12 +394,8 @@ def duo_section(p, show_link=True, portraits=False):
         <g class="dv-core"><text class="dv-k" x="260" y="196" text-anchor="middle">✓✓</text><text class="dv-t" x="260" y="226" text-anchor="middle">Twoja</text><text class="dv-t" x="260" y="250" text-anchor="middle">sprawa</text></g>
       </svg>
     </div>
-    <div class="dv-copy">
-      <h2 id="duo-h" class="split">Każdą sprawą zajmuje się <em>dwóch doradców podatkowych</em></h2>
-      <p class="lede">Obaj znamy Twoją sprawę i wiemy, co się w niej dzieje. Nie tłumaczysz wszystkiego od nowa nowej osobie.</p>
-      <ul class="dv-cards">{cards}</ul>
-      {link}
-    </div>
+    <ul class="dv-cards">{cards}</ul>
+    {link}
   </div>
 </section>
 '''

@@ -1262,3 +1262,23 @@ footer .wrap{position:relative;z-index:1}
 @keyframes baLogoIn{to{opacity:1;transform:none}}
 @media (max-width:900px),(hover:none){.ba-logo,.brand-anim::before{animation-delay:.25s}}
 @media (prefers-reduced-motion:reduce){.ba-logo,.brand-anim::before{opacity:1;transform:none;animation:none}}
+
+/* ===== Dwóch doradców: układ wyśrodkowany ===== */
+.dv-lay{grid-template-columns:1fr!important;justify-items:center;text-align:center;gap:0!important}
+.dv-copy{max-width:760px}
+.dv-copy h2{font-size:clamp(30px,4vw,52px)}
+.dv-copy h2 em,.bb-copy h2 em{background:none!important;-webkit-background-clip:border-box!important;background-clip:border-box!important;color:#E2C08C!important}
+.dv-copy .lede{margin:16px auto 0;max-width:58ch}
+.dv-vis{width:min(100%,560px);margin:clamp(20px,3vw,40px) auto clamp(10px,2vw,24px)}
+.dv-cards{width:100%;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px;margin-top:0;position:relative}
+.dv-cards::before{content:"";position:absolute;left:16%;right:16%;top:-22px;height:1px;background:linear-gradient(90deg,transparent,rgba(217,185,142,.45),transparent)}
+.dv-c{grid-template-columns:1fr;justify-items:center;text-align:center;padding:30px 24px 28px;gap:14px;transform:translateY(30px)}
+.dv-c::after{left:0;right:0;top:auto;bottom:0;width:auto!important;height:0;background:linear-gradient(0deg,rgba(217,185,142,.16),transparent);transition:height .6s cubic-bezier(.2,.8,.2,1)}
+.dv-c.on::after{height:100%}
+.dv-c.on{transform:translateY(-6px)!important;box-shadow:0 24px 50px -30px rgba(217,185,142,.45)}
+.dv-ico{width:58px;height:58px;border-radius:16px}
+.dv-ico svg{width:26px;height:26px}
+.dv-c b{font-size:18px;margin-bottom:6px}
+.dv-n{right:18px;top:18px;transform:none}
+.dv-link{margin-top:28px}
+@media (max-width:820px){.dv-cards{grid-template-columns:1fr}.dv-cards::before,.dv-c::before{display:none}}
