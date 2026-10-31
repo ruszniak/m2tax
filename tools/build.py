@@ -665,24 +665,6 @@ def build_home():
 </section>
 
 
-<section class="alarm" aria-labelledby="alarm-h">
-  <div class="wrap">
-    <div>
-      <h2 id="alarm-h">Dostałeś pismo bądź telefon z urzędu? Ochłoń i zadzwoń do nas.</h2>
-      <p>Zanim odpowiesz urzędnikowi, złożysz wyjaśnienia albo wyślesz dokumenty, porozmawiaj z doradcą. Pierwsze 20 minut rozmowy nic nie kosztuje.</p>
-    </div>
-    <div class="callcard">
-      <span class="ref">Telefony kancelarii</span>
-      <a class="phone" href="tel:{TEL1}">{TEL1_H}</a>
-      <a class="phone" href="tel:{TEL2}">{TEL2_H}</a>
-      <div class="callrow">
-        <button class="copy" data-copy="{TEL1_H}" type="button">Kopiuj numer 1</button>
-        <button class="copy" data-copy="{TEL2_H}" type="button">Kopiuj numer 2</button>
-        <button class="copy" data-copy="{MAIL}" type="button">Kopiuj e-mail: {MAIL}</button>
-      </div>
-    </div>
-  </div>
-</section>
 
 <section class="section bg-paper2 pf-sec" id="pismo" aria-labelledby="pismo-h">
   <div class="wrap">

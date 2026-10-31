@@ -339,3 +339,15 @@
   if('IntersectionObserver' in window){ var o=new IntersectionObserver(function(es){ if(es[0].isIntersecting){ docs.classList.add('in'); o.disconnect(); } },{threshold:.2}); o.observe(docs); } else docs.classList.add('in');
   sec.querySelectorAll('.pf-doc').forEach(function(d){ d.addEventListener('pointermove',function(e){ var r=d.getBoundingClientRect(); d.style.setProperty('--mx',(e.clientX-r.left)+'px'); d.style.setProperty('--my',(e.clientY-r.top)+'px'); }); });
 })();
+
+/* ---------- przezroczysty nagłówek ---------- */
+(function(){
+  var tb=document.querySelector('.topbar'), main=document.querySelector('main'); if(!tb||!main) return;
+  var first=main.firstElementChild;
+  if(!first || !/(^|\s)(hero|page-hero|bk-section)(\s|$)/.test(first.className)) return;
+  tb.classList.add('ov'); first.classList.add('ov-first');
+  function upd(){ tb.classList.toggle('sc', scrollY>12); }
+  addEventListener('scroll',upd,{passive:true}); upd();
+  var mb=document.getElementById('menu-btn');
+  if(mb) mb.addEventListener('click',function(){ setTimeout(function(){ tb.classList.toggle('open', mb.getAttribute('aria-expanded')==='true'); },0); });
+})();
