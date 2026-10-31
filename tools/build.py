@@ -218,8 +218,7 @@ def section_head(eyebrow, h2, lede="", hid="", light=False):
     st = ' style="color:#fff"' if light else ""
     l = f'\n      <p class="lede">{lede}</p>' if lede else ""
     return f'''    <div class="section-head">
-      <span class="eyebrow">{eyebrow}</span>
-      <h2{f' id="{hid}"' if hid else ""}{st}>{h2}</h2>{l}
+{f'      <span class="eyebrow">{eyebrow}</span>' + chr(10) if eyebrow else ""}      <h2{f' id="{hid}"' if hid else ""}{st}>{h2}</h2>{l}
     </div>
 '''
 
@@ -483,7 +482,7 @@ def build_home():
 
 <section class="section" id="obszar" aria-labelledby="area-h">
   <div class="wrap">
-{section_head("Zakres działania", "Doradca podatkowy we Wrocławiu i okolicach", "Spotykamy się w kancelarii przy ul. Zwycięskiej 3 lub ul. Artemskiej 11 we Wrocławiu, u Ciebie w firmie albo online.", "area-h")}    <div class="towns">
+{section_head("", "Doradca podatkowy we Wrocławiu i okolicach", "", "area-h")}    <div class="towns">
 {towns_html()}
     </div>
     <p class="area-note">Pełnomocnikiem możemy być przed każdym urzędem skarbowym, KAS i sądem administracyjnym w Polsce, więc z naszych usług korzystają też klienci spoza Dolnego Śląska.</p>
@@ -660,7 +659,7 @@ def build_specjalizacje():
 
 <section class="section bg-paper2" id="obszar" aria-labelledby="area-h">
   <div class="wrap">
-{section_head("Zakres działania", "Wrocław i okolice", "Spotykamy się w kancelarii przy ul. Zwycięskiej 3 lub ul. Artemskiej 11 we Wrocławiu, u Ciebie w firmie albo online.", "area-h")}    <div class="towns">
+{section_head("", "Wrocław i okolice", "", "area-h")}    <div class="towns">
 {towns_html()}
     </div>
   </div>
@@ -800,7 +799,7 @@ def build_kontakt():
 
 <section class="section" id="obszar" aria-labelledby="area-h">
   <div class="wrap">
-{section_head("Zakres działania", "Obsługujemy klientów z Wrocławia i okolic", "", "area-h")}    <div class="towns">
+{section_head("", "Obsługujemy klientów z Wrocławia i okolic", "", "area-h")}    <div class="towns">
 {towns_html()}
     </div>
     <p class="area-note">Spotkania online prowadzimy z klientami z całej Polski.</p>
