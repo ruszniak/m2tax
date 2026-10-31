@@ -1254,3 +1254,14 @@ footer .wrap{position:relative;z-index:1}
 .hb-grid.in .post-card{opacity:1;transform:none}
 .hb-grid.in .post-card:hover{transform:translateY(-6px);transition-delay:0s}
 @media (prefers-reduced-motion:reduce){.hb-grid .post-card{opacity:1;transform:none}}
+
+/* ===== Prawdziwe logo w nagłówku strony głównej ===== */
+.brand-anim{width:min(100%,540px)}
+.ba-logo{display:block;width:100%;height:auto;opacity:0;filter:blur(10px) drop-shadow(0 0 22px rgba(217,185,142,.25));transform:scale(.97);animation:baLogo 1.3s cubic-bezier(.2,.8,.2,1) 1.45s forwards}
+@keyframes baLogo{to{opacity:1;filter:blur(0) drop-shadow(0 0 22px rgba(217,185,142,.25));transform:none}}
+.ba-shine{position:absolute;left:0;top:0;width:100%;aspect-ratio:900/302;pointer-events:none;
+  -webkit-mask:url(../img/logo-light.png) 0 0/100% 100% no-repeat;mask:url(../img/logo-light.png) 0 0/100% 100% no-repeat;
+  background:linear-gradient(105deg,transparent 42%,rgba(255,250,236,.9) 50%,transparent 58%) 0 0/300% 100% no-repeat;background-position:120% 0;animation:baShine 5.5s ease-in-out 3s infinite}
+@keyframes baShine{0%{background-position:120% 0}35%,100%{background-position:-20% 0}}
+@media (max-width:900px),(hover:none){.ba-logo{animation-delay:.25s}}
+@media (prefers-reduced-motion:reduce){.ba-logo{opacity:1;filter:none;transform:none;animation:none}.ba-shine{animation:none}}

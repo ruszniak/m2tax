@@ -275,7 +275,12 @@
     var c=cv.getContext('2d'), P=[], W, H, dpr=Math.min(devicePixelRatio||1,2), t0=0, DUR=3400;
     var spr=document.createElement('canvas'); spr.width=spr.height=32; (function(){ var g=spr.getContext('2d'), r=g.createRadialGradient(16,16,0,16,16,16);
       r.addColorStop(0,'rgba(255,246,226,1)'); r.addColorStop(.25,'rgba(233,206,160,.9)'); r.addColorStop(.6,'rgba(217,185,142,.25)'); r.addColorStop(1,'rgba(217,185,142,0)'); g.fillStyle=r; g.fillRect(0,0,32,32); })();
-    function targets(){ var hr=host.getBoundingClientRect(), fill=ba.querySelector('.ba-fill'), r=fill.getBoundingClientRect(), fam=getComputedStyle(fill).fontFamily;
+    function targets(){ var hr=host.getBoundingClientRect(), logo=ba.querySelector('.ba-logo');
+      if(logo){ var lr=logo.getBoundingClientRect(), off2=document.createElement('canvas'); off2.width=W; off2.height=H; var o2=off2.getContext('2d');
+        o2.drawImage(logo, lr.left-hr.left, lr.top-hr.top, lr.width, lr.height); var d2=o2.getImageData(0,0,W,H).data, pts2=[], g2=4;
+        for(var y2=0;y2<H;y2+=g2) for(var x2=0;x2<W;x2+=g2) if(d2[(y2*W+x2)*4+3]>140) pts2.push([x2+(Math.random()-.5)*2,y2+(Math.random()-.5)*2]);
+        if(pts2.length>1700) pts2=pts2.filter(function(_,i){ return i%Math.ceil(pts2.length/1700)===0; }); return pts2; }
+      var fill=ba.querySelector('.ba-fill'), r=fill.getBoundingClientRect(), fam=getComputedStyle(fill).fontFamily;
       var off=document.createElement('canvas'); off.width=W; off.height=H; var o=off.getContext('2d'); o.font='900 200px '+fam;
       var m=o.measureText('M2 TAX'), asc=m.actualBoundingBoxAscent, des=m.actualBoundingBoxDescent, l=m.actualBoundingBoxLeft, w=m.actualBoundingBoxRight+l;
       o.save(); o.translate(r.left-hr.left, r.top-hr.top); o.scale(r.width/w, r.height/(asc+des)); o.fillStyle='#fff'; o.fillText('M2 TAX', l, asc); o.restore();
@@ -290,7 +295,7 @@
         var tw=0.55+0.45*Math.sin(now/180+i); c.globalAlpha=Math.min(1,k*3)*fade*tw; var sz=p.s*(1.6-0.8*e); c.drawImage(spr,x-sz/2,y-sz/2,sz,sz); }
       c.globalAlpha=1; c.globalCompositeOperation='source-over';
       if(el<DUR) requestAnimationFrame(frame); else { c.clearRect(0,0,W,H); ba.classList.add('glint-on'); } }
-    (document.fonts&&document.fonts.ready?document.fonts.ready:Promise.resolve()).then(function(){ setTimeout(function(){ init(); requestAnimationFrame(frame); },80); });
+    var lg=ba.querySelector('.ba-logo'); Promise.all([document.fonts&&document.fonts.ready?document.fonts.ready:Promise.resolve(), lg&&lg.decode?lg.decode().catch(function(){}):Promise.resolve()]).then(function(){ setTimeout(function(){ init(); requestAnimationFrame(frame); },80); });
   } else if(ba){ ba.classList.add('glint-on'); }
 })();
 

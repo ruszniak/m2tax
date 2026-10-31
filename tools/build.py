@@ -216,8 +216,7 @@ def page_hero(p, crumb, eyebrow, h1, lede, fx="network", cta=True):
   <canvas class="fx3d" data-fx="{fx}" aria-hidden="true"></canvas>
   <div class="wrap">
     <p class="crumbs"><a href="{p}">Strona główna</a> / {crumb}</p>
-    <span class="eyebrow" style="display:block;margin-top:22px">{eyebrow}</span>
-    <h1>{h1}</h1>
+    <h1 style="margin-top:22px">{h1}</h1>
     <p class="lede">{lede}</p>{c}
   </div>
 </section>
@@ -228,7 +227,6 @@ def section_head(eyebrow, h2, lede="", hid="", light=False):
     st = ' style="color:#fff"' if light else ""
     l = f'\n      <p class="lede">{lede}</p>' if lede else ""
     return f'''    <div class="section-head">
-      <span class="eyebrow">{eyebrow}</span>
       <h2{f' id="{hid}"' if hid else ""}{st}>{h2}</h2>{l}
     </div>
 '''
@@ -393,7 +391,6 @@ def duo_section(p, show_link=True, portraits=False):
       </svg>
     </div>
     <div class="dv-copy">
-      <span class="eyebrow">Nasza zasada</span>
       <h2 id="duo-h" class="split">Każdą sprawą zajmuje się <em>dwóch doradców podatkowych</em></h2>
       <p class="lede">Obaj znamy Twoją sprawę i wiemy, co się w niej dzieje. Nie tłumaczysz wszystkiego od nowa nowej osobie.</p>
       <ul class="dv-cards">{cards}</ul>
@@ -574,7 +571,6 @@ def bridge_section(p):
     <div class="bb-card">
       <div class="bb-glow" aria-hidden="true"></div>
       <div class="bb-copy">
-        <span class="eyebrow">Dla biur rachunkowych</span>
         <h2 id="bb-h" class="split">Prowadzisz biuro rachunkowe? <em>Zbudujmy most.</em></h2>
         <p>Stałe wsparcie doradców podatkowych dla Twojego zespołu, wdrożenie JPK CIT i pomoc przy kontrolach Twoich klientów. Wy prowadzicie księgi, my bierzemy na siebie trudne pytania.</p>
         <ul class="bb-pts">
@@ -668,17 +664,8 @@ def build_home():
     <div class="hero-copy">
       <span class="eyebrow">Kancelaria doradztwa podatkowego · Wrocław</span>
       <div class="brand-anim" role="img" aria-label="M2 TAX">
-        <svg viewBox="0 0 640 150" aria-hidden="true">
-          <defs>
-            <linearGradient id="gold" x1="0" y1="0" x2="1" y2="0">
-              <stop offset="0" stop-color="#B8925F"/><stop offset=".45" stop-color="#E9D2A8"/><stop offset=".55" stop-color="#FFF4DC"/><stop offset=".65" stop-color="#E9D2A8"/><stop offset="1" stop-color="#B8925F"/>
-              <animateTransform attributeName="gradientTransform" type="translate" values="-1 0;1 0;1 0" keyTimes="0;.45;1" dur="4.5s" begin="2.6s" repeatCount="indefinite"/>
-            </linearGradient>
-          </defs>
-          <text class="ba-stroke" x="0" y="122" textLength="636" lengthAdjust="spacingAndGlyphs">M2 TAX</text>
-          <text class="ba-fill" x="0" y="122" textLength="636" lengthAdjust="spacingAndGlyphs" fill="url(#gold)">M2 TAX</text>
-        </svg>
-        <i class="gl" style="left:14%;top:22%"></i><i class="gl" style="left:62%;top:30%"></i><i class="gl" style="left:93%;top:70%"></i>
+        <img class="ba-logo" src="img/logo-light.png" alt="" width="900" height="302" fetchpriority="high"><span class="ba-shine" aria-hidden="true"></span>
+        <i class="gl" style="left:19%;top:14%"></i><i class="gl" style="left:47%;top:4%"></i><i class="gl" style="left:80%;top:44%"></i>
       </div>
       <h1 class="split">Twoje podatki, <em>nasza pasja.</em></h1>
       <p class="hero-lead">Doradztwo podatkowe dla firm i osób prywatnych we Wrocławiu: interpretacje, kontrole, postępowania podatkowe i sprawy przed sądami administracyjnymi.</p>
@@ -748,7 +735,6 @@ def build_home():
 <section class="gl-sec" aria-labelledby="gl-h">
   <div class="gl-blob gl-b1" aria-hidden="true"></div><div class="gl-blob gl-b2" aria-hidden="true"></div>
   <div class="wrap">
-    <span class="eyebrow">Bądźmy w kontakcie</span>
     <h2 id="gl-h" class="split">Zostańmy <em>w kontakcie.</em></h2>
     <div class="gl-grid">{glass_tiles(p)}</div>
   </div>
@@ -979,7 +965,6 @@ def build_kontakt():
   <div class="wrap bk-wrap">
     <div class="bk-intro">
       <p class="crumbs"><a href="{p}">Strona główna</a> / Kontakt</p>
-      <span class="eyebrow">Rezerwacja online</span>
       <h1 id="bk-h" style="font-size:clamp(30px,3.6vw,44px);font-weight:800;color:#fff">Umów spotkanie z doradcą podatkowym</h1>
       <p class="lede">Wybierz rodzaj spotkania i wolny termin. Potwierdzenie i przypomnienie dostaniesz e-mailem.</p>
       <div class="bk-free"><b>20 min</b><span>pierwsza rozmowa<br>bez opłat</span></div>
@@ -1110,7 +1095,6 @@ def build_biura():
   <div class="wrap">
     <div class="duo">
       <div>
-        <span class="eyebrow">JPK CIT</span>
         <h2 id="jpk-h" style="font-size:clamp(28px,3.6vw,42px);font-weight:800;color:#fff;margin-top:14px">Wdrożenie JPK CIT bez nerwów w biurze</h2>
         <p class="lede" style="margin-top:16px">Struktury JPK_KR_PD i JPK_ST_KR pokażą urzędowi całe księgi i znaczniki podatkowe na kontach. Przygotujemy biuro tak, żeby pierwsze pliki przeszły bez korekt i bez pytań z urzędu.</p>
       </div>
@@ -1220,7 +1204,7 @@ def li_feed():
         return ""
     frames = "".join(f'<div class="li-item"><iframe src="https://www.linkedin.com/embed/feed/update/{u[0]}?collapsed=1" height="{u[1] if len(u) > 1 else 600}" width="504" frameborder="0" allowfullscreen title="Wpis M2 TAX na LinkedIn" loading="lazy"></iframe></div>' for u in urns)
     return f'''<div class="li-feed">
-      <div class="li-head"><span class="eyebrow">LinkedIn</span><h2>Najnowsze wpisy z naszego profilu</h2></div>
+      <div class="li-head"><h2>Najnowsze wpisy z naszego profilu</h2></div>
       <div class="li-grid">{frames}</div>
     </div>'''
 
