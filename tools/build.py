@@ -79,7 +79,6 @@ def head(p, title, desc, path, extra_ld=None):
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700;800;900&family=Source+Sans+3:ital,wght@0,400;0,600;0,700;1,400&family=IBM+Plex+Mono:wght@400;500&display=swap">
 <link rel="stylesheet" href="{p}assets/site.css">
-<script>try{{if(localStorage.getItem("m2-theme")==="dark")document.documentElement.setAttribute("data-theme","dark")}}catch(e){{}}</script>
 </head>
 <body>
 '''
@@ -97,7 +96,6 @@ def header(p, active):
     <nav class="nav" id="nav" aria-label="Główna nawigacja">
 {links}
       <a class="btn btn-primary" href="{p}kontakt/#rezerwacja">Bezpłatne 20 minut</a>
-      <button class="theme-tg" id="theme-tg" type="button" aria-label="Przełącz jasny lub ciemny motyw"><span class="tg-sun" aria-hidden="true">☀</span><span class="tg-knob" aria-hidden="true"></span><span class="tg-moon" aria-hidden="true">☾</span></button>
     </nav>
   </div>
 </header>
