@@ -166,7 +166,7 @@ window.addEventListener('load', function(){{
   <div class="wrap">
     <div class="f-brand">
       <a href="{p or './'}" class="f-logo" aria-label="M2 TAX Doradcy Podatkowi — strona główna"><img src="{p}img/logo-light.png" alt="M2 TAX Doradcy Podatkowi" width="900" height="302" loading="lazy"></a>
-      <p>Kancelaria doradztwa podatkowego z Wrocławia. Obsługujemy klientów z miejscowości: {towns}.</p>
+      <p>Kancelaria doradztwa podatkowego z Wrocławia. Obsługujemy klientów z Wrocławia i {len(TOWNS) - 1} okolicznych miejscowości. <a class="f-map" href="{p}#obszar">Zobacz mapę →</a></p>
       <a class="btn btn-primary" href="{p}kontakt/#rezerwacja">Bezpłatne 20 minut</a>
     </div>
     <div>
@@ -341,14 +341,24 @@ def towns_html():
     return "\n".join(f'      <div class="town">{PIN.replace("<svg ", "<svg ")}<b>{t}</b><span>{s}</span></div>' for t, s in TOWNS)
 
 
+PR_ICO = ['<path d="M4 7h16v12H4zM8 7V5h8v2M4 12h16"/>',
+          '<path d="M4 5h16v11H9l-5 4zM8 9h8M8 12h5"/>',
+          '<path d="M6 3h9l4 4v14H6zM14 3v5h5M9 13h7M9 17h5"/>',
+          '<path d="M12 3v18M5 7h14M5 7l-3 7a4 4 0 0 0 6 0zM19 7l-3 7a4 4 0 0 0 6 0zM8 21h8"/>']
+
+
 def sol_cards(p):
     out = []
-    for n, t, d, price, unit, href, feat in SOLUTIONS:
-        out.append(f'''      <a class="sol{' featured' if feat else ''}" href="{p}{href}">
-        <span class="num">{n}</span>
+    for i, (n, t, d, price, unit, href, feat) in enumerate(SOLUTIONS):
+        m = re.match(r"od (\d+) zł", price)
+        pr = f'<span class="pr-from">od</span><b data-count="{m.group(1)}">{m.group(1)}</b><span class="pr-cur">zł</span>' if m else f'<b class="pr-ind">{price}</b>'
+        badge = '<span class="pr-badge">Najczęściej wybierany</span>' if feat else ""
+        out.append(f'''      <a class="pr{' pr-feat' if feat else ''}" href="{p}{href}" style="--i:{i}">
+        {badge}<span class="pr-top"><span class="pr-ico"><svg viewBox="0 0 24 24" aria-hidden="true">{PR_ICO[i]}</svg></span><span class="pr-n">{n}</span></span>
         <h3>{t}</h3>
         <p>{d}</p>
-        <div class="price-tag">{price}<small>{unit}</small></div>
+        <div class="pr-price"><div class="pr-val">{pr}</div><small>{unit}</small></div>
+        <span class="pr-go">{'Wybierz pakiet' if feat else 'Szczegóły'} <i aria-hidden="true">→</i></span>
       </a>''')
     return "\n".join(out)
 
@@ -616,6 +626,36 @@ def pismo_flow():
 '''
 
 
+def home_blog():
+    posts = load_posts()[:2]
+    if not posts:
+        return ""
+    cards = ""
+    for x in posts:
+        img = f'<div class="pc-img"><img src="img/blog/{x["image"]}" alt="" loading="lazy"></div>' if x["image"] else '<div class="pc-img pc-noimg"><span>§</span></div>'
+        cards += f'''      <a class="post-card" href="blog/{x["slug"]}/">
+        {img}
+        <div class="pc-body">
+          <span class="post-cat">{x["category"]}</span>
+          <span class="post-meta">{x["date_h"]} · {x["minutes"]} min czytania</span>
+          <h3>{x["title"]}</h3>
+          <p>{x["lead"]}</p>
+          <span class="post-more">Czytaj artykuł <i aria-hidden="true">→</i></span>
+        </div>
+      </a>
+'''
+    return f'''<section class="section hb-sec" aria-labelledby="hb-h">
+  <div class="wrap">
+    <div class="hb-head">
+{section_head("Z bloga", "Podatki w praktyce", "Komentujemy wyroki, interpretacje i zmiany w przepisach. Krótko i na przykładach z naszych spraw.", "hb-h")}      <a class="more-link" href="blog/">Wszystkie artykuły →</a>
+    </div>
+    <div class="post-grid post-grid-2 hb-grid">
+{cards}    </div>
+  </div>
+</section>
+'''
+
+
 def build_home():
     p = ""
     h = head(p, "M2 TAX — Doradcy Podatkowi | Wrocław, Siechnice, Kobierzyce",
@@ -641,6 +681,7 @@ def build_home():
         <i class="gl" style="left:14%;top:22%"></i><i class="gl" style="left:62%;top:30%"></i><i class="gl" style="left:93%;top:70%"></i>
       </div>
       <h1 class="split">Twoje podatki, <em>nasza pasja.</em></h1>
+      <p class="hero-lead">Doradztwo podatkowe dla firm i osób prywatnych we Wrocławiu: interpretacje, kontrole, postępowania podatkowe i sprawy przed sądami administracyjnymi.</p>
       <div class="hero-cta">
         <a class="btn btn-primary magnet" href="kontakt/#rezerwacja">Umów bezpłatne 20 minut <span aria-hidden="true">→</span></a>
         <a class="btn btn-ghost" href="abonamenty/">Abonamenty od 369 zł</a>
@@ -652,7 +693,7 @@ def build_home():
       </div>
     </div>
     <figure class="hero-duo" data-parallax="-0.06">
-      <img src="img/doradcy-duo.jpg" alt="Doradcy podatkowi Michał Ruszniak i Marcin Otręba" width="1000" height="1199" fetchpriority="high">
+      <span class="hd-ring" aria-hidden="true"></span><img src="img/doradcy-duo-cut.webp" alt="Doradcy podatkowi Michał Ruszniak i Marcin Otręba" width="1000" height="1070" fetchpriority="high">
       <figcaption>Michał Ruszniak · Marcin Otręba<span>doradcy podatkowi nr 15009 i 14609</span></figcaption>
     </figure>
   </div>
@@ -661,7 +702,7 @@ def build_home():
 
 <section class="section wheel-sec" id="specjalizacje" aria-labelledby="spec-h">
   <div class="wrap">
-{section_head("Specjalizacje", "W czym możemy pomóc?", "Znajdziemy legalne sposoby, by firma nie płaciła więcej, niż musi. Stała obsługa podatkowa firm, konsultacje dla osób prywatnych, kontrole, postępowania i sprawy przed sądami administracyjnymi. Każdą sprawą zajmuje się dwóch doradców podatkowych.", "spec-h")}    {wheel_html()}
+{section_head("Specjalizacje", "W czym możemy pomóc?", "Znajdziemy legalne sposoby, by firma nie płaciła więcej, niż musi. Stała obsługa podatkowa firm, konsultacje dla osób prywatnych, kontrole, postępowania i sprawy przed sądami administracyjnymi.", "spec-h")}    {wheel_html()}
     <a class="more-link" href="doradztwo-podatkowe/">Wszystkie specjalizacje i branże →</a>
   </div>
 </section>
@@ -684,7 +725,7 @@ def build_home():
 {duo_section(p)}
 <section class="section sol-sec" id="rozwiazania" aria-labelledby="sol-h">
   <div class="wrap">
-{section_head("Współpraca", "Cztery sposoby współpracy z doradcą podatkowym", "Wybierz to, czego potrzebujesz teraz. Możesz zacząć od jednej konsultacji, a z czasem przejść na stałą obsługę.", "sol-h")}    <div class="sol-grid sol-anim">
+{section_head("Współpraca", "Cztery sposoby współpracy z doradcą podatkowym", "Wybierz to, czego potrzebujesz teraz. Możesz zacząć od jednej konsultacji, a z czasem przejść na stałą obsługę.", "sol-h")}    <div class="pr-grid">
 {sol_cards(p)}
     </div>
     <a class="more-link" href="abonamenty/">Zobacz szczegóły abonamentów i cen →</a>
@@ -693,6 +734,7 @@ def build_home():
 
 {towns_orbit(p, section_head("Zakres działania", "Doradca podatkowy we Wrocławiu i okolicach", "Spotykamy się w kancelarii przy ul. Zwycięskiej 3 lub ul. Artemskiej 11 we Wrocławiu, u Ciebie w firmie albo online.", "area-h"), "Pełnomocnikiem możemy być przed każdym urzędem skarbowym, KAS i sądem administracyjnym w Polsce, więc z naszych usług korzystają też klienci spoza Dolnego Śląska.")}
 
+{home_blog()}
 <section class="section bg-paper2" id="faq" aria-labelledby="faq-h">
   <div class="wrap faq-wrap">
 {section_head("FAQ", "Najczęściej zadawane pytania", "Odpowiedzi, które pomogą zrozumieć, jak pracujemy.", "faq-h")}    <div class="faq">
@@ -769,7 +811,7 @@ def build_abonamenty():
         fx="wave") + f'''
 <section class="section" id="przeglad" aria-labelledby="ov-h">
   <div class="wrap">
-{section_head("Przegląd", "Wybierz rozwiązanie", "", "ov-h")}    <div class="sol-grid">
+{section_head("Przegląd", "Wybierz rozwiązanie", "", "ov-h")}    <div class="pr-grid">
 {sol_cards(p).replace('href="../abonamenty/', 'href="')}
     </div>
   </div>

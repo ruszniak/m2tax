@@ -346,6 +346,7 @@
   var first=main.firstElementChild;
   tb.classList.add('ov');
   if(first && /(^|\s)(hero|page-hero|bk-section)(\s|$)/.test(first.className)) first.classList.add('ov-first'); else tb.classList.add('ov-flow');
+  if(first && first.classList.contains('hero2') && document.querySelector('.brand-anim')) tb.classList.add('home');
   function lum(c){ var m=c.match(/[\d.]+/g); if(!m) return null; if(m.length>3 && +m[3]<.5) return null; return (.299*m[0]+.587*m[1]+.114*m[2])/255; }
   function bgAt(y){ var x=innerWidth/2, el=document.elementsFromPoint(x,y).filter(function(e){ return !tb.contains(e) && !e.closest('.fab-stack'); })[0];
     while(el && el!==document.documentElement){ var L=lum(getComputedStyle(el).backgroundColor); if(L!==null) return L; el=el.parentElement; }
@@ -372,3 +373,15 @@
     else { var o=new IntersectionObserver(function(es){ if(es[0].isIntersecting){ go(); o.disconnect(); } },{threshold:.25}); o.observe(sec); }
   });
 })();
+
+/* ---------- cennik ---------- */
+(function(){
+  document.querySelectorAll('.pr-grid').forEach(function(g){
+    if(!('IntersectionObserver' in window)) g.classList.add('in');
+    else { var o=new IntersectionObserver(function(es){ if(es[0].isIntersecting){ g.classList.add('in'); o.disconnect(); } },{threshold:.2}); o.observe(g); }
+    g.querySelectorAll('.pr').forEach(function(c){ c.addEventListener('pointermove',function(e){ var r=c.getBoundingClientRect(); c.style.setProperty('--mx',(e.clientX-r.left)+'px'); c.style.setProperty('--my',(e.clientY-r.top)+'px'); }); });
+  });
+})();
+(function(){ var g=document.querySelector('.hb-grid'); if(!g) return;
+  if(!('IntersectionObserver' in window)) return g.classList.add('in');
+  var o=new IntersectionObserver(function(es){ if(es[0].isIntersecting){ g.classList.add('in'); o.disconnect(); } },{threshold:.15}); o.observe(g); })();
