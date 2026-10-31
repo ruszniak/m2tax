@@ -1123,3 +1123,12 @@ html.fx .sol-anim.go .sol.tilting{transition:transform .15s ease!important}
 }
 main>.ov-first{padding-top:75px}
 main>.hero2.ov-first{min-height:min(100vh,960px)}
+/* bez twardej krawędzi: tło nagłówka płynnie zanika w dół */
+.topbar.ov,.topbar.ov.sc,.topbar.ov.lt,.topbar.ov.lt.sc{background:transparent!important;border-bottom-color:transparent!important;box-shadow:none!important;backdrop-filter:none!important;-webkit-backdrop-filter:none!important}
+.topbar.ov::before{content:"";position:absolute;left:0;right:0;top:0;height:calc(100% + 34px);z-index:-1;pointer-events:none;opacity:0;transition:opacity .45s ease,background .45s ease;
+  background:linear-gradient(rgba(13,14,17,.78),rgba(13,14,17,.5) 60%,rgba(13,14,17,0));
+  backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);
+  -webkit-mask-image:linear-gradient(#000 45%,transparent);mask-image:linear-gradient(#000 45%,transparent)}
+.topbar.ov.lt::before{background:linear-gradient(rgba(255,255,255,.85),rgba(255,255,255,.55) 60%,rgba(255,255,255,0))}
+.topbar.ov.sc::before,.topbar.ov.lt::before,.topbar.ov.open::before{opacity:1}
+.topbar.ov.open::before{height:100%;-webkit-mask-image:none;mask-image:none}
