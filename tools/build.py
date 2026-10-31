@@ -37,6 +37,9 @@ TOWNS = [
     ("Jelcz-Laskowice", "powiat oławski"),
     ("Długołęka", "gmina Długołęka"),
     ("Kąty Wrocławskie", "gmina Kąty Wrocławskie"),
+    ("Oborniki Śląskie", "powiat trzebnicki"),
+    ("Brzeg", "powiat brzeski"),
+    ("Kępno", "powiat kępiński"),
 ]
 NAV = [("abonamenty/", "Abonamenty"), ("doradztwo-podatkowe/", "Doradztwo podatkowe"), ("dla-biur-rachunkowych/", "Dla biur rachunkowych"), ("zespol/", "Zespół"), ("blog/", "Blog"), ("kontakt/", "Kontakt")]
 
@@ -507,7 +510,7 @@ def glass_tiles(p):
 
 
 # kierunki od Wrocławia (stopnie, 0 = wschód, zgodnie z ruchem wskazówek) i odległość względna
-TOWN_GEO = {"Siechnice": (48, .5), "Kobierzyce": (132, .64), "Żórawina": (96, .68), "Środa Śląska": (190, .9), "Trzebnica": (-100, .85), "Oleśnica": (-30, .9), "Oława": (24, .92), "Strzelin": (70, .93), "Jelcz-Laskowice": (-2, .9), "Długołęka": (-62, .6), "Kąty Wrocławskie": (163, .72)}
+TOWN_GEO = {"Siechnice": (48, .5), "Kobierzyce": (132, .64), "Żórawina": (96, .68), "Środa Śląska": (192, .9), "Trzebnica": (-82, .85), "Oborniki Śląskie": (-122, .82), "Oleśnica": (-40, .88), "Kępno": (-14, 1.0), "Oława": (25, .92), "Brzeg": (46, 1.02), "Strzelin": (72, .95), "Jelcz-Laskowice": (1, .74), "Długołęka": (-64, .62), "Kąty Wrocławskie": (163, .72)}
 
 
 def towns_orbit(p, head, note=""):
@@ -927,7 +930,7 @@ def build_zespol():
 def build_kontakt():
     p = "../"
     h = head(p, "Kontakt i rezerwacja — M2 TAX Doradcy Podatkowi | Wrocław",
-             "Umów spotkanie z doradcą podatkowym online. M2 TAX, ul. Zwycięska 3, 53-033 Wrocław, tel. 883 643 565, 534 909 534, kancelaria@m2tax.pl. Obsługujemy Wrocław, Siechnice, Kobierzyce, Żórawinę, Środę Śląską, Trzebnicę, Oleśnicę, Oławę, Strzelin, Jelcz-Laskowice, Długołękę i Kąty Wrocławskie.",
+             "Umów spotkanie z doradcą podatkowym online. M2 TAX, ul. Zwycięska 3, 53-033 Wrocław, tel. 883 643 565, 534 909 534, kancelaria@m2tax.pl. Obsługujemy Wrocław, Siechnice, Kobierzyce, Żórawinę, Środę Śląską, Trzebnicę, Oleśnicę, Oławę, Strzelin, Jelcz-Laskowice, Długołękę, Kąty Wrocławskie, Oborniki Śląskie, Brzeg i Kępno.",
              "kontakt/")
     body = header(p, "kontakt/") + f'''<section class="section bk-section" id="rezerwacja" aria-labelledby="bk-h">
   <canvas class="fx3d" data-fx="wave" aria-hidden="true"></canvas>
