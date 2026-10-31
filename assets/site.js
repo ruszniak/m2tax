@@ -359,3 +359,16 @@
   var mb=document.getElementById('menu-btn');
   if(mb) mb.addEventListener('click',function(){ setTimeout(function(){ tb.classList.toggle('open', mb.getAttribute('aria-expanded')==='true'); },0); });
 })();
+
+/* ---------- dwóch doradców ---------- */
+(function(){
+  document.querySelectorAll('.dv-sec').forEach(function(sec){
+    var reduce=window.matchMedia('(prefers-reduced-motion: reduce)').matches, cs=[].slice.call(sec.querySelectorAll('.dv-c')), i=-1, tm=null, hold=false;
+    function set(k){ i=k; sec.setAttribute('data-on',k); cs.forEach(function(c,n){ c.classList.toggle('on',n===k); }); }
+    function cyc(){ if(!hold) set((i+1)%cs.length); }
+    cs.forEach(function(c,n){ c.addEventListener('pointerenter',function(){ hold=true; set(n); }); c.addEventListener('pointerleave',function(){ hold=false; }); });
+    function go(){ sec.classList.add('go'); if(!reduce){ setTimeout(function(){ cyc(); tm=setInterval(cyc,3200); },2400); } else set(0); }
+    if(!('IntersectionObserver' in window)) go();
+    else { var o=new IntersectionObserver(function(es){ if(es[0].isIntersecting){ go(); o.disconnect(); } },{threshold:.25}); o.observe(sec); }
+  });
+})();

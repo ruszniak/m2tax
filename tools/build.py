@@ -351,32 +351,40 @@ def sol_cards(p):
 
 
 def duo_section(p, show_link=True, portraits=False):
-    link = f'\n        <a class="more-link" href="{p}zespol/" style="color:var(--accent)">Poznaj doradców →</a>' if show_link else ""
-    if portraits:
-        visual = f'''      <figure class="duo-blend">
-        <img src="{p}img/doradcy-duo.jpg" alt="Doradcy podatkowi Michał Ruszniak i Marcin Otręba" width="1000" height="1200" loading="lazy">
-        <figcaption>Michał Ruszniak · Marcin Otręba<span>doradcy podatkowi nr 15009 i 14609</span></figcaption>
-      </figure>'''
-    else:
-        visual = f'''      <figure class="duo-blend">
-        <img src="{p}img/doradcy-togi-3.jpg" alt="Doradcy podatkowi Michał Ruszniak i Marcin Otręba w togach" width="1000" height="1200" loading="lazy">
-        <figcaption>Michał Ruszniak · Marcin Otręba<span>doradcy podatkowi nr 15009 i 14609</span></figcaption>
-      </figure>'''
-    return f'''<section class="section dark" aria-labelledby="duo-h">
-  <canvas class="fx3d" data-fx="rings" aria-hidden="true"></canvas>
-  <div class="wrap">
-    <div class="duo">
-{visual}
-      <div>
-        <span class="eyebrow">Nasza zasada</span>
-        <h2 id="duo-h" style="font-size:clamp(28px,3.6vw,42px);font-weight:800;color:#fff;margin-top:14px">Każdą sprawą zajmuje się dwóch doradców podatkowych</h2>
-        <p class="lede" style="margin-top:16px">Obaj znamy Twoją sprawę i wiemy, co się w niej dzieje. Nie tłumaczysz wszystkiego od nowa nowej osobie.</p>
-        <div class="duo-points">
-          <div class="duo-card"><b>Zawsze ktoś odbierze</b><span>Urlop, rozprawa czy kontrola u innego klienta nie zatrzymują Twojej sprawy.</span></div>
-          <div class="duo-card"><b>Druga para oczu</b><span>Każde ważne pismo, odwołanie i opinię sprawdza drugi doradca przed wysłaniem.</span></div>
-          <div class="duo-card"><b>Dwa doświadczenia</b><span>Praktyka biznesowa i lata pracy w administracji skarbowej przy jednym stole.</span></div>
-        </div>{link}
-      </div>
+    link = f'<a class="more-link dv-link" href="{p}zespol/">Poznaj doradców →</a>' if show_link else ""
+    ico = ['<path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2z"/>',
+           '<path d="M2 12s3.6-7 10-7 10 7 10 7-3.6 7-10 7S2 12 2 12z"/><circle cx="12" cy="12" r="3"/>',
+           '<path d="M12 3v18M5 7h14M5 7l-3 7a4 4 0 0 0 6 0zM19 7l-3 7a4 4 0 0 0 6 0zM8 21h8"/>']
+    pts = [("Zawsze ktoś odbierze", "Urlop, rozprawa czy kontrola u innego klienta nie zatrzymują Twojej sprawy."),
+           ("Druga para oczu", "Każde ważne pismo, odwołanie i opinię sprawdza drugi doradca przed wysłaniem."),
+           ("Dwa doświadczenia", "Praktyka biznesowa i lata pracy w administracji skarbowej przy jednym stole.")]
+    cards = "".join(f'''<li class="dv-c" style="--i:{i}"><span class="dv-ico"><svg viewBox="0 0 24 24" aria-hidden="true">{ico[i]}</svg></span><div><b>{t}</b><span>{d}</span></div><i class="dv-n" aria-hidden="true">0{i + 1}</i></li>''' for i, (t, d) in enumerate(pts))
+    return f'''<section class="section dv-sec" aria-labelledby="duo-h">
+  <div class="dv-grid-bg" aria-hidden="true"></div>
+  <div class="wrap dv-lay">
+    <div class="dv-vis" aria-hidden="true">
+      <svg viewBox="0 0 520 420">
+        <defs>
+          <radialGradient id="dvA" cx=".5" cy=".5" r=".5"><stop offset="0" stop-color="#D9B98E" stop-opacity=".16"/><stop offset="1" stop-color="#D9B98E" stop-opacity="0"/></radialGradient>
+          <clipPath id="dvClip"><circle cx="195" cy="210" r="150"/></clipPath>
+          <linearGradient id="dvG" x1="0" x2="1"><stop offset="0" stop-color="#B8925F"/><stop offset=".5" stop-color="#F3E1BC"/><stop offset="1" stop-color="#B8925F"/></linearGradient>
+        </defs>
+        <g class="dv-a"><circle cx="195" cy="210" r="150" fill="url(#dvA)"/><circle class="dv-ring" cx="195" cy="210" r="150"/><circle class="dv-ring2" cx="195" cy="210" r="168"/>
+          <circle class="dv-dot" r="5"><animateMotion dur="9s" repeatCount="indefinite" path="M45 210a150 150 0 1 0 300 0a150 150 0 1 0-300 0"/></circle>
+          <text class="dv-lbl" x="110" y="215" text-anchor="middle">DORADCA</text><text class="dv-lbl2" x="110" y="238" text-anchor="middle">prowadzący</text></g>
+        <g class="dv-b"><circle cx="325" cy="210" r="150" fill="url(#dvA)"/><circle class="dv-ring" cx="325" cy="210" r="150"/><circle class="dv-ring2" cx="325" cy="210" r="168"/>
+          <circle class="dv-dot" r="5"><animateMotion dur="9s" repeatCount="indefinite" path="M475 210a150 150 0 1 1-300 0a150 150 0 1 1 300 0"/></circle>
+          <text class="dv-lbl" x="410" y="215" text-anchor="middle">DORADCA</text><text class="dv-lbl2" x="410" y="238" text-anchor="middle">weryfikujący</text></g>
+        <g class="dv-lens"><circle cx="325" cy="210" r="150" clip-path="url(#dvClip)"/></g>
+        <g class="dv-core"><text class="dv-k" x="260" y="196" text-anchor="middle">✓✓</text><text class="dv-t" x="260" y="226" text-anchor="middle">Twoja</text><text class="dv-t" x="260" y="250" text-anchor="middle">sprawa</text></g>
+      </svg>
+    </div>
+    <div class="dv-copy">
+      <span class="eyebrow">Nasza zasada</span>
+      <h2 id="duo-h" class="split">Każdą sprawą zajmuje się <em>dwóch doradców podatkowych</em></h2>
+      <p class="lede">Obaj znamy Twoją sprawę i wiemy, co się w niej dzieje. Nie tłumaczysz wszystkiego od nowa nowej osobie.</p>
+      <ul class="dv-cards">{cards}</ul>
+      {link}
     </div>
   </div>
 </section>
