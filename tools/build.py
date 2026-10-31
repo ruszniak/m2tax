@@ -375,7 +375,6 @@ def duo_section(p, show_link=True, portraits=False):
   <div class="wrap dv-lay">
     <div class="dv-copy">
       <h2 id="duo-h" class="split">Każdą sprawą zajmuje się <em>dwóch doradców podatkowych</em></h2>
-      <p class="lede">Obaj znamy Twoją sprawę i wiemy, co się w niej dzieje. Nie tłumaczysz wszystkiego od nowa nowej osobie.</p>
     </div>
     <div class="dv-vis" aria-hidden="true">
       <svg viewBox="0 0 520 420">
