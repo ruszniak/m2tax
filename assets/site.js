@@ -158,6 +158,17 @@
     var o=new IntersectionObserver(function(es){ if(es[0].isIntersecting){ g.classList.add('go'); o.disconnect(); } },{threshold:0.25}); o.observe(g);
   });
 
+  /* ---- branże: rozwijane panele ---- */
+  document.querySelectorAll('.acc-wrap').forEach(function(w){
+    var ps=[].slice.call(w.querySelectorAll('.acc'));
+    function act(el){ ps.forEach(function(x){ x.classList.toggle('on',x===el); }); }
+    ps.forEach(function(el){
+      if(fine) el.addEventListener('pointerenter',function(){ act(el); });
+      el.addEventListener('focus',function(){ act(el); });
+      el.addEventListener('click',function(e){ if(!el.classList.contains('on')){ e.preventDefault(); act(el); } });
+    });
+  });
+
   /* ---- liczniki ---- */
   var cnt=[].slice.call(document.querySelectorAll('[data-count]'));
   function run(el){ var to=+el.getAttribute('data-count'), suf=el.getAttribute('data-suffix')||'', t0=null, dur=1400;

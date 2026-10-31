@@ -196,20 +196,87 @@
     </div>
   </div>
 </section>
-<section class="section" id="branze" aria-labelledby="br-h">
+<section class="section br-sec" id="branze" aria-labelledby="br-h">
+  <canvas class="fx3d" data-fx="rings" aria-hidden="true"></canvas>
   <div class="wrap">
     <div class="section-head">
       <span class="eyebrow">Branże</span>
       <h2 id="br-h">Znamy specyfikę Twojej branży</h2>
       <p class="lede">Doświadczenie z konkretnych sektorów oznacza mniej tłumaczenia i szybsze, trafniejsze odpowiedzi.</p>
     </div>
-    <div class="branch-grid">
-      <article class="spec"><span class="ref">PIT · VAT · PCC</span><h4>Osoby prywatne i nieruchomości</h4><p>Obsługa osób, które nie prowadzą działalności gospodarczej: sprzedaż mieszkania lub domu, podział i sprzedaż działek, najem prywatny, spadki i darowizny.</p><ul><li>Sprzedaż nieruchomości przed upływem 5 lat i ulga mieszkaniowa</li><li>Kiedy sprzedaż działek podlega VAT, a kiedy nie</li><li>Najem prywatny, spadki, darowizny i zgłoszenia do urzędu</li></ul></article>
-      <article class="spec"><span class="ref">VAT · MPP · CIT/PIT</span><h4>Branża budowlana</h4><p>Generalni wykonawcy, podwykonawcy i deweloperzy. Dbamy o rozliczenia VAT na każdym etapie inwestycji i o bezpieczeństwo w relacjach z podwykonawcami.</p><ul><li>Stawki VAT 8% i 23% w budownictwie mieszkaniowym</li><li>Podzielona płatność i moment powstania obowiązku VAT</li><li>Kaucje gwarancyjne, umowy z podwykonawcami, kontrole</li></ul></article>
-      <article class="spec"><span class="ref">VAT · ryczałt · spółki</span><h4>Branża medyczna</h4><p>Lekarze, dentyści, fizjoterapeuci, gabinety i podmioty lecznicze. Pomagamy oddzielić usługi zwolnione z VAT od opodatkowanych i dobrać formę działania.</p><ul><li>Zwolnienie z VAT usług medycznych a zabiegi estetyczne</li><li>Kontrakty B2B, ryczałt i spółki lekarskie</li><li>Zmiany wspólników w spółkach i podmiotach leczniczych</li></ul></article>
-      <article class="spec"><span class="ref">VAT · kasa fiskalna · forma opodatkowania</span><h4>Branża beauty</h4><p>Salony kosmetyczne, fryzjerskie i gabinety kosmetologii. Porządkujemy VAT, sprzedaż kosmetyków i współpracę z osobami wynajmującymi stanowiska.</p><ul><li>Limit zwolnienia z VAT i jego przekroczenie</li><li>Sprzedaż usług i kosmetyków, kasa fiskalna online</li><li>Najem stanowisk i współpraca na B2B bez ryzyka</li></ul></article>
-      <article class="spec"><span class="ref">CIT · ulgi · VAT 0%</span><h4>Branża produkcyjna</h4><p>Zakłady produkcyjne i firmy rodzinne z własnym parkiem maszynowym. Pomagamy korzystać z ulg i bezpiecznie rozliczać sprzedaż zagraniczną.</p><ul><li>Ulga B+R, IP Box i ulga na prototyp</li><li>Eksport i wewnątrzwspólnotowe dostawy ze stawką 0%</li><li>Amortyzacja maszyn i inwestycji, ceny transferowe</li></ul></article>
-      <a class="sol" href="kontakt/#rezerwacja" style="justify-content:center"><span class="num">Twoja branża?</span><h3>Nie widzisz swojej branży?</h3><p>Zadzwoń albo umów bezpłatne 20 minut. Powiemy, czy i jak możemy pomóc.</p><div class="price-tag">Umów rozmowę →</div></a>
+    <div class="acc-wrap">
+      <article class="acc on" tabindex="0">
+        <div class="acc-bg" aria-hidden="true"></div>
+        <span class="acc-num" aria-hidden="true">01</span>
+        <div class="acc-ico"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 11.5 12 4l9 7.5M5.5 9.8V20h13V9.8M10 20v-5.5h4V20"/></svg></div>
+        <span class="acc-title" aria-hidden="true">Osoby prywatne i nieruchomości</span>
+        <div class="acc-body">
+          <span class="acc-ref">PIT · VAT · PCC</span>
+          <h3 class="acc-h">Osoby prywatne i nieruchomości</h3>
+          <p>Obsługa osób, które nie prowadzą działalności gospodarczej: sprzedaż mieszkania lub domu, podział i sprzedaż działek, najem prywatny, spadki i darowizny.</p>
+          <ul><li>Sprzedaż nieruchomości przed upływem 5 lat i ulga mieszkaniowa</li><li>Kiedy sprzedaż działek podlega VAT, a kiedy nie</li><li>Najem prywatny, spadki, darowizny i zgłoszenia do urzędu</li></ul>
+        </div>
+      </article>
+      <article class="acc" tabindex="0">
+        <div class="acc-bg" aria-hidden="true"></div>
+        <span class="acc-num" aria-hidden="true">02</span>
+        <div class="acc-ico"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 20h16M6 20V9l6-4 6 4v11M9.5 12h1M13.5 12h1M9.5 15.5h1M13.5 15.5h1M2 5h9M11 5V3"/></svg></div>
+        <span class="acc-title" aria-hidden="true">Branża budowlana</span>
+        <div class="acc-body">
+          <span class="acc-ref">VAT · MPP · CIT/PIT</span>
+          <h3 class="acc-h">Branża budowlana</h3>
+          <p>Generalni wykonawcy, podwykonawcy i deweloperzy. Dbamy o rozliczenia VAT na każdym etapie inwestycji i o bezpieczeństwo w relacjach z podwykonawcami.</p>
+          <ul><li>Stawki VAT 8% i 23% w budownictwie mieszkaniowym</li><li>Podzielona płatność i moment powstania obowiązku VAT</li><li>Kaucje gwarancyjne, umowy z podwykonawcami, kontrole</li></ul>
+        </div>
+      </article>
+      <article class="acc" tabindex="0">
+        <div class="acc-bg" aria-hidden="true"></div>
+        <span class="acc-num" aria-hidden="true">03</span>
+        <div class="acc-ico"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 3h6v6h6v6h-6v6H9v-6H3V9h6z"/></svg></div>
+        <span class="acc-title" aria-hidden="true">Branża medyczna</span>
+        <div class="acc-body">
+          <span class="acc-ref">VAT · ryczałt · spółki</span>
+          <h3 class="acc-h">Branża medyczna</h3>
+          <p>Lekarze, dentyści, fizjoterapeuci, gabinety i podmioty lecznicze. Pomagamy oddzielić usługi zwolnione z VAT od opodatkowanych i dobrać formę działania.</p>
+          <ul><li>Zwolnienie z VAT usług medycznych a zabiegi estetyczne</li><li>Kontrakty B2B, ryczałt i spółki lekarskie</li><li>Zmiany wspólników w spółkach i podmiotach leczniczych</li></ul>
+        </div>
+      </article>
+      <article class="acc" tabindex="0">
+        <div class="acc-bg" aria-hidden="true"></div>
+        <span class="acc-num" aria-hidden="true">04</span>
+        <div class="acc-ico"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3l1.8 4.6L18.5 9l-4.7 1.4L12 15l-1.8-4.6L5.5 9l4.7-1.4zM18 15l.9 2.1L21 18l-2.1.9L18 21l-.9-2.1L15 18l2.1-.9z"/></svg></div>
+        <span class="acc-title" aria-hidden="true">Branża beauty</span>
+        <div class="acc-body">
+          <span class="acc-ref">VAT · kasa fiskalna · forma opodatkowania</span>
+          <h3 class="acc-h">Branża beauty</h3>
+          <p>Salony kosmetyczne, fryzjerskie i gabinety kosmetologii. Porządkujemy VAT, sprzedaż kosmetyków i współpracę z osobami wynajmującymi stanowiska.</p>
+          <ul><li>Limit zwolnienia z VAT i jego przekroczenie</li><li>Sprzedaż usług i kosmetyków, kasa fiskalna online</li><li>Najem stanowisk i współpraca na B2B bez ryzyka</li></ul>
+        </div>
+      </article>
+      <article class="acc" tabindex="0">
+        <div class="acc-bg" aria-hidden="true"></div>
+        <span class="acc-num" aria-hidden="true">05</span>
+        <div class="acc-ico"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 21V10l5 3V10l5 3V6h3l1 15M3 21h18M7 17h2M12 17h2"/></svg></div>
+        <span class="acc-title" aria-hidden="true">Branża produkcyjna</span>
+        <div class="acc-body">
+          <span class="acc-ref">CIT · ulgi · VAT 0%</span>
+          <h3 class="acc-h">Branża produkcyjna</h3>
+          <p>Zakłady produkcyjne i firmy rodzinne z własnym parkiem maszynowym. Pomagamy korzystać z ulg i bezpiecznie rozliczać sprzedaż zagraniczną.</p>
+          <ul><li>Ulga B+R, IP Box i ulga na prototyp</li><li>Eksport i wewnątrzwspólnotowe dostawy ze stawką 0%</li><li>Amortyzacja maszyn i inwestycji, ceny transferowe</li></ul>
+        </div>
+      </article>
+      <a class="acc acc-cta" href="kontakt/#rezerwacja">
+        <div class="acc-bg" aria-hidden="true"></div>
+        <span class="acc-num" aria-hidden="true">?</span>
+        <div class="acc-ico"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg></div>
+        <span class="acc-title" aria-hidden="true">Twoja branża?</span>
+        <div class="acc-body">
+          <span class="acc-ref">bezpłatne 20 minut</span>
+          <h3 class="acc-h">Nie widzisz swojej branży?</h3>
+          <p>Nie widzisz swojej branży? Zadzwoń albo umów rozmowę. Powiemy, czy i jak możemy pomóc.</p>
+          <span class="btn btn-primary">Umów rozmowę →</span>
+        </div>
+      </a>
     </div>
   </div>
 </section>

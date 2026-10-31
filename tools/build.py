@@ -407,6 +407,47 @@ def wheel_html():
     </div>'''
 
 
+BR_ICONS = [
+    '<path d="M3 11.5 12 4l9 7.5M5.5 9.8V20h13V9.8M10 20v-5.5h4V20"/>',
+    '<path d="M4 20h16M6 20V9l6-4 6 4v11M9.5 12h1M13.5 12h1M9.5 15.5h1M13.5 15.5h1M2 5h9M11 5V3"/>',
+    '<path d="M9 3h6v6h6v6h-6v6H9v-6H3V9h6z"/>',
+    '<path d="M12 3l1.8 4.6L18.5 9l-4.7 1.4L12 15l-1.8-4.6L5.5 9l4.7-1.4zM18 15l.9 2.1L21 18l-2.1.9L18 21l-.9-2.1L15 18l2.1-.9z"/>',
+    '<path d="M3 21V10l5 3V10l5 3V6h3l1 15M3 21h18M7 17h2M12 17h2"/>',
+]
+
+
+def branch_accordion(p):
+    panels = []
+    for n, (ref, t, d, li) in enumerate(BRANCHES):
+        ico = f'<svg viewBox="0 0 24 24" aria-hidden="true">{BR_ICONS[n % len(BR_ICONS)]}</svg>'
+        lis = "".join(f"<li>{x}</li>" for x in li)
+        panels.append(f'''      <article class="acc{' on' if n == 0 else ''}" tabindex="0">
+        <div class="acc-bg" aria-hidden="true"></div>
+        <span class="acc-num" aria-hidden="true">0{n + 1}</span>
+        <div class="acc-ico">{ico}</div>
+        <span class="acc-title" aria-hidden="true">{t}</span>
+        <div class="acc-body">
+          <span class="acc-ref">{ref}</span>
+          <h3 class="acc-h">{t}</h3>
+          <p>{d}</p>
+          <ul>{lis}</ul>
+        </div>
+      </article>''')
+    panels.append(f'''      <a class="acc acc-cta" href="{p}kontakt/#rezerwacja">
+        <div class="acc-bg" aria-hidden="true"></div>
+        <span class="acc-num" aria-hidden="true">?</span>
+        <div class="acc-ico"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg></div>
+        <span class="acc-title" aria-hidden="true">Twoja branża?</span>
+        <div class="acc-body">
+          <span class="acc-ref">bezpłatne 20 minut</span>
+          <h3 class="acc-h">Nie widzisz swojej branży?</h3>
+          <p>Nie widzisz swojej branży? Zadzwoń albo umów rozmowę. Powiemy, czy i jak możemy pomóc.</p>
+          <span class="btn btn-primary">Umów rozmowę →</span>
+        </div>
+      </a>''')
+    return '<div class="acc-wrap">\n' + "\n".join(panels) + "\n    </div>"
+
+
 def build_home():
     p = ""
     h = head(p, "M2 TAX — Doradcy Podatkowi | Wrocław, Siechnice, Kobierzyce",
@@ -493,12 +534,10 @@ def build_home():
     </div>
   </div>
 </section>
-<section class="section" id="branze" aria-labelledby="br-h">
+<section class="section br-sec" id="branze" aria-labelledby="br-h">
+  <canvas class="fx3d" data-fx="rings" aria-hidden="true"></canvas>
   <div class="wrap">
-{section_head("Branże", "Znamy specyfikę Twojej branży", "Doświadczenie z konkretnych sektorów oznacza mniej tłumaczenia i szybsze, trafniejsze odpowiedzi.", "br-h")}    <div class="branch-grid">
-{chr(10).join(spec_card(*b) for b in BRANCHES)}
-      <a class="sol" href="kontakt/#rezerwacja" style="justify-content:center"><span class="num">Twoja branża?</span><h3>Nie widzisz swojej branży?</h3><p>Zadzwoń albo umów bezpłatne 20 minut. Powiemy, czy i jak możemy pomóc.</p><div class="price-tag">Umów rozmowę →</div></a>
-    </div>
+{section_head("Branże", "Znamy specyfikę Twojej branży", "Doświadczenie z konkretnych sektorów oznacza mniej tłumaczenia i szybsze, trafniejsze odpowiedzi.", "br-h")}    {branch_accordion(p)}
   </div>
 </section>
 
@@ -700,12 +739,10 @@ def build_specjalizacje():
   </div>
 </section>
 
-<section class="section" id="branze" aria-labelledby="br-h">
+<section class="section br-sec" id="branze" aria-labelledby="br-h">
+  <canvas class="fx3d" data-fx="rings" aria-hidden="true"></canvas>
   <div class="wrap">
-{section_head("Branże", "Branże, w których mamy doświadczenie", "Każda branża ma swoje pułapki podatkowe. Te znamy z codziennej pracy z klientami.", "br-h")}    <div class="branch-grid">
-{chr(10).join(spec_card(*b) for b in BRANCHES)}
-      <a class="sol" href="{p}kontakt/#rezerwacja" style="justify-content:center"><span class="num">Twoja branża?</span><h3>Nie widzisz swojej branży?</h3><p>Zadzwoń albo umów bezpłatne 20 minut. Powiemy, czy i jak możemy pomóc.</p><div class="price-tag">Umów rozmowę →</div></a>
-    </div>
+{section_head("Branże", "Branże, w których mamy doświadczenie", "Każda branża ma swoje pułapki podatkowe. Te znamy z codziennej pracy z klientami.", "br-h")}    {branch_accordion(p)}
   </div>
 </section>
 
