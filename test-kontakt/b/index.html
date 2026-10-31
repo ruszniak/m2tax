@@ -1,0 +1,29 @@
+<!doctype html><html lang="pl"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="robots" content="noindex"><title>Kontakt B</title><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700;800;900&family=Source+Sans+3:wght@400;600&family=IBM+Plex+Mono:wght@400;500&display=swap"><link rel="stylesheet" href="../common.css"><style>
+.blob{position:absolute;width:620px;height:620px;border-radius:50%;filter:blur(90px);opacity:.55;pointer-events:none}
+.b1{background:#8a6a3c;left:-120px;top:10%;animation:fl1 14s ease-in-out infinite}
+.b2{background:#D9B98E;right:-160px;bottom:-10%;opacity:.3;animation:fl2 18s ease-in-out infinite}
+@keyframes fl1{50%{transform:translate(260px,120px)}}@keyframes fl2{50%{transform:translate(-300px,-160px)}}
+.g{display:grid;grid-template-columns:repeat(4,1fr);gap:20px;margin-top:56px;perspective:1000px}
+.t{position:relative;display:grid;align-content:space-between;min-height:300px;padding:28px;border-radius:22px;text-decoration:none;color:#fff;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.1);backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px);overflow:hidden;transition:transform .2s ease,border-color .3s}
+.t::before{content:"";position:absolute;inset:0;background:radial-gradient(320px circle at var(--x,50%) var(--y,50%),rgba(226,192,140,.28),transparent 45%);opacity:0;transition:opacity .3s}
+.t:hover::before{opacity:1}.t:hover{border-color:rgba(226,192,140,.55)}
+.t svg{width:56px;height:56px;fill:none;stroke:#E2C08C;stroke-width:1.3;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:120;stroke-dashoffset:120;transition:stroke-dashoffset 1.6s ease}
+.in .t svg{stroke-dashoffset:0}
+.t b{font:800 28px Montserrat,Arial;position:relative}.t span{color:#b9b6b0;position:relative;display:flex;justify-content:space-between;align-items:center}
+.t span i{font-style:normal;width:40px;height:40px;border-radius:50%;display:grid;place-items:center;border:1px solid rgba(255,255,255,.2);transition:background .3s,transform .3s}
+.t:hover span i{background:#E2C08C;color:#16171a;transform:rotate(-45deg)}
+.t{opacity:0;transform:translateY(40px)}.in .t{opacity:1;transform:none;transition:opacity .8s,transform .9s cubic-bezier(.2,.8,.2,1)}
+.in .t:nth-child(2){transition-delay:.1s}.in .t:nth-child(3){transition-delay:.2s}.in .t:nth-child(4){transition-delay:.3s}
+@media(max-width:900px){.g{grid-template-columns:1fr 1fr}.t{min-height:220px}}
+</style></head><body><div class="lab">PODGLĄD SEKCJI KONTAKT <a href="../a/">A</a><a href="../b/">B</a><a href="../c/">C</a></div>
+<section class="sec"><div class="blob b1"></div><div class="blob b2"></div><div class="wrap" style="position:relative"><span class="eb">Bądźmy w kontakcie</span><h2>Zostańmy <em>w kontakcie.</em></h2>
+<div class="g" id="g">
+<a class="t" href="https://www.linkedin.com/company/112327069/" target="_blank"><svg viewBox="0 0 24 24"><path d="M6 9v9M6 6v.01M10 18v-5a3 3 0 0 1 6 0v5M10 9v9"/></svg><div><b>LinkedIn</b><span>Komentarze do przepisów <i>→</i></span></div></a>
+<a class="t" href="https://www.facebook.com/profile.php?id=61559661710392" target="_blank"><svg viewBox="0 0 24 24"><path d="M14 8h3V4h-3a4 4 0 0 0-4 4v3H7v4h3v7h4v-7h3l1-4h-4V8z"/></svg><div><b>Facebook</b><span>Aktualności kancelarii <i>→</i></span></div></a>
+<a class="t" href="../../blog/"><svg viewBox="0 0 24 24"><path d="M4 4h12l4 4v12H4zM8 10h8M8 14h8M8 18h5"/></svg><div><b>Blog</b><span>Podatki w praktyce <i>→</i></span></div></a>
+<a class="t" href="https://wa.me/48883643565" target="_blank"><svg viewBox="0 0 24 24"><path d="M4 20l1.4-4A8 8 0 1 1 8 18.6zM9 9c0 3 3 6 6 6l1.5-1.5-2-1-1 1c-1-.5-2-1.5-2.5-2.5l1-1-1-2z"/></svg><div><b>WhatsApp</b><span>Napisz do nas <i>→</i></span></div></a>
+</div></div></section>
+<script>
+var g=document.getElementById("g");setTimeout(function(){g.classList.add("in")},150);
+g.querySelectorAll(".t").forEach(function(t){t.addEventListener("pointermove",function(e){var r=t.getBoundingClientRect(),x=e.clientX-r.left,y=e.clientY-r.top;t.style.setProperty("--x",x+"px");t.style.setProperty("--y",y+"px");t.style.transform="rotateY("+((x/r.width-.5)*10)+"deg) rotateX("+(-(y/r.height-.5)*10)+"deg)"});t.addEventListener("pointerleave",function(){t.style.transform=""})});
+</script></body></html>
