@@ -493,6 +493,7 @@
 
 /* ---------- płynne przejście tła między jasnymi i ciemnymi sekcjami ---------- */
 (function(){
+  if(window.matchMedia('(hover:none),(pointer:coarse)').matches) return; /* telefony: zwykłe tła sekcji */
   var main=document.querySelector('main'); if(!main) return;
   var secs=[].slice.call(main.children).filter(function(e){ return e.tagName==='SECTION' && e.offsetHeight>0; }); if(secs.length<2) return;
   function rgb(c){ var m=c.match(/[\d.]+/g); return m&&(m.length<4||+m[3]>.5)?[+m[0],+m[1],+m[2]]:null; }
@@ -503,13 +504,14 @@
   var bg=document.createElement('div'); bg.className='bgm'; bg.setAttribute('aria-hidden','true'); document.body.insertBefore(bg,document.body.firstChild);
   document.documentElement.classList.add('bgm-on');
   function mix(a,b,t){ t=t*t*(3-2*t); return 'rgb('+[0,1,2].map(function(k){ return Math.round(a[k]+(b[k]-a[k])*t); }).join(',')+')'; }
+  var root=document.documentElement; function setBg(c){ bg.style.backgroundColor=c; root.style.backgroundColor=c; }
   var tk=false;
   function upd(){ tk=false; var vh=innerHeight, hi=vh*.78, lo=vh*.32, col=cols[0];
     for(var i=1;i<secs.length;i++){ var top=secs[i].getBoundingClientRect().top;
       if(top>hi){ break; }
-      if(top>=lo){ col=null; bg.style.backgroundColor=mix(cols[i-1],cols[i],(hi-top)/(hi-lo)); return; }
+      if(top>=lo){ col=null; setBg(mix(cols[i-1],cols[i],(hi-top)/(hi-lo))); return; }
       col=cols[i]; }
-    bg.style.backgroundColor='rgb('+col.join(',')+')'; }
+    setBg('rgb('+col.join(',')+')'); }
   function req(){ if(!tk){ tk=true; requestAnimationFrame(upd); } }
   addEventListener('scroll',req,{passive:true}); addEventListener('resize',req); upd();
   /* zabezpieczenie (Safari, płynne przewijanie): sprawdzaj pozycję w każdej klatce i odśwież też nagłówek */

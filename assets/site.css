@@ -1531,3 +1531,6 @@ html.bgm-on main>section.bgm-t{background-color:transparent!important}
   .gl-sec{padding-block:64px}
   .gl-grid.mrow>*{flex-basis:62%!important;max-width:62%}
 }
+/* tło malowane na <html> (Safari na iPhonie nie pokazywał warstwy pod spodem) */
+.bgm{display:none}
+html.bgm-on{background-color:#16171a}
