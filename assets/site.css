@@ -1539,3 +1539,9 @@ html.bgm-on{background-color:#16171a}
 /* 8 branż: węższe zwinięte panele na komputerze */
 @media (min-width:901px){.acc-wrap{gap:10px}.acc-title{font-size:18px}.acc-ico{width:48px;height:48px;left:50%;margin-left:-24px}.acc.on .acc-ico{left:22px;margin-left:0}}
 @media (min-width:901px){.acc.on{flex-grow:6}}
+/* telefon: tytuł i ikona branży wyśrodkowane w pionie (także dwuwierszowe) */
+@media (max-width:900px){
+  .acc:not(.on) .acc-title{top:50%;bottom:auto;transform:translateY(-50%);line-height:1.25;padding-right:8px}
+  .acc:not(.on) .acc-ico{top:50%;margin-top:-24px}
+  .acc:not(.on){min-height:88px}
+}
