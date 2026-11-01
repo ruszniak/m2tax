@@ -1411,3 +1411,7 @@ footer .wrap{position:relative;z-index:1}
 .sc-dots i{width:6px;height:6px;border-radius:50%;background:currentColor;opacity:.25;transition:opacity .3s,width .3s}
 .sc-dots i.on{opacity:.9;width:18px;border-radius:3px}
 @media (max-width:600px){.sc-dots{display:flex}.dv-sec .sc-dots{color:#D9B98E}.pf-sec .sc-dots{color:var(--accent)}}
+/* płynne tło */
+.bgm{position:fixed;inset:0;z-index:-1;pointer-events:none;background:#fff}
+html.bgm-on body{background:transparent}
+html.bgm-on main>section.bgm-t{background-color:transparent!important}
