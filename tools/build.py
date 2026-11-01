@@ -267,6 +267,12 @@ BRANCHES = [
     ("CIT · ulgi · VAT 0%", "Branża produkcyjna",
      "Zakłady produkcyjne i firmy rodzinne z własnym parkiem maszynowym. Pomagamy korzystać z ulg i bezpiecznie rozliczać sprzedaż zagraniczną.",
      ["Ulga B+R, IP Box i ulga na prototyp", "Eksport i wewnątrzwspólnotowe dostawy ze stawką 0%", "Amortyzacja maszyn i inwestycji, ceny transferowe"]),
+    ("VAT · cło · WDT/WNT", "Branża handlowa",
+     "Hurtownie, sklepy i firmy w imporcie oraz eksporcie. Pilnujemy VAT w obrocie z zagranicą, dokumentów do stawki 0% i rozliczeń z kontrahentami spoza Polski.",
+     ["Import i eksport towarów, procedury celne i VAT", "Wewnątrzwspólnotowe dostawy i nabycia, transakcje łańcuchowe", "Biała lista, split payment i weryfikacja kontrahentów"]),
+    ("CIT · ulga sponsoringowa · VAT", "Branża sportowa",
+     "Kluby piłkarskie i sportowe, stowarzyszenia, akademie i ich sponsorzy. Porządkujemy rozliczenia klubu i pomagamy firmom korzystać z ulgi na sport.",
+     ["Ulga sponsoringowa na sport, kulturę i naukę", "Kluby sportowe: stowarzyszenia, spółki akcyjne, sp. z o.o.", "Kontrakty zawodników i trenerów, VAT od biletów i sponsoringu"]),
 ]
 
 PILLARS = [
@@ -434,6 +440,8 @@ BR_ICONS = [
     '<path d="M9 3h6v6h6v6h-6v6H9v-6H3V9h6z"/>',
     '<path d="M12 3l1.8 4.6L18.5 9l-4.7 1.4L12 15l-1.8-4.6L5.5 9l4.7-1.4zM18 15l.9 2.1L21 18l-2.1.9L18 21l-.9-2.1L15 18l2.1-.9z"/>',
     '<path d="M3 21V10l5 3V10l5 3V6h3l1 15M3 21h18M7 17h2M12 17h2"/>',
+    '<path d="M2 7h11v9H2zM13 10h4l4 3v3h-8M6 19a2 2 0 1 0 0-.01M17 19a2 2 0 1 0 0-.01"/>',
+    '<circle cx="12" cy="12" r="9"/><path d="M12 7l4 3-1.5 4.5h-5L8 10zM12 3v4M21 10l-5 0M3 10h5M15.5 21l-1-6.5M8.5 21l1-6.5"/>',
 ]
 
 

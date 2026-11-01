@@ -1536,3 +1536,6 @@ html.bgm-on main>section.bgm-t{background-color:transparent!important}
 html.bgm-on{background-color:#16171a}
 /* telefon: nazwa specjalizacji tylko raz (pod łukiem), karta bez powtórzonego tytułu */
 @media (max-width:900px){.sw-card .sw-title{display:none}.sw-mname{max-width:18ch}}
+/* 8 branż: węższe zwinięte panele na komputerze */
+@media (min-width:901px){.acc-wrap{gap:10px}.acc-title{font-size:18px}.acc-ico{width:48px;height:48px;left:50%;margin-left:-24px}.acc.on .acc-ico{left:22px;margin-left:0}}
+@media (min-width:901px){.acc.on{flex-grow:6}}
