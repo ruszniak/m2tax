@@ -418,7 +418,7 @@
       if(cnt) cnt.textContent=(cur+1<10?'0':'')+(cur+1); if(bar) bar.style.setProperty('--w',((cur+1)/n*100).toFixed(1)+'%');
       card.classList.add('swap');
       setTimeout(function(){ $('.sw-cat').textContent=d.g; $('.sw-title').textContent=d.t; $('.sw-desc').textContent=d.d; $('.sw-ref').textContent=d.r; card.classList.remove('swap'); },260);
-      var mh=w.querySelector('.sw-mhead'); if(mh){ mh.classList.add('swap'); setTimeout(function(){ mh.querySelector('.sw-mg').textContent=d.g; mh.querySelector('.sw-mname').textContent=d.s; mh.classList.remove('swap'); },220); }
+      var mh=w.querySelector('.sw-mhead'); if(mh){ mh.classList.add('swap'); setTimeout(function(){ mh.querySelector('.sw-mg').textContent=d.g; mh.querySelector('.sw-mname').textContent=d.t; mh.classList.remove('swap'); },220); }
       requestAnimationFrame(layout);
       if(innerWidth<=900 && user){ var b=items[cur].firstElementChild; dial.scrollTo({left:b.offsetLeft-20,behavior:reduce?'auto':'smooth'}); }
     }

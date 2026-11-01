@@ -1534,3 +1534,5 @@ html.bgm-on main>section.bgm-t{background-color:transparent!important}
 /* tło malowane na <html> (Safari na iPhonie nie pokazywał warstwy pod spodem) */
 .bgm{display:none}
 html.bgm-on{background-color:#16171a}
+/* telefon: nazwa specjalizacji tylko raz (pod łukiem), karta bez powtórzonego tytułu */
+@media (max-width:900px){.sw-card .sw-title{display:none}.sw-mname{max-width:18ch}}

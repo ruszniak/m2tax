@@ -692,7 +692,7 @@ def spec_wheel(p):
         <h2 id="spec-h" class="split">W czym możemy pomóc?</h2>
         <div class="sw-mhead" aria-hidden="true">
           <svg viewBox="0 0 400 90" preserveAspectRatio="none"><path class="sw-arc1" d="M-10 0 Q200 110 410 0"/><path class="sw-arc2" d="M-10 22 Q200 128 410 22"/></svg>
-          <span class="sw-mg">{f["g"]}</span><b class="sw-mname">{SW_SHORT.get(f["t"], f["t"])}</b>
+          <span class="sw-mg">{f["g"]}</span><b class="sw-mname">{f["t"]}</b>
         </div>
         <div class="sw-cwrap">
         <button type="button" class="sw-mprev" aria-label="Poprzednia specjalizacja"><svg viewBox="0 0 24 24"><path d="M15 6l-6 6 6 6"/></svg></button>
