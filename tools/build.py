@@ -775,7 +775,7 @@ def build_home():
   </div>
 </section>
 
-{towns_orbit(p, section_head("Zakres działania", "Doradca podatkowy we Wrocławiu i okolicach", "Spotykamy się w kancelarii przy ul. Zwycięskiej 3 lub ul. Artemskiej 11 we Wrocławiu, u Ciebie w firmie albo online.", "area-h"), "Pełnomocnikiem możemy być przed każdym urzędem skarbowym, KAS i sądem administracyjnym w Polsce, więc z naszych usług korzystają też klienci spoza Dolnego Śląska.")}
+{towns_orbit(p, section_head("Zakres działania", "Doradca podatkowy we Wrocławiu i okolicach", "", "area-h"), "Pełnomocnikiem możemy być przed każdym urzędem skarbowym, KAS i sądem administracyjnym w Polsce, więc z naszych usług korzystają też klienci spoza Dolnego Śląska.")}
 
 {home_blog()}
 <section class="section bg-paper2" id="faq" aria-labelledby="faq-h">
@@ -950,7 +950,7 @@ def build_specjalizacje():
   </div>
 </section>
 
-{towns_orbit(p, section_head("Zakres działania", "Wrocław i okolice", "Spotykamy się w kancelarii przy ul. Zwycięskiej 3 lub ul. Artemskiej 11 we Wrocławiu, u Ciebie w firmie albo online.", "area-h"), "")}
+{towns_orbit(p, section_head("Zakres działania", "Wrocław i okolice", "", "area-h"), "")}
 
 <section class="section" aria-label="Umów spotkanie">
   <div class="wrap">
