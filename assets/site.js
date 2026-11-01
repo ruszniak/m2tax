@@ -493,7 +493,8 @@
 
 /* ---------- płynne przejście tła między jasnymi i ciemnymi sekcjami ---------- */
 (function(){
-  if(window.matchMedia('(hover:none),(pointer:coarse)').matches) return; /* telefony: zwykłe tła sekcji */
+  var ua=navigator.userAgent, safari=/^((?!chrome|chromium|android|crios|fxios|edg).)*safari/i.test(ua);
+  if(safari || window.matchMedia('(hover:none),(pointer:coarse)').matches) return; /* Safari i telefony: zwykłe tła sekcji */
   var main=document.querySelector('main'); if(!main) return;
   var secs=[].slice.call(main.children).filter(function(e){ return e.tagName==='SECTION' && e.offsetHeight>0; }); if(secs.length<2) return;
   function rgb(c){ var m=c.match(/[\d.]+/g); return m&&(m.length<4||+m[3]>.5)?[+m[0],+m[1],+m[2]]:null; }
