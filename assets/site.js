@@ -361,7 +361,7 @@
     tb.classList.toggle('sc', scrollY>12);
     tb.classList.toggle('lt', L!==null && L>.55); }
   function req(){ if(!tk){ tk=true; requestAnimationFrame(upd); } }
-  addEventListener('scroll',req,{passive:true}); addEventListener('resize',req); upd(); setTimeout(upd,400);
+  addEventListener('scroll',req,{passive:true}); addEventListener('resize',req); upd(); setTimeout(upd,400); addEventListener('m2bg',req);
   var mb=document.getElementById('menu-btn');
   if(mb) mb.addEventListener('click',function(){ setTimeout(function(){ tb.classList.toggle('open', mb.getAttribute('aria-expanded')==='true'); },0); });
 })();
@@ -512,4 +512,6 @@
     bg.style.backgroundColor='rgb('+col.join(',')+')'; }
   function req(){ if(!tk){ tk=true; requestAnimationFrame(upd); } }
   addEventListener('scroll',req,{passive:true}); addEventListener('resize',req); upd();
+  /* zabezpieczenie (Safari, płynne przewijanie): sprawdzaj pozycję w każdej klatce i odśwież też nagłówek */
+  var lastY=-1, lastH=-1; (function loop(){ if(scrollY!==lastY || innerHeight!==lastH){ lastY=scrollY; lastH=innerHeight; upd(); window.dispatchEvent(new Event('m2bg')); } requestAnimationFrame(loop); })();
 })();
