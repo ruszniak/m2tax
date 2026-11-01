@@ -761,7 +761,7 @@ def build_home():
 
 <section class="section bg-paper2 pf-sec" id="pismo" aria-labelledby="pismo-h">
   <div class="wrap">
-{section_head("Pismo z urzędu", "Co robimy, kiedy przyniesiesz nam pismo z urzędu", "Większość sporów z fiskusem da się ustawić na samym początku. Liczy się termin i to, co trafi do akt jako pierwsze.", "pismo-h")}{pismo_flow()}
+{section_head("", "Większość sporów z fiskusem da się ustawić na samym początku. Liczy się termin i to, co trafi do akt jako pierwsze.", "", "pismo-h")}{pismo_flow()}
   </div>
 </section>
 
