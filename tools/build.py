@@ -273,6 +273,9 @@ BRANCHES = [
     ("CIT · ulga sponsoringowa · VAT", "Branża sportowa",
      "Kluby piłkarskie i sportowe, stowarzyszenia, akademie i ich sponsorzy. Porządkujemy rozliczenia klubu i pomagamy firmom korzystać z ulgi na sport.",
      ["Ulga sponsoringowa na sport, kulturę i naukę", "Kluby sportowe: stowarzyszenia, spółki akcyjne, sp. z o.o.", "Kontrakty zawodników i trenerów, VAT od biletów i sponsoringu"]),
+    ("PIT · VAT · ryczałt", "Influencerzy i twórcy",
+     "Twórcy na Instagramie, TikToku i YouTube oraz agencje influencer marketingu. Ustawiamy formę działalności i rozliczenia, zanim zrobi to urząd.",
+     ["Współprace barterowe i prezenty od marek", "Przychody z platform zagranicznych i VAT", "Działalność, ryczałt czy spółka dla twórcy"]),
 ]
 
 PILLARS = [
@@ -442,6 +445,7 @@ BR_ICONS = [
     '<path d="M3 21V10l5 3V10l5 3V6h3l1 15M3 21h18M7 17h2M12 17h2"/>',
     '<path d="M2 7h11v9H2zM13 10h4l4 3v3h-8M6 19a2 2 0 1 0 0-.01M17 19a2 2 0 1 0 0-.01"/>',
     '<circle cx="12" cy="12" r="9"/><path d="M12 7l4 3-1.5 4.5h-5L8 10zM12 3v4M21 10l-5 0M3 10h5M15.5 21l-1-6.5M8.5 21l1-6.5"/>',
+    '<rect x="3" y="5" width="18" height="14" rx="4"/><path d="M10 9.5v5l4.5-2.5z"/>',
 ]
 
 
