@@ -1396,3 +1396,18 @@ footer .wrap{position:relative;z-index:1}
   .sw-mprev svg,.sw-mnext svg{width:18px;height:18px;fill:none;stroke:var(--text);stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
   .sw-side .more-link{order:4;justify-self:center;text-align:center}
 }
+/* bez numeracji w FAQ */
+.faq .fq summary{grid-template-columns:minmax(0,1fr) auto}
+.faq .fq .fq-a p{padding-left:22px}
+/* telefon: przesuwane rzędy kart zamiast długich list */
+@media (max-width:600px){
+  .pf-docs,.dv-cards{display:flex!important;overflow-x:auto;scroll-snap-type:x mandatory;gap:12px;margin-inline:calc(-1 * var(--gutter));padding:6px var(--gutter) 14px;scrollbar-width:none;-webkit-overflow-scrolling:touch}
+  .pf-docs::-webkit-scrollbar,.dv-cards::-webkit-scrollbar{display:none}
+  .pf-doc,.dv-c{flex:0 0 78%;scroll-snap-align:center}
+  .dv-cards::before{display:none}
+  .sw-dots{display:flex}
+}
+.sc-dots{display:none;justify-content:center;gap:6px;margin-top:4px}
+.sc-dots i{width:6px;height:6px;border-radius:50%;background:currentColor;opacity:.25;transition:opacity .3s,width .3s}
+.sc-dots i.on{opacity:.9;width:18px;border-radius:3px}
+@media (max-width:600px){.sc-dots{display:flex}.dv-sec .sc-dots{color:#D9B98E}.pf-sec .sc-dots{color:var(--accent)}}

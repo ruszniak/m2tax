@@ -450,3 +450,10 @@
     addEventListener('resize',function(){ if(pinned()) clearInterval(timer); });
   });
 })();
+/* kropki pod przesuwanymi rzędami (telefon) */
+(function(){ document.querySelectorAll('.pf-docs,.dv-cards').forEach(function(row){
+  var kids=[].slice.call(row.children), d=document.createElement('div'); d.className='sc-dots'; d.setAttribute('aria-hidden','true');
+  kids.forEach(function(){ d.appendChild(document.createElement('i')); }); row.parentNode.insertBefore(d,row.nextSibling);
+  function upd(){ var c=row.scrollLeft+row.clientWidth/2, best=0, bd=1e9; kids.forEach(function(k,i){ var m=k.offsetLeft+k.offsetWidth/2, dd=Math.abs(m-c); if(dd<bd){ bd=dd; best=i; } });
+    [].forEach.call(d.children,function(x,i){ x.classList.toggle('on',i===best); }); }
+  row.addEventListener('scroll',function(){ requestAnimationFrame(upd); },{passive:true}); upd(); }); })();

@@ -326,7 +326,7 @@ FAQ_ABO = [
 
 def faq_html(items):
     return "\n".join(f'''      <details class="fq"{' open' if i == 0 else ''}>
-        <summary><span class="fq-n">{i + 1:02d}</span><span class="fq-q">{q}</span><span class="fq-ic" aria-hidden="true"></span></summary>
+        <summary><span class="fq-q">{q}</span><span class="fq-ic" aria-hidden="true"></span></summary>
         <div class="fq-a"><p>{a}</p></div>
       </details>''' for i, (q, a) in enumerate(items))
 
@@ -352,7 +352,7 @@ def sol_cards(p):
         pr = f'<span class="pr-from">od</span><b data-count="{m.group(1)}">{m.group(1)}</b><span class="pr-cur">zł</span>' if m else f'<b class="pr-ind">{price}</b>'
         badge = '<span class="pr-badge">Najczęściej wybierany</span>' if feat else ""
         out.append(f'''      <a class="pr{' pr-feat' if feat else ''}" href="{p}{href}" style="--i:{i}">
-        {badge}<span class="pr-top"><span class="pr-ico"><svg viewBox="0 0 24 24" aria-hidden="true">{PR_ICO[i]}</svg></span><span class="pr-n">{n}</span></span>
+        {badge}<span class="pr-top"><span class="pr-ico"><svg viewBox="0 0 24 24" aria-hidden="true">{PR_ICO[i]}</svg></span></span>
         <h3>{t}</h3>
         <p>{d}</p>
         <div class="pr-price"><div class="pr-val">{pr}</div><small>{unit}</small></div>
@@ -369,7 +369,7 @@ def duo_section(p, show_link=True, portraits=False):
     pts = [("Zawsze ktoś odbierze", "Urlop, rozprawa czy kontrola u innego klienta nie zatrzymują Twojej sprawy."),
            ("Druga para oczu", "Każde ważne pismo, odwołanie i opinię sprawdza drugi doradca przed wysłaniem."),
            ("Dwa doświadczenia", "Praktyka biznesowa i lata pracy w administracji skarbowej przy jednym stole.")]
-    cards = "".join(f'''<li class="dv-c" style="--i:{i}"><span class="dv-ico"><svg viewBox="0 0 24 24" aria-hidden="true">{ico[i]}</svg></span><div><b>{t}</b><span>{d}</span></div><i class="dv-n" aria-hidden="true">0{i + 1}</i></li>''' for i, (t, d) in enumerate(pts))
+    cards = "".join(f'''<li class="dv-c" style="--i:{i}"><span class="dv-ico"><svg viewBox="0 0 24 24" aria-hidden="true">{ico[i]}</svg></span><div><b>{t}</b><span>{d}</span></div></li>''' for i, (t, d) in enumerate(pts))
     return f'''<section class="section dv-sec" aria-labelledby="duo-h">
   <div class="dv-grid-bg" aria-hidden="true"></div>
   <div class="wrap dv-lay">
@@ -726,7 +726,6 @@ def build_home():
   <canvas class="dust" aria-hidden="true"></canvas>
   <div class="wrap">
     <div class="hero-copy">
-      <span class="eyebrow">Kancelaria doradztwa podatkowego · Wrocław</span>
       <div class="brand-anim" role="img" aria-label="M2 TAX">
         <img class="ba-logo" src="img/logo-light.png" alt="" width="900" height="302" fetchpriority="high">
         <i class="gl" style="left:19%;top:14%"></i><i class="gl" style="left:47%;top:4%"></i><i class="gl" style="left:80%;top:44%"></i>
