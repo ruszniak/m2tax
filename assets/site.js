@@ -450,13 +450,46 @@
     addEventListener('resize',function(){ if(pinned()) clearInterval(timer); });
   });
 })();
-/* kropki pod przesuwanymi rzędami (telefon) */
-(function(){ document.querySelectorAll('.pf-docs,.dv-cards,.spec-grid,.variants,.tools-grid').forEach(function(row){
-  var kids=[].slice.call(row.children), d=document.createElement('div'); d.className='sc-dots'; d.setAttribute('aria-hidden','true');
-  kids.forEach(function(){ d.appendChild(document.createElement('i')); }); row.parentNode.insertBefore(d,row.nextSibling);
-  function upd(){ var c=row.scrollLeft+row.clientWidth/2, best=0, bd=1e9; kids.forEach(function(k,i){ var m=k.offsetLeft+k.offsetWidth/2, dd=Math.abs(m-c); if(dd<bd){ bd=dd; best=i; } });
-    [].forEach.call(d.children,function(x,i){ x.classList.toggle('on',i===best); }); }
-  row.addEventListener('scroll',function(){ requestAnimationFrame(upd); },{passive:true}); upd(); }); })();
+/* telefon: przesuwane rzędy ze strzałkami i kropkami */
+(function(){
+  var ROWS='.pf-docs,.dv-cards,.spec-grid,.variants,.tools-grid,.pr-grid,.pkg-perks,.steps,.flow,.hb-grid,.post-grid,.team,.pf-line,.gl-grid';
+  document.querySelectorAll(ROWS).forEach(function(row){
+    var kids=[].slice.call(row.children).filter(function(k){ return k.nodeType===1; }); if(kids.length<2) return;
+    row.classList.add('mrow');
+    var nav=document.createElement('div'); nav.className='sc-nav';
+    nav.innerHTML='<button type="button" class="sc-prev" aria-label="Poprzednie"><svg viewBox="0 0 24 24"><path d="M15 6l-6 6 6 6"/></svg></button><div class="sc-dots" aria-hidden="true"></div><button type="button" class="sc-next" aria-label="Następne"><svg viewBox="0 0 24 24"><path d="M9 6l6 6-6 6"/></svg></button>';
+    var d=nav.querySelector('.sc-dots'); kids.forEach(function(){ d.appendChild(document.createElement('i')); });
+    row.parentNode.insertBefore(nav,row.nextSibling);
+    var cur=0;
+    function upd(){ var c=row.scrollLeft+row.clientWidth/2, bd=1e9; kids.forEach(function(k,i){ var m=k.offsetLeft+k.offsetWidth/2, dd=Math.abs(m-c); if(dd<bd){ bd=dd; cur=i; } });
+      [].forEach.call(d.children,function(x,i){ x.classList.toggle('on',i===cur); });
+      nav.querySelector('.sc-prev').disabled=row.scrollLeft<8; nav.querySelector('.sc-next').disabled=row.scrollLeft+row.clientWidth>row.scrollWidth-8; }
+    function go(i){ i=Math.max(0,Math.min(kids.length-1,i)); var k=kids[i]; row.scrollTo({left:k.offsetLeft-(row.clientWidth-k.offsetWidth)/2,behavior:'smooth'}); }
+    nav.querySelector('.sc-prev').addEventListener('click',function(){ go(cur-1); });
+    nav.querySelector('.sc-next').addEventListener('click',function(){ go(cur+1); });
+    [].forEach.call(d.children,function(x,i){ x.addEventListener('click',function(){ go(i); }); });
+    row.addEventListener('scroll',function(){ requestAnimationFrame(upd); },{passive:true}); addEventListener('resize',upd); setTimeout(upd,300);
+  });
+})();
+
+/* telefon: długie listy zwinięte z przyciskiem „Pokaż więcej” */
+(function(){
+  if(!window.matchMedia('(max-width:600px)').matches) return;
+  var SEL='.pillar ul,.svc ul,.person ul,.acc-body ul,.pillar-head p,.bk-points,.post-body ~ .x';
+  document.querySelectorAll(SEL).forEach(function(el){
+    if(el.scrollHeight<190) return;
+    el.classList.add('clp');
+    var b=document.createElement('button'); b.type='button'; b.className='clp-btn'; b.innerHTML='Pokaż więcej <i>▾</i>'; b.setAttribute('aria-expanded','false');
+    el.parentNode.insertBefore(b,el.nextSibling);
+    b.addEventListener('click',function(){ var o=el.classList.toggle('open'); b.setAttribute('aria-expanded',o); b.innerHTML=o?'Zwiń <i>▴</i>':'Pokaż więcej <i>▾</i>'; });
+  });
+  /* stopka: kolumny jako rozwijane sekcje */
+  document.querySelectorAll('footer h4').forEach(function(h){
+    var box=h.parentElement; if(!box || box.querySelector('.f-logo')) return;
+    box.classList.add('f-acc'); h.setAttribute('role','button'); h.setAttribute('tabindex','0');
+    h.addEventListener('click',function(){ box.classList.toggle('open'); });
+  });
+})();
 
 /* ---------- płynne przejście tła między jasnymi i ciemnymi sekcjami ---------- */
 (function(){
