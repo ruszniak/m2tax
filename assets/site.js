@@ -418,12 +418,17 @@
       if(cnt) cnt.textContent=(cur+1<10?'0':'')+(cur+1); if(bar) bar.style.setProperty('--w',((cur+1)/n*100).toFixed(1)+'%');
       card.classList.add('swap');
       setTimeout(function(){ $('.sw-cat').textContent=d.g; $('.sw-title').textContent=d.t; $('.sw-desc').textContent=d.d; $('.sw-ref').textContent=d.r; card.classList.remove('swap'); },260);
+      var mh=w.querySelector('.sw-mhead'); if(mh){ mh.classList.add('swap'); setTimeout(function(){ mh.querySelector('.sw-mg').textContent=d.g; mh.querySelector('.sw-mname').textContent=d.s; mh.classList.remove('swap'); },220); }
       requestAnimationFrame(layout);
       if(innerWidth<=900 && user){ var b=items[cur].firstElementChild; dial.scrollTo({left:b.offsetLeft-20,behavior:reduce?'auto':'smooth'}); }
     }
     items.forEach(function(li,i){ li.firstElementChild.addEventListener('click',function(){ go(i,true); restart(); }); });
     w.querySelector('.sw-prev').addEventListener('click',function(){ go(cur-1,true); restart(); });
     w.querySelector('.sw-next').addEventListener('click',function(){ go(cur+1,true); restart(); });
+    w.querySelector('.sw-mprev').addEventListener('click',function(){ go(cur-1); restart(); });
+    w.querySelector('.sw-mnext').addEventListener('click',function(){ go(cur+1); restart(); });
+    (function(){ var x0=null, cw=w.querySelector('.sw-cwrap'); cw.addEventListener('touchstart',function(e){ x0=e.touches[0].clientX; },{passive:true});
+      cw.addEventListener('touchend',function(e){ if(x0===null) return; var dx=e.changedTouches[0].clientX-x0; if(Math.abs(dx)>45){ go(cur+(dx<0?1:-1)); restart(); } x0=null; },{passive:true}); })();
     w.addEventListener('keydown',function(e){ if(e.key==='ArrowDown'||e.key==='ArrowRight'){ e.preventDefault(); go(cur+1,true); } if(e.key==='ArrowUp'||e.key==='ArrowLeft'){ e.preventDefault(); go(cur-1,true); } });
     w.addEventListener('pointerenter',function(){ hover=true; }); w.addEventListener('pointerleave',function(){ hover=false; });
     function restart(){ clearInterval(timer); if(reduce || (w.closest('.sw-pinwrap') && innerWidth>900)) return; timer=setInterval(function(){ if(!hover && document.visibilityState==='visible') go(cur+1); },6500); }

@@ -1361,3 +1361,38 @@ footer .wrap{position:relative;z-index:1}
   .sw-card{min-height:360px;padding:28px 34px;gap:10px}
   .sw-ctl{margin-top:14px}.sw-side .more-link{margin-top:12px}
 }
+
+/* ===== poprawki po przeglądzie ===== */
+.arw{font-family:var(--f-body);font-weight:600;font-size:1.12em;line-height:1;display:inline-block;transform:translateY(.02em)}
+.acc-num{-webkit-text-stroke-color:rgba(217,185,142,.13)!important;z-index:0}
+.acc-body{z-index:1}
+@media (max-width:900px){
+  .acc.on .acc-body{position:relative;left:auto;right:auto;bottom:auto;padding:86px 22px 24px}
+  .acc.on{min-height:0}
+}
+
+/* ===== Specjalizacje na telefonie: łuk + karta ze strzałkami (jak LTCA) ===== */
+.sw-mhead,.sw-mprev,.sw-mnext{display:none}
+.sw-cwrap{position:relative}
+@media (max-width:900px){
+  .sw-sec{padding-block:56px 48px}
+  .sw-dial,.sw-ctl{display:none!important}
+  .sw-side h2{text-align:center;margin-bottom:0;font-size:clamp(30px,8.4vw,38px)}
+  .sw-mhead{order:2;display:grid;justify-items:center;position:relative;margin:4px calc(-1 * var(--gutter)) 18px;padding-top:62px;text-align:center}
+  .sw-mhead svg{position:absolute;left:0;top:0;width:100%;height:90px;overflow:visible}
+  .sw-mhead path{fill:none;stroke:var(--accent);stroke-width:1.2;opacity:.45;vector-effect:non-scaling-stroke}
+  .sw-mhead .sw-arc2{opacity:.18}
+  .sw-mg{font-family:var(--f-display);font-weight:700;font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--accent);transition:opacity .25s}
+  .sw-mname{font-family:var(--f-display);font-weight:800;font-size:clamp(24px,7vw,30px);line-height:1.15;letter-spacing:-.02em;margin-top:6px;max-width:16ch;transition:opacity .25s,transform .35s}
+  .sw-mhead.swap .sw-mname,.sw-mhead.swap .sw-mg{opacity:0}
+  .sw-mhead.swap .sw-mname{transform:translateY(8px)}
+  .sw-cwrap{order:3}
+  .sw-card{min-height:0;padding:28px 30px 30px}
+  .sw-card .sw-cat{display:none}
+  .sw-title{font-size:22px}
+  .sw-desc{font-size:16px}
+  .sw-mprev,.sw-mnext{display:grid;place-items:center;position:absolute;top:50%;z-index:2;width:42px;height:42px;margin-top:-21px;border-radius:50%;border:1.5px solid var(--line);background:var(--paper);box-shadow:0 8px 20px -10px rgba(0,0,0,.3);cursor:pointer}
+  .sw-mprev{left:-14px}.sw-mnext{right:-14px}
+  .sw-mprev svg,.sw-mnext svg{width:18px;height:18px;fill:none;stroke:var(--text);stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+  .sw-side .more-link{order:4;justify-self:center;text-align:center}
+}

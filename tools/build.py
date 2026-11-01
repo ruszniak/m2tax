@@ -80,7 +80,7 @@ def head(p, title, desc, path, extra_ld=None):
 <link rel="icon" type="image/png" href="{p}img/logo.png">
 ''' + "".join(f'<script type="application/ld+json">{json.dumps(x, ensure_ascii=False)}</script>\n' for x in lds) + f'''<link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700;800;900&family=Source+Sans+3:ital,wght@0,400;0,600;0,700;1,400&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700;800;900&family=Source+Sans+3:ital,wght@0,400;0,500;0,600;0,700;1,400&family=IBM+Plex+Mono:wght@400;500;600;700&display=swap">
 <link rel="stylesheet" href="{p}assets/site.css">
 </head>
 <body>
@@ -670,7 +670,7 @@ def spec_wheel(p):
         lis += f'<li class="sw-g" aria-hidden="true"><span>{g}</span></li>'
         for t in ts:
             r, _, d = allx[t]
-            data.append({"t": t, "r": r, "d": d, "g": g})
+            data.append({"t": t, "r": r, "d": d, "g": g, "s": SW_SHORT.get(t, t)})
             lis += f'<li class="sw-i"><button type="button" data-i="{k}">{SW_SHORT.get(t, t)}</button></li>'
             k += 1
     n = len(data)
@@ -690,12 +690,20 @@ def spec_wheel(p):
       </div>
       <div class="sw-side">
         <h2 id="spec-h" class="split">W czym możemy pomóc?</h2>
+        <div class="sw-mhead" aria-hidden="true">
+          <svg viewBox="0 0 400 90" preserveAspectRatio="none"><path class="sw-arc1" d="M-10 0 Q200 110 410 0"/><path class="sw-arc2" d="M-10 22 Q200 128 410 22"/></svg>
+          <span class="sw-mg">{f["g"]}</span><b class="sw-mname">{SW_SHORT.get(f["t"], f["t"])}</b>
+        </div>
+        <div class="sw-cwrap">
+        <button type="button" class="sw-mprev" aria-label="Poprzednia specjalizacja"><svg viewBox="0 0 24 24"><path d="M15 6l-6 6 6 6"/></svg></button>
+        <button type="button" class="sw-mnext" aria-label="Następna specjalizacja"><svg viewBox="0 0 24 24"><path d="M9 6l6 6-6 6"/></svg></button>
         <div class="sw-card" aria-live="polite">
           <span class="sw-cat">{f["g"]}</span>
           <h3 class="sw-title">{f["t"]}</h3>
           <p class="sw-desc">{f["d"]}</p>
           <span class="sw-ref">{f["r"]}</span>
           <a class="btn btn-primary sw-btn" href="{p}kontakt/#rezerwacja">Porozmawiajmy o tym <span aria-hidden="true">→</span></a>
+        </div>
         </div>
         <div class="sw-ctl">
           <span class="sw-count"><b>01</b> / {n:02d}</span>
@@ -1343,6 +1351,9 @@ def build_post(x, posts):
 def write(rel, html):
     path = os.path.join(ROOT, rel)
     os.makedirs(os.path.dirname(path), exist_ok=True)
+    if rel.endswith(".html"):
+        # strzałki: Montserrat ma bardzo małą strzałkę, więc rysujemy ją krojem tekstu
+        html = re.sub(r">([^<]*)", lambda m: ">" + m.group(1).replace("→", '<span class="arw">→</span>').replace("←", '<span class="arw">←</span>'), html)
     with open(path, "w", encoding="utf-8") as f:
         f.write(html)
     print("zapisano", rel)
