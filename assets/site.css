@@ -1546,6 +1546,9 @@ html.bgm-on{background-color:#16171a}
   .acc:not(.on){min-height:88px}
 }
 /* duże monitory: szerszy układ */
-@media (min-width:1800px){:root{--wrap:1400px}body{font-size:19px}}
-@media (min-width:2400px){:root{--wrap:1600px}}
-@media (min-width:1800px){main>.hero2.ov-first{min-height:100vh}.hero-duo{width:min(100%,640px)}.brand-anim{width:min(100%,640px)}}
+@media (min-width:1800px){main>.hero2.ov-first{min-height:100vh}}
+
+/* duże monitory: cała treść każdej sekcji proporcjonalnie powiększona */
+@media (min-width:1800px){.wrap,.sw-side,footer .wrap{zoom:1.15}}
+@media (min-width:2200px){.wrap,.sw-side,footer .wrap{zoom:1.32}}
+@media (min-width:2900px){.wrap,.sw-side,footer .wrap{zoom:1.6}}

@@ -9,6 +9,8 @@ Uruchom z katalogu repozytorium:  python3 tools/build.py
 Folder tools/ nie jest publikowany (.vercelignore).
 """
 import json, re, os
+import hashlib
+ASSET_V = hashlib.md5((open(os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "assets", "site.css"), "rb").read() + open(os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "assets", "site.js"), "rb").read())).hexdigest()[:8]
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SITE = "https://www.m2tax.pl"
@@ -81,7 +83,7 @@ def head(p, title, desc, path, extra_ld=None):
 ''' + "".join(f'<script type="application/ld+json">{json.dumps(x, ensure_ascii=False)}</script>\n' for x in lds) + f'''<link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700;800;900&family=Source+Sans+3:ital,wght@0,400;0,500;0,600;0,700;1,400&family=IBM+Plex+Mono:wght@400;500;600;700&display=swap">
-<link rel="stylesheet" href="{p}assets/site.css">
+<link rel="stylesheet" href="{p}assets/site.css?v={ASSET_V}">
 </head>
 <body>
 '''
@@ -200,7 +202,7 @@ window.addEventListener('load', function(){{
 <div class="toast" id="toast" hidden role="status"></div>
 {wa_button()}
 <script src="https://cdn.jsdelivr.net/npm/lenis@1.1.13/dist/lenis.min.js" defer></script>
-<script src="{p}assets/site.js" defer></script>{z}{salesiq()}
+<script src="{p}assets/site.js?v={ASSET_V}" defer></script>{z}{salesiq()}
 </body>
 </html>
 '''
