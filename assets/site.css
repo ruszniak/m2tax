@@ -1545,3 +1545,7 @@ html.bgm-on{background-color:#16171a}
   .acc:not(.on) .acc-ico{top:50%;margin-top:-24px}
   .acc:not(.on){min-height:88px}
 }
+/* duże monitory: szerszy układ */
+@media (min-width:1800px){:root{--wrap:1400px}body{font-size:19px}}
+@media (min-width:2400px){:root{--wrap:1600px}}
+@media (min-width:1800px){main>.hero2.ov-first{min-height:100vh}.hero-duo{width:min(100%,640px)}.brand-anim{width:min(100%,640px)}}

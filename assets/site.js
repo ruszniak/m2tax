@@ -70,6 +70,9 @@
     function stop(){ run=false; cancelAnimationFrame(raf); }
     size(); frame();
     var rt; window.addEventListener('resize',function(){ clearTimeout(rt); rt=setTimeout(function(){ size(); if(!run) frame(); },120); });
+    /* rozmiar płótna mierzony też po załadowaniu stylów i zmianie układu (inaczej na dużych ekranach obraz był rozciągnięty) */
+    if('ResizeObserver' in window) new ResizeObserver(function(){ var r=cv.getBoundingClientRect(); if(Math.abs(r.width-W)>1||Math.abs(r.height-H)>1){ size(); if(!run) frame(); } }).observe(cv);
+    addEventListener('load',function(){ size(); if(!run) frame(); });
     if(!reduce){
       cv.parentElement.addEventListener('pointermove',function(e){ var r=cv.getBoundingClientRect(); tg.x=(e.clientX-r.left)/r.width-.5; tg.y=(e.clientY-r.top)/r.height-.5; });
       if('IntersectionObserver' in window) new IntersectionObserver(function(es){ es.forEach(function(en){ en.isIntersecting?start():stop(); }); }).observe(cv); else start();
