@@ -167,7 +167,7 @@ window.addEventListener('load', function(){{
 <footer>
   <div class="wrap">
     <div class="f-brand">
-      <a href="{p or './'}" class="f-logo" aria-label="M2 TAX Doradcy Podatkowi — strona główna"><img src="{p}img/logo-light.png" alt="M2 TAX Doradcy Podatkowi" width="900" height="302" loading="lazy"></a>
+      <div class="f-brandrow"><a href="{p or './'}" class="f-logo" aria-label="M2 TAX Doradcy Podatkowi — strona główna"><img src="{p}img/logo-light.png" alt="M2 TAX Doradcy Podatkowi" width="900" height="302" loading="lazy"></a><a class="kd-fl" href="https://kidp.pl/doradca/15009" target="_blank" rel="noopener" aria-label="Wpis na liście doradców podatkowych KIDP"><img src="{p}img/kidp-light.svg" alt="Krajowa Izba Doradców Podatkowych" width="308" height="240" loading="lazy"></a></div>
       <p>Kancelaria doradztwa podatkowego z Wrocławia. Obsługujemy klientów z Wrocławia i {len(TOWNS) - 1} okolicznych miejscowości. <a class="f-map" href="{p}#obszar">Zobacz mapę →</a></p>
       <a class="btn btn-primary" href="{p}kontakt/#rezerwacja">Bezpłatne 20 minut</a>
     </div>
@@ -752,7 +752,7 @@ def build_home():
     </div>
     <figure class="hero-duo" data-parallax="-0.06">
       <span class="hd-ring" aria-hidden="true"></span><img src="img/doradcy-duo-cut.webp?v=2" alt="Doradcy podatkowi Michał Ruszniak i Marcin Otręba" width="1000" height="1087" fetchpriority="high">
-      <figcaption>Michał Ruszniak · Marcin Otręba<span>doradcy podatkowi nr 15009 i 14609</span></figcaption>
+      <figcaption class="kdc"><a href="https://kidp.pl/doradca/15009" target="_blank" rel="noopener" aria-label="Wpis na liście doradców podatkowych KIDP"><img src="img/kidp-gold.svg" alt="Krajowa Izba Doradców Podatkowych" width="308" height="240"></a><div>Michał Ruszniak · Marcin Otręba<em>doradcy podatkowi nr 15009 i 14609</em></div></figcaption>
     </figure>
   </div>
   <a class="scroll-cue" href="#specjalizacje" aria-label="Przewiń dalej"><span></span></a>

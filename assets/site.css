@@ -1552,3 +1552,15 @@ html.bgm-on{background-color:#16171a}
 @media (min-width:1800px){.wrap,.sw-side,footer .wrap{zoom:1.15}}
 @media (min-width:2200px){.wrap,.sw-side,footer .wrap{zoom:1.32}}
 @media (min-width:2900px){.wrap,.sw-side,footer .wrap{zoom:1.6}}
+
+/* ===== KIDP przy nazwiskach pod zdjęciem ===== */
+.hero-duo figcaption.kdc{left:6%;right:6%;bottom:1%;display:flex;align-items:center;justify-content:center;gap:16px;text-align:left;padding:12px 18px;border-radius:14px;background:rgba(16,17,20,.72);-webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px);text-shadow:none}
+.kdc img{height:68px;width:auto;flex:none;padding-right:16px;border-right:1px solid rgba(217,185,142,.45)}
+.kdc em{font-style:normal;display:block;font-family:var(--f-mono);font-size:12px;color:#D9B98E;margin-top:2px;font-weight:400}
+@media (max-width:600px){.kdc img{height:56px;padding-right:12px}.hero-duo figcaption.kdc{gap:12px;padding:10px 14px}}
+.kdc a{display:block;flex:none;transition:opacity .3s}.kdc a:hover{opacity:.8}
+/* KIDP w stopce obok logo M2 TAX */
+.f-brandrow{display:flex;align-items:center;gap:22px}
+.f-brandrow .f-logo img{display:block}
+.kd-fl{flex:none;padding-left:22px;border-left:1px solid rgba(217,185,142,.35);transition:opacity .3s}
+.kd-fl img{height:74px;width:auto;display:block}.kd-fl:hover{opacity:.75}
