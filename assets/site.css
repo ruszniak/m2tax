@@ -1566,3 +1566,8 @@ html.bgm-on{background-color:#16171a}
 .kd-fl img{height:74px;width:auto;display:block}.kd-fl:hover{opacity:.75}
 /* logo KIDP w podpisie: bez animacji i maski zdjęcia */
 .hero-duo .kdc img{animation:none!important;clip-path:none!important;-webkit-mask-image:none!important;mask-image:none!important;transform:none!important;filter:none!important}
+/* telefon: przyciski w hero wyśrodkowane i równej szerokości */
+@media (max-width:880px){
+  .hero2 .hero-cta{justify-content:center;width:min(100%,360px);margin-left:auto;margin-right:auto}
+  .hero2 .hero-cta .btn{flex:1 1 100%;justify-content:center;text-align:center}
+}
