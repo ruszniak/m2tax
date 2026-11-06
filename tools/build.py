@@ -581,23 +581,31 @@ def bridge_svg():
 def bridge_section(p):
     return f'''<section class="section bb-sec" aria-labelledby="bb-h">
   <div class="wrap">
-    <div class="bb-card">
+    <div class="bb-card bb2">
       <div class="bb-glow" aria-hidden="true"></div>
       <div class="bb-copy">
+        <span class="bb-eye">Program Partner · dla biur rachunkowych</span>
         <h2 id="bb-h" class="split">Prowadzisz biuro rachunkowe? <em>Zbudujmy most.</em></h2>
-        <p>Stałe wsparcie doradców podatkowych dla Twojego zespołu, wdrożenie JPK CIT i pomoc przy kontrolach Twoich klientów. Wy prowadzicie księgi, my bierzemy na siebie trudne pytania.</p>
-        <ul class="bb-pts">
-          <li><b>Odpowiedź na piśmie</b><span>do przekazania klientowi</span></li>
-          <li><b>Kontrole i pisma z US</b><span>prowadzimy razem z Wami</span></li>
-          <li><b>od <i data-count="419">419</i> zł</b><span>netto miesięcznie</span></li>
+        <p>Stałe wsparcie doradców podatkowych dla Twojego zespołu. Wy prowadzicie księgi, my bierzemy na siebie trudne pytania, pisma z urzędu i kontrole Waszych klientów.</p>
+        <ul class="bb-list">
+          <li><b>Pisemne stanowisko doradcy</b> gotowe do przekazania klientowi</li>
+          <li><b>Kontrole i pisma z US</b> prowadzimy razem z Wami, z pełnomocnictwem</li>
+          <li><b>Wdrożenie JPK CIT</b> dla klientów Twojego biura</li>
         </ul>
-        <div class="hero-cta"><a class="btn btn-primary magnet" href="{p}dla-biur-rachunkowych/">Zobacz ofertę dla biur →</a></div>
+        <div class="bb-foot">
+          <a class="btn btn-primary magnet" href="{p}dla-biur-rachunkowych/">Zobacz ofertę dla biur <span aria-hidden="true">→</span></a>
+          <div class="bb-price"><small>abonament</small><b>od <i data-count="419">419</i> zł</b><small>netto miesięcznie</small></div>
+        </div>
       </div>
-      <div class="bb-vis">
-        {bridge_svg()}
-        <span class="bb-lb bb-l1">Twoje biuro</span><span class="bb-lb bb-l2">M2 TAX</span>
-        <span class="bb-chip bb-q">pytanie o VAT</span>
-        <span class="bb-chip bb-a">✓ odpowiedź doradcy</span>
+      <div class="bb-vis" aria-hidden="true">
+        <div class="bb-th">
+          <div class="bb-th-hd"><span>Konsultacja dla biura</span><em><i></i>odpowiedź gotowa</em></div>
+          <div class="bb-msg bb-in"><span class="bb-av">BR</span><div><small>Biuro rachunkowe · 09:12</small><p>Klient sprzedaje działkę z majątku prywatnego. Czy musi naliczyć VAT?</p></div></div>
+          <div class="bb-msg bb-out"><span class="bb-av g">M2</span><div><small>M2 TAX · doradca podatkowy</small><p><b>Stanowisko:</b> VAT pojawi się tylko wtedy, gdy klient działał jak handlowiec: dzielił grunt, uzbrajał go, reklamował sprzedaż. Analiza z orzecznictwem w załączniku.</p>
+            <span class="bb-file"><svg viewBox="0 0 24 24" width="16" height="16"><path d="M6 2h8l5 5v15H6z" fill="none" stroke="currentColor" stroke-width="1.6"/><path d="M14 2v5h5" fill="none" stroke="currentColor" stroke-width="1.6"/></svg>Opinia_VAT_dzialka.pdf <em>3 str.</em></span>
+            <span class="bb-sig">Michał Ruszniak · doradca podatkowy nr 15009</span></div></div>
+          <div class="bb-th-ft"><span>Dwóch doradców przy każdej sprawie</span><span>Odpowiedź na piśmie</span></div>
+        </div>
       </div>
     </div>
   </div>
