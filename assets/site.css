@@ -1564,3 +1564,5 @@ html.bgm-on{background-color:#16171a}
 .f-brandrow .f-logo img{display:block}
 .kd-fl{flex:none;padding-left:22px;border-left:1px solid rgba(217,185,142,.35);transition:opacity .3s}
 .kd-fl img{height:74px;width:auto;display:block}.kd-fl:hover{opacity:.75}
+/* logo KIDP w podpisie: bez animacji i maski zdjęcia */
+.hero-duo .kdc img{animation:none!important;clip-path:none!important;-webkit-mask-image:none!important;mask-image:none!important;transform:none!important;filter:none!important}
