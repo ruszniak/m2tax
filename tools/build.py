@@ -10,6 +10,14 @@ Folder tools/ nie jest publikowany (.vercelignore).
 """
 import json, re, os
 import hashlib
+import subprocess as _sp
+import datetime as _dt
+try:
+    _NB = int(_sp.check_output(["git", "rev-list", "--count", "HEAD"], cwd=__import__("os").path.dirname(__import__("os").path.abspath(__file__)), text=True).strip()) + 1
+except Exception:
+    _NB = 0
+SITE_VER = f"2.{_NB}"
+SITE_DATE = _dt.date.today().strftime("%d.%m.%Y")
 ASSET_V = hashlib.md5((open(os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "assets", "site.css"), "rb").read() + open(os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "assets", "site.js"), "rb").read())).hexdigest()[:8]
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -195,7 +203,7 @@ window.addEventListener('load', function(){{
       <p>ul. Zwycięska 3<br>53-033 Wrocław</p>
       <p>KRS: 0001238577<br>NIP: 8993058189<br>REGON: 54465563600000</p>
     </div>
-    <div class="legal"><span>© 2026 M2 TAX. Wszelkie prawa zastrzeżone.</span><span><a href="{p}polityka-prywatnosci.html">Polityka prywatności</a> · <a href="{p}aml.html">Informacja AML</a></span><span>Wykonanie: <a href="https://ruszniak.io" target="_blank" rel="noopener">druslak</a></span></div>
+    <div class="legal"><span>© 2026 M2 TAX. Wszelkie prawa zastrzeżone.</span><span><a href="{p}polityka-prywatnosci.html">Polityka prywatności</a> · <a href="{p}aml.html">Informacja AML</a></span><span>Wykonanie: <a href="https://ruszniak.io" target="_blank" rel="noopener">druslak</a> · <span class="ver" title="Data publikacji">wersja {SITE_VER} z {SITE_DATE}</span></span></div>
   </div>
 </footer>
 
