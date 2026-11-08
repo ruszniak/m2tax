@@ -11,7 +11,7 @@ import html
 
 BASE = "https://www.m2tax.pl/podpis/"
 SITE = "https://www.m2tax.pl"
-BOOKING = "https://m2taxdoradcypodatkowi.zohobookings.eu/m2taxdoradcypodatkowi"
+BOOKING = "https://app.ruszniak.io/umow/?motyw=m2tax"
 
 INK = "#1c1d21"
 MUTED = "#6b6e76"

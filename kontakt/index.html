@@ -67,7 +67,7 @@
         <span class="bk-live">wolne terminy na bieżąco</span>
       </div>
       <div id="inline-container" class="zoho-booking"><div class="zoho-loading"><span class="bk-spin" aria-hidden="true"></span>Ładuję kalendarz…</div></div>
-      <p class="bk-card-foot">Kalendarz się nie wyświetla? <a href="https://m2taxdoradcypodatkowi.zohobookings.eu/#/m2taxdoradcypodatkowi" target="_blank" rel="noopener">Otwórz go w nowym oknie ↗</a></p>
+      <p class="bk-card-foot">Kalendarz się nie wyświetla? <a href="https://app.ruszniak.io/umow/?motyw=m2tax&zrodlo=m2tax" target="_blank" rel="noopener">Otwórz go w nowym oknie ↗</a></p>
     </div>
   </div>
 </section>
@@ -164,7 +164,7 @@
       <p>ul. Zwycięska 3<br>53-033 Wrocław</p>
       <p>KRS: 0001238577<br>NIP: 8993058189<br>REGON: 54465563600000</p>
     </div>
-    <div class="legal"><span>© 2026 M2 TAX. Wszelkie prawa zastrzeżone.</span><span><a href="../polityka-prywatnosci.html">Polityka prywatności</a> · <a href="../aml.html">Informacja AML</a></span><span>Wykonanie: <a href="https://ruszniak.io" target="_blank" rel="noopener">druslak</a> · <span class="ver" title="Data publikacji">wersja 2.105 z 07.11.2026</span></span></div>
+    <div class="legal"><span>© 2026 M2 TAX. Wszelkie prawa zastrzeżone.</span><span><a href="../polityka-prywatnosci.html">Polityka prywatności</a> · <a href="../aml.html">Informacja AML</a></span><span>Wykonanie: <a href="https://ruszniak.io" target="_blank" rel="noopener">druslak</a> · <span class="ver" title="Data publikacji">wersja 2.120 z 08.11.2026</span></span></div>
   </div>
 </footer>
 
@@ -181,24 +181,15 @@
 </div>
 <script src="https://cdn.jsdelivr.net/npm/lenis@1.1.13/dist/lenis.min.js" defer></script>
 <script src="../assets/site.js?v=e411468a" defer></script>
-<!-- Zoho Bookings: kalendarz rezerwacji wbudowany w stronę -->
-<script src="https://bookings.nimbuspop.com/assets/embed.js" defer></script>
+<!-- Rezerwacja spotkań: kalendarz z aplikacji app.R (wolne terminy z Kalendarzy Google doradców) -->
 <script>
-window.addEventListener('load', function(){
-  var ZOHO_URL = 'https://m2taxdoradcypodatkowi.zohobookings.eu/portal-embed#/m2taxdoradcypodatkowi';
+(function(){
   var box = document.getElementById('inline-container'); if(!box) return;
-  var h = window.innerWidth <= 820 ? '900px' : '760px';
-  function done(){ var l = box.querySelector('.zoho-loading'); if(l) l.remove(); }
-  try {
-    if (window.Bookings && typeof Bookings.inlineEmbed === 'function') {
-      Bookings.inlineEmbed({ url: ZOHO_URL, parent: '#inline-container', height: h });
-      setTimeout(done, 400); return;
-    }
-  } catch(e) {}
   var f = document.createElement('iframe');
-  f.title = 'Kalendarz rezerwacji M2 TAX'; f.src = ZOHO_URL; f.style.height = h; f.setAttribute('allowfullscreen','');
-  f.addEventListener('load', done); box.appendChild(f);
-});
+  f.title = 'Kalendarz rezerwacji M2 TAX'; f.src = 'https://app.ruszniak.io/umow/?embed=1&bare=1&zrodlo=m2tax'; f.loading = 'lazy';
+  f.addEventListener('load', function(){ var l = box.querySelector('.zoho-loading'); if(l) l.remove(); });
+  box.appendChild(f);
+})();
 </script>
 </body>
 </html>

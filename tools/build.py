@@ -32,8 +32,8 @@ WA_TEXT = "Dzień dobry, mam pytanie podatkowe: "
 # w Zoho SalesIQ → Ustawienia → Kanały → Witryna → Instalacja). Pusty = czat wyłączony.
 SALESIQ_WC = ""
 SALESIQ_HOST = "https://salesiq.zohopublic.eu"
-ZOHO_EMBED = "https://m2taxdoradcypodatkowi.zohobookings.eu/portal-embed#/m2taxdoradcypodatkowi"
-ZOHO_PUBLIC = "https://m2taxdoradcypodatkowi.zohobookings.eu/#/m2taxdoradcypodatkowi"
+BOOK_EMBED = "https://app.ruszniak.io/umow/?embed=1&bare=1&zrodlo=m2tax"  # własny system rezerwacji (aplikacja app.R), kolory M2 TAX
+BOOK_PUBLIC = "https://app.ruszniak.io/umow/?motyw=m2tax&zrodlo=m2tax"
 TOWNS = [
     ("Wrocław", "kancelarie przy ul. Zwycięskiej 3 i ul. Artemskiej 11"),
     ("Siechnice", "gmina Siechnice"),
@@ -151,24 +151,15 @@ def footer(p, zoho=False):
     z = ""
     if zoho:
         z = f'''
-<!-- Zoho Bookings: kalendarz rezerwacji wbudowany w stronę -->
-<script src="https://bookings.nimbuspop.com/assets/embed.js" defer></script>
+<!-- Rezerwacja spotkań: kalendarz z aplikacji app.R (wolne terminy z Kalendarzy Google doradców) -->
 <script>
-window.addEventListener('load', function(){{
-  var ZOHO_URL = '{ZOHO_EMBED}';
+(function(){{
   var box = document.getElementById('inline-container'); if(!box) return;
-  var h = window.innerWidth <= 820 ? '900px' : '760px';
-  function done(){{ var l = box.querySelector('.zoho-loading'); if(l) l.remove(); }}
-  try {{
-    if (window.Bookings && typeof Bookings.inlineEmbed === 'function') {{
-      Bookings.inlineEmbed({{ url: ZOHO_URL, parent: '#inline-container', height: h }});
-      setTimeout(done, 400); return;
-    }}
-  }} catch(e) {{}}
   var f = document.createElement('iframe');
-  f.title = 'Kalendarz rezerwacji M2 TAX'; f.src = ZOHO_URL; f.style.height = h; f.setAttribute('allowfullscreen','');
-  f.addEventListener('load', done); box.appendChild(f);
-}});
+  f.title = 'Kalendarz rezerwacji M2 TAX'; f.src = '{BOOK_EMBED}'; f.loading = 'lazy';
+  f.addEventListener('load', function(){{ var l = box.querySelector('.zoho-loading'); if(l) l.remove(); }});
+  box.appendChild(f);
+}})();
 </script>'''
     return f'''</main>
 
@@ -1064,7 +1055,7 @@ def build_kontakt():
         <span class="bk-live">wolne terminy na bieżąco</span>
       </div>
       <div id="inline-container" class="zoho-booking"><div class="zoho-loading"><span class="bk-spin" aria-hidden="true"></span>Ładuję kalendarz…</div></div>
-      <p class="bk-card-foot">Kalendarz się nie wyświetla? <a href="{ZOHO_PUBLIC}" target="_blank" rel="noopener">Otwórz go w nowym oknie ↗</a></p>
+      <p class="bk-card-foot">Kalendarz się nie wyświetla? <a href="{BOOK_PUBLIC}" target="_blank" rel="noopener">Otwórz go w nowym oknie ↗</a></p>
     </div>
   </div>
 </section>
