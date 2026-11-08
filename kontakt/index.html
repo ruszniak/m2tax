@@ -20,7 +20,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700;800;900&family=Source+Sans+3:ital,wght@0,400;0,500;0,600;0,700;1,400&family=IBM+Plex+Mono:wght@400;500;600;700&display=swap">
-<link rel="stylesheet" href="../assets/site.css?v=e411468a">
+<link rel="stylesheet" href="../assets/site.css?v=bf3d23ae">
 </head>
 <body>
 
@@ -164,7 +164,7 @@
       <p>ul. Zwycięska 3<br>53-033 Wrocław</p>
       <p>KRS: 0001238577<br>NIP: 8993058189<br>REGON: 54465563600000</p>
     </div>
-    <div class="legal"><span>© 2026 M2 TAX. Wszelkie prawa zastrzeżone.</span><span><a href="../polityka-prywatnosci.html">Polityka prywatności</a> · <a href="../aml.html">Informacja AML</a></span><span>Wykonanie: <a href="https://ruszniak.io" target="_blank" rel="noopener">druslak</a> · <span class="ver" title="Data publikacji">wersja 2.120 z 08.11.2026</span></span></div>
+    <div class="legal"><span>© 2026 M2 TAX. Wszelkie prawa zastrzeżone.</span><span><a href="../polityka-prywatnosci.html">Polityka prywatności</a> · <a href="../aml.html">Informacja AML</a></span><span>Wykonanie: <a href="https://ruszniak.io" target="_blank" rel="noopener">druslak</a> · <span class="ver" title="Data publikacji">wersja 2.107 z 08.11.2026</span></span></div>
   </div>
 </footer>
 
@@ -180,15 +180,23 @@
 </a>
 </div>
 <script src="https://cdn.jsdelivr.net/npm/lenis@1.1.13/dist/lenis.min.js" defer></script>
-<script src="../assets/site.js?v=e411468a" defer></script>
+<script src="../assets/site.js?v=bf3d23ae" defer></script>
 <!-- Rezerwacja spotkań: kalendarz z aplikacji app.R (wolne terminy z Kalendarzy Google doradców) -->
 <script>
 (function(){
   var box = document.getElementById('inline-container'); if(!box) return;
   var f = document.createElement('iframe');
   f.title = 'Kalendarz rezerwacji M2 TAX'; f.src = 'https://app.ruszniak.io/umow/?embed=1&bare=1&zrodlo=m2tax'; f.loading = 'lazy';
+  f.setAttribute('scrolling','no');
   f.addEventListener('load', function(){ var l = box.querySelector('.zoho-loading'); if(l) l.remove(); });
   box.appendChild(f);
+  // kalendarz podaje swoją wysokość – ramka rośnie razem z treścią, bez przewijania w środku
+  window.addEventListener('message', function(e){
+    if(!/app\.ruszniak\.io$/.test((e.origin||'').replace(/^https?:\/\//,'')) && e.origin !== location.origin) return;
+    var d = e.data || {};
+    if(d.type === 'rkdp-umow-height' && d.height > 200){ f.style.height = d.height + 'px'; box.classList.add('fit'); }
+    if(d.type === 'rkdp-umow-top'){ var r = box.getBoundingClientRect(); if(r.top < 70 || r.top > innerHeight*.6) window.scrollTo({top: r.top + scrollY - 90, behavior: 'smooth'}); }
+  });
 })();
 </script>
 </body>

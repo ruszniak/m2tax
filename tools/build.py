@@ -157,8 +157,16 @@ def footer(p, zoho=False):
   var box = document.getElementById('inline-container'); if(!box) return;
   var f = document.createElement('iframe');
   f.title = 'Kalendarz rezerwacji M2 TAX'; f.src = '{BOOK_EMBED}'; f.loading = 'lazy';
+  f.setAttribute('scrolling','no');
   f.addEventListener('load', function(){{ var l = box.querySelector('.zoho-loading'); if(l) l.remove(); }});
   box.appendChild(f);
+  // kalendarz podaje swoją wysokość – ramka rośnie razem z treścią, bez przewijania w środku
+  window.addEventListener('message', function(e){{
+    if(!/app\.ruszniak\.io$/.test((e.origin||'').replace(/^https?:\/\//,'')) && e.origin !== location.origin) return;
+    var d = e.data || {{}};
+    if(d.type === 'rkdp-umow-height' && d.height > 200){{ f.style.height = d.height + 'px'; box.classList.add('fit'); }}
+    if(d.type === 'rkdp-umow-top'){{ var r = box.getBoundingClientRect(); if(r.top < 70 || r.top > innerHeight*.6) window.scrollTo({{top: r.top + scrollY - 90, behavior: 'smooth'}}); }}
+  }});
 }})();
 </script>'''
     return f'''</main>

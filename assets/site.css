@@ -1571,3 +1571,6 @@ html.bgm-on{background-color:#16171a}
   .hero2 .hero-cta{justify-content:center;width:min(100%,360px);margin-left:auto;margin-right:auto}
   .hero2 .hero-cta .btn{flex:1 1 100%;justify-content:center;text-align:center}
 }
+/* kalendarz rezerwacji: wysokość dopasowana do treści (podaje ją sam kalendarz) */
+.zoho-booking.fit{min-height:0}
+.zoho-booking.fit iframe{min-height:0;transition:height .2s ease}
