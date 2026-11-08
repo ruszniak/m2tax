@@ -89,7 +89,7 @@ def head(p, title, desc, path, extra_ld=None):
 <meta name="twitter:card" content="summary_large_image">
 <link rel="icon" type="image/png" href="{p}img/logo.png">
 ''' + "".join(f'<script type="application/ld+json">{json.dumps(x, ensure_ascii=False)}</script>\n' for x in lds) + f'''<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>{'<link rel="preconnect" href="https://app.ruszniak.io"><link rel="preconnect" href="https://iuszfoyttqnkzjzjpzma.supabase.co" crossorigin><link rel="prefetch" href="https://app.ruszniak.io/umow/umow.js" as="script">' if path == "kontakt/" else ''}
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700;800;900&family=Source+Sans+3:ital,wght@0,400;0,500;0,600;0,700;1,400&family=IBM+Plex+Mono:wght@400;500;600;700&display=swap">
 <link rel="stylesheet" href="{p}assets/site.css?v={ASSET_V}">
 </head>
@@ -156,7 +156,7 @@ def footer(p, zoho=False):
 (function(){{
   var box = document.getElementById('inline-container'); if(!box) return;
   var f = document.createElement('iframe');
-  f.title = 'Kalendarz rezerwacji M2 TAX'; f.src = '{BOOK_EMBED}'; f.loading = 'lazy';
+  f.title = 'Kalendarz rezerwacji M2 TAX'; f.src = '{BOOK_EMBED}';
   f.setAttribute('scrolling','no');
   f.addEventListener('load', function(){{ var l = box.querySelector('.zoho-loading'); if(l) l.remove(); }});
   box.appendChild(f);
